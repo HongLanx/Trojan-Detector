@@ -2,7 +2,7 @@
 小学期大作业
 
 git教程：https://liaoxuefeng.com/books/git/introduction/index.html
-
+Vscode+git:https://blog.csdn.net/weixin_48024605/article/details/136037857
 
 针对云原生、大数据、智能模型开源项目中，对使用 JAVA、Python、Go 语言的开源软件
 或组件源代码，检测代码中是否隐藏存在多类型的木马后门，造成安装此类开源软件源代码
