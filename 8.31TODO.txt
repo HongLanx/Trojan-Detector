@@ -26,3 +26,5 @@ github关键词：
 .学习各种病毒代码的特征模式
 .
 3.模式匹配
+
+每天最后一件事，把自己Branch的东西pull request到main上，每天第一件事就是pull一下main，平时协作请在自己组的Branch
