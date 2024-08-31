@@ -1,5 +1,4 @@
 '''
-#!/usr/bin/env python3
 
 """ Implementation of trojan that collects data and sends them to server.
     It acts like an ordinary diary.
