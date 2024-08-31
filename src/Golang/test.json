@@ -1,0 +1,1807 @@
+{
+    "*ast.File": {
+        "Doc": "nil",
+        "Package": "test.go:1:1",
+        "Name:": {
+            "NamePos": "test.go:1:9",
+            "Name": "main",
+            "Obj": "nil"
+        },
+        "Decls:": {
+            "0:": {
+                "Doc": "nil",
+                "TokPos": "test.go:3:1",
+                "Tok": "import",
+                "Lparen": "test.go:3:8",
+                "Specs:": {
+                    "0:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "test.go:4:2",
+                            "Kind": "STRING",
+                            "Value": "\\net/http\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "1:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "test.go:5:2",
+                            "Kind": "STRING",
+                            "Value": "\\github.com/gobuffalo/packr\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "2:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "test.go:6:2",
+                            "Kind": "STRING",
+                            "Value": "\\io\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "3:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "test.go:7:5",
+                            "Kind": "STRING",
+                            "Value": "\\os/exec\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "4:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "test.go:8:5",
+                            "Kind": "STRING",
+                            "Value": "\\fmt\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "5:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "test.go:9:5",
+                            "Kind": "STRING",
+                            "Value": "\\os\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "6:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "test.go:10:5",
+                            "Kind": "STRING",
+                            "Value": "\\syscall\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "7:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "test.go:11:5",
+                            "Kind": "STRING",
+                            "Value": "\\os/user\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "8:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "test.go:12:5",
+                            "Kind": "STRING",
+                            "Value": "\\log\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    }
+                },
+                "Rparen": "test.go:13:1"
+            },
+            "1:": {
+                "Doc:": {
+                    "List:": {
+                        "0:": {
+                            "Slash": "test.go:16:1",
+                            "Text": "//GOOS=windows GOARCH=amd64 packr build -ldflags \\-H=windowsgui -s -w\\"
+                        }
+                    }
+                },
+                "Recv": "nil",
+                "Name:": {
+                    "NamePos": "test.go:17:6",
+                    "Name": "main",
+                    "Obj:": {
+                        "Kind": "func",
+                        "Name": "main",
+                        "Decl": "*(obj @ 117)",
+                        "Data": "nil",
+                        "Type": "nil"
+                    }
+                },
+                "Type:": {
+                    "Func": "test.go:17:1",
+                    "TypeParams": "nil",
+                    "Params:": {
+                        "Opening": "test.go:17:10",
+                        "List": "nil",
+                        "Closing": "test.go:17:11"
+                    },
+                    "Results": "nil"
+                },
+                "Body:": {
+                    "Lbrace": "test.go:17:13",
+                    "List:": {
+                        "0:": {
+                            "Go": "test.go:18:2",
+                            "Call:": {
+                                "Fun:": {
+                                    "NamePos": "test.go:18:5",
+                                    "Name": "HostFiles",
+                                    "Obj:": {
+                                        "Kind": "func",
+                                        "Name": "HostFiles",
+                                        "Decl:": {
+                                            "Doc": "nil",
+                                            "Recv": "nil",
+                                            "Name:": {
+                                                "NamePos": "test.go:55:6",
+                                                "Name": "HostFiles",
+                                                "Obj": "*(obj @ 157)"
+                                            },
+                                            "Type:": {
+                                                "Func": "test.go:55:1",
+                                                "TypeParams": "nil",
+                                                "Params:": {
+                                                    "Opening": "test.go:55:15",
+                                                    "List": "nil",
+                                                    "Closing": "test.go:55:16"
+                                                },
+                                                "Results": "nil"
+                                            },
+                                            "Body:": {
+                                                "Lbrace": "test.go:55:17",
+                                                "List:": {
+                                                    "0:": {
+                                                        "Lhs:": {
+                                                            "0:": {
+                                                                "NamePos": "test.go:56:2",
+                                                                "Name": "box",
+                                                                "Obj:": {
+                                                                    "Kind": "var",
+                                                                    "Name": "box",
+                                                                    "Decl": "*(obj @ 181)",
+                                                                    "Data": "nil",
+                                                                    "Type": "nil"
+                                                                }
+                                                            }
+                                                        },
+                                                        "TokPos": "test.go:56:6",
+                                                        "Tok": ":=",
+                                                        "Rhs:": {
+                                                            "0:": {
+                                                                "Fun:": {
+                                                                    "X:": {
+                                                                        "NamePos": "test.go:56:9",
+                                                                        "Name": "packr",
+                                                                        "Obj": "nil"
+                                                                    },
+                                                                    "Sel:": {
+                                                                        "NamePos": "test.go:56:15",
+                                                                        "Name": "NewBox",
+                                                                        "Obj": "nil"
+                                                                    }
+                                                                },
+                                                                "Lparen": "test.go:56:21",
+                                                                "Args:": {
+                                                                    "0:": {
+                                                                        "ValuePos": "test.go:56:22",
+                                                                        "Kind": "STRING",
+                                                                        "Value": "\\./bin\\"
+                                                                    }
+                                                                },
+                                                                "Ellipsis": "-",
+                                                                "Rparen": "test.go:56:29"
+                                                            }
+                                                        }
+                                                    },
+                                                    "1:": {
+                                                        "X:": {
+                                                            "Fun:": {
+                                                                "X:": {
+                                                                    "NamePos": "test.go:57:2",
+                                                                    "Name": "http",
+                                                                    "Obj": "nil"
+                                                                },
+                                                                "Sel:": {
+                                                                    "NamePos": "test.go:57:7",
+                                                                    "Name": "Handle",
+                                                                    "Obj": "nil"
+                                                                }
+                                                            },
+                                                            "Lparen": "test.go:57:13",
+                                                            "Args:": {
+                                                                "0:": {
+                                                                    "ValuePos": "test.go:57:14",
+                                                                    "Kind": "STRING",
+                                                                    "Value": "\\/\\"
+                                                                },
+                                                                "1:": {
+                                                                    "Fun:": {
+                                                                        "X:": {
+                                                                            "NamePos": "test.go:57:19",
+                                                                            "Name": "http",
+                                                                            "Obj": "nil"
+                                                                        },
+                                                                        "Sel:": {
+                                                                            "NamePos": "test.go:57:24",
+                                                                            "Name": "FileServer",
+                                                                            "Obj": "nil"
+                                                                        }
+                                                                    },
+                                                                    "Lparen": "test.go:57:34",
+                                                                    "Args:": {
+                                                                        "0:": {
+                                                                            "NamePos": "test.go:57:35",
+                                                                            "Name": "box",
+                                                                            "Obj": "*(obj @ 186)"
+                                                                        }
+                                                                    },
+                                                                    "Ellipsis": "-",
+                                                                    "Rparen": "test.go:57:38"
+                                                                }
+                                                            },
+                                                            "Ellipsis": "-",
+                                                            "Rparen": "test.go:57:39"
+                                                        }
+                                                    },
+                                                    "2:": {
+                                                        "X:": {
+                                                            "Fun:": {
+                                                                "X:": {
+                                                                    "NamePos": "test.go:58:2",
+                                                                    "Name": "http",
+                                                                    "Obj": "nil"
+                                                                },
+                                                                "Sel:": {
+                                                                    "NamePos": "test.go:58:7",
+                                                                    "Name": "ListenAndServe",
+                                                                    "Obj": "nil"
+                                                                }
+                                                            },
+                                                            "Lparen": "test.go:58:21",
+                                                            "Args:": {
+                                                                "0:": {
+                                                                    "ValuePos": "test.go:58:22",
+                                                                    "Kind": "STRING",
+                                                                    "Value": "\\:3001\\"
+                                                                },
+                                                                "1:": {
+                                                                    "NamePos": "test.go:58:31",
+                                                                    "Name": "nil",
+                                                                    "Obj": "nil"
+                                                                }
+                                                            },
+                                                            "Ellipsis": "-",
+                                                            "Rparen": "test.go:58:34"
+                                                        }
+                                                    }
+                                                },
+                                                "Rbrace": "test.go:59:1"
+                                            }
+                                        },
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                },
+                                "Lparen": "test.go:18:14",
+                                "Args": "nil",
+                                "Ellipsis": "-",
+                                "Rparen": "test.go:18:15"
+                            }
+                        },
+                        "1:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "test.go:19:2",
+                                    "Name": "exfilurl",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "exfilurl",
+                                        "Decl": "*(obj @ 319)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "test.go:19:11",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "ValuePos": "test.go:19:14",
+                                    "Kind": "STRING",
+                                    "Value": "\\http://127.0.0.1:3001/e.exe\\"
+                                }
+                            }
+                        },
+                        "2:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "test.go:20:5",
+                                    "Name": "outlookurl",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "outlookurl",
+                                        "Decl": "*(obj @ 343)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "test.go:20:16",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "ValuePos": "test.go:20:19",
+                                    "Kind": "STRING",
+                                    "Value": "\\http://127.0.0.1:3001/o.exe\\"
+                                }
+                            }
+                        },
+                        "3:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "test.go:21:5",
+                                    "Name": "screenurl",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "screenurl",
+                                        "Decl": "*(obj @ 367)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "test.go:21:15",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "ValuePos": "test.go:21:18",
+                                    "Kind": "STRING",
+                                    "Value": "\\http://127.0.0.1:3001/s.exe\\"
+                                }
+                            }
+                        },
+                        "4:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "test.go:22:5",
+                                    "Name": "usr",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "usr",
+                                        "Decl": "*(obj @ 391)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                },
+                                "1:": {
+                                    "NamePos": "test.go:22:10",
+                                    "Name": "err",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "err",
+                                        "Decl": "*(obj @ 391)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "test.go:22:14",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "test.go:22:17",
+                                            "Name": "user",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "test.go:22:22",
+                                            "Name": "Current",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "test.go:22:29",
+                                    "Args": "nil",
+                                    "Ellipsis": "-",
+                                    "Rparen": "test.go:22:30"
+                                }
+                            }
+                        },
+                        "5:": {
+                            "If": "test.go:23:5",
+                            "Init": "nil",
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "test.go:23:8",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 407)"
+                                },
+                                "OpPos": "test.go:23:12",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "test.go:23:15",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "test.go:23:19",
+                                "List:": {
+                                    "0:": {
+                                        "X:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "test.go:24:9",
+                                                    "Name": "log",
+                                                    "Obj": "nil"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "test.go:24:13",
+                                                    "Name": "Println",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "test.go:24:20",
+                                            "Args:": {
+                                                "0:": {
+                                                    "NamePos": "test.go:24:22",
+                                                    "Name": "err",
+                                                    "Obj": "*(obj @ 407)"
+                                                }
+                                            },
+                                            "Ellipsis": "-",
+                                            "Rparen": "test.go:24:26"
+                                        }
+                                    }
+                                },
+                                "Rbrace": "test.go:25:5"
+                            },
+                            "Else": "nil"
+                        },
+                        "6:": {
+                            "X:": {
+                                "Fun:": {
+                                    "X:": {
+                                        "NamePos": "test.go:26:5",
+                                        "Name": "fmt",
+                                        "Obj": "nil"
+                                    },
+                                    "Sel:": {
+                                        "NamePos": "test.go:26:9",
+                                        "Name": "Println",
+                                        "Obj": "nil"
+                                    }
+                                },
+                                "Lparen": "test.go:26:16",
+                                "Args:": {
+                                    "0:": {
+                                        "X:": {
+                                            "NamePos": "test.go:26:18",
+                                            "Name": "usr",
+                                            "Obj": "*(obj @ 396)"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "test.go:26:22",
+                                            "Name": "HomeDir",
+                                            "Obj": "nil"
+                                        }
+                                    }
+                                },
+                                "Ellipsis": "-",
+                                "Rparen": "test.go:26:30"
+                            }
+                        },
+                        "7:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "test.go:27:5",
+                                    "Name": "exfloc",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "exfloc",
+                                        "Decl": "*(obj @ 523)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "test.go:27:12",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "X:": {
+                                        "X:": {
+                                            "NamePos": "test.go:27:15",
+                                            "Name": "usr",
+                                            "Obj": "*(obj @ 396)"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "test.go:27:19",
+                                            "Name": "HomeDir",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "OpPos": "test.go:27:27",
+                                    "Op": "+",
+                                    "Y:": {
+                                        "ValuePos": "test.go:27:29",
+                                        "Kind": "STRING",
+                                        "Value": "\\\\\\\\\\Desktop\\\\\\\\e.exe\\"
+                                    }
+                                }
+                            }
+                        },
+                        "8:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "test.go:28:5",
+                                    "Name": "outloc",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "outloc",
+                                        "Decl": "*(obj @ 563)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "test.go:28:12",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "X:": {
+                                        "X:": {
+                                            "NamePos": "test.go:28:15",
+                                            "Name": "usr",
+                                            "Obj": "*(obj @ 396)"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "test.go:28:19",
+                                            "Name": "HomeDir",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "OpPos": "test.go:28:27",
+                                    "Op": "+",
+                                    "Y:": {
+                                        "ValuePos": "test.go:28:29",
+                                        "Kind": "STRING",
+                                        "Value": "\\\\\\\\\\Desktop\\\\\\\\o.exe\\"
+                                    }
+                                }
+                            }
+                        },
+                        "9:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "test.go:29:5",
+                                    "Name": "screenloc",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "screenloc",
+                                        "Decl": "*(obj @ 603)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "test.go:29:15",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "X:": {
+                                        "X:": {
+                                            "NamePos": "test.go:29:18",
+                                            "Name": "usr",
+                                            "Obj": "*(obj @ 396)"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "test.go:29:22",
+                                            "Name": "HomeDir",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "OpPos": "test.go:29:30",
+                                    "Op": "+",
+                                    "Y:": {
+                                        "ValuePos": "test.go:29:32",
+                                        "Kind": "STRING",
+                                        "Value": "\\\\\\\\\\Desktop\\\\\\\\s.exe\\"
+                                    }
+                                }
+                            }
+                        },
+                        "10:": {
+                            "X:": {
+                                "Fun:": {
+                                    "NamePos": "test.go:31:5",
+                                    "Name": "DownloadFile",
+                                    "Obj:": {
+                                        "Kind": "func",
+                                        "Name": "DownloadFile",
+                                        "Decl:": {
+                                            "Doc": "nil",
+                                            "Recv": "nil",
+                                            "Name:": {
+                                                "NamePos": "test.go:61:6",
+                                                "Name": "DownloadFile",
+                                                "Obj": "*(obj @ 648)"
+                                            },
+                                            "Type:": {
+                                                "Func": "test.go:61:1",
+                                                "TypeParams": "nil",
+                                                "Params:": {
+                                                    "Opening": "test.go:61:18",
+                                                    "List:": {
+                                                        "0:": {
+                                                            "Doc": "nil",
+                                                            "Names:": {
+                                                                "0:": {
+                                                                    "NamePos": "test.go:61:19",
+                                                                    "Name": "filepath",
+                                                                    "Obj:": {
+                                                                        "Kind": "var",
+                                                                        "Name": "filepath",
+                                                                        "Decl": "*(obj @ 665)",
+                                                                        "Data": "nil",
+                                                                        "Type": "nil"
+                                                                    }
+                                                                }
+                                                            },
+                                                            "Type:": {
+                                                                "NamePos": "test.go:61:28",
+                                                                "Name": "string",
+                                                                "Obj": "nil"
+                                                            },
+                                                            "Tag": "nil",
+                                                            "Comment": "nil"
+                                                        },
+                                                        "1:": {
+                                                            "Doc": "nil",
+                                                            "Names:": {
+                                                                "0:": {
+                                                                    "NamePos": "test.go:61:36",
+                                                                    "Name": "url",
+                                                                    "Obj:": {
+                                                                        "Kind": "var",
+                                                                        "Name": "url",
+                                                                        "Decl": "*(obj @ 688)",
+                                                                        "Data": "nil",
+                                                                        "Type": "nil"
+                                                                    }
+                                                                }
+                                                            },
+                                                            "Type:": {
+                                                                "NamePos": "test.go:61:40",
+                                                                "Name": "string",
+                                                                "Obj": "nil"
+                                                            },
+                                                            "Tag": "nil",
+                                                            "Comment": "nil"
+                                                        }
+                                                    },
+                                                    "Closing": "test.go:61:46"
+                                                },
+                                                "Results:": {
+                                                    "Opening": "-",
+                                                    "List:": {
+                                                        "0:": {
+                                                            "Doc": "nil",
+                                                            "Names": "nil",
+                                                            "Type:": {
+                                                                "NamePos": "test.go:61:48",
+                                                                "Name": "error",
+                                                                "Obj": "nil"
+                                                            },
+                                                            "Tag": "nil",
+                                                            "Comment": "nil"
+                                                        }
+                                                    },
+                                                    "Closing": "-"
+                                                }
+                                            },
+                                            "Body:": {
+                                                "Lbrace": "test.go:61:54",
+                                                "List:": {
+                                                    "0:": {
+                                                        "Lhs:": {
+                                                            "0:": {
+                                                                "NamePos": "test.go:62:5",
+                                                                "Name": "out",
+                                                                "Obj:": {
+                                                                    "Kind": "var",
+                                                                    "Name": "out",
+                                                                    "Decl": "*(obj @ 735)",
+                                                                    "Data": "nil",
+                                                                    "Type": "nil"
+                                                                }
+                                                            },
+                                                            "1:": {
+                                                                "NamePos": "test.go:62:10",
+                                                                "Name": "err",
+                                                                "Obj:": {
+                                                                    "Kind": "var",
+                                                                    "Name": "err",
+                                                                    "Decl": "*(obj @ 735)",
+                                                                    "Data": "nil",
+                                                                    "Type": "nil"
+                                                                }
+                                                            }
+                                                        },
+                                                        "TokPos": "test.go:62:14",
+                                                        "Tok": ":=",
+                                                        "Rhs:": {
+                                                            "0:": {
+                                                                "Fun:": {
+                                                                    "X:": {
+                                                                        "NamePos": "test.go:62:17",
+                                                                        "Name": "os",
+                                                                        "Obj": "nil"
+                                                                    },
+                                                                    "Sel:": {
+                                                                        "NamePos": "test.go:62:20",
+                                                                        "Name": "Create",
+                                                                        "Obj": "nil"
+                                                                    }
+                                                                },
+                                                                "Lparen": "test.go:62:26",
+                                                                "Args:": {
+                                                                    "0:": {
+                                                                        "NamePos": "test.go:62:27",
+                                                                        "Name": "filepath",
+                                                                        "Obj": "*(obj @ 671)"
+                                                                    }
+                                                                },
+                                                                "Ellipsis": "-",
+                                                                "Rparen": "test.go:62:35"
+                                                            }
+                                                        }
+                                                    },
+                                                    "1:": {
+                                                        "If": "test.go:63:5",
+                                                        "Init": "nil",
+                                                        "Cond:": {
+                                                            "X:": {
+                                                                "NamePos": "test.go:63:8",
+                                                                "Name": "err",
+                                                                "Obj": "*(obj @ 751)"
+                                                            },
+                                                            "OpPos": "test.go:63:12",
+                                                            "Op": "!=",
+                                                            "Y:": {
+                                                                "NamePos": "test.go:63:15",
+                                                                "Name": "nil",
+                                                                "Obj": "nil"
+                                                            }
+                                                        },
+                                                        "Body:": {
+                                                            "Lbrace": "test.go:63:19",
+                                                            "List:": {
+                                                                "0:": {
+                                                                    "Return": "test.go:64:9",
+                                                                    "Results:": {
+                                                                        "0:": {
+                                                                            "NamePos": "test.go:64:16",
+                                                                            "Name": "err",
+                                                                            "Obj": "*(obj @ 751)"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            "Rbrace": "test.go:65:5"
+                                                        },
+                                                        "Else": "nil"
+                                                    },
+                                                    "2:": {
+                                                        "Defer": "test.go:66:5",
+                                                        "Call:": {
+                                                            "Fun:": {
+                                                                "X:": {
+                                                                    "NamePos": "test.go:66:11",
+                                                                    "Name": "out",
+                                                                    "Obj": "*(obj @ 740)"
+                                                                },
+                                                                "Sel:": {
+                                                                    "NamePos": "test.go:66:15",
+                                                                    "Name": "Close",
+                                                                    "Obj": "nil"
+                                                                }
+                                                            },
+                                                            "Lparen": "test.go:66:20",
+                                                            "Args": "nil",
+                                                            "Ellipsis": "-",
+                                                            "Rparen": "test.go:66:21"
+                                                        }
+                                                    },
+                                                    "3:": {
+                                                        "Lhs:": {
+                                                            "0:": {
+                                                                "NamePos": "test.go:67:5",
+                                                                "Name": "resp",
+                                                                "Obj:": {
+                                                                    "Kind": "var",
+                                                                    "Name": "resp",
+                                                                    "Decl": "*(obj @ 845)",
+                                                                    "Data": "nil",
+                                                                    "Type": "nil"
+                                                                }
+                                                            },
+                                                            "1:": {
+                                                                "NamePos": "test.go:67:11",
+                                                                "Name": "err",
+                                                                "Obj": "*(obj @ 751)"
+                                                            }
+                                                        },
+                                                        "TokPos": "test.go:67:15",
+                                                        "Tok": ":=",
+                                                        "Rhs:": {
+                                                            "0:": {
+                                                                "Fun:": {
+                                                                    "X:": {
+                                                                        "NamePos": "test.go:67:18",
+                                                                        "Name": "http",
+                                                                        "Obj": "nil"
+                                                                    },
+                                                                    "Sel:": {
+                                                                        "NamePos": "test.go:67:23",
+                                                                        "Name": "Get",
+                                                                        "Obj": "nil"
+                                                                    }
+                                                                },
+                                                                "Lparen": "test.go:67:26",
+                                                                "Args:": {
+                                                                    "0:": {
+                                                                        "NamePos": "test.go:67:27",
+                                                                        "Name": "url",
+                                                                        "Obj": "*(obj @ 694)"
+                                                                    }
+                                                                },
+                                                                "Ellipsis": "-",
+                                                                "Rparen": "test.go:67:30"
+                                                            }
+                                                        }
+                                                    },
+                                                    "4:": {
+                                                        "If": "test.go:68:5",
+                                                        "Init": "nil",
+                                                        "Cond:": {
+                                                            "X:": {
+                                                                "NamePos": "test.go:68:8",
+                                                                "Name": "err",
+                                                                "Obj": "*(obj @ 751)"
+                                                            },
+                                                            "OpPos": "test.go:68:12",
+                                                            "Op": "!=",
+                                                            "Y:": {
+                                                                "NamePos": "test.go:68:15",
+                                                                "Name": "nil",
+                                                                "Obj": "nil"
+                                                            }
+                                                        },
+                                                        "Body:": {
+                                                            "Lbrace": "test.go:68:19",
+                                                            "List:": {
+                                                                "0:": {
+                                                                    "Return": "test.go:69:9",
+                                                                    "Results:": {
+                                                                        "0:": {
+                                                                            "NamePos": "test.go:69:16",
+                                                                            "Name": "err",
+                                                                            "Obj": "*(obj @ 751)"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            "Rbrace": "test.go:70:5"
+                                                        },
+                                                        "Else": "nil"
+                                                    },
+                                                    "5:": {
+                                                        "Defer": "test.go:71:5",
+                                                        "Call:": {
+                                                            "Fun:": {
+                                                                "X:": {
+                                                                    "X:": {
+                                                                        "NamePos": "test.go:71:11",
+                                                                        "Name": "resp",
+                                                                        "Obj": "*(obj @ 850)"
+                                                                    },
+                                                                    "Sel:": {
+                                                                        "NamePos": "test.go:71:16",
+                                                                        "Name": "Body",
+                                                                        "Obj": "nil"
+                                                                    }
+                                                                },
+                                                                "Sel:": {
+                                                                    "NamePos": "test.go:71:21",
+                                                                    "Name": "Close",
+                                                                    "Obj": "nil"
+                                                                }
+                                                            },
+                                                            "Lparen": "test.go:71:26",
+                                                            "Args": "nil",
+                                                            "Ellipsis": "-",
+                                                            "Rparen": "test.go:71:27"
+                                                        }
+                                                    },
+                                                    "6:": {
+                                                        "Lhs:": {
+                                                            "0:": {
+                                                                "NamePos": "test.go:72:5",
+                                                                "Name": "_",
+                                                                "Obj": "nil"
+                                                            },
+                                                            "1:": {
+                                                                "NamePos": "test.go:72:8",
+                                                                "Name": "err",
+                                                                "Obj": "*(obj @ 751)"
+                                                            }
+                                                        },
+                                                        "TokPos": "test.go:72:12",
+                                                        "Tok": "=",
+                                                        "Rhs:": {
+                                                            "0:": {
+                                                                "Fun:": {
+                                                                    "X:": {
+                                                                        "NamePos": "test.go:72:14",
+                                                                        "Name": "io",
+                                                                        "Obj": "nil"
+                                                                    },
+                                                                    "Sel:": {
+                                                                        "NamePos": "test.go:72:17",
+                                                                        "Name": "Copy",
+                                                                        "Obj": "nil"
+                                                                    }
+                                                                },
+                                                                "Lparen": "test.go:72:21",
+                                                                "Args:": {
+                                                                    "0:": {
+                                                                        "NamePos": "test.go:72:22",
+                                                                        "Name": "out",
+                                                                        "Obj": "*(obj @ 740)"
+                                                                    },
+                                                                    "1:": {
+                                                                        "X:": {
+                                                                            "NamePos": "test.go:72:27",
+                                                                            "Name": "resp",
+                                                                            "Obj": "*(obj @ 850)"
+                                                                        },
+                                                                        "Sel:": {
+                                                                            "NamePos": "test.go:72:32",
+                                                                            "Name": "Body",
+                                                                            "Obj": "nil"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "Ellipsis": "-",
+                                                                "Rparen": "test.go:72:36"
+                                                            }
+                                                        }
+                                                    },
+                                                    "7:": {
+                                                        "If": "test.go:73:5",
+                                                        "Init": "nil",
+                                                        "Cond:": {
+                                                            "X:": {
+                                                                "NamePos": "test.go:73:8",
+                                                                "Name": "err",
+                                                                "Obj": "*(obj @ 751)"
+                                                            },
+                                                            "OpPos": "test.go:73:12",
+                                                            "Op": "!=",
+                                                            "Y:": {
+                                                                "NamePos": "test.go:73:15",
+                                                                "Name": "nil",
+                                                                "Obj": "nil"
+                                                            }
+                                                        },
+                                                        "Body:": {
+                                                            "Lbrace": "test.go:73:19",
+                                                            "List:": {
+                                                                "0:": {
+                                                                    "Return": "test.go:74:9",
+                                                                    "Results:": {
+                                                                        "0:": {
+                                                                            "NamePos": "test.go:74:16",
+                                                                            "Name": "err",
+                                                                            "Obj": "*(obj @ 751)"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            "Rbrace": "test.go:75:5"
+                                                        },
+                                                        "Else": "nil"
+                                                    },
+                                                    "8:": {
+                                                        "X:": {
+                                                            "Fun:": {
+                                                                "NamePos": "test.go:76:5",
+                                                                "Name": "println",
+                                                                "Obj": "nil"
+                                                            },
+                                                            "Lparen": "test.go:76:12",
+                                                            "Args:": {
+                                                                "0:": {
+                                                                    "ValuePos": "test.go:76:13",
+                                                                    "Kind": "STRING",
+                                                                    "Value": "\\Downloaded file\\"
+                                                                }
+                                                            },
+                                                            "Ellipsis": "-",
+                                                            "Rparen": "test.go:76:30"
+                                                        }
+                                                    },
+                                                    "9:": {
+                                                        "Return": "test.go:77:5",
+                                                        "Results:": {
+                                                            "0:": {
+                                                                "NamePos": "test.go:77:12",
+                                                                "Name": "nil",
+                                                                "Obj": "nil"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "Rbrace": "test.go:78:1"
+                                            }
+                                        },
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                },
+                                "Lparen": "test.go:31:17",
+                                "Args:": {
+                                    "0:": {
+                                        "NamePos": "test.go:31:18",
+                                        "Name": "exfloc",
+                                        "Obj": "*(obj @ 528)"
+                                    },
+                                    "1:": {
+                                        "NamePos": "test.go:31:26",
+                                        "Name": "exfilurl",
+                                        "Obj": "*(obj @ 324)"
+                                    }
+                                },
+                                "Ellipsis": "-",
+                                "Rparen": "test.go:31:34"
+                            }
+                        },
+                        "11:": {
+                            "X:": {
+                                "Fun:": {
+                                    "NamePos": "test.go:32:5",
+                                    "Name": "DownloadFile",
+                                    "Obj": "*(obj @ 648)"
+                                },
+                                "Lparen": "test.go:32:17",
+                                "Args:": {
+                                    "0:": {
+                                        "NamePos": "test.go:32:18",
+                                        "Name": "outloc",
+                                        "Obj": "*(obj @ 568)"
+                                    },
+                                    "1:": {
+                                        "NamePos": "test.go:32:26",
+                                        "Name": "outlookurl",
+                                        "Obj": "*(obj @ 348)"
+                                    }
+                                },
+                                "Ellipsis": "-",
+                                "Rparen": "test.go:32:36"
+                            }
+                        },
+                        "12:": {
+                            "X:": {
+                                "Fun:": {
+                                    "NamePos": "test.go:33:5",
+                                    "Name": "DownloadFile",
+                                    "Obj": "*(obj @ 648)"
+                                },
+                                "Lparen": "test.go:33:17",
+                                "Args:": {
+                                    "0:": {
+                                        "NamePos": "test.go:33:18",
+                                        "Name": "screenloc",
+                                        "Obj": "*(obj @ 608)"
+                                    },
+                                    "1:": {
+                                        "NamePos": "test.go:33:29",
+                                        "Name": "screenurl",
+                                        "Obj": "*(obj @ 372)"
+                                    }
+                                },
+                                "Ellipsis": "-",
+                                "Rparen": "test.go:33:38"
+                            }
+                        },
+                        "13:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "test.go:35:5",
+                                    "Name": "c",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "c",
+                                        "Decl": "*(obj @ 1147)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "test.go:35:7",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "test.go:35:10",
+                                            "Name": "exec",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "test.go:35:15",
+                                            "Name": "Command",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "test.go:35:22",
+                                    "Args:": {
+                                        "0:": {
+                                            "ValuePos": "test.go:35:23",
+                                            "Kind": "STRING",
+                                            "Value": "\\cmd\\"
+                                        },
+                                        "1:": {
+                                            "ValuePos": "test.go:35:30",
+                                            "Kind": "STRING",
+                                            "Value": "\\/C\\"
+                                        },
+                                        "2:": {
+                                            "NamePos": "test.go:35:35",
+                                            "Name": "screenloc",
+                                            "Obj": "*(obj @ 608)"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "test.go:35:44"
+                                }
+                            }
+                        },
+                        "14:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "X:": {
+                                        "NamePos": "test.go:36:5",
+                                        "Name": "c",
+                                        "Obj": "*(obj @ 1152)"
+                                    },
+                                    "Sel:": {
+                                        "NamePos": "test.go:36:7",
+                                        "Name": "SysProcAttr",
+                                        "Obj": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "test.go:36:19",
+                            "Tok": "=",
+                            "Rhs:": {
+                                "0:": {
+                                    "OpPos": "test.go:36:21",
+                                    "Op": "&",
+                                    "X:": {
+                                        "Type:": {
+                                            "X:": {
+                                                "NamePos": "test.go:36:22",
+                                                "Name": "syscall",
+                                                "Obj": "nil"
+                                            },
+                                            "Sel:": {
+                                                "NamePos": "test.go:36:30",
+                                                "Name": "SysProcAttr",
+                                                "Obj": "nil"
+                                            }
+                                        },
+                                        "Lbrace": "test.go:36:41",
+                                        "Elts:": {
+                                            "0:": {
+                                                "Key:": {
+                                                    "NamePos": "test.go:36:42",
+                                                    "Name": "HideWindow",
+                                                    "Obj": "nil"
+                                                },
+                                                "Colon": "test.go:36:52",
+                                                "Value:": {
+                                                    "NamePos": "test.go:36:54",
+                                                    "Name": "true",
+                                                    "Obj": "nil"
+                                                }
+                                            }
+                                        },
+                                        "Rbrace": "test.go:36:58",
+                                        "Incomplete": "false"
+                                    }
+                                }
+                            }
+                        },
+                        "15:": {
+                            "If": "test.go:37:5",
+                            "Init:": {
+                                "Lhs:": {
+                                    "0:": {
+                                        "NamePos": "test.go:37:8",
+                                        "Name": "err",
+                                        "Obj:": {
+                                            "Kind": "var",
+                                            "Name": "err",
+                                            "Decl": "*(obj @ 1258)",
+                                            "Data": "nil",
+                                            "Type": "nil"
+                                        }
+                                    }
+                                },
+                                "TokPos": "test.go:37:12",
+                                "Tok": ":=",
+                                "Rhs:": {
+                                    "0:": {
+                                        "Fun:": {
+                                            "X:": {
+                                                "NamePos": "test.go:37:15",
+                                                "Name": "c",
+                                                "Obj": "*(obj @ 1152)"
+                                            },
+                                            "Sel:": {
+                                                "NamePos": "test.go:37:17",
+                                                "Name": "Start",
+                                                "Obj": "nil"
+                                            }
+                                        },
+                                        "Lparen": "test.go:37:22",
+                                        "Args": "nil",
+                                        "Ellipsis": "-",
+                                        "Rparen": "test.go:37:23"
+                                    }
+                                }
+                            },
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "test.go:37:26",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 1263)"
+                                },
+                                "OpPos": "test.go:37:30",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "test.go:37:33",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "test.go:37:37",
+                                "List:": {
+                                    "0:": {
+                                        "X:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "test.go:38:8",
+                                                    "Name": "log",
+                                                    "Obj": "nil"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "test.go:38:12",
+                                                    "Name": "Println",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "test.go:38:19",
+                                            "Args:": {
+                                                "0:": {
+                                                    "NamePos": "test.go:38:21",
+                                                    "Name": "err",
+                                                    "Obj": "*(obj @ 1263)"
+                                                }
+                                            },
+                                            "Ellipsis": "-",
+                                            "Rparen": "test.go:38:25"
+                                        }
+                                    }
+                                },
+                                "Rbrace": "test.go:39:5"
+                            },
+                            "Else": "nil"
+                        },
+                        "16:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "test.go:41:5",
+                                    "Name": "a",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "a",
+                                        "Decl": "*(obj @ 1343)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "test.go:41:7",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "test.go:41:10",
+                                            "Name": "exec",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "test.go:41:15",
+                                            "Name": "Command",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "test.go:41:22",
+                                    "Args:": {
+                                        "0:": {
+                                            "ValuePos": "test.go:41:23",
+                                            "Kind": "STRING",
+                                            "Value": "\\cmd\\"
+                                        },
+                                        "1:": {
+                                            "ValuePos": "test.go:41:29",
+                                            "Kind": "STRING",
+                                            "Value": "\\/C\\"
+                                        },
+                                        "2:": {
+                                            "NamePos": "test.go:41:34",
+                                            "Name": "exfloc",
+                                            "Obj": "*(obj @ 528)"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "test.go:41:40"
+                                }
+                            }
+                        },
+                        "17:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "X:": {
+                                        "NamePos": "test.go:42:5",
+                                        "Name": "a",
+                                        "Obj": "*(obj @ 1348)"
+                                    },
+                                    "Sel:": {
+                                        "NamePos": "test.go:42:7",
+                                        "Name": "SysProcAttr",
+                                        "Obj": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "test.go:42:19",
+                            "Tok": "=",
+                            "Rhs:": {
+                                "0:": {
+                                    "OpPos": "test.go:42:21",
+                                    "Op": "&",
+                                    "X:": {
+                                        "Type:": {
+                                            "X:": {
+                                                "NamePos": "test.go:42:22",
+                                                "Name": "syscall",
+                                                "Obj": "nil"
+                                            },
+                                            "Sel:": {
+                                                "NamePos": "test.go:42:30",
+                                                "Name": "SysProcAttr",
+                                                "Obj": "nil"
+                                            }
+                                        },
+                                        "Lbrace": "test.go:42:41",
+                                        "Elts:": {
+                                            "0:": {
+                                                "Key:": {
+                                                    "NamePos": "test.go:42:42",
+                                                    "Name": "HideWindow",
+                                                    "Obj": "nil"
+                                                },
+                                                "Colon": "test.go:42:52",
+                                                "Value:": {
+                                                    "NamePos": "test.go:42:54",
+                                                    "Name": "true",
+                                                    "Obj": "nil"
+                                                }
+                                            }
+                                        },
+                                        "Rbrace": "test.go:42:58",
+                                        "Incomplete": "false"
+                                    }
+                                }
+                            }
+                        },
+                        "18:": {
+                            "If": "test.go:43:5",
+                            "Init:": {
+                                "Lhs:": {
+                                    "0:": {
+                                        "NamePos": "test.go:43:8",
+                                        "Name": "err",
+                                        "Obj:": {
+                                            "Kind": "var",
+                                            "Name": "err",
+                                            "Decl": "*(obj @ 1454)",
+                                            "Data": "nil",
+                                            "Type": "nil"
+                                        }
+                                    }
+                                },
+                                "TokPos": "test.go:43:12",
+                                "Tok": ":=",
+                                "Rhs:": {
+                                    "0:": {
+                                        "Fun:": {
+                                            "X:": {
+                                                "NamePos": "test.go:43:15",
+                                                "Name": "a",
+                                                "Obj": "*(obj @ 1348)"
+                                            },
+                                            "Sel:": {
+                                                "NamePos": "test.go:43:17",
+                                                "Name": "Start",
+                                                "Obj": "nil"
+                                            }
+                                        },
+                                        "Lparen": "test.go:43:22",
+                                        "Args": "nil",
+                                        "Ellipsis": "-",
+                                        "Rparen": "test.go:43:23"
+                                    }
+                                }
+                            },
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "test.go:43:26",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 1459)"
+                                },
+                                "OpPos": "test.go:43:30",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "test.go:43:33",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "test.go:43:37",
+                                "List:": {
+                                    "0:": {
+                                        "X:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "test.go:44:9",
+                                                    "Name": "log",
+                                                    "Obj": "nil"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "test.go:44:13",
+                                                    "Name": "Println",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "test.go:44:20",
+                                            "Args:": {
+                                                "0:": {
+                                                    "NamePos": "test.go:44:22",
+                                                    "Name": "err",
+                                                    "Obj": "*(obj @ 1459)"
+                                                }
+                                            },
+                                            "Ellipsis": "-",
+                                            "Rparen": "test.go:44:26"
+                                        }
+                                    }
+                                },
+                                "Rbrace": "test.go:45:5"
+                            },
+                            "Else": "nil"
+                        },
+                        "19:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "test.go:47:5",
+                                    "Name": "b",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "b",
+                                        "Decl": "*(obj @ 1539)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "test.go:47:7",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "test.go:47:10",
+                                            "Name": "exec",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "test.go:47:15",
+                                            "Name": "Command",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "test.go:47:22",
+                                    "Args:": {
+                                        "0:": {
+                                            "ValuePos": "test.go:47:23",
+                                            "Kind": "STRING",
+                                            "Value": "\\cmd\\"
+                                        },
+                                        "1:": {
+                                            "ValuePos": "test.go:47:30",
+                                            "Kind": "STRING",
+                                            "Value": "\\/C\\"
+                                        },
+                                        "2:": {
+                                            "NamePos": "test.go:47:36",
+                                            "Name": "outloc",
+                                            "Obj": "*(obj @ 568)"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "test.go:47:42"
+                                }
+                            }
+                        },
+                        "20:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "X:": {
+                                        "NamePos": "test.go:48:5",
+                                        "Name": "b",
+                                        "Obj": "*(obj @ 1544)"
+                                    },
+                                    "Sel:": {
+                                        "NamePos": "test.go:48:7",
+                                        "Name": "SysProcAttr",
+                                        "Obj": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "test.go:48:19",
+                            "Tok": "=",
+                            "Rhs:": {
+                                "0:": {
+                                    "OpPos": "test.go:48:21",
+                                    "Op": "&",
+                                    "X:": {
+                                        "Type:": {
+                                            "X:": {
+                                                "NamePos": "test.go:48:22",
+                                                "Name": "syscall",
+                                                "Obj": "nil"
+                                            },
+                                            "Sel:": {
+                                                "NamePos": "test.go:48:30",
+                                                "Name": "SysProcAttr",
+                                                "Obj": "nil"
+                                            }
+                                        },
+                                        "Lbrace": "test.go:48:41",
+                                        "Elts:": {
+                                            "0:": {
+                                                "Key:": {
+                                                    "NamePos": "test.go:48:42",
+                                                    "Name": "HideWindow",
+                                                    "Obj": "nil"
+                                                },
+                                                "Colon": "test.go:48:52",
+                                                "Value:": {
+                                                    "NamePos": "test.go:48:54",
+                                                    "Name": "true",
+                                                    "Obj": "nil"
+                                                }
+                                            }
+                                        },
+                                        "Rbrace": "test.go:48:58",
+                                        "Incomplete": "false"
+                                    }
+                                }
+                            }
+                        },
+                        "21:": {
+                            "If": "test.go:49:5",
+                            "Init:": {
+                                "Lhs:": {
+                                    "0:": {
+                                        "NamePos": "test.go:49:8",
+                                        "Name": "err",
+                                        "Obj:": {
+                                            "Kind": "var",
+                                            "Name": "err",
+                                            "Decl": "*(obj @ 1650)",
+                                            "Data": "nil",
+                                            "Type": "nil"
+                                        }
+                                    }
+                                },
+                                "TokPos": "test.go:49:12",
+                                "Tok": ":=",
+                                "Rhs:": {
+                                    "0:": {
+                                        "Fun:": {
+                                            "X:": {
+                                                "NamePos": "test.go:49:15",
+                                                "Name": "b",
+                                                "Obj": "*(obj @ 1544)"
+                                            },
+                                            "Sel:": {
+                                                "NamePos": "test.go:49:17",
+                                                "Name": "Start",
+                                                "Obj": "nil"
+                                            }
+                                        },
+                                        "Lparen": "test.go:49:22",
+                                        "Args": "nil",
+                                        "Ellipsis": "-",
+                                        "Rparen": "test.go:49:23"
+                                    }
+                                }
+                            },
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "test.go:49:26",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 1655)"
+                                },
+                                "OpPos": "test.go:49:30",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "test.go:49:33",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "test.go:49:37",
+                                "List:": {
+                                    "0:": {
+                                        "X:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "test.go:50:10",
+                                                    "Name": "log",
+                                                    "Obj": "nil"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "test.go:50:14",
+                                                    "Name": "Println",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "test.go:50:21",
+                                            "Args:": {
+                                                "0:": {
+                                                    "NamePos": "test.go:50:23",
+                                                    "Name": "err",
+                                                    "Obj": "*(obj @ 1655)"
+                                                }
+                                            },
+                                            "Ellipsis": "-",
+                                            "Rparen": "test.go:50:27"
+                                        }
+                                    }
+                                },
+                                "Rbrace": "test.go:51:5"
+                            },
+                            "Else": "nil"
+                        }
+                    },
+                    "Rbrace": "test.go:53:1"
+                }
+            },
+            "2": "*(obj @ 160)",
+            "3": "*(obj @ 651)"
+        },
+        "FileStart": "test.go:1:1",
+        "FileEnd": "test.go:78:4",
+        "Scope:": {
+            "Outer": "nil",
+            "Objects:": {
+                "\"DownloadFile\"": "*(obj @ 648)",
+                "\"main\"": "*(obj @ 130)",
+                "\"HostFiles\"": "*(obj @ 157)"
+            }
+        },
+        "Imports:": {
+            "0": "*(obj @ 15)",
+            "1": "*(obj @ 26)",
+            "2": "*(obj @ 37)",
+            "3": "*(obj @ 48)",
+            "4": "*(obj @ 59)",
+            "5": "*(obj @ 70)",
+            "6": "*(obj @ 81)",
+            "7": "*(obj @ 92)",
+            "8": "*(obj @ 103)"
+        },
+        "Unresolved:": {
+            "0": "*(obj @ 421)",
+            "1": "*(obj @ 450)",
+            "2": "*(obj @ 462)",
+            "3": "*(obj @ 493)",
+            "4": "*(obj @ 1166)",
+            "5": "*(obj @ 1223)",
+            "6": "*(obj @ 1243)",
+            "7": "*(obj @ 1303)",
+            "8": "*(obj @ 1315)",
+            "9": "*(obj @ 1362)",
+            "10": "*(obj @ 1419)",
+            "11": "*(obj @ 1439)",
+            "12": "*(obj @ 1499)",
+            "13": "*(obj @ 1511)",
+            "14": "*(obj @ 1558)",
+            "15": "*(obj @ 1615)",
+            "16": "*(obj @ 1635)",
+            "17": "*(obj @ 1695)",
+            "18": "*(obj @ 1707)",
+            "19": "*(obj @ 200)",
+            "20": "*(obj @ 227)",
+            "21": "*(obj @ 247)",
+            "22": "*(obj @ 277)",
+            "23": "*(obj @ 295)",
+            "24": "*(obj @ 680)",
+            "25": "*(obj @ 703)",
+            "26": "*(obj @ 720)",
+            "27": "*(obj @ 765)",
+            "28": "*(obj @ 800)",
+            "29": "*(obj @ 869)",
+            "30": "*(obj @ 904)",
+            "31": "*(obj @ 974)",
+            "32": "*(obj @ 1021)",
+            "33": "*(obj @ 1047)",
+            "34": "*(obj @ 1067)"
+        },
+        "Comments:": {
+            "0": "*(obj @ 118)"
+        },
+        "GoVersion": ""
+    }
+}

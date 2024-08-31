@@ -1741,13 +1741,13 @@
   1740  .  .  3: *(obj @ 651)
   1741  .  }
   1742  .  FileStart: test.go:1:1
-  1743  .  FileEnd: test.go:78:3
+  1743  .  FileEnd: test.go:78:4
   1744  .  Scope: *ast.Scope {
   1745  .  .  Outer: nil
   1746  .  .  Objects: map[string]*ast.Object (len = 3) {
-  1747  .  .  .  "main": *(obj @ 130)
-  1748  .  .  .  "HostFiles": *(obj @ 157)
-  1749  .  .  .  "DownloadFile": *(obj @ 648)
+  1747  .  .  .  "DownloadFile": *(obj @ 648)
+  1748  .  .  .  "main": *(obj @ 130)
+  1749  .  .  .  "HostFiles": *(obj @ 157)
   1750  .  .  }
   1751  .  }
   1752  .  Imports: []*ast.ImportSpec (len = 9) {
