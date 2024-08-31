@@ -1,16 +1,13 @@
-# 这是一个示例 Python 脚本。
-
-# 按 Shift+F10 执行或将其替换为您的代码。
-# 按 双击 Shift 在所有地方搜索类、文件、工具窗口、操作和设置。
+import subprocess
+import json
 
 
-def print_hi(name):
-    # 在下面的代码行中使用断点来调试脚本。
-    print(f'Hi, {name}')  # 按 Ctrl+F8 切换断点。
+def get_go_ast(file_path):
+    result = subprocess.run(['GolangTool/AstGenerator.exe', file_path], capture_output=True, text=True)
 
 
-# 按间距中的绿色按钮以运行脚本。
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def get_go_ssa(file_path):
+    result = subprocess.run(['GolangTool/SSAGenerator.exe', '-build=F',file_path], capture_output=True, text=True)
 
-# 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助
+get_go_ast('test.go')
+get_go_ssa('test.go')
