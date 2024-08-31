@@ -1,5 +1,3 @@
-# #!/usr/bin/env python3
-
 # """ Implementation of simple keylogger in Python.
 # """
 
