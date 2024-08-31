@@ -1,0 +1,30 @@
+代办
+1.病毒样本搜集（云原生，大数据，AI模型样本用于后续测试）
+github关键词：
+    trojan - 木马
+    virus - 病毒
+    malware - 恶意软件
+    ransomware - 勒索软件
+    rootkit - 根套件
+    spyware - 间谍软件
+    adware - 广告软件
+    backdoor - 后门
+    exploit - 漏洞利用
+    keylogger - 键盘记录器
+    botnet - 僵尸网络
+    phishing - 钓鱼攻击
+    crypter - 加密器
+    payload - 载荷
+    obfuscation - 代码混淆
+    penetration testing - 渗透测试
+    ethical hacking - 道德黑客
+    security tool - 安全工具
+    antivirus - 杀毒软件
+    hacking tool - 黑客工具
+2.python对应语言AST树生成
+.
+.学习各种病毒代码的特征模式
+.
+3.模式匹配
+
+每天最后一件事，把自己Branch的东西pull request到main上，每天第一件事就是pull一下main，平时协作请在自己组的Branch
