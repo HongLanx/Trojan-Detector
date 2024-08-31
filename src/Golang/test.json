@@ -1742,13 +1742,13 @@
             "3": "*(obj @ 651)"
         },
         "FileStart": "test.go:1:1",
-        "FileEnd": "test.go:78:3",
+        "FileEnd": "test.go:78:4",
         "Scope:": {
             "Outer": "nil",
             "Objects:": {
+                "\"DownloadFile\"": "*(obj @ 648)",
                 "\"main\"": "*(obj @ 130)",
-                "\"HostFiles\"": "*(obj @ 157)",
-                "\"DownloadFile\"": "*(obj @ 648)"
+                "\"HostFiles\"": "*(obj @ 157)"
             }
         },
         "Imports:": {
