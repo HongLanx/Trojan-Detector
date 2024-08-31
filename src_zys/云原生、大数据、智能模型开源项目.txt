@@ -1,0 +1,98 @@
+一些云原生、大数据、智能模型开源项目，不一定有木马后门，需要测试一下
+1. 云原生 (Cloud Native)
+    
+    K3s: Go 
+    https://github.com/k3s-io/k3s.git 
+    这是一个轻量级的Kubernetes发行版，专为资源受限的设备或边缘计算设计。适合个人开发者或小型团队在本地或小型服务器上运行Kubernetes集群。
+    
+    Minikube: Go (主要), Bash (部分) 
+    https://github.com/kubernetes/minikube.git 
+    一个轻量级工具，用于在本地机器上快速运行Kubernetes集群。适合Kubernetes初学者或小型开发环境。
+    
+    Nginx Ingress Controller: Go 
+    https://github.com/kubernetes/ingress-nginx.git 
+    这是Kubernetes中的一个开源项目，用于管理集群中的HTTP路由流量。Nginx本身也是一个非常轻量级的反向代理服务器。
+
+    Traefik：Go
+    https://github.com/traefik/traefik.git
+    是一个现代的反向代理和负载均衡器，专为容器化环境设计，支持动态配置。
+
+    Caddy：Go
+    https://github.com/caddyserver/caddy.git
+    是一个开源的 web 服务器，自动提供 HTTPS，易于配置和使用，适合小型云原生环境。
+
+    Portainer：JavaScript (前端), Go (后端)
+    https://github.com/portainer/portainer.git
+    是一个轻量级的 Docker 管理工具，用于简化 Docker 容器的管理和监控。
+
+    Argo CD：Go, Java
+    https://github.com/argoproj/argo-cd.git
+    是一个 Kubernetes 原生的持续交付工具，使用 Java 进行某些组件的开发。
+    
+    Kubernetes Python Client：Python
+    https://github.com/kubernetes-client/python.git
+    Python 客户端库用于与 Kubernetes API 进行交互。
+
+    Gitea：Go
+    https://github.com/go-gitea/gitea.git
+    是一个自托管的 Git 服务，轻量级且易于部署，适用于云原生环境。
+
+2. 大数据 (Big Data)
+    
+    Druid: Java 
+    https://github.com/apache/druid.git 
+    一个实时分析数据库，适合小型团队或个人开发者处理时间序列数据或查询大型数据集。相比传统的Hadoop和Spark，Druid更轻量且专注于实时分析。
+    
+    Apache Flink: Java (主要), Scala (部分) 
+    https://github.com/apache/flink.git 
+    虽然Flink是一个大数据处理框架，但它可以通过其轻量级的流处理引擎，用于较小的数据流处理任务，适合学习和小型项目。
+
+    Presto：Java
+    https://github.com/prestodb/presto.git
+    Presto 是一个开源的分布式 SQL 查询引擎，专为查询大数据集设计，但也可以在较小的数据集上运行。
+
+    KsqlDB：Java
+    https://github.com/confluentinc/ksql.git
+    是一个流处理数据库，基于 Apache Kafka，用于实时数据流的 SQL 查询。
+
+    Loom：Python
+    https://github.com/loom/loom-java.git
+    是一个用于创建高效的数据处理管道的轻量级工具，适合大数据处理的轻量级替代方案。
+
+    PySpark：Python
+    https://github.com/apache/spark.git
+    是 Apache Spark 的 Python API，允许 Python 开发人员使用 Spark 进行大数据处理和分析。
+
+    Dask：Python, Go
+    https://github.com/dask/dask.git
+    是一个并行计算库，用于大规模数据处理和分析。虽然主要用 Python 编写，它也有 Go 的一些工具。
+
+3. 智能模型 (AI/ML)
+    
+    MLflow: Python (主要), Scala, Java (一些组件)
+    https://github.com/mlflow/mlflow.git 
+    这是一个开源平台，用于管理机器学习生命周期，支持实验跟踪、项目打包和模型部署。对于个人或小团队来说，它可以帮助有效地管理ML项目。
+    
+    DVC (Data Version Control): Python
+    https://github.com/iterative/dvc.git 
+    一个开源工具，专注于数据版本控制和机器学习项目的管理。它与Git集成，可以管理数据集和模型的版本。
+    
+    Hugging Face's Transformers: Python
+    https://github.com/huggingface/transformers.git 
+    一个开源库，提供了多种预训练的NLP模型，适合小型NLP项目。用户可以轻松使用和微调这些模型。
+    
+    Scikit-learn：Python (主要), Cython (性能优化)
+    https://github.com/scikit-learn/scikit-learn.git Scikit-learn 
+    是一个用于数据挖掘和数据分析的开源 Python 库，构建在 NumPy、SciPy 和 Matplotlib 基础上。它提供了多种机器学习算法和工具，包括分类、回归、聚类、降维等功能，适用于各种数据分析和机器学习任务。
+
+    Deep Java Library (DJL)：Java
+    https://github.com/deepjavalibrary/djl.git
+     DJL 是一个开源的深度学习库，提供了一个 Java API 来构建、训练和部署深度学习模型。
+
+     Hugging Face Transformers：Python
+     https://github.com/huggingface/transformers.git
+     提供了许多预训练的模型，适用于自然语言处理任务。
+
+     Gorgonia：Go
+     https://github.com/gorgonia/gorgonia.git
+     是一个用于构建和训练神经网络的 Go 库，类似于 TensorFlow 和 PyTorch。
