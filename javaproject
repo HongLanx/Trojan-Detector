@@ -277,3 +277,63 @@ https://github.com/Neraloth/java-rootkit.git
 
 关键字和模式匹配
 命令和文件路径检测：扫描代码中的字符串，查找与系统文件路径访问和命令执行相关的关键字，如 /etc/passwd、rm、../ 等。
+
+
+广告软件https://github.com/paulpierre/provide_jar-android-malware-payload-06132018.git
+
+`BroadcastReceiverProvide.java` 文件实现了一个广播接收器类，用于监听特定的系统广播，并在网络连接变化时执行特定操作。以下是对代码的简要分析：
+
+### 功能描述：
+- **网络连接变化监听**：
+  - 该类实现了 `BroadcastReceiverCallBack` 接口，并在 `onReceiver` 方法中监听 `android.net.conn.CONNECTIVITY_CHANGE` 广播事件。当网络连接变化时，如果网络已连接并且 `isIntent` 为 `true`，则启动一个延时任务。
+  
+- **延时任务**：
+  - 延时任务通过 `Handler` 延迟 10 秒执行。任务执行时会调用 `MethodUtils.intentGooglePlayPackageGetFromTiny(context)` 方法。
+
+- **服务器交互**：
+  - 如果 `TinyDB` 中的 `is_push_info_to_server_jslib` 标志为 `false`，则会调用 `JsLib().Ss(paramContext)` 方法，可能涉及向服务器发送数据。
+
+### 潜在的广告软件行为：
+- **数据推送与网络监听**：
+  - 该代码监听网络连接变化，并可能在连接到网络后向服务器推送数据。结合 `JsLib` 的使用，这些行为可能与广告软件有关，特别是在用户不知情的情况下收集数据并与服务器交互。
+
+### 总结：
+`BroadcastReceiverProvide.java` 文件显示出一些与广告软件相关的行为，如在网络连接变化时向服务器推送数据。这些操作可能用于在用户不知情的情况下执行广告或数据收集行为。
+
+网络广播监听检测：实现：扫描代码中涉及网络连接变化广播 (android.net.conn.CONNECTIVITY_CHANGE) 的注册和处理代码。
+技术：使用 JavaParser 或类似的静态分析工具，解析代码并寻找 CONNECTIVITY_CHANGE 相关的广播接收器实现。
+在 onReceiver 方法中检查是否存在与网络连接变化相关的条件判断和延时任务的实现。
+服务器交互分析
+服务器交互方法检测：实现：扫描代码中涉及与服务器交互的方法调用，如 JsLib().Ss() 或其他网络请求相关的代码。
+技术：搜索代码中所有调用 HttpURLConnection、OkHttpClient 或 JsLib.Ss() 的方法，检查是否存在未经用户同意的数据推送操作。
+数据存储和读取分析
+持久化存储检测：实现：检查代码中是否使用 SharedPreferences、TinyDB 或类似的持久化存储类来保存用户数据或广告标志。
+技术：搜索代码中对 SharedPreferences、TinyDB 的调用，特别是涉及 putBoolean、getBoolean 的操作，判断这些数据是否用于控制广告展示或数据收集行为。
+
+
+
+
+僵尸网络木马服务器https://github.com/Rayanox/Trojan-RB.git
+
+`MenuRoute.java` 文件定义了一个名为 `MenuRoute` 的类，该类使用了 `Lombok` 库来简化构建器模式的实现。以下是对代码的简要分析：
+
+### 功能描述：
+- **菜单路由管理**：
+  - 该类用于定义一个菜单路由项，每个路由项包含三个关键属性：`labelToDisplay`、`commandExpected` 和 `nextStep`。这些属性描述了菜单项的显示标签、预期命令以及后续的菜单项列表。
+  
+- **Lombok 注解**：
+  - 使用了 `@Builder` 注解，这个注解是来自 `Lombok` 库，用于自动生成构建器模式的代码，简化了类的实例化过程。
+
+### 潜在的僵尸网络行为：
+- **命令控制**：
+  - 虽然 `MenuRoute.java` 本身并不直接展示僵尸网络行为，但其 `commandExpected` 属性可能用于定义从受控设备接收到的命令。这些命令可能用于控制僵尸网络中的受感染设备。
+  - 具体的僵尸网络行为可能隐藏在 `commandExpected` 的使用和处理逻辑中，尤其是当这些命令被用来执行恶意操作时。
+
+关键命令和模式匹配
+命令检测：实现：编写静态分析工具，扫描代码中定义的命令，如 Deconnexion 等。这些命令可能用于僵尸网络中的控制操作。
+技术：使用 JavaParser 解析代码，查找涉及命令注册和处理的部分。
+重点检查 MenuConfig 和 MenuRoute 类，识别和标记具有潜在危险性的命令。
+1.2 网络通信分析
+通信接口检测：实现：扫描代码中涉及网络通信的部分，特别是与服务器进行的通信。这可能用于僵尸网络的命令与控制（C&C）通信。
+技术：搜索代码中对 Socket、HttpClient 等类的调用，检查这些通信是否用于接收或发送僵尸网络命令。
+
