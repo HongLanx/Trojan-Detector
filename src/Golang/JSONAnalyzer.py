@@ -133,5 +133,5 @@ def extract_strings(node, extracted_strings=None):
 
 
 # 使用脚本提取信息
-info = extract_key_info('test2.json')
+info = extract_key_info('test.json')
 print(json.dumps(info, indent=4))

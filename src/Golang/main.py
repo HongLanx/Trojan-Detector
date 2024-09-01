@@ -41,5 +41,5 @@ def select_directory():
         print("No folder selected.")
 
 
-select_directory()
-# get_go_ssa('test.go')
+# select_directory()
+get_go_ssa('test_encrypted.go')
