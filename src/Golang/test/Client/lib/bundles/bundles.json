@@ -1,0 +1,1016 @@
+{
+    "*ast.File": {
+        "Doc:": {
+            "List:": {
+                "0:": {
+                    "Slash": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:1:1",
+                    "Text": "// package bundles writes files from go:embed directives"
+                }
+            }
+        },
+        "Package": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:2:1",
+        "Name:": {
+            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:2:9",
+            "Name": "bundles",
+            "Obj": "nil"
+        },
+        "Decls:": {
+            "0:": {
+                "Doc": "nil",
+                "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:4:1",
+                "Tok": "import",
+                "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:4:8",
+                "Specs:": {
+                    "0:": {
+                        "Doc": "nil",
+                        "Name:": {
+                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:5:2",
+                            "Name": "_",
+                            "Obj": "nil"
+                        },
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:5:4",
+                            "Kind": "STRING",
+                            "Value": "\\embed\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "1:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:6:2",
+                            "Kind": "STRING",
+                            "Value": "\\fmt\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "2:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:7:2",
+                            "Kind": "STRING",
+                            "Value": "\\os\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    }
+                },
+                "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:8:1"
+            },
+            "1:": {
+                "Doc:": {
+                    "List:": {
+                        "0:": {
+                            "Slash": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:10:1",
+                            "Text": "//go:embed \\assets/Fira Code Regular Nerd Font.ttf\\"
+                        }
+                    }
+                },
+                "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:11:1",
+                "Tok": "var",
+                "Lparen": "-",
+                "Specs:": {
+                    "0:": {
+                        "Doc": "nil",
+                        "Names:": {
+                            "0:": {
+                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:11:5",
+                                "Name": "FiraCodeNerd",
+                                "Obj:": {
+                                    "Kind": "var",
+                                    "Name": "FiraCodeNerd",
+                                    "Decl": "*(obj @ 75)",
+                                    "Data": "0",
+                                    "Type": "nil"
+                                }
+                            }
+                        },
+                        "Type:": {
+                            "Lbrack": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:11:18",
+                            "Len": "nil",
+                            "Elt:": {
+                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:11:20",
+                                "Name": "byte",
+                                "Obj": "nil"
+                            }
+                        },
+                        "Values": "nil",
+                        "Comment": "nil"
+                    }
+                },
+                "Rparen": "-"
+            },
+            "2:": {
+                "Doc:": {
+                    "List:": {
+                        "0:": {
+                            "Slash": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:13:1",
+                            "Text": "//go:embed \\assets/ca-cert.pem\\"
+                        }
+                    }
+                },
+                "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:14:1",
+                "Tok": "var",
+                "Lparen": "-",
+                "Specs:": {
+                    "0:": {
+                        "Doc": "nil",
+                        "Names:": {
+                            "0:": {
+                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:14:5",
+                                "Name": "ca_cert",
+                                "Obj:": {
+                                    "Kind": "var",
+                                    "Name": "ca_cert",
+                                    "Decl": "*(obj @ 118)",
+                                    "Data": "0",
+                                    "Type": "nil"
+                                }
+                            }
+                        },
+                        "Type:": {
+                            "Lbrack": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:14:13",
+                            "Len": "nil",
+                            "Elt:": {
+                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:14:15",
+                                "Name": "byte",
+                                "Obj": "nil"
+                            }
+                        },
+                        "Values": "nil",
+                        "Comment": "nil"
+                    }
+                },
+                "Rparen": "-"
+            },
+            "3:": {
+                "Doc:": {
+                    "List:": {
+                        "0:": {
+                            "Slash": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:16:1",
+                            "Text": "//go:embed \\assets/DSGrab.exe\\"
+                        }
+                    }
+                },
+                "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:17:1",
+                "Tok": "var",
+                "Lparen": "-",
+                "Specs:": {
+                    "0:": {
+                        "Doc": "nil",
+                        "Names:": {
+                            "0:": {
+                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:17:5",
+                                "Name": "DSGrab",
+                                "Obj:": {
+                                    "Kind": "var",
+                                    "Name": "DSGrab",
+                                    "Decl": "*(obj @ 161)",
+                                    "Data": "0",
+                                    "Type": "nil"
+                                }
+                            }
+                        },
+                        "Type:": {
+                            "Lbrack": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:17:12",
+                            "Len": "nil",
+                            "Elt:": {
+                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:17:14",
+                                "Name": "byte",
+                                "Obj": "nil"
+                            }
+                        },
+                        "Values": "nil",
+                        "Comment": "nil"
+                    }
+                },
+                "Rparen": "-"
+            },
+            "4:": {
+                "Doc:": {
+                    "List:": {
+                        "0:": {
+                            "Slash": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:19:1",
+                            "Text": "// Write Client Certificate file"
+                        }
+                    }
+                },
+                "Recv": "nil",
+                "Name:": {
+                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:20:6",
+                    "Name": "WriteCaCertPem",
+                    "Obj:": {
+                        "Kind": "func",
+                        "Name": "WriteCaCertPem",
+                        "Decl": "*(obj @ 191)",
+                        "Data": "nil",
+                        "Type": "nil"
+                    }
+                },
+                "Type:": {
+                    "Func": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:20:1",
+                    "TypeParams": "nil",
+                    "Params:": {
+                        "Opening": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:20:20",
+                        "List": "nil",
+                        "Closing": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:20:21"
+                    },
+                    "Results": "nil"
+                },
+                "Body:": {
+                    "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:20:23",
+                    "List:": {
+                        "0:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:21:2",
+                                    "Name": "f",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "f",
+                                        "Decl": "*(obj @ 225)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                },
+                                "1:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:21:5",
+                                    "Name": "err",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "err",
+                                        "Decl": "*(obj @ 225)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:21:9",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:21:12",
+                                            "Name": "os",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:21:15",
+                                            "Name": "Create",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:21:21",
+                                    "Args:": {
+                                        "0:": {
+                                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:21:22",
+                                            "Kind": "STRING",
+                                            "Value": "\\ca-cert.pem\\"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:21:35"
+                                }
+                            }
+                        },
+                        "1:": {
+                            "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:22:2",
+                            "Init": "nil",
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:22:5",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 241)"
+                                },
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:22:9",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:22:12",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:22:16",
+                                "List:": {
+                                    "0:": {
+                                        "X:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:23:3",
+                                                    "Name": "fmt",
+                                                    "Obj": "nil"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:23:7",
+                                                    "Name": "Println",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:23:14",
+                                            "Args:": {
+                                                "0:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:23:15",
+                                                    "Name": "err",
+                                                    "Obj": "*(obj @ 241)"
+                                                }
+                                            },
+                                            "Ellipsis": "-",
+                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:23:18"
+                                        }
+                                    },
+                                    "1:": {
+                                        "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:24:3",
+                                        "Results": "nil"
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:25:2"
+                            },
+                            "Else": "nil"
+                        },
+                        "2:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:27:2",
+                                    "Name": "n2",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "n2",
+                                        "Decl": "*(obj @ 334)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                },
+                                "1:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:27:6",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 241)"
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:27:10",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:27:13",
+                                            "Name": "f",
+                                            "Obj": "*(obj @ 230)"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:27:15",
+                                            "Name": "Write",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:27:20",
+                                    "Args:": {
+                                        "0:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:27:21",
+                                            "Name": "ca_cert",
+                                            "Obj": "*(obj @ 124)"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:27:28"
+                                }
+                            }
+                        },
+                        "3:": {
+                            "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:28:2",
+                            "Init": "nil",
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:28:5",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 241)"
+                                },
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:28:9",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:28:12",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:28:16",
+                                "List:": {
+                                    "0:": {
+                                        "X:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:29:3",
+                                                    "Name": "fmt",
+                                                    "Obj": "nil"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:29:7",
+                                                    "Name": "Println",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:29:14",
+                                            "Args:": {
+                                                "0:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:29:15",
+                                                    "Name": "err",
+                                                    "Obj": "*(obj @ 241)"
+                                                }
+                                            },
+                                            "Ellipsis": "-",
+                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:29:18"
+                                        }
+                                    },
+                                    "1:": {
+                                        "X:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:30:3",
+                                                    "Name": "f",
+                                                    "Obj": "*(obj @ 230)"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:30:5",
+                                                    "Name": "Close",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:30:10",
+                                            "Args": "nil",
+                                            "Ellipsis": "-",
+                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:30:11"
+                                        }
+                                    },
+                                    "2:": {
+                                        "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:31:3",
+                                        "Results": "nil"
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:32:2"
+                            },
+                            "Else": "nil"
+                        },
+                        "4:": {
+                            "X:": {
+                                "Fun:": {
+                                    "X:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:33:2",
+                                        "Name": "fmt",
+                                        "Obj": "nil"
+                                    },
+                                    "Sel:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:33:6",
+                                        "Name": "Println",
+                                        "Obj": "nil"
+                                    }
+                                },
+                                "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:33:13",
+                                "Args:": {
+                                    "0:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:33:14",
+                                        "Name": "n2",
+                                        "Obj": "*(obj @ 339)"
+                                    },
+                                    "1:": {
+                                        "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:33:18",
+                                        "Kind": "STRING",
+                                        "Value": "\\bytes written successfully\\"
+                                    }
+                                },
+                                "Ellipsis": "-",
+                                "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:33:46"
+                            }
+                        },
+                        "5:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:34:2",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 241)"
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:34:6",
+                            "Tok": "=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:34:8",
+                                            "Name": "f",
+                                            "Obj": "*(obj @ 230)"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:34:10",
+                                            "Name": "Close",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:34:15",
+                                    "Args": "nil",
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:34:16"
+                                }
+                            }
+                        },
+                        "6:": {
+                            "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:35:2",
+                            "Init": "nil",
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:35:5",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 241)"
+                                },
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:35:9",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:35:12",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:35:16",
+                                "List:": {
+                                    "0:": {
+                                        "X:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:36:3",
+                                                    "Name": "fmt",
+                                                    "Obj": "nil"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:36:7",
+                                                    "Name": "Println",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:36:14",
+                                            "Args:": {
+                                                "0:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:36:15",
+                                                    "Name": "err",
+                                                    "Obj": "*(obj @ 241)"
+                                                }
+                                            },
+                                            "Ellipsis": "-",
+                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:36:18"
+                                        }
+                                    },
+                                    "1:": {
+                                        "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:37:3",
+                                        "Results": "nil"
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:38:2"
+                            },
+                            "Else": "nil"
+                        }
+                    },
+                    "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:39:1"
+                }
+            },
+            "5:": {
+                "Doc:": {
+                    "List:": {
+                        "0:": {
+                            "Slash": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:41:1",
+                            "Text": "// Write font used for on screen text"
+                        }
+                    }
+                },
+                "Recv": "nil",
+                "Name:": {
+                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:42:6",
+                    "Name": "WriteFiraCodeNerd",
+                    "Obj:": {
+                        "Kind": "func",
+                        "Name": "WriteFiraCodeNerd",
+                        "Decl": "*(obj @ 578)",
+                        "Data": "nil",
+                        "Type": "nil"
+                    }
+                },
+                "Type:": {
+                    "Func": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:42:1",
+                    "TypeParams": "nil",
+                    "Params:": {
+                        "Opening": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:42:23",
+                        "List": "nil",
+                        "Closing": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:42:24"
+                    },
+                    "Results": "nil"
+                },
+                "Body:": {
+                    "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:42:26",
+                    "List:": {
+                        "0:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:43:2",
+                                    "Name": "f",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "f",
+                                        "Decl": "*(obj @ 612)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                },
+                                "1:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:43:5",
+                                    "Name": "err",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "err",
+                                        "Decl": "*(obj @ 612)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:43:9",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:43:12",
+                                            "Name": "os",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:43:15",
+                                            "Name": "Create",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:43:21",
+                                    "Args:": {
+                                        "0:": {
+                                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:43:22",
+                                            "Kind": "STRING",
+                                            "Value": "\\FiraCodeNerd.ttf\\"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:43:40"
+                                }
+                            }
+                        },
+                        "1:": {
+                            "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:44:2",
+                            "Init": "nil",
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:44:5",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 628)"
+                                },
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:44:9",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:44:12",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:44:16",
+                                "List:": {
+                                    "0:": {
+                                        "X:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:45:3",
+                                                    "Name": "fmt",
+                                                    "Obj": "nil"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:45:7",
+                                                    "Name": "Println",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:45:14",
+                                            "Args:": {
+                                                "0:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:45:15",
+                                                    "Name": "err",
+                                                    "Obj": "*(obj @ 628)"
+                                                }
+                                            },
+                                            "Ellipsis": "-",
+                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:45:18"
+                                        }
+                                    },
+                                    "1:": {
+                                        "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:46:3",
+                                        "Results": "nil"
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:47:2"
+                            },
+                            "Else": "nil"
+                        },
+                        "2:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:49:2",
+                                    "Name": "n2",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "n2",
+                                        "Decl": "*(obj @ 721)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                },
+                                "1:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:49:6",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 628)"
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:49:10",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:49:13",
+                                            "Name": "f",
+                                            "Obj": "*(obj @ 617)"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:49:15",
+                                            "Name": "Write",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:49:20",
+                                    "Args:": {
+                                        "0:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:49:21",
+                                            "Name": "FiraCodeNerd",
+                                            "Obj": "*(obj @ 81)"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:49:33"
+                                }
+                            }
+                        },
+                        "3:": {
+                            "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:50:2",
+                            "Init": "nil",
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:50:5",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 628)"
+                                },
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:50:9",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:50:12",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:50:16",
+                                "List:": {
+                                    "0:": {
+                                        "X:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:51:3",
+                                                    "Name": "fmt",
+                                                    "Obj": "nil"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:51:7",
+                                                    "Name": "Println",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:51:14",
+                                            "Args:": {
+                                                "0:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:51:15",
+                                                    "Name": "err",
+                                                    "Obj": "*(obj @ 628)"
+                                                }
+                                            },
+                                            "Ellipsis": "-",
+                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:51:18"
+                                        }
+                                    },
+                                    "1:": {
+                                        "X:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:52:3",
+                                                    "Name": "f",
+                                                    "Obj": "*(obj @ 617)"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:52:5",
+                                                    "Name": "Close",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:52:10",
+                                            "Args": "nil",
+                                            "Ellipsis": "-",
+                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:52:11"
+                                        }
+                                    },
+                                    "2:": {
+                                        "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:53:3",
+                                        "Results": "nil"
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:54:2"
+                            },
+                            "Else": "nil"
+                        },
+                        "4:": {
+                            "X:": {
+                                "Fun:": {
+                                    "X:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:55:2",
+                                        "Name": "fmt",
+                                        "Obj": "nil"
+                                    },
+                                    "Sel:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:55:6",
+                                        "Name": "Println",
+                                        "Obj": "nil"
+                                    }
+                                },
+                                "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:55:13",
+                                "Args:": {
+                                    "0:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:55:14",
+                                        "Name": "n2",
+                                        "Obj": "*(obj @ 726)"
+                                    },
+                                    "1:": {
+                                        "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:55:18",
+                                        "Kind": "STRING",
+                                        "Value": "\\bytes written successfully\\"
+                                    }
+                                },
+                                "Ellipsis": "-",
+                                "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:55:46"
+                            }
+                        },
+                        "5:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:56:2",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 628)"
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:56:6",
+                            "Tok": "=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:56:8",
+                                            "Name": "f",
+                                            "Obj": "*(obj @ 617)"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:56:10",
+                                            "Name": "Close",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:56:15",
+                                    "Args": "nil",
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:56:16"
+                                }
+                            }
+                        },
+                        "6:": {
+                            "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:57:2",
+                            "Init": "nil",
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:57:5",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 628)"
+                                },
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:57:9",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:57:12",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:57:16",
+                                "List:": {
+                                    "0:": {
+                                        "X:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:58:3",
+                                                    "Name": "fmt",
+                                                    "Obj": "nil"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:58:7",
+                                                    "Name": "Println",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:58:14",
+                                            "Args:": {
+                                                "0:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:58:15",
+                                                    "Name": "err",
+                                                    "Obj": "*(obj @ 628)"
+                                                }
+                                            },
+                                            "Ellipsis": "-",
+                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:58:18"
+                                        }
+                                    },
+                                    "1:": {
+                                        "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:59:3",
+                                        "Results": "nil"
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:60:2"
+                            },
+                            "Else": "nil"
+                        }
+                    },
+                    "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:61:1"
+                }
+            }
+        },
+        "FileStart": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:1:1",
+        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:61:3",
+        "Scope:": {
+            "Outer": "nil",
+            "Objects:": {
+                "\"WriteCaCertPem\"": "*(obj @ 204)",
+                "\"WriteFiraCodeNerd\"": "*(obj @ 591)",
+                "\"FiraCodeNerd\"": "*(obj @ 81)",
+                "\"ca_cert\"": "*(obj @ 124)",
+                "\"DSGrab\"": "*(obj @ 167)"
+            }
+        },
+        "Imports:": {
+            "0": "*(obj @ 22)",
+            "1": "*(obj @ 37)",
+            "2": "*(obj @ 48)"
+        },
+        "Unresolved:": {
+            "0": "*(obj @ 93)",
+            "1": "*(obj @ 136)",
+            "2": "*(obj @ 179)",
+            "3": "*(obj @ 255)",
+            "4": "*(obj @ 290)",
+            "5": "*(obj @ 302)",
+            "6": "*(obj @ 393)",
+            "7": "*(obj @ 405)",
+            "8": "*(obj @ 460)",
+            "9": "*(obj @ 530)",
+            "10": "*(obj @ 542)",
+            "11": "*(obj @ 642)",
+            "12": "*(obj @ 677)",
+            "13": "*(obj @ 689)",
+            "14": "*(obj @ 780)",
+            "15": "*(obj @ 792)",
+            "16": "*(obj @ 847)",
+            "17": "*(obj @ 917)",
+            "18": "*(obj @ 929)"
+        },
+        "Comments:": {
+            "0": "*(obj @ 1)",
+            "1": "*(obj @ 63)",
+            "2": "*(obj @ 106)",
+            "3": "*(obj @ 149)",
+            "4": "*(obj @ 192)",
+            "5": "*(obj @ 579)"
+        },
+        "GoVersion": ""
+    }
+}

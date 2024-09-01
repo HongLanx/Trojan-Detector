@@ -1,0 +1,1077 @@
+{
+    "*ast.File": {
+        "Doc": "nil",
+        "Package": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:1:1",
+        "Name:": {
+            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:1:9",
+            "Name": "udpflood",
+            "Obj": "nil"
+        },
+        "Decls:": {
+            "0:": {
+                "Doc": "nil",
+                "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:3:1",
+                "Tok": "import",
+                "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:3:8",
+                "Specs:": {
+                    "0:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:4:2",
+                            "Kind": "STRING",
+                            "Value": "\\context\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "1:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:5:2",
+                            "Kind": "STRING",
+                            "Value": "\\fmt\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "2:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:6:2",
+                            "Kind": "STRING",
+                            "Value": "\\net\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "3:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:7:2",
+                            "Kind": "STRING",
+                            "Value": "\\net/url\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "4:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:8:2",
+                            "Kind": "STRING",
+                            "Value": "\\strings\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "5:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:9:2",
+                            "Kind": "STRING",
+                            "Value": "\\time\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    }
+                },
+                "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:10:1"
+            },
+            "1:": {
+                "Doc": "nil",
+                "Recv": "nil",
+                "Name:": {
+                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:12:6",
+                    "Name": "UdpFloodUrl",
+                    "Obj:": {
+                        "Kind": "func",
+                        "Name": "UdpFloodUrl",
+                        "Decl": "*(obj @ 84)",
+                        "Data": "nil",
+                        "Type": "nil"
+                    }
+                },
+                "Type:": {
+                    "Func": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:12:1",
+                    "TypeParams": "nil",
+                    "Params:": {
+                        "Opening": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:12:17",
+                        "List:": {
+                            "0:": {
+                                "Doc": "nil",
+                                "Names:": {
+                                    "0:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:12:18",
+                                        "Name": "host",
+                                        "Obj:": {
+                                            "Kind": "var",
+                                            "Name": "host",
+                                            "Decl": "*(obj @ 104)",
+                                            "Data": "nil",
+                                            "Type": "nil"
+                                        }
+                                    }
+                                },
+                                "Type:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:12:23",
+                                    "Name": "string",
+                                    "Obj": "nil"
+                                },
+                                "Tag": "nil",
+                                "Comment": "nil"
+                            },
+                            "1:": {
+                                "Doc": "nil",
+                                "Names:": {
+                                    "0:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:12:31",
+                                        "Name": "threadsN",
+                                        "Obj:": {
+                                            "Kind": "var",
+                                            "Name": "threadsN",
+                                            "Decl": "*(obj @ 127)",
+                                            "Data": "nil",
+                                            "Type": "nil"
+                                        }
+                                    }
+                                },
+                                "Type:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:12:40",
+                                    "Name": "int64",
+                                    "Obj": "nil"
+                                },
+                                "Tag": "nil",
+                                "Comment": "nil"
+                            },
+                            "2:": {
+                                "Doc": "nil",
+                                "Names:": {
+                                    "0:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:12:47",
+                                        "Name": "timeout",
+                                        "Obj:": {
+                                            "Kind": "var",
+                                            "Name": "timeout",
+                                            "Decl": "*(obj @ 150)",
+                                            "Data": "nil",
+                                            "Type": "nil"
+                                        }
+                                    }
+                                },
+                                "Type:": {
+                                    "X:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:12:55",
+                                        "Name": "time",
+                                        "Obj": "nil"
+                                    },
+                                    "Sel:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:12:60",
+                                        "Name": "Duration",
+                                        "Obj": "nil"
+                                    }
+                                },
+                                "Tag": "nil",
+                                "Comment": "nil"
+                            }
+                        },
+                        "Closing": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:12:68"
+                    },
+                    "Results:": {
+                        "Opening": "-",
+                        "List:": {
+                            "0:": {
+                                "Doc": "nil",
+                                "Names": "nil",
+                                "Type:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:12:70",
+                                    "Name": "error",
+                                    "Obj": "nil"
+                                },
+                                "Tag": "nil",
+                                "Comment": "nil"
+                            }
+                        },
+                        "Closing": "-"
+                    }
+                },
+                "Body:": {
+                    "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:12:76",
+                    "List:": {
+                        "0:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:13:2",
+                                    "Name": "ctx",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "ctx",
+                                        "Decl": "*(obj @ 204)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                },
+                                "1:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:13:7",
+                                    "Name": "cancel",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "cancel",
+                                        "Decl": "*(obj @ 204)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:13:14",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:13:17",
+                                            "Name": "context",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:13:25",
+                                            "Name": "WithTimeout",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:13:36",
+                                    "Args:": {
+                                        "0:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:13:37",
+                                                    "Name": "context",
+                                                    "Obj": "nil"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:13:45",
+                                                    "Name": "Background",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:13:55",
+                                            "Args": "nil",
+                                            "Ellipsis": "-",
+                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:13:56"
+                                        },
+                                        "1:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:13:59",
+                                            "Name": "timeout",
+                                            "Obj": "*(obj @ 156)"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:13:66"
+                                }
+                            }
+                        },
+                        "1:": {
+                            "Defer": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:14:2",
+                            "Call:": {
+                                "Fun:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:14:8",
+                                    "Name": "cancel",
+                                    "Obj": "*(obj @ 220)"
+                                },
+                                "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:14:14",
+                                "Args": "nil",
+                                "Ellipsis": "-",
+                                "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:14:15"
+                            }
+                        },
+                        "2:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:16:2",
+                                    "Name": "_url",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "_url",
+                                        "Decl": "*(obj @ 290)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                },
+                                "1:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:16:8",
+                                    "Name": "err",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "err",
+                                        "Decl": "*(obj @ 290)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:16:12",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:16:15",
+                                            "Name": "url",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:16:19",
+                                            "Name": "Parse",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:16:24",
+                                    "Args:": {
+                                        "0:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:16:25",
+                                            "Name": "host",
+                                            "Obj": "*(obj @ 110)"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:16:29"
+                                }
+                            }
+                        },
+                        "3:": {
+                            "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:17:2",
+                            "Init": "nil",
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:17:5",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 306)"
+                                },
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:17:9",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:17:12",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:17:16",
+                                "List:": {
+                                    "0:": {
+                                        "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:18:3",
+                                        "Results:": {
+                                            "0:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:18:10",
+                                                "Name": "err",
+                                                "Obj": "*(obj @ 306)"
+                                            }
+                                        }
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:19:2"
+                            },
+                            "Else": "nil"
+                        },
+                        "4:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:21:2",
+                                    "Name": "_host",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "_host",
+                                        "Decl": "*(obj @ 379)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:21:8",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "X:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:21:11",
+                                        "Name": "_url",
+                                        "Obj": "*(obj @ 295)"
+                                    },
+                                    "Sel:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:21:16",
+                                        "Name": "Host",
+                                        "Obj": "nil"
+                                    }
+                                }
+                            }
+                        },
+                        "5:": {
+                            "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:22:2",
+                            "Init": "nil",
+                            "Cond:": {
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:22:5",
+                                "Op": "!",
+                                "X:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:22:6",
+                                            "Name": "strings",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:22:14",
+                                            "Name": "Contains",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:22:22",
+                                    "Args:": {
+                                        "0:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:22:23",
+                                            "Name": "host",
+                                            "Obj": "*(obj @ 110)"
+                                        },
+                                        "1:": {
+                                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:22:29",
+                                            "Kind": "STRING",
+                                            "Value": "\\:\\"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:22:32"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:22:34",
+                                "List:": {
+                                    "0:": {
+                                        "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:23:3",
+                                        "Init": "nil",
+                                        "Cond:": {
+                                            "X:": {
+                                                "X:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:23:6",
+                                                    "Name": "_url",
+                                                    "Obj": "*(obj @ 295)"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:23:11",
+                                                    "Name": "Scheme",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:23:18",
+                                            "Op": "==",
+                                            "Y:": {
+                                                "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:23:21",
+                                                "Kind": "STRING",
+                                                "Value": "\\https\\"
+                                            }
+                                        },
+                                        "Body:": {
+                                            "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:23:29",
+                                            "List:": {
+                                                "0:": {
+                                                    "Lhs:": {
+                                                        "0:": {
+                                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:24:4",
+                                                            "Name": "_host",
+                                                            "Obj": "*(obj @ 384)"
+                                                        }
+                                                    },
+                                                    "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:24:10",
+                                                    "Tok": "=",
+                                                    "Rhs:": {
+                                                        "0:": {
+                                                            "Fun:": {
+                                                                "X:": {
+                                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:24:12",
+                                                                    "Name": "fmt",
+                                                                    "Obj": "nil"
+                                                                },
+                                                                "Sel:": {
+                                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:24:16",
+                                                                    "Name": "Sprintf",
+                                                                    "Obj": "nil"
+                                                                }
+                                                            },
+                                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:24:23",
+                                                            "Args:": {
+                                                                "0:": {
+                                                                    "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:24:24",
+                                                                    "Kind": "STRING",
+                                                                    "Value": "\\%s:%s\\"
+                                                                },
+                                                                "1:": {
+                                                                    "X:": {
+                                                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:24:33",
+                                                                        "Name": "_url",
+                                                                        "Obj": "*(obj @ 295)"
+                                                                    },
+                                                                    "Sel:": {
+                                                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:24:38",
+                                                                        "Name": "Host",
+                                                                        "Obj": "nil"
+                                                                    }
+                                                                },
+                                                                "2:": {
+                                                                    "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:24:44",
+                                                                    "Kind": "STRING",
+                                                                    "Value": "\\443\\"
+                                                                }
+                                                            },
+                                                            "Ellipsis": "-",
+                                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:24:49"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:25:3"
+                                        },
+                                        "Else:": {
+                                            "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:25:10",
+                                            "List:": {
+                                                "0:": {
+                                                    "Lhs:": {
+                                                        "0:": {
+                                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:26:4",
+                                                            "Name": "_host",
+                                                            "Obj": "*(obj @ 384)"
+                                                        }
+                                                    },
+                                                    "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:26:10",
+                                                    "Tok": "=",
+                                                    "Rhs:": {
+                                                        "0:": {
+                                                            "Fun:": {
+                                                                "X:": {
+                                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:26:12",
+                                                                    "Name": "fmt",
+                                                                    "Obj": "nil"
+                                                                },
+                                                                "Sel:": {
+                                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:26:16",
+                                                                    "Name": "Sprintf",
+                                                                    "Obj": "nil"
+                                                                }
+                                                            },
+                                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:26:23",
+                                                            "Args:": {
+                                                                "0:": {
+                                                                    "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:26:24",
+                                                                    "Kind": "STRING",
+                                                                    "Value": "\\%s:%s\\"
+                                                                },
+                                                                "1:": {
+                                                                    "X:": {
+                                                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:26:33",
+                                                                        "Name": "_url",
+                                                                        "Obj": "*(obj @ 295)"
+                                                                    },
+                                                                    "Sel:": {
+                                                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:26:38",
+                                                                        "Name": "Host",
+                                                                        "Obj": "nil"
+                                                                    }
+                                                                },
+                                                                "2:": {
+                                                                    "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:26:44",
+                                                                    "Kind": "STRING",
+                                                                    "Value": "\\80\\"
+                                                                }
+                                                            },
+                                                            "Ellipsis": "-",
+                                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:26:48"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:27:3"
+                                        }
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:28:2"
+                            },
+                            "Else": "nil"
+                        },
+                        "6:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:30:2",
+                                    "Name": "buf",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "buf",
+                                        "Decl": "*(obj @ 599)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:30:6",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:30:9",
+                                        "Name": "make",
+                                        "Obj": "nil"
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:30:13",
+                                    "Args:": {
+                                        "0:": {
+                                            "Lbrack": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:30:14",
+                                            "Len": "nil",
+                                            "Elt:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:30:16",
+                                                "Name": "byte",
+                                                "Obj": "nil"
+                                            }
+                                        },
+                                        "1:": {
+                                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:30:22",
+                                            "Kind": "INT",
+                                            "Value": "65507"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:30:27"
+                                }
+                            }
+                        },
+                        "7:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:33:2",
+                                    "Name": "conn",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "conn",
+                                        "Decl": "*(obj @ 644)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                },
+                                "1:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:33:8",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 306)"
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:33:12",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:33:15",
+                                            "Name": "net",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:33:19",
+                                            "Name": "Dial",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:33:23",
+                                    "Args:": {
+                                        "0:": {
+                                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:33:24",
+                                            "Kind": "STRING",
+                                            "Value": "\\udp\\"
+                                        },
+                                        "1:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:33:31",
+                                            "Name": "_host",
+                                            "Obj": "*(obj @ 384)"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:33:36"
+                                }
+                            }
+                        },
+                        "8:": {
+                            "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:34:2",
+                            "Init": "nil",
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:34:5",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 306)"
+                                },
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:34:9",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:34:12",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:34:16",
+                                "List:": {
+                                    "0:": {
+                                        "X:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:35:3",
+                                                    "Name": "fmt",
+                                                    "Obj": "nil"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:35:7",
+                                                    "Name": "Println",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:35:14",
+                                            "Args:": {
+                                                "0:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:35:15",
+                                                    "Name": "err",
+                                                    "Obj": "*(obj @ 306)"
+                                                }
+                                            },
+                                            "Ellipsis": "-",
+                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:35:18"
+                                        }
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:36:2"
+                            },
+                            "Else:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:36:9",
+                                "List:": {
+                                    "0:": {
+                                        "X:": {
+                                            "Fun:": {
+                                                "X:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:37:3",
+                                                    "Name": "fmt",
+                                                    "Obj": "nil"
+                                                },
+                                                "Sel:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:37:7",
+                                                    "Name": "Printf",
+                                                    "Obj": "nil"
+                                                }
+                                            },
+                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:37:13",
+                                            "Args:": {
+                                                "0:": {
+                                                    "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:37:14",
+                                                    "Kind": "STRING",
+                                                    "Value": "\\Flooding %s\\\\n\\"
+                                                },
+                                                "1:": {
+                                                    "Fun:": {
+                                                        "X:": {
+                                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:37:31",
+                                                            "Name": "_url",
+                                                            "Obj": "*(obj @ 295)"
+                                                        },
+                                                        "Sel:": {
+                                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:37:36",
+                                                            "Name": "String",
+                                                            "Obj": "nil"
+                                                        }
+                                                    },
+                                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:37:42",
+                                                    "Args": "nil",
+                                                    "Ellipsis": "-",
+                                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:37:43"
+                                                }
+                                            },
+                                            "Ellipsis": "-",
+                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:37:44"
+                                        }
+                                    },
+                                    "1:": {
+                                        "For": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:38:3",
+                                        "Init:": {
+                                            "Lhs:": {
+                                                "0:": {
+                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:38:7",
+                                                    "Name": "i",
+                                                    "Obj:": {
+                                                        "Kind": "var",
+                                                        "Name": "i",
+                                                        "Decl": "*(obj @ 795)",
+                                                        "Data": "nil",
+                                                        "Type": "nil"
+                                                    }
+                                                }
+                                            },
+                                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:38:9",
+                                            "Tok": ":=",
+                                            "Rhs:": {
+                                                "0:": {
+                                                    "Fun:": {
+                                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:38:12",
+                                                        "Name": "int64",
+                                                        "Obj": "nil"
+                                                    },
+                                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:38:17",
+                                                    "Args:": {
+                                                        "0:": {
+                                                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:38:18",
+                                                            "Kind": "INT",
+                                                            "Value": "0"
+                                                        }
+                                                    },
+                                                    "Ellipsis": "-",
+                                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:38:19"
+                                                }
+                                            }
+                                        },
+                                        "Cond:": {
+                                            "X:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:38:22",
+                                                "Name": "i",
+                                                "Obj": "*(obj @ 800)"
+                                            },
+                                            "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:38:24",
+                                            "Op": "<",
+                                            "Y:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:38:26",
+                                                "Name": "threadsN",
+                                                "Obj": "*(obj @ 133)"
+                                            }
+                                        },
+                                        "Post:": {
+                                            "X:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:38:36",
+                                                "Name": "i",
+                                                "Obj": "*(obj @ 800)"
+                                            },
+                                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:38:37",
+                                            "Tok": "++"
+                                        },
+                                        "Body:": {
+                                            "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:38:40",
+                                            "List:": {
+                                                "0:": {
+                                                    "Go": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:39:4",
+                                                    "Call:": {
+                                                        "Fun:": {
+                                                            "Type:": {
+                                                                "Func": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:39:7",
+                                                                "TypeParams": "nil",
+                                                                "Params:": {
+                                                                    "Opening": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:39:11",
+                                                                    "List": "nil",
+                                                                    "Closing": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:39:12"
+                                                                },
+                                                                "Results": "nil"
+                                                            },
+                                                            "Body:": {
+                                                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:39:14",
+                                                                "List:": {
+                                                                    "0:": {
+                                                                        "For": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:40:5",
+                                                                        "Init": "nil",
+                                                                        "Cond": "nil",
+                                                                        "Post": "nil",
+                                                                        "Body:": {
+                                                                            "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:40:9",
+                                                                            "List:": {
+                                                                                "0:": {
+                                                                                    "Select": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:41:6",
+                                                                                    "Body:": {
+                                                                                        "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:41:13",
+                                                                                        "List:": {
+                                                                                            "0:": {
+                                                                                                "Case": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:42:6",
+                                                                                                "Comm:": {
+                                                                                                    "X:": {
+                                                                                                        "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:42:11",
+                                                                                                        "Op": "<-",
+                                                                                                        "X:": {
+                                                                                                            "Fun:": {
+                                                                                                                "X:": {
+                                                                                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:42:13",
+                                                                                                                    "Name": "ctx",
+                                                                                                                    "Obj": "*(obj @ 209)"
+                                                                                                                },
+                                                                                                                "Sel:": {
+                                                                                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:42:17",
+                                                                                                                    "Name": "Done",
+                                                                                                                    "Obj": "nil"
+                                                                                                                }
+                                                                                                            },
+                                                                                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:42:21",
+                                                                                                            "Args": "nil",
+                                                                                                            "Ellipsis": "-",
+                                                                                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:42:22"
+                                                                                                        }
+                                                                                                    }
+                                                                                                },
+                                                                                                "Colon": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:42:23",
+                                                                                                "Body:": {
+                                                                                                    "0:": {
+                                                                                                        "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:43:7",
+                                                                                                        "Results": "nil"
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "1:": {
+                                                                                                "Case": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:44:6",
+                                                                                                "Comm": "nil",
+                                                                                                "Colon": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:44:13",
+                                                                                                "Body:": {
+                                                                                                    "0:": {
+                                                                                                        "X:": {
+                                                                                                            "Fun:": {
+                                                                                                                "X:": {
+                                                                                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:45:7",
+                                                                                                                    "Name": "conn",
+                                                                                                                    "Obj": "*(obj @ 649)"
+                                                                                                                },
+                                                                                                                "Sel:": {
+                                                                                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:45:12",
+                                                                                                                    "Name": "Write",
+                                                                                                                    "Obj": "nil"
+                                                                                                                }
+                                                                                                            },
+                                                                                                            "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:45:17",
+                                                                                                            "Args:": {
+                                                                                                                "0:": {
+                                                                                                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:45:18",
+                                                                                                                    "Name": "buf",
+                                                                                                                    "Obj": "*(obj @ 604)"
+                                                                                                                }
+                                                                                                            },
+                                                                                                            "Ellipsis": "-",
+                                                                                                            "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:45:21"
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        },
+                                                                                        "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:46:6"
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:47:5"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:48:4"
+                                                            }
+                                                        },
+                                                        "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:48:5",
+                                                        "Args": "nil",
+                                                        "Ellipsis": "-",
+                                                        "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:48:6"
+                                                    }
+                                                }
+                                            },
+                                            "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:49:3"
+                                        }
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:50:2"
+                            }
+                        },
+                        "9:": {
+                            "X:": {
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:52:2",
+                                "Op": "<-",
+                                "X:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:52:4",
+                                            "Name": "time",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:52:9",
+                                            "Name": "After",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:52:14",
+                                    "Args:": {
+                                        "0:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:52:15",
+                                            "Name": "timeout",
+                                            "Obj": "*(obj @ 156)"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:52:22"
+                                }
+                            }
+                        },
+                        "10:": {
+                            "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:54:2",
+                            "Results:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:54:9",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            }
+                        }
+                    },
+                    "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:55:1"
+                }
+            }
+        },
+        "FileStart": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:1:1",
+        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:55:3",
+        "Scope:": {
+            "Outer": "nil",
+            "Objects:": {
+                "\"UdpFloodUrl\"": "*(obj @ 90)"
+            }
+        },
+        "Imports:": {
+            "0": "*(obj @ 15)",
+            "1": "*(obj @ 26)",
+            "2": "*(obj @ 37)",
+            "3": "*(obj @ 48)",
+            "4": "*(obj @ 59)",
+            "5": "*(obj @ 70)"
+        },
+        "Unresolved:": {
+            "0": "*(obj @ 119)",
+            "1": "*(obj @ 142)",
+            "2": "*(obj @ 166)",
+            "3": "*(obj @ 189)",
+            "4": "*(obj @ 234)",
+            "5": "*(obj @ 249)",
+            "6": "*(obj @ 320)",
+            "7": "*(obj @ 355)",
+            "8": "*(obj @ 418)",
+            "9": "*(obj @ 489)",
+            "10": "*(obj @ 549)",
+            "11": "*(obj @ 617)",
+            "12": "*(obj @ 627)",
+            "13": "*(obj @ 668)",
+            "14": "*(obj @ 708)",
+            "15": "*(obj @ 720)",
+            "16": "*(obj @ 752)",
+            "17": "*(obj @ 813)",
+            "18": "*(obj @ 986)",
+            "19": "*(obj @ 1013)"
+        },
+        "Comments:": {
+            "0:": {
+                "List:": {
+                    "0:": {
+                        "Slash": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\udpflood\\udpflood.go:32:2",
+                        "Text": "//Establish udp"
+                    }
+                }
+            }
+        },
+        "GoVersion": ""
+    }
+}

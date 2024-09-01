@@ -1,0 +1,370 @@
+{
+    "*ast.File": {
+        "Doc": "nil",
+        "Package": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:1:1",
+        "Name:": {
+            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:1:9",
+            "Name": "utils",
+            "Obj": "nil"
+        },
+        "Decls:": {
+            "0:": {
+                "Doc": "nil",
+                "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:3:1",
+                "Tok": "import",
+                "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:3:8",
+                "Specs:": {
+                    "0:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:4:2",
+                            "Kind": "STRING",
+                            "Value": "\\io\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "1:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:5:2",
+                            "Kind": "STRING",
+                            "Value": "\\net/http\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    }
+                },
+                "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:6:1"
+            },
+            "1:": {
+                "Doc": "nil",
+                "Recv": "nil",
+                "Name:": {
+                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:8:6",
+                    "Name": "GetPublicIP",
+                    "Obj:": {
+                        "Kind": "func",
+                        "Name": "GetPublicIP",
+                        "Decl": "*(obj @ 40)",
+                        "Data": "nil",
+                        "Type": "nil"
+                    }
+                },
+                "Type:": {
+                    "Func": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:8:1",
+                    "TypeParams": "nil",
+                    "Params:": {
+                        "Opening": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:8:17",
+                        "List": "nil",
+                        "Closing": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:8:18"
+                    },
+                    "Results:": {
+                        "Opening": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:8:20",
+                        "List:": {
+                            "0:": {
+                                "Doc": "nil",
+                                "Names": "nil",
+                                "Type:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:8:21",
+                                    "Name": "string",
+                                    "Obj": "nil"
+                                },
+                                "Tag": "nil",
+                                "Comment": "nil"
+                            },
+                            "1:": {
+                                "Doc": "nil",
+                                "Names": "nil",
+                                "Type:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:8:29",
+                                    "Name": "error",
+                                    "Obj": "nil"
+                                },
+                                "Tag": "nil",
+                                "Comment": "nil"
+                            }
+                        },
+                        "Closing": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:8:34"
+                    }
+                },
+                "Body:": {
+                    "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:8:36",
+                    "List:": {
+                        "0:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:9:2",
+                                    "Name": "resp",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "resp",
+                                        "Decl": "*(obj @ 94)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                },
+                                "1:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:9:8",
+                                    "Name": "err",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "err",
+                                        "Decl": "*(obj @ 94)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:9:12",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:9:15",
+                                            "Name": "http",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:9:20",
+                                            "Name": "Get",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:9:23",
+                                    "Args:": {
+                                        "0:": {
+                                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:9:24",
+                                            "Kind": "STRING",
+                                            "Value": "\\https://api.ipify.org?format=text\\"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:9:59"
+                                }
+                            }
+                        },
+                        "1:": {
+                            "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:10:2",
+                            "Init": "nil",
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:10:5",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 110)"
+                                },
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:10:9",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:10:12",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:10:16",
+                                "List:": {
+                                    "0:": {
+                                        "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:11:3",
+                                        "Results:": {
+                                            "0:": {
+                                                "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:11:10",
+                                                "Kind": "STRING",
+                                                "Value": "\\\\"
+                                            },
+                                            "1:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:11:14",
+                                                "Name": "err",
+                                                "Obj": "*(obj @ 110)"
+                                            }
+                                        }
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:12:2"
+                            },
+                            "Else": "nil"
+                        },
+                        "2:": {
+                            "Defer": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:14:2",
+                            "Call:": {
+                                "Fun:": {
+                                    "X:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:14:8",
+                                            "Name": "resp",
+                                            "Obj": "*(obj @ 99)"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:14:13",
+                                            "Name": "Body",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Sel:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:14:18",
+                                        "Name": "Close",
+                                        "Obj": "nil"
+                                    }
+                                },
+                                "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:14:23",
+                                "Args": "nil",
+                                "Ellipsis": "-",
+                                "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:14:24"
+                            }
+                        },
+                        "3:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:16:2",
+                                    "Name": "ip",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "ip",
+                                        "Decl": "*(obj @ 216)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                },
+                                "1:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:16:6",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 110)"
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:16:10",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:16:13",
+                                            "Name": "io",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:16:16",
+                                            "Name": "ReadAll",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:16:23",
+                                    "Args:": {
+                                        "0:": {
+                                            "X:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:16:24",
+                                                "Name": "resp",
+                                                "Obj": "*(obj @ 99)"
+                                            },
+                                            "Sel:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:16:29",
+                                                "Name": "Body",
+                                                "Obj": "nil"
+                                            }
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:16:33"
+                                }
+                            }
+                        },
+                        "4:": {
+                            "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:17:2",
+                            "Init": "nil",
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:17:5",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 110)"
+                                },
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:17:9",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:17:12",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:17:16",
+                                "List:": {
+                                    "0:": {
+                                        "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:18:3",
+                                        "Results:": {
+                                            "0:": {
+                                                "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:18:10",
+                                                "Kind": "STRING",
+                                                "Value": "\\\\"
+                                            },
+                                            "1:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:18:14",
+                                                "Name": "err",
+                                                "Obj": "*(obj @ 110)"
+                                            }
+                                        }
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:19:2"
+                            },
+                            "Else": "nil"
+                        },
+                        "5:": {
+                            "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:21:2",
+                            "Results:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:21:9",
+                                        "Name": "string",
+                                        "Obj": "nil"
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:21:15",
+                                    "Args:": {
+                                        "0:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:21:16",
+                                            "Name": "ip",
+                                            "Obj": "*(obj @ 221)"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:21:18"
+                                },
+                                "1:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:21:21",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            }
+                        }
+                    },
+                    "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:22:1"
+                }
+            }
+        },
+        "FileStart": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:1:1",
+        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:22:3",
+        "Scope:": {
+            "Outer": "nil",
+            "Objects:": {
+                "\"GetPublicIP\"": "*(obj @ 46)"
+            }
+        },
+        "Imports:": {
+            "0": "*(obj @ 15)",
+            "1": "*(obj @ 26)"
+        },
+        "Unresolved:": {
+            "0": "*(obj @ 68)",
+            "1": "*(obj @ 79)",
+            "2": "*(obj @ 124)",
+            "3": "*(obj @ 159)",
+            "4": "*(obj @ 240)",
+            "5": "*(obj @ 282)",
+            "6": "*(obj @ 315)",
+            "7": "*(obj @ 331)"
+        },
+        "Comments": "nil",
+        "GoVersion": ""
+    }
+}

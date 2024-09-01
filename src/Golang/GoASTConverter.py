@@ -1,7 +1,7 @@
 import json
 import re
 import os
-
+import JSONAnalyzer
 
 def process_ast_text(input_text):
     # 使用正则表达式去除每行开头的数字、点和多余的空格
@@ -53,11 +53,13 @@ def parse_to_json(lines):
     return stack[0]
 
 
+# 将ast文件转换为JSON文件，并解析
 def convert_ast_to_json(file_path):
     file_path_base = ''.join(file_path.split('.')[:-1])
     with open(file_path, 'r', encoding='utf-8') as file:
         content = file.readlines()
 
+    print(f"正在将{file_path_base}.go的AST树转换为JSON...")
     # 处理文本
     processed_text = process_ast_text(content)
     lines = processed_text.split('\n')
@@ -69,6 +71,7 @@ def convert_ast_to_json(file_path):
     with open(json_output_path, 'w',encoding='utf-8') as f:
         json.dump(ast_dict, f, indent=4, ensure_ascii=False)
 
+    # 再解析JSON文件，提取Import，函数调用等关键信息
+    info = JSONAnalyzer.extract_key_info(json_output_path)
+    return info
 
-# 测试用例
-convert_ast_to_json('test.ast')

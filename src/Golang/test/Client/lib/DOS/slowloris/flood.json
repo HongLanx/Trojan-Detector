@@ -1,0 +1,718 @@
+{
+    "*ast.File": {
+        "Doc": "nil",
+        "Package": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:1:1",
+        "Name:": {
+            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:1:9",
+            "Name": "slowloris",
+            "Obj": "nil"
+        },
+        "Decls:": {
+            "0:": {
+                "Doc": "nil",
+                "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:3:1",
+                "Tok": "import",
+                "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:3:8",
+                "Specs:": {
+                    "0:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:4:2",
+                            "Kind": "STRING",
+                            "Value": "\\errors\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "1:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:5:2",
+                            "Kind": "STRING",
+                            "Value": "\\fmt\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "2:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:6:2",
+                            "Kind": "STRING",
+                            "Value": "\\net/url\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "3:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:7:2",
+                            "Kind": "STRING",
+                            "Value": "\\strings\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    },
+                    "4:": {
+                        "Doc": "nil",
+                        "Name": "nil",
+                        "Path:": {
+                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:8:2",
+                            "Kind": "STRING",
+                            "Value": "\\time\\"
+                        },
+                        "Comment": "nil",
+                        "EndPos": "-"
+                    }
+                },
+                "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:9:1"
+            },
+            "1:": {
+                "Doc": "nil",
+                "Recv": "nil",
+                "Name:": {
+                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:6",
+                    "Name": "SlowlorisUrl",
+                    "Obj:": {
+                        "Kind": "func",
+                        "Name": "SlowlorisUrl",
+                        "Decl": "*(obj @ 73)",
+                        "Data": "nil",
+                        "Type": "nil"
+                    }
+                },
+                "Type:": {
+                    "Func": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:1",
+                    "TypeParams": "nil",
+                    "Params:": {
+                        "Opening": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:18",
+                        "List:": {
+                            "0:": {
+                                "Doc": "nil",
+                                "Names:": {
+                                    "0:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:19",
+                                        "Name": "rawURL",
+                                        "Obj:": {
+                                            "Kind": "var",
+                                            "Name": "rawURL",
+                                            "Decl": "*(obj @ 93)",
+                                            "Data": "nil",
+                                            "Type": "nil"
+                                        }
+                                    }
+                                },
+                                "Type:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:26",
+                                    "Name": "string",
+                                    "Obj": "nil"
+                                },
+                                "Tag": "nil",
+                                "Comment": "nil"
+                            },
+                            "1:": {
+                                "Doc": "nil",
+                                "Names:": {
+                                    "0:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:34",
+                                        "Name": "count",
+                                        "Obj:": {
+                                            "Kind": "var",
+                                            "Name": "count",
+                                            "Decl": "*(obj @ 116)",
+                                            "Data": "nil",
+                                            "Type": "nil"
+                                        }
+                                    }
+                                },
+                                "Type:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:40",
+                                    "Name": "int64",
+                                    "Obj": "nil"
+                                },
+                                "Tag": "nil",
+                                "Comment": "nil"
+                            },
+                            "2:": {
+                                "Doc": "nil",
+                                "Names:": {
+                                    "0:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:47",
+                                        "Name": "interval",
+                                        "Obj:": {
+                                            "Kind": "var",
+                                            "Name": "interval",
+                                            "Decl": "*(obj @ 139)",
+                                            "Data": "nil",
+                                            "Type": "nil"
+                                        }
+                                    }
+                                },
+                                "Type:": {
+                                    "X:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:56",
+                                        "Name": "time",
+                                        "Obj": "nil"
+                                    },
+                                    "Sel:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:61",
+                                        "Name": "Duration",
+                                        "Obj": "nil"
+                                    }
+                                },
+                                "Tag": "nil",
+                                "Comment": "nil"
+                            },
+                            "3:": {
+                                "Doc": "nil",
+                                "Names:": {
+                                    "0:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:71",
+                                        "Name": "timeout",
+                                        "Obj:": {
+                                            "Kind": "var",
+                                            "Name": "timeout",
+                                            "Decl": "*(obj @ 169)",
+                                            "Data": "nil",
+                                            "Type": "nil"
+                                        }
+                                    }
+                                },
+                                "Type:": {
+                                    "X:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:79",
+                                        "Name": "time",
+                                        "Obj": "nil"
+                                    },
+                                    "Sel:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:84",
+                                        "Name": "Duration",
+                                        "Obj": "nil"
+                                    }
+                                },
+                                "Tag": "nil",
+                                "Comment": "nil"
+                            }
+                        },
+                        "Closing": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:92"
+                    },
+                    "Results:": {
+                        "Opening": "-",
+                        "List:": {
+                            "0:": {
+                                "Doc": "nil",
+                                "Names": "nil",
+                                "Type:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:94",
+                                    "Name": "error",
+                                    "Obj": "nil"
+                                },
+                                "Tag": "nil",
+                                "Comment": "nil"
+                            }
+                        },
+                        "Closing": "-"
+                    }
+                },
+                "Body:": {
+                    "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:11:100",
+                    "List:": {
+                        "0:": {
+                            "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:12:2",
+                            "Init": "nil",
+                            "Cond:": {
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:12:5",
+                                "Op": "!",
+                                "X:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:12:6",
+                                            "Name": "strings",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:12:14",
+                                            "Name": "Contains",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:12:22",
+                                    "Args:": {
+                                        "0:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:12:23",
+                                            "Name": "rawURL",
+                                            "Obj": "*(obj @ 99)"
+                                        },
+                                        "1:": {
+                                            "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:12:31",
+                                            "Kind": "STRING",
+                                            "Value": "\\http\\"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:12:37"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:12:39",
+                                "List:": {
+                                    "0:": {
+                                        "Lhs:": {
+                                            "0:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:13:3",
+                                                "Name": "err",
+                                                "Obj:": {
+                                                    "Kind": "var",
+                                                    "Name": "err",
+                                                    "Decl": "*(obj @ 262)",
+                                                    "Data": "nil",
+                                                    "Type": "nil"
+                                                }
+                                            }
+                                        },
+                                        "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:13:7",
+                                        "Tok": ":=",
+                                        "Rhs:": {
+                                            "0:": {
+                                                "Fun:": {
+                                                    "X:": {
+                                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:13:10",
+                                                        "Name": "errors",
+                                                        "Obj": "nil"
+                                                    },
+                                                    "Sel:": {
+                                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:13:17",
+                                                        "Name": "New",
+                                                        "Obj": "nil"
+                                                    }
+                                                },
+                                                "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:13:20",
+                                                "Args:": {
+                                                    "0:": {
+                                                        "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:13:21",
+                                                        "Kind": "STRING",
+                                                        "Value": "\\no scheme provided. use (http or https)\\"
+                                                    }
+                                                },
+                                                "Ellipsis": "-",
+                                                "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:13:62"
+                                            }
+                                        }
+                                    },
+                                    "1:": {
+                                        "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:14:3",
+                                        "Results:": {
+                                            "0:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:14:10",
+                                                "Name": "err",
+                                                "Obj": "*(obj @ 267)"
+                                            }
+                                        }
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:15:2"
+                            },
+                            "Else": "nil"
+                        },
+                        "1:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:16:2",
+                                    "Name": "parsed",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "parsed",
+                                        "Decl": "*(obj @ 320)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                },
+                                "1:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:16:10",
+                                    "Name": "err",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "err",
+                                        "Decl": "*(obj @ 320)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:16:14",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Fun:": {
+                                        "X:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:16:17",
+                                            "Name": "url",
+                                            "Obj": "nil"
+                                        },
+                                        "Sel:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:16:21",
+                                            "Name": "Parse",
+                                            "Obj": "nil"
+                                        }
+                                    },
+                                    "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:16:26",
+                                    "Args:": {
+                                        "0:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:16:27",
+                                            "Name": "rawURL",
+                                            "Obj": "*(obj @ 99)"
+                                        }
+                                    },
+                                    "Ellipsis": "-",
+                                    "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:16:33"
+                                }
+                            }
+                        },
+                        "2:": {
+                            "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:17:2",
+                            "Init": "nil",
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:17:5",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 336)"
+                                },
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:17:9",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:17:12",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:17:16",
+                                "List:": {
+                                    "0:": {
+                                        "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:18:3",
+                                        "Results:": {
+                                            "0:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:18:10",
+                                                "Name": "err",
+                                                "Obj": "*(obj @ 336)"
+                                            }
+                                        }
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:19:2"
+                            },
+                            "Else": "nil"
+                        },
+                        "3:": {
+                            "Lhs:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:21:2",
+                                    "Name": "options",
+                                    "Obj:": {
+                                        "Kind": "var",
+                                        "Name": "options",
+                                        "Decl": "*(obj @ 409)",
+                                        "Data": "nil",
+                                        "Type": "nil"
+                                    }
+                                }
+                            },
+                            "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:21:10",
+                            "Tok": ":=",
+                            "Rhs:": {
+                                "0:": {
+                                    "Type:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:21:13",
+                                        "Name": "Options",
+                                        "Obj": "nil"
+                                    },
+                                    "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:21:20",
+                                    "Elts:": {
+                                        "0:": {
+                                            "Key:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:22:3",
+                                                "Name": "URL",
+                                                "Obj": "nil"
+                                            },
+                                            "Colon": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:22:6",
+                                            "Value:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:22:14",
+                                                "Name": "parsed",
+                                                "Obj": "*(obj @ 325)"
+                                            }
+                                        },
+                                        "1:": {
+                                            "Key:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:23:3",
+                                                "Name": "UserAgent",
+                                                "Obj": "nil"
+                                            },
+                                            "Colon": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:23:12",
+                                            "Value:": {
+                                                "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:23:14",
+                                                "Kind": "STRING",
+                                                "Value": "\\random\\"
+                                            }
+                                        },
+                                        "2:": {
+                                            "Key:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:24:3",
+                                                "Name": "Secure",
+                                                "Obj": "nil"
+                                            },
+                                            "Colon": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:24:9",
+                                            "Value:": {
+                                                "X:": {
+                                                    "X:": {
+                                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:24:14",
+                                                        "Name": "parsed",
+                                                        "Obj": "*(obj @ 325)"
+                                                    },
+                                                    "Sel:": {
+                                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:24:21",
+                                                        "Name": "Scheme",
+                                                        "Obj": "nil"
+                                                    }
+                                                },
+                                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:24:28",
+                                                "Op": "==",
+                                                "Y:": {
+                                                    "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:24:31",
+                                                    "Kind": "STRING",
+                                                    "Value": "\\https\\"
+                                                }
+                                            }
+                                        },
+                                        "3:": {
+                                            "Key:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:25:3",
+                                                "Name": "Count",
+                                                "Obj": "nil"
+                                            },
+                                            "Colon": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:25:8",
+                                            "Value:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:25:14",
+                                                "Name": "count",
+                                                "Obj": "*(obj @ 122)"
+                                            }
+                                        },
+                                        "4:": {
+                                            "Key:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:26:3",
+                                                "Name": "Interval",
+                                                "Obj": "nil"
+                                            },
+                                            "Colon": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:26:11",
+                                            "Value:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:26:14",
+                                                "Name": "interval",
+                                                "Obj": "*(obj @ 145)"
+                                            }
+                                        },
+                                        "5:": {
+                                            "Key:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:27:3",
+                                                "Name": "Timeout",
+                                                "Obj": "nil"
+                                            },
+                                            "Colon": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:27:10",
+                                            "Value:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:27:14",
+                                                "Name": "timeout",
+                                                "Obj": "*(obj @ 175)"
+                                            }
+                                        }
+                                    },
+                                    "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:28:2",
+                                    "Incomplete": "false"
+                                }
+                            }
+                        },
+                        "4:": {
+                            "X:": {
+                                "Fun:": {
+                                    "X:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:30:2",
+                                        "Name": "fmt",
+                                        "Obj": "nil"
+                                    },
+                                    "Sel:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:30:6",
+                                        "Name": "Println",
+                                        "Obj": "nil"
+                                    }
+                                },
+                                "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:30:13",
+                                "Args:": {
+                                    "0:": {
+                                        "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:30:14",
+                                        "Kind": "STRING",
+                                        "Value": "\\slowloris...\\"
+                                    }
+                                },
+                                "Ellipsis": "-",
+                                "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:30:28"
+                            }
+                        },
+                        "5:": {
+                            "X:": {
+                                "Fun:": {
+                                    "X:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:31:2",
+                                        "Name": "fmt",
+                                        "Obj": "nil"
+                                    },
+                                    "Sel:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:31:6",
+                                        "Name": "Printf",
+                                        "Obj": "nil"
+                                    }
+                                },
+                                "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:31:12",
+                                "Args:": {
+                                    "0:": {
+                                        "ValuePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:31:13",
+                                        "Kind": "STRING",
+                                        "Value": "\\creating zoo of %d loris for %s\\\\n\\"
+                                    },
+                                    "1:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:31:50",
+                                        "Name": "count",
+                                        "Obj": "*(obj @ 122)"
+                                    },
+                                    "2:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:31:57",
+                                        "Name": "rawURL",
+                                        "Obj": "*(obj @ 99)"
+                                    }
+                                },
+                                "Ellipsis": "-",
+                                "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:31:63"
+                            }
+                        },
+                        "6:": {
+                            "If": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:32:2",
+                            "Init:": {
+                                "Lhs:": {
+                                    "0:": {
+                                        "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:32:5",
+                                        "Name": "err",
+                                        "Obj:": {
+                                            "Kind": "var",
+                                            "Name": "err",
+                                            "Decl": "*(obj @ 598)",
+                                            "Data": "nil",
+                                            "Type": "nil"
+                                        }
+                                    }
+                                },
+                                "TokPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:32:9",
+                                "Tok": ":=",
+                                "Rhs:": {
+                                    "0:": {
+                                        "Fun:": {
+                                            "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:32:12",
+                                            "Name": "Zoo",
+                                            "Obj": "nil"
+                                        },
+                                        "Lparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:32:15",
+                                        "Args:": {
+                                            "0:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:32:16",
+                                                "Name": "options",
+                                                "Obj": "*(obj @ 414)"
+                                            }
+                                        },
+                                        "Ellipsis": "-",
+                                        "Rparen": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:32:23"
+                                    }
+                                }
+                            },
+                            "Cond:": {
+                                "X:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:32:26",
+                                    "Name": "err",
+                                    "Obj": "*(obj @ 603)"
+                                },
+                                "OpPos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:32:30",
+                                "Op": "!=",
+                                "Y:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:32:33",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            },
+                            "Body:": {
+                                "Lbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:32:37",
+                                "List:": {
+                                    "0:": {
+                                        "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:33:3",
+                                        "Results:": {
+                                            "0:": {
+                                                "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:33:10",
+                                                "Name": "err",
+                                                "Obj": "*(obj @ 603)"
+                                            }
+                                        }
+                                    }
+                                },
+                                "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:34:2"
+                            },
+                            "Else": "nil"
+                        },
+                        "7:": {
+                            "Return": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:36:2",
+                            "Results:": {
+                                "0:": {
+                                    "NamePos": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:36:9",
+                                    "Name": "nil",
+                                    "Obj": "nil"
+                                }
+                            }
+                        }
+                    },
+                    "Rbrace": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:37:1"
+                }
+            }
+        },
+        "FileStart": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:1:1",
+        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\flood.go:37:3",
+        "Scope:": {
+            "Outer": "nil",
+            "Objects:": {
+                "\"SlowlorisUrl\"": "*(obj @ 79)"
+            }
+        },
+        "Imports:": {
+            "0": "*(obj @ 15)",
+            "1": "*(obj @ 26)",
+            "2": "*(obj @ 37)",
+            "3": "*(obj @ 48)",
+            "4": "*(obj @ 59)"
+        },
+        "Unresolved:": {
+            "0": "*(obj @ 108)",
+            "1": "*(obj @ 131)",
+            "2": "*(obj @ 155)",
+            "3": "*(obj @ 185)",
+            "4": "*(obj @ 208)",
+            "5": "*(obj @ 231)",
+            "6": "*(obj @ 281)",
+            "7": "*(obj @ 350)",
+            "8": "*(obj @ 385)",
+            "9": "*(obj @ 427)",
+            "10": "*(obj @ 537)",
+            "11": "*(obj @ 563)",
+            "12": "*(obj @ 616)",
+            "13": "*(obj @ 642)",
+            "14": "*(obj @ 669)"
+        },
+        "Comments": "nil",
+        "GoVersion": ""
+    }
+}
