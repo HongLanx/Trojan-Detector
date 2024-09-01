@@ -55,7 +55,7 @@ def parse_to_json(lines):
 
 def convert_ast_to_json(file_path):
     file_path_base = ''.join(file_path.split('.')[:-1])
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r', encoding='utf-8') as file:
         content = file.readlines()
 
     # 处理文本
@@ -66,8 +66,8 @@ def convert_ast_to_json(file_path):
 
     # 将解析结果写入JSON文件
     json_output_path = f'{file_path_base}.json'
-    with open(json_output_path, 'w') as f:
-        json.dump(ast_dict, f, indent=4)
+    with open(json_output_path, 'w',encoding='utf-8') as f:
+        json.dump(ast_dict, f, indent=4, ensure_ascii=False)
 
 
 # 测试用例

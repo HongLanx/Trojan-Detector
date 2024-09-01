@@ -2,7 +2,7 @@ import json
 
 
 def extract_key_info(ast_json):
-    with open(ast_json, 'r') as file:
+    with open(ast_json, 'r', encoding='utf-8') as file:
         data = json.load(file)
 
     # 初始化结果字典
