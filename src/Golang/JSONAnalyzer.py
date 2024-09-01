@@ -1,6 +1,6 @@
 import json
 
-
+# 提取JSON中的Import、自定义函数、作用域对象、函数调用、字符串
 def extract_key_info(ast_json):
     with open(ast_json, 'r', encoding='utf-8') as file:
         data = json.load(file)
@@ -9,12 +9,15 @@ def extract_key_info(ast_json):
     results = {
         "imports": [],
         "functions": [],
-        "constants": [],
-        "scope_objects": {}
+        "scope_objects": {},
+        "calls": [],
+        "string": []
     }
 
     ast_file = data["*ast.File"]
 
+    results["calls"].append(extract_function_calls(ast_file))
+    results["string"].append(extract_strings(ast_file))
     # 提取声明部分
     if "Decls:" in ast_file:
         decls = ast_file["Decls:"]
@@ -38,17 +41,6 @@ def extract_key_info(ast_json):
                             "name": func_name,
                             "position": func_position
                         })
-                # 提取常量定义
-                if decl.get("Tok") == "const":
-                    specs = decl.get("Specs:", {})
-                    for spec_key, spec in specs.items():
-                        if isinstance(spec, dict):
-                            names = spec.get("Names:", {})
-                            values = spec.get("Values:", {})
-                            if "0:" in names and "0:" in values:
-                                const_name = names["0:"].get("Name", "")
-                                const_value = values["0:"].get("Value", "")
-                                results["constants"].append({const_name: const_value.strip("\\")})
 
     # 检查是否存在Scope部分
     if "Scope:" in ast_file:
@@ -62,7 +54,84 @@ def extract_key_info(ast_json):
 
     return results
 
+def extract_full_function_name(func_node):
+    """递归提取函数全名，包括处理嵌套的选择器。"""
+    if "X:" in func_node:
+        if "Sel:" in func_node:
+            base_name = extract_full_function_name(func_node["X:"])
+            return f"{base_name}.{func_node['Sel:']['Name']}"
+        else:
+            base_name = extract_full_function_name(func_node["X:"])
+            return f"{base_name}"
+    elif "Name" in func_node:
+        return func_node["Name"]
+    elif "Elt:" in func_node:
+        return func_node["Elt:"]["Name"]
+
+    return "Unknown"
+
+
+def extract_args(args_node):
+    """递归解析参数节点，参数也可能是复杂的表达式或函数调用。"""
+    args = []
+    for key, arg in args_node.items():
+        if "Name" in arg:
+            args.append(arg["Name"])
+        elif "Fun:" in arg:
+            # 如果参数本身是一个函数调用，递归提取函数调用信息
+            func_call = extract_function_calls(arg)
+            args.append(func_call)
+    return args
+
+
+def extract_function_calls(node):
+    """递归遍历AST节点，提取所有函数调用。"""
+    calls = []
+    if isinstance(node, dict):
+        if "Fun:" in node:
+            func = node["Fun:"]
+            func_name = extract_full_function_name(func)
+            args = extract_args(node.get("Args:", {}))
+            calls.append({
+                "function": func_name,
+                "arguments": args,
+                "location": func.get('NamePos',
+                                     func.get('X:', {}).get('NamePos',
+                                                            func.get('Sel:', {}).get('NamePos',
+                                                                                     func.get("Elt:", {}).get('NamePos',
+                                                                                                              'Unknown position')))).split(
+                    '\\')[-1]
+            })
+        # 递归搜索所有子节点
+        for key, value in node.items():
+            calls.extend(extract_function_calls(value))
+    elif isinstance(node, list):
+        for item in node:
+            calls.extend(extract_function_calls(item))
+    return calls
+
+
+def extract_strings(node, extracted_strings=None):
+    """递归遍历AST节点，提取所有带有特定格式的字符串值。"""
+    if extracted_strings is None:
+        extracted_strings = []
+
+    if isinstance(node, dict):
+        # 检查是否含有带双反斜杠的字符串
+        if "Value" in node and isinstance(node["Value"], str):
+            value = node["Value"]
+            if value.startswith("\\") and value.endswith("\\"):
+                extracted_strings.append(value.strip('\\').replace('\\\\\\\\', '\\'))
+        # 递归搜索所有子节点
+        for value in node.values():
+            extract_strings(value, extracted_strings)
+    elif isinstance(node, list):
+        for item in node:
+            extract_strings(item, extracted_strings)
+
+    return extracted_strings
+
 
 # 使用脚本提取信息
-info = extract_key_info('test1.json')
+info = extract_key_info('test2.json')
 print(json.dumps(info, indent=4))
