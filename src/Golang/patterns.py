@@ -7,6 +7,7 @@ encryption_patterns = {
         "crypto/rc4": 7,  # RC4较少用于新的正常项目，但在老项目和恶意代码中见
         "crypto/sha1": 4,  # 虽然SHA-1已不再推荐使用，但仍广泛存在于许多代码中
         "golang.org/x/crypto/pbkdf2": 6  # 密码派生，通常用于安全需求高的场合
+
     },
     "FunctionCalls": {
         "base64.StdEncoding.EncodeToString": 3,  # 编码操作，广泛用途
@@ -40,12 +41,13 @@ encryption_patterns = {
     }
 }
 
+# 僵尸网络特征模式
 botnet_patterns = {
     "Imports": {
         "github/google/gopacket": 5,  # 专门用于网络数据包处理，常见于需要制造或分析网络流量的恶意软件
         "github/google/gopacket/layers": 5,  # 网络层操作库，同上，用于构造或解析不同网络层的数据
         "darkangel/server/client": 9,  # 特定的僵尸网络客户端库，高度特定于恶意软件
-        "darkangel/server/constant": 9, # 特定的常量库，用于僵尸网络，同样高度特定于恶意软件
+        "darkangel/server/constant": 9,  # 特定的常量库，用于僵尸网络，同样高度特定于恶意软件
         "google.golang.org/grpc": 3,  # gRPC库，高效通信，可能用于复杂的恶意软件
         "google.golang.org/grpc/credentials": 2,  # gRPC的凭证管理
         "github.com/Xart3mis/AKILT/Client/lib/DOS/httpflood": 6,  # HTTP洪水攻击库
@@ -55,7 +57,12 @@ botnet_patterns = {
         "github.com/Xart3mis/AKILT/Client/lib/reg": 6,  # 可能用于注册表操作
         "github.com/Xart3mis/AKILT/Client/lib/webcam": 7,  # Webcam访问库，用于捕获视频
         "github.com/vova616/screenshot": 6,  # 屏幕截图库，用于捕获屏幕图像
-        "golang.design/x/hotkey": 6  # 热键库，用于监听键盘快捷键
+        "golang.design/x/hotkey": 6,  # 热键库，用于监听键盘快捷键
+        "github.com/kbinani/screenshot": 7,  # 用于捕获多屏幕截图
+        "golang.org/x/sys/windows": 7,  # 提供Windows系统调用接口，用于深入系统级操作
+        "github.com/shirou/gopsutil": 6,  # 系统信息库，用于获取系统详细状态，可能用于信息收集
+        "github.com/miekg/dns": 6,  # DNS库，用于进行复杂的DNS操作和劫持
+        "github.com/huin/goupnp": 6  # UPnP库，用于发现和交互网络设备，可能用于网络穿透和服务攻击
     },
     "FunctionCalls": {
         "http.Client.Do": 6,  # 执行HTTP请求，常见于僵尸网络的远程控制和数据传输
@@ -70,7 +77,7 @@ botnet_patterns = {
         "conn.Read": 4,  # 从网络连接读取数据，关键于接收来自控制服务器的命令
         "conn.Write": 4,  # 向网络连接写入数据，用于向控制服务器发送响应或数据
         "gob.NewEncoder": 5,  # 创建一个新的GOB编码器，用于数据序列化，常见于恶意软件数据传输
-        "enc.Encode": 5 , # 执行数据编码，用于准备发送到控制服务器的数据
+        "enc.Encode": 5,  # 执行数据编码，用于准备发送到控制服务器的数据
         "lis.Accept": 3,  # 接受网络连接，用于服务器或客户端应用
         "grpc.NewServer": 2,  # 创建gRPC服务器，用于构建服务端应用
         "pb.RegisterConsumerServer": 1,  # 在gRPC上注册服务，用于服务端
@@ -80,9 +87,20 @@ botnet_patterns = {
         "keylogger.Run": 7,  # 运行键盘记录，用于监控用户输入
         "exec.Command": 2,  # 执行系统命令，用于执行远程命令或脚本
         "os.OpenFile": 2,  # 打开文件，用于读写文件
+        "syscall.Bind": 4,  # 绑定套接字到地址，用于创建恶意服务或监听
+        "syscall.Connect": 5,  # 系统级的网络连接函数，用于建立后门连接
+        "net.ReverseProxy": 5,  # 实现HTTP反向代理功能，可能用于流量劫持或中间人攻击
+        "http.ReverseProxy": 5,  # 实现HTTP反向代理功能，可能用于流量劫持或中间人攻击
+        "httputil.ReverseProxy": 5,  # 实现HTTP反向代理功能，可能用于流量劫持或中间人攻击
+        "net.SendMail": 2,  # 发送邮件，可能用于数据泄露或通过邮件传播恶意软件
+        "log.Print": 4  # 打印日志，可用于僵尸网络
     },
     "Strings": {
         "Infected by exploit": 9,  # 明确指示设备被感染，高度特异性
+        "/usr/bin/ssh": 5,  # Linux命令行工具
+        "/usr/bin/sh": 5,  # Linux命令行工具
+        "/usr/bin/curl": 5,  # 命令行下载工具
+        "/usr/bin/tmux": 2,
         "/var/tmp/": 4,  # 常见于Unix系统中用于存储临时文件，恶意软件常用路径
         "wget": 5,  # Linux下下载工具，常用于下载恶意代码或工具
         "curl": 5,  # 另一种命令行下载工具，同上
@@ -99,6 +117,14 @@ botnet_patterns = {
         "Server send data:": 4,  # 服务器发送数据的日志信息，常见于接收来自控制服务器的命令
         "Couldn't unpack data.": 4,  # 数据解包失败的日志信息，用于错误处理，常见于处理来自控制服务器的复杂命令
         "Couldn't encode output": 4,  # 输出编码失败的日志信息，用于错误处理，常见于数据发送到控制服务器
-        "flood": 5,  # 执行网络洪水攻击，特定于DDoS
+        "flood": 8,  # 执行网络洪水攻击，特定于DDoS
+        "ATTACKING": 9,  # 执行攻击
+        "C&C server": 9,  # "Command and Control"服务器地址，特定于僵尸网络
+        "shellcode": 8,  # 指向或相关于直接执行的代码片段，常用于恶意活动
+        "botnet": 8,  # 明确指向僵尸网络的操作或配置
+        "backdoor": 9,  # 后门相关操作或配置
+        "keylog": 8,  # 关键词记录功能
+        "ddos": 9  # 分布式拒绝服务攻击相关操作或参数
+
     }
 }

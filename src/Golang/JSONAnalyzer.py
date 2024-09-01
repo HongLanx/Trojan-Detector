@@ -5,6 +5,7 @@ def extract_key_info(ast_json):
     with open(ast_json, 'r', encoding='utf-8') as file:
         data = json.load(file)
 
+    print(f"正在提取{ast_json}信息")
     # 初始化结果字典
     results = {
         "imports": [],
@@ -16,8 +17,9 @@ def extract_key_info(ast_json):
 
     ast_file = data["*ast.File"]
 
-    results["calls"].append(extract_function_calls(ast_file))
-    results["string"].append(extract_strings(ast_file))
+    results["calls"].extend(extract_function_calls(ast_file))
+
+    results["string"].extend(extract_strings(ast_file))
     # 提取声明部分
     if "Decls:" in ast_file:
         decls = ast_file["Decls:"]
@@ -39,7 +41,7 @@ def extract_key_info(ast_json):
                         func_position = name_section.get("NamePos", "Unknown position")
                         results["functions"].append({
                             "name": func_name,
-                            "position": func_position
+                            "position": func_position.split('\\')[-1]
                         })
 
     # 检查是否存在Scope部分
@@ -132,6 +134,6 @@ def extract_strings(node, extracted_strings=None):
     return extracted_strings
 
 
-# 使用脚本提取信息
-info = extract_key_info('test.json')
-print(json.dumps(info, indent=4))
+# # 使用脚本提取信息
+# info = extract_key_info('test2.json')
+# print(json.dumps(info, indent=4))
