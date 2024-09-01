@@ -1,0 +1,82 @@
+{
+    "node_type": "Module",
+    "fields": {
+        "body": [
+            {
+                "node_type": "Import",
+                "fields": {
+                    "names": [
+                        {
+                            "node_type": "alias",
+                            "fields": {
+                                "name": "os",
+                                "asname": null
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "node_type": "Expr",
+                "fields": {
+                    "value": {
+                        "node_type": "Call",
+                        "fields": {
+                            "func": {
+                                "node_type": "Name",
+                                "fields": {
+                                    "id": "exec",
+                                    "ctx": {
+                                        "node_type": "Load",
+                                        "fields": {}
+                                    }
+                                }
+                            },
+                            "args": [
+                                {
+                                    "node_type": "Constant",
+                                    "fields": {
+                                        "value": "print('This could be dangerous')",
+                                        "kind": null
+                                    }
+                                }
+                            ],
+                            "keywords": []
+                        }
+                    }
+                }
+            },
+            {
+                "node_type": "Expr",
+                "fields": {
+                    "value": {
+                        "node_type": "Call",
+                        "fields": {
+                            "func": {
+                                "node_type": "Name",
+                                "fields": {
+                                    "id": "eval",
+                                    "ctx": {
+                                        "node_type": "Load",
+                                        "fields": {}
+                                    }
+                                }
+                            },
+                            "args": [
+                                {
+                                    "node_type": "Constant",
+                                    "fields": {
+                                        "value": "print('Another potentially dangerous command')",
+                                        "kind": null
+                                    }
+                                }
+                            ],
+                            "keywords": []
+                        }
+                    }
+                }
+            }
+        ],
+        "type_ignores": []
+    }
+}
