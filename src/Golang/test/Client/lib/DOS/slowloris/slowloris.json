@@ -2662,18 +2662,18 @@
             "8": "*(obj @ 1321)"
         },
         "FileStart": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\slowloris.go:1:1",
-        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\slowloris.go:127:3",
+        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\slowloris.go:127:4",
         "Scope:": {
             "Outer": "nil",
             "Objects:": {
-                "\"ClosingLine\"": "*(obj @ 2585)",
                 "\"httpLine\"": "*(obj @ 1318)",
                 "\"Options\"": "*(obj @ 135)",
                 "\"Slowloris\"": "*(obj @ 339)",
                 "\"Dialer\"": "*(obj @ 516)",
                 "\"GetRequestLine\"": "*(obj @ 1079)",
                 "\"Header\"": "*(obj @ 1753)",
-                "\"RandomHeader\"": "*(obj @ 2185)"
+                "\"RandomHeader\"": "*(obj @ 2185)",
+                "\"ClosingLine\"": "*(obj @ 2585)"
             }
         },
         "Imports:": {

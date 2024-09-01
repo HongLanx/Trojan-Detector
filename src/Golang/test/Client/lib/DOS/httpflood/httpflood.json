@@ -2287,14 +2287,14 @@
             }
         },
         "FileStart": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\httpflood\\httpflood.go:1:1",
-        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\httpflood\\httpflood.go:104:3",
+        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\httpflood\\httpflood.go:104:4",
         "Scope:": {
             "Outer": "nil",
             "Objects:": {
+                "\"FloodUrl\"": "*(obj @ 1595)",
                 "\"waitGroup\"": "*(obj @ 118)",
                 "\"data\"": "*(obj @ 157)",
-                "\"fetchURL\"": "*(obj @ 188)",
-                "\"FloodUrl\"": "*(obj @ 1595)"
+                "\"fetchURL\"": "*(obj @ 188)"
             }
         },
         "Imports:": {

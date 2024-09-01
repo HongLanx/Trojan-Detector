@@ -2551,24 +2551,24 @@
             "7": "*(obj @ 1702)"
         },
         "FileStart": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\keylogger\\keylogger.go:1:1",
-        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\keylogger\\keylogger.go:115:3",
+        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\keylogger\\keylogger.go:115:4",
         "Scope:": {
             "Outer": "nil",
             "Objects:": {
-                "\"GetWindowTextLength\"": "*(obj @ 496)",
+                "\"GetForegroundWindow\"": "*(obj @ 974)",
                 "\"mod\"": "*(obj @ 125)",
-                "\"VKCodeToAscii\"": "*(obj @ 1699)",
+                "\"procGetWindowText\"": "*(obj @ 345)",
+                "\"GetWindowTextLength\"": "*(obj @ 496)",
+                "\"Run\"": "*(obj @ 1140)",
                 "\"procGetWindowTextLength\"": "*(obj @ 389)",
                 "\"HANDLE\"": "*(obj @ 441)",
                 "\"HWND\"": "*(obj @ 463)",
-                "\"GetForegroundWindow\"": "*(obj @ 974)",
-                "\"Run\"": "*(obj @ 1140)",
-                "\"procGetKeyboardLayout\"": "*(obj @ 213)",
-                "\"procToUnicodeEx\"": "*(obj @ 301)",
-                "\"procGetWindowText\"": "*(obj @ 345)",
                 "\"procGetKeyState\"": "*(obj @ 169)",
+                "\"VKCodeToAscii\"": "*(obj @ 1699)",
+                "\"GetWindowText\"": "*(obj @ 673)",
+                "\"procGetKeyboardLayout\"": "*(obj @ 213)",
                 "\"procGetKeyboardState\"": "*(obj @ 257)",
-                "\"GetWindowText\"": "*(obj @ 673)"
+                "\"procToUnicodeEx\"": "*(obj @ 301)"
             }
         },
         "Imports:": {
