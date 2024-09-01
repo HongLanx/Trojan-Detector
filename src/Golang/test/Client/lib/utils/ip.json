@@ -343,7 +343,7 @@
             }
         },
         "FileStart": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:1:1",
-        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:22:3",
+        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\utils\\ip.go:22:4",
         "Scope:": {
             "Outer": "nil",
             "Objects:": {

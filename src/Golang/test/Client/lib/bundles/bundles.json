@@ -966,15 +966,15 @@
             }
         },
         "FileStart": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:1:1",
-        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:61:3",
+        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\bundles\\bundles.go:61:4",
         "Scope:": {
             "Outer": "nil",
             "Objects:": {
-                "\"WriteCaCertPem\"": "*(obj @ 204)",
-                "\"WriteFiraCodeNerd\"": "*(obj @ 591)",
                 "\"FiraCodeNerd\"": "*(obj @ 81)",
                 "\"ca_cert\"": "*(obj @ 124)",
-                "\"DSGrab\"": "*(obj @ 167)"
+                "\"DSGrab\"": "*(obj @ 167)",
+                "\"WriteCaCertPem\"": "*(obj @ 204)",
+                "\"WriteFiraCodeNerd\"": "*(obj @ 591)"
             }
         },
         "Imports:": {

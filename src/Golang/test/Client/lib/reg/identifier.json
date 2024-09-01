@@ -414,7 +414,7 @@
             }
         },
         "FileStart": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\reg\\identifier.go:1:1",
-        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\reg\\identifier.go:25:3",
+        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\reg\\identifier.go:25:4",
         "Scope:": {
             "Outer": "nil",
             "Objects:": {

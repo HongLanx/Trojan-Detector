@@ -647,7 +647,7 @@
             }
         },
         "FileStart": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\zoo.go:1:1",
-        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\zoo.go:31:3",
+        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\DOS\\slowloris\\zoo.go:31:4",
         "Scope:": {
             "Outer": "nil",
             "Objects:": {

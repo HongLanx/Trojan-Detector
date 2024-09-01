@@ -1147,13 +1147,13 @@
             }
         },
         "FileStart": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\consumer\\consumer.go:1:1",
-        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\consumer\\consumer.go:68:3",
+        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\consumer\\consumer.go:68:4",
         "Scope:": {
             "Outer": "nil",
             "Objects:": {
-                "\"Init\"": "*(obj @ 137)",
                 "\"loadTLSCredentials\"": "*(obj @ 248)",
-                "\"SubscribeOnScreenText\"": "*(obj @ 858)"
+                "\"SubscribeOnScreenText\"": "*(obj @ 858)",
+                "\"Init\"": "*(obj @ 137)"
             }
         },
         "Imports:": {

@@ -475,7 +475,7 @@
             }
         },
         "FileStart": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\webcam\\webcam.go:1:1",
-        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\webcam\\webcam.go:51:3",
+        "FileEnd": "E:/Trojan Detector/Trojan-Detector/src/Golang/test\\Client\\lib\\webcam\\webcam.go:51:4",
         "Scope:": {
             "Outer": "nil",
             "Objects:": {
