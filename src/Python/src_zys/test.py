@@ -1,107 +1,33 @@
 import re
 
-def preprocess_code(code):
-    """
-    对代码进行预处理，去除注释和多余的空行。
-    """
-    # 去除 Python 代码中的单行注释
-    code = re.sub(r'#.*', '', code)  # 去除单行注释
-    
-    # 去除 Python 代码中的多行注释（''' 或 """）
-    code = re.sub(r'\'\'\'(.*?)\'\'\'', '', code, flags=re.DOTALL)  # 去除多行注释
-    code = re.sub(r'\"\"\"(.*?)\"\"\"', '', code, flags=re.DOTALL)  # 去除多行注释
-    
-    # 去除多余的空行
-    code = re.sub(r'\n\s*\n', '\n', code)
-    
-    return code
+# 定义正则表达式模式
+string_patterns = {
+    r'User-Agent': 6,  # 可能用于伪装成合法用户或爬虫
+    r'Weeman': 8,  # 钓鱼工具的名称，可能在恶意代码中出现
+    r'action_url': 7,  # 可能是钓鱼表单的提交目标
+    r'Please install beautifulsoup 4': 7,  # 工具依赖的提示信息
+    r'clone\(\)': 8,  # 可能用于克隆合法网站以进行钓鱼
+    r'history\.log': 7,  # 日志文件，可能用于记录钓鱼数据
+    r'root@phishmailer:~': 8,  # 钓鱼工具的提示符，可能用于引导用户进行恶意操作
+    r'Your Templates Will Be Saved Here': 7,  # 钓鱼模板保存路径的提示
+    r'Phish': 9,  # 明示钓鱼意图的字符串
+    r'Restart PhishMailer\? Y/N': 7,  # 重启钓鱼工具的提示，可能用于循环钓鱼攻击
+    r'pip install cryptography': 6,  # 自动安装依赖，可能用于隐藏钓鱼行为
+    r'pip install requests': 6,  # 自动安装网络请求模块
+    r'Mozilla/5\.0 \(X11; Linux x86_64\) AppleWebKit/537\.36 \(KHTML, like Gecko\)': 6,  # 常见的伪装User-Agent字符串
+    r'__version__': 6,  # 程序版本信息，可能用于显示或伪装工具版本
+    r'root': 7  # 提示需要root权限，可能用于执行高权限操作
+}
 
-def find_suspicious_patterns(code):
+def detect_patterns(code, patterns):
     """
-    在代码中查找可疑的模式。
+    检测代码中是否包含指定的模式。
     """
-    # 定义正则表达式模式
-    patterns = {
-        r'from Crypto import Random': 6,
-        r'from Crypto\.Cipher import AES': 7,
-        r'import bitcoinrpc': 8,
-        r'import wmi': 7,
-        r'import ssl': 6,
-        r'import win32com\.shell\.shell as shell': 8,
-        r'import _thread': 6,
-        r'import signal': 6,
-        r'import platform': 5,
-        r'import urllib\.request': 5,
-        r'base64\.b64encode': 7,
-        r'base64\.b64decode': 7,
-        r'wmi\.WMI': 8,
-        r'bitcoinrpc\.connect_to_remote': 8,
-        r'ssl\.wrap_socket': 7,
-        r'socksocket\.connect': 9,
-        r'socksocket\.setproxy': 9,
-        r'socksocket\.__negotiatesocks5': 9,
-        r'socksocket\.__negotiatesocks4': 9,
-        r'socksocket\.__negotiatehttp': 9,
-        r'signal\.signal': 7,
-        r'irc\.send': 8,
-        r'irc\.recv': 8,
-        r'create_socket': 8,
-        r'connect_to': 8,
-        r'join_channels': 8,
-        r'quit_bot': 8,
-        r'parse': 8,
-        r'privmsg': 8,
-        r'pong': 7,
-        r'platform\.uname': 6,
-        r'requests\.get': 6,
-        r'urllib\.request\.urlretrieve': 6,
-        r'subprocess\.Popen': 8,
-        r'os\.path\.isfile': 6,
-        r'time\.sleep': 6,
-        r'nircmd': 6,
-        r'echo y \| del': 7,
-        r'rpc_user': 8,
-        r'rpc_password': 8,
-        r'RUSSIA!@#$RUSSIA!@#$RUSSIA!@#$RUSSIA!@#$': 9,
-        r'f4eqxs3tyrkba7f2\.onion': 9,
-        r'SOCKS5': 8,
-        r'CONNECT': 8,
-        r'kill bot': 7,
-        r'VSE': 7,
-        r'STD': 7,
-        r'irc\.freenode\.net': 8,
-        r'6667': 7,
-        r'##evilxyz': 8,
-        r'PRIVMSG': 8,
-        r'QUIT': 8,
-        r'Nickname is already in use': 7,
-        r'http://freegeoip\.net/json/': 7,
-        r'cmd\.exe': 7,
-        r'C:\\Windows\\system32\\cmd\.exe': 7,
-        r'awesome\.exe': 8,
-        r'HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run': 8
-    }
-
-    
-
-    # 查找所有模式
-    results = {key: pattern.findall(code) for key, pattern in patterns.items()}
+    results = {}
+    for pattern, score in patterns.items():
+        if re.search(pattern, code):
+            results[pattern] = score
     return results
-
-def generate_report(results):
-    """
-    根据检测结果生成报告。
-    """
-    report = []
-    
-    # 生成报告内容
-    for pattern_name, matches in results.items():
-        if matches:
-            report.append(f"Detected {pattern_name}:")
-            for match in matches:
-                report.append(f"  {match}")
-    
-    return '\n'.join(report)
 
 def main(file_path):
     """
@@ -118,20 +44,18 @@ def main(file_path):
         print(f"Error reading file {file_path}: {e}")
         return
 
-    # 预处理代码
-    preprocessed_code = preprocess_code(code)
+    # 检测字符串模式
+    string_results = detect_patterns(code, string_patterns)
 
-    # 查找可疑模式
-    suspicious_patterns = find_suspicious_patterns(preprocessed_code)
+    # 生成和打印报告
+    report = []
+    for pattern, score in string_results.items():
+        report.append(f"Detected pattern: '{pattern}' with score {score}")
 
-    # 生成报告
-    report = generate_report(suspicious_patterns)
-    
-    # 打印报告
-    print(report)
+    print('\n'.join(report))
 
 if __name__ == "__main__":
     # 指定待检测的代码文件路径
     # 在实际运行中，替换为你要检测的文件路径
-    target_file_path = 'main.py'
+    target_file_path = r"D:\AAAshuju\PycharmProjects\Detector\Trojan-Detector\src\Python\src_zys\Trojan\main.py"
     main(target_file_path)
