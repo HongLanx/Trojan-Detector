@@ -240,7 +240,7 @@ suspicious_patterns = {
 }
 
 #钓鱼攻击的特征模式
-suspicious_patterns = {
+Fishing_patterns = {
     "Imports": {
         "upper.io/db.v3": 7,  # 数据库操作包，直接访问和修改数据库，可能被用于数据泄露或篡改。
         "upper.io/db.v3/ql": 7,  # 与数据库操作相关，潜在的SQL注入风险。
@@ -268,7 +268,7 @@ suspicious_patterns = {
 }
 
 #载荷的特征模式
-suspicious_features = {
+Load_patterns = {
     "Imports": {
         "archive/zip": 3,  # 中等，压缩文件的处理可能用于提取潜在的恶意负载。
         "github.com/spencercw/go-xz": 5,  # 中等，处理XZ压缩数据，可能用于解压和处理恶意负载。
@@ -291,5 +291,81 @@ suspicious_features = {
         ".xz": 5,  # 中等，XZ压缩格式，可能用于处理和解压恶意负载。
         ".bz2": 5,  # 中等，BZIP2压缩格式，可能用于处理和解压恶意负载。
         "CrAU": 4,  # 中等，特定的标识符，可能用于检测恶意负载的格式。
+    }
+}
+
+#安全工具的特征模式
+SafeTool_patterns = {
+    "Imports": {
+        "github.com/panjf2000/ants/v2": 7,  # 高性能协程池，可能被用于大规模并发攻击。
+        "github.com/zan8in/oobadapter/pkg/oobadapter": 8,  # OOB适配器，可能用于远程通信或漏洞利用。
+        "retryhttpclient": 7,  # 网络请求重试机制，可能被恶意使用来隐藏网络流量。
+        "cyberspace": 7,  # 网络扫描和信息收集，可能引发安全隐患。
+        "oobadapter": 8,  # OOB通信，可能用于木马程序的隐蔽通信。
+        "syscall": 6,  # 系统调用接口，可能涉及低级别的系统操作或权限提升。
+        "crypto/tls": 6,  # 用于加密传输层安全协议，可能涉及数据拦截或篡改。
+    },
+    "FunctionCalls": {
+        "AbuseIPDB": 6,  # 检测IP是否存在恶意行为，可能用于识别或规避攻击目标。
+        "SetOOBAdapter": 7,  # 设置OOB适配器，可能与远程通信或漏洞检测有关。
+        "executeExpression": 7,  # 运行表达式或命令，可能与攻击行为相关。
+        "ants.NewPoolWithFunc": 8,  # 并发池管理函数指针，可能被用于并发执行大规模攻击任务。
+        "oobadapter.NewOOBAdapter": 8,  # 配置OOB适配器，可能涉及外部通信或命令接收。
+        "options.CreatePocList": 6,  # 生成PoC列表，可能是漏洞利用的准备工作。
+        "options.Targets.List": 6,  # 获取目标列表，可能用于多目标攻击或扫描。
+        "recover()": 6,  # 捕获panic，可能用于确保恶意软件异常后仍继续执行。
+        "runner.OnResult": 6,  # 处理任务结果，可能涉及漏洞或攻击结果的报告。
+        "runner.NotVulCallback": 5,  # 未识别到漏洞时的回调，可能用于攻击后的响应处理。
+        "retryhttpclient.Init": 7,  # 初始化网络客户端，可能隐藏恶意流量或进行网络攻击。
+        "cyberspace.New": 7,  # 创建网络空间对象，可能用于扫描或信息收集。
+        "report.NewJsonReport": 6,  # 生成JSON报告，可能用于导出敏感信息。
+        "report.NewReport": 6,  # 生成报告，可能用于攻击者的数据记录。
+        "oobadapter.OOBAdapter": 8,  # 初始化OOB适配器，可能用于木马程序的后门通信。
+        "runner.monitorTargets": 7,  # 监控目标系统，可能用于触发特定条件下的攻击。
+        "runner.Cyberspace.GetTargets": 7,  # 获取扫描或攻击目标，可能用于发现可攻击系统。
+        "utils.ReadFileLineByLine": 6,  # 逐行读取文件内容，可能构成数据泄露风险。
+        "tls.DialWithDialer": 7,  # 用于建立安全的TLS连接，可能被滥用来进行恶意通信。
+    },
+    "Strings": {
+        "path": 7,  # 路径操作，可能涉及文件系统访问与修改，风险较高。
+        "Run command failed": 6,  # 命令运行失败信息，可能指示异常行为，风险中等。
+        "OOB": 8,  # Out-of-Band 相关，可能涉及远程控制或漏洞利用。
+        "ReversePocs": 7,  # 反向扫描PoC，常用于渗透测试中的攻击技术。
+        "InsecureSkipVerify: true": 8,  # 跳过证书验证，可能导致安全漏洞或中间人攻击。
+    }
+}
+
+#道德黑客的特征模式
+Ethical_hacker_patterns = {
+    "Imports": {
+        "bufio": 1,  # `bufio` 包用于处理缓冲输入，通常没有安全风险。
+        "crypto/rand": 6,  # 密码学安全的伪随机数生成器，通常用于加密或安全相关任务
+        "encoding/binary": 4,  # 处理二进制数据，通常用于数据序列化
+        "math/big": 5,  # 大整数运算，可能用于加密或其他需要大数计算的场景
+        "github.com/miekg/dns": 7,  # DNS解析库，虽然合法但可以用于网络扫描等目的
+        "github.com/google/gopacket/pcap": 6  # pcap用于网络数据包捕获和分析，可能用于网络监控或数据收集
+    },
+    "FunctionCalls": {
+        "net.DialTimeout": 8,  # 发起网络连接请求，可能用于网络扫描或连接外部服务器。
+        "fmt.Fprintf": 6,  # 向连接发送数据，可能被用于发送恶意请求
+        "scanPorts": 7,  # 扫描端口，可能用于探测开放端口，属于潜在恶意行为。
+        "http.Get": 7,  # 发起HTTP GET请求，可能用于网络扫描或攻击。
+        "scan": 8,  # SQL注入扫描，明显的潜在恶意行为。
+        "net.LookupNS": 7,  # 执行DNS查询，可能用于探测域名信息和子域名，属于潜在风险行为。
+        "Fatalln": 6,  # Exits the program; if used with unvalidated data, could be risky.
+        "rand.Int": 6,  # 生成加密安全的随机整数，通常用于加密或安全相关任务
+        "binary.Read": 4,  # 从io.Reader中读取二进制数据并解析成指定类型
+        "rand.Read": 6,  # 生成加密安全的随机字节序列，通常用于加密或安全相关任务
+        "dns.Exchange": 7,  # 用于进行DNS查询，可能被恶意软件用来进行DNS投毒等攻击
+        "pcap.FindAllDevs": 6,  # 查找所有网络设备，这可能用于网络扫描或监控
+    },
+    "Strings": {
+        "' OR 1=1; --": 9,  # SQL注入Payload，明显的恶意代码。
+        "' OR '1'='1": 9,  # SQL注入Payload，明显的恶意代码。
+        "http://testphp.vulnweb.com/artists.php?artist=1": 8,  # 测试SQL注入的URL，包含潜在风险。
+        "host := os.Args[1]": 6,  # 通过命令行参数指定主机，可能用于恶意目的。
+        "port := os.Args[2]": 6,  # 通过命令行参数指定端口，可能用于恶意目的。
+        "kdb": 6,  # 可能与数据库或密钥库有关
+        "shadow": 7  # 通常与系统密码文件相关
     }
 }
