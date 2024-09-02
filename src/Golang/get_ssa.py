@@ -1,3 +1,4 @@
+import shutil
 import subprocess
 import re
 import os
@@ -21,20 +22,9 @@ def run_command(command, working_directory=os.getcwd()):
     return result.stdout, result.stderr
 
 
-def generate_ssa(go_file):
+def generate_ssa(go_file, go_mod_file=None):
     """自动检测缺失的 Go 模块依赖项并安装它们，然后运行 go mod tidy。"""
     module_dir = os.path.dirname(go_file)
-
-    # 初始化Tk界面
-    root = tk.Tk()
-    root.withdraw()  # 隐藏主窗口
-
-    # 弹出文件选择对话框，让用户选择一个go.mod文件
-    go_mod_file = filedialog.askopenfilename(
-        title="Select a go.mod file",
-        filetypes=[("Go Mod files", "go.mod")],  # 只允许选择go.mod文件
-        initialdir=module_dir  # 假设go.mod通常与go文件在同一目录
-    )
 
     # 检查用户是否选择了文件，如果没有，则在module_dir下创建一个新的go.mod文件
     if not go_mod_file:
@@ -45,16 +35,32 @@ def generate_ssa(go_file):
         run_command(['go', 'mod', 'init', os.path.basename(module_dir)], module_dir)
 
     go_mod_dir = os.path.dirname(go_mod_file)
+    if go_mod_dir != module_dir:
+        if not os.path.exists(os.path.join(module_dir, os.path.basename(go_mod_file))):
+            shutil.copy(go_mod_file, os.path.join(module_dir, os.path.basename(go_mod_file)))
+        go_mod_dir = module_dir
+
     print(f"Generating SSA for {go_file} using {go_mod_file}")
 
     print("Running initial SSA Generator...")
     stdout, stderr = run_command([SSA_path, '-build=F', go_file], module_dir)
 
-    if "no required module provides package" in stderr:
+    if "no required module provides package" or "missing go.sum entry" in stderr:
         missing_packages = re.findall(r"no required module provides package (.+?);", stderr)
+        missing_imports = re.findall(r"go mod download ([\w\.\-\/@]+)", stderr)
+        if missing_imports or missing_packages:
+            print("发现有模块缺失，正在下载...")
         for package in missing_packages:
             print(f"Installing missing package: {package}")
-            run_command(['go', 'get', package], module_dir)
+            install_stdout, install_stderr=run_command(['go', 'get', package], module_dir)
+            print(install_stdout)
+            print(install_stderr)
+
+        for package in missing_imports:
+            print(f"Attempting to download missing package: {package}")
+            install_stdout, install_stderr=run_command(['go', 'mod', 'download', package], module_dir)
+            print(install_stdout)
+            print(install_stderr)
 
         print("Running go mod tidy...")
         run_command(['go', 'mod', 'tidy', '-e'], go_mod_dir)
@@ -72,21 +78,26 @@ def generate_ssa(go_file):
     print(stderr)
 
 
-def choose_file_and_generate_ssa():
+def choose_go_project_and_generate_ssa():
     # 初始化Tk界面
     root = tk.Tk()
     root.withdraw()  # 隐藏主窗口
 
-    # 弹出文件选择对话框，让用户选择一个Go文件
-    file_path = filedialog.askopenfilename(
-        title="Select a Go file",
-        filetypes=[("Go files", "*.go")],  # 只允许选择Go文件
-        initialdir=os.getcwd()  # 初始目录设为当前工作目录
+    folder_selected = filedialog.askdirectory(title="Select A Go Project Folder",
+                                              initialdir=os.getcwd())  # 初始目录设为当前工作目录
+    print("请选择项目go.mod文件")
+    # 弹出文件选择对话框，让用户选择一个go.mod文件
+    go_mod_file = filedialog.askopenfilename(
+        title="Select a go.mod file",
+        filetypes=[("Go Mod files", "go.mod")],  # 只允许选择go.mod文件
+        initialdir=folder_selected  # 假设go.mod通常与go文件在同一目录
     )
-
-    # 用户选择了文件，调用generate_ssa函数
-    if file_path:
-        print(f"Selected file: {file_path}")
-        generate_ssa(file_path)  # 假设已定义，用于生成SSA
+    if folder_selected:
+        for root, _, files in os.walk(folder_selected):
+            for file_name in files:
+                file_path = os.path.join(root, file_name)
+                if file_path.split('.')[-1] == "go":
+                    generate_ssa(file_path, go_mod_file)
+        print(f"已处理完项目: {folder_selected}")
     else:
-        print("No file selected.")
+        print("未选择文件夹")
