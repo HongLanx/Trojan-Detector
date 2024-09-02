@@ -259,8 +259,9 @@ obfuscation_patterns = {
 }
 
 
-# 钓鱼攻击的特征模式
-phishing_patterns = {
+
+#钓鱼攻击的特征模式
+Fishing_patterns = {
     "Imports": {
         "upper.io/db.v3": 7,  # 数据库操作包，直接访问和修改数据库，可能被用于数据泄露或篡改。
         "upper.io/db.v3/ql": 7,  # 与数据库操作相关，潜在的SQL注入风险。
