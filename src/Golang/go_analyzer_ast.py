@@ -1,7 +1,7 @@
 import json
 import re
 import os
-import JSONAnalyzer
+import json_analyzer
 
 def process_ast_text(input_text):
     # 使用正则表达式去除每行开头的数字、点和多余的空格
@@ -72,6 +72,6 @@ def convert_ast_to_json(file_path):
         json.dump(ast_dict, f, indent=4, ensure_ascii=False)
 
     # 再解析JSON文件，提取Import，函数调用等关键信息
-    info = JSONAnalyzer.extract_key_info(json_output_path)
+    info = json_analyzer.extract_key_info(json_output_path)
     return info
 
