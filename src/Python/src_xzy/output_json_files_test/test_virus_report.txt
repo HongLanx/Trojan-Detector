@@ -1,0 +1,20 @@
+{
+    "test_id": "001",
+    "severity": "Medium",
+    "text": "Possible binding to all interfaces."
+}
+{
+    "test_id": "002",
+    "severity": "Low",
+    "text": "Possible hardcoded password: 'SuperSecret123!'"
+}
+{
+    "test_id": "002",
+    "severity": "Low",
+    "text": "Possible hardcoded password: 'token12345'"
+}
+{
+    "test_id": "003",
+    "severity": "Medium",
+    "text": "Possible SQL injection vector through string-based query construction."
+}
