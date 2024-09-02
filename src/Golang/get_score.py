@@ -6,6 +6,7 @@ import re
 # 第一次匹配要求完全匹配，若匹配成功则加上对应的分数，对于Imports和string，多次匹配成功只记作匹配成功1次
 # 由于JSON内的calls可能出现多次，对于calls和FunctionCalls的匹配，如果是第一次匹配，则总恶意评分加上对应的分数，后面每多匹配一次，在总恶意评分只加1
 # 对于字符串，进行两轮匹配，分别是精确匹配和模糊匹配，模糊匹配的加分值比精确匹配低5分
+
 def get_score_from_info(json_data, pattern):
     # 解析JSON数据
     project_info = json.loads(json_data)

@@ -8,16 +8,16 @@ func init():
 1:                                                           init.start P:1 S:1
 	*init$guard = true:bool
 	t1 = encoding/base64.init()                                          ()
-	t2 = github.com/gobuffalo/packr.init()                               ()
-	t3 = io.init()                                                       ()
-	t4 = log.init()                                                      ()
-	t5 = math/rand.init()                                                ()
-	t6 = net/http.init()                                                 ()
+	t2 = math/rand.init()                                                ()
+	t3 = net/http.init()                                                 ()
+	t4 = github.com/gobuffalo/packr.init()                               ()
+	t5 = io.init()                                                       ()
+	t6 = os/exec.init()                                                  ()
 	t7 = os.init()                                                       ()
-	t8 = os/exec.init()                                                  ()
-	t9 = os/user.init()                                                  ()
-	t10 = strings.init()                                                 ()
-	t11 = syscall.init()                                                 ()
+	t8 = strings.init()                                                  ()
+	t9 = syscall.init()                                                  ()
+	t10 = os/user.init()                                                 ()
+	t11 = log.init()                                                     ()
 	t12 = time.init()                                                    ()
 	t13 = new [3]string (slicelit)                               *[3]string
 	t14 = &t13[0:int]                                               *string
@@ -35,7 +35,7 @@ func init():
 
 # Name: command-line-arguments.init#1
 # Package: command-line-arguments
-# Location: C:\Users\林文秋\GolandProjects\awesomeProject\test.go:22:6
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test_encrypted.go:22:6
 func init#1():
 0:                                                                entry P:0 S:0
 	t0 = time.Now()                                               time.Time
@@ -45,7 +45,7 @@ func init#1():
 
 # Name: command-line-arguments.main
 # Package: command-line-arguments
-# Location: C:\Users\林文秋\GolandProjects\awesomeProject\test.go:26:6
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test_encrypted.go:26:6
 func main():
 0:                                                                entry P:0 S:0
 	go serveAssets()
@@ -65,7 +65,7 @@ func main():
 
 # Name: command-line-arguments.decode
 # Package: command-line-arguments
-# Location: C:\Users\林文秋\GolandProjects\awesomeProject\test.go:33:6
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test_encrypted.go:33:6
 func decode(s string) string:
 0:                                                                entry P:0 S:0
 	t0 = *encoding/base64.StdEncoding             *encoding/base64.Encoding
@@ -77,7 +77,7 @@ func decode(s string) string:
 
 # Name: command-line-arguments.serveAssets
 # Package: command-line-arguments
-# Location: C:\Users\林文秋\GolandProjects\awesomeProject\test.go:38:6
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test_encrypted.go:38:6
 func serveAssets():
 0:                                                                entry P:0 S:0
 	t0 = github.com/gobuffalo/packr.NewBox("./assets":string) github.com/gobuffalo/packr.Box
@@ -89,7 +89,7 @@ func serveAssets():
 
 # Name: command-line-arguments.manageFiles
 # Package: command-line-arguments
-# Location: C:\Users\林文秋\GolandProjects\awesomeProject\test.go:44:6
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test_encrypted.go:44:6
 func manageFiles(urls ...string):
 0:                                                                entry P:0 S:2
 	t0 = os/user.Current()                           (*os/user.User, error)
@@ -174,7 +174,7 @@ func manageFiles(urls ...string):
 
 # Name: command-line-arguments.downloadFile
 # Package: command-line-arguments
-# Location: C:\Users\林文秋\GolandProjects\awesomeProject\test.go:67:6
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test_encrypted.go:67:6
 # Recover: 3
 # Locals:
 #   0:	t0 error
@@ -224,7 +224,7 @@ func downloadFile(filepath string, url string) error:
 
 # Name: command-line-arguments.toBool
 # Package: command-line-arguments
-# Location: C:\Users\林文秋\GolandProjects\awesomeProject\test.go:82:6
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test_encrypted.go:82:6
 func toBool(s string) bool:
 0:                                                                entry P:0 S:0
 	t0 = decode(s)                                                   string
