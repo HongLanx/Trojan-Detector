@@ -488,19 +488,17 @@ trojan_patterns = {
     "Strings": {
         "skip-cert-verify": 3,  # 代理配置字段，涉及敏感配置
         "Trojan": 4,  # 与木马相关
-        "cmd /c ": 5,  # 执行 Windows 命令的参数，可能用于执行任意命令或隐藏恶意操作
-        "received": 2,  # 用于 ICMP 消息的数据
+        "received": 4,  # 用于 ICMP 消息的数据
         "/tmp/.bash_history": 5,  # 用于读取用户的 Bash 历史记录，可能包含敏感信息
-        "0.0.0.0": 2,  # 表示监听所有网络接口
+        "0.0.0.0": 5,  # 表示监听所有网络接口
         "shellcode": 9,  # 恶意代码的一部分，通常用于攻击
         "msfvenom": 6,  # 这个工具常用于生成恶意负载
         "Windows TCP Backdoor": 7,  # 表明程序的设计目的是创建一个 TCP 后门
         "Listening on %s:%d": 6,  # 程序将在特定的 IP 地址和端口上监听连接
         "Monitoring file": 7,  # 通知监视文件的状态
-        "I'm sorry to inform you...": 5,  # 启动时的通知消息
         "Would you grant me a permission to [system information; files lookup; ]": 5,  # 用于请求数据访问权限
         "wmic partition get name,size,type": 6,  # 用于获取磁盘分区信息
-        "https://discord.com/api/webhooks/y lo que sigue": 6,  # 用来将数据发送到攻击者控制的Discord频道
+        "https://discord.com/api": 6,  # 用来将数据发送到攻击者控制的Discord频道
         "chromeupdate.exe": 7,  # 恶意文件名，伪装成Chrome更新程序
         "lscpu": 5,  # 收集系统硬件信息
         "lsblk": 5,  # 收集设备信息
@@ -508,69 +506,73 @@ trojan_patterns = {
         "TextSegmentPadding": 6,  # 感染算法的名称
         "PtNoteToPtLoad": 6,  # 感染算法的名称
         "/proc/self/exe": 5,  # 用于获取当前进程的路径,常用于隐藏或伪装进程
-        "socks5://127.0.0.1:9050": 5,  # 用于Tor代理的配置,代理通常用于隐藏真实来源
+        "socks5://127.0.0.1": 5,  # 用于Tor代理的配置,代理通常用于隐藏真实来源
         "https://9.9.9.9/dns-query": 4,  # DoH服务器配置,加密 DNS 查询以防止流量分析
-        "23382325dd472aed14518ec5b8c8f4c2293e114a": 5,  # Bitly API 的 access token
     }
 }
 
 # 勒索软件
 ransomware_patterns = {
     "Imports": {
-        "crypto/rsa": 5,  # 被用于恶意解密或加密敏感信息，可能存在风险
-        "crypto/rand": 2,  # 可能被恶意代码用来生成不易预测的密钥
-        "crypto/sha256": 3,  # 在恶意代码中可能用于隐藏数据或生成伪造签名
-        "math/big": 2,  # 在恶意代码中可能被用于处理涉及到密钥的复杂运算
-        "github.com/btcsuite/btcd/btcec": 5,  # 用于生成和管理比特币的私钥
-        "github.com/btcsuite/btcutil": 5,  # 用于生成和管理比特币的地址
-        "github.com/skratchdot/open-golang/open": 6,  # 用于打开HTML页面（通常可能是勒索信息或支付页面）
-        "github.com/gustavohenrique/ransomware/cryptography": 9,
-        "github.com/gustavohenrique/ransomware/util": 9,
-        "github.com/ecies/go": 6,  # 这种加密技术可以被用于合法或恶意目的
-        "github.com/NextronSystems/ransomware-simulator/lib/note": 8,  # 生成勒索信息
-        "github.com/NextronSystems/ransomware-simulator/lib/shadowcopy": 8,  # 删除卷影拷贝，防止数据恢复
-        "github.com/NextronSystems/ransomware-simulator/lib/simulatemacro": 8,  # 宏执行用于模拟恶意软件的传播路径
+        "crypto/rsa": 7,  # 用于加密文件，典型的勒索软件操作
+        "crypto/rand": 4,  # 生成加密用的随机数，常见于加密过程
+        "crypto/sha256": 5,  # 常用于生成文件校验值，确保文件未被篡改
+        "math/big": 3,  # 处理大数运算，通常用于密码学相关操作
+        "github.com/btcsuite/btcd/btcec": 6,  # 处理比特币交易，可能用于处理赎金支付
+        "github.com/btcsuite/btcutil": 6,  # 同上，用于比特币地址和交易管理
+        "github.com/skratchdot/open-golang/open": 6,  # 打开文件或URL，可能用于显示勒索说明
+        "github.com/gustavohenrique/ransomware/cryptography": 9,  # 明确的勒索软件加密库
+        "github.com/gustavohenrique/ransomware/util": 9,  # 同上，用于勒索软件的实用工具
+        "github.com/ecies/go": 6,  # 高级加密标准，可能用于加密文件
+        "github.com/NextronSystems/ransomware-simulator/lib/note": 8,  # 用于生成和显示勒索说明的库
+        "github.com/NextronSystems/ransomware-simulator/lib/shadowcopy": 8,  # 删除系统恢复点，防止文件恢复
+        "github.com/NextronSystems/ransomware-simulator/lib/simulatemacro": 8,  # 模拟宏攻击，用于传播勒索软件
+        "github.com/huin/goupnp": 4,  # UPnP库，可能用于网络穿透，助攻勒索软件的远程控制
+        "github.com/go-sql-driver/mysql": 4,  # 数据库驱动，可能用于存储被加密文件的信息
+        "github.com/spf13/afero": 5,  # 文件系统抽象库，用于操作文件系统中的文件
+        "github.com/elastic/beats/v7/libbeat/common": 5  # 用于收集系统数据，可能用于监控被勒索系统的状态
     },
     "FunctionCalls": {
-        "handler": 7,  # 解密非法获得的数据或生成新的恶意密钥对
-        "CreatePrivateKey": 6,  # 被用来生成新的比特币地址，用于接受赎金或非法转账
-        "encryptDir": 9,  # 在非恶意场景下非常罕见
-        "decryptDir": 9,  # 在非恶意场景下非常罕见
-        "util.GenerateRansomwareHtmlPage": 9,  # 直接说明生成的是勒索信息页面
-        "encryptOrDecrypt": 9,  # 核心功能是加密/解密文件，是勒索软件的关键操作
-        "generateECIESKeyPair": 5,  # 用于加密受害者数据的关键步骤
-        "compileEncryptor": 5,  # 确保攻击者可以控制加密过程
-        "compileDecryptor": 5,  # 确保攻击者可以控制解密过程
-        "setWallpaper": 7,  # 通常用来显示勒索成功的信息或威胁性警告
-        "getDrives": 8,  # 尝试加密整个文件系统，以达到勒索目的
-        "deco": 7,  # 这是一个勒索软件解密器
-        "enco": 7,  # 加密文件内容，并创建勒索信息文件
-        "copyExecutable": 7,  # 将当前可执行文件复制到新的路径
+        "handler": 5,  # 通常用于处理加密或解密操作
+        "CreatePrivateKey": 5,  # 生成私钥，可能用于创建唯一的解密密钥
+        "encryptDir": 9,  # 加密指定目录，典型的勒索操作
+        "decryptDir": 9,  # 解密操作，通常配合赎金支付后使用
+        "util.GenerateRansomwareHtmlPage": 9,  # 生成勒索通知页面，高风险行为
+        "encryptOrDecrypt": 8,  # 文件加密或解密，核心勒索软件功能
+        "generateECIESKeyPair": 6,  # 生成加密密钥对，用于文件加密
+        "compileEncryptor": 6,  # 编译加密模块，确保勒索软件能有效执行
+        "compileDecryptor": 6,  # 编译解密模块，仅供赎金支付后使用
+        "setWallpaper": 7,  # 更改桌面壁纸为勒索通知，提高用户警觉
+        "getDrives": 8,  # 获取系统驱动器列表，用于全盘加密
+        "deco": 7,  # 解密操作，一般在支付赎金后提供
+        "enco": 7,  # 加密操作，加密目标文件
+        "copyExecutable": 7,  # 复制可执行文件到其他位置，用于持久化和自启动
+        "shutdownSystems": 7  # 关闭系统服务，增加恢复难度
     },
     "Strings": {
-        "Private Key": 5,  # 比特币私钥和地址
-        "Public Address": 5,  # 比特币地址
-        "cryptography.EncryptDir": 8,  # 几乎完全是勒索软件的行为特征
-        "cryptography.DecryptDir": 8,  # 几乎完全是勒索软件的行为特征
-        "RANSOMWARE_URL": 6,  # 从环境变量中读取勒索软件服务器的URL
-        "RANSOMWARE_PORT": 6,  # 使用环境变量配置端口号使得勒索软件可以灵活部署和运行
-        "privateKeyFilename": 4,  # 直接指向密钥管理文件
-        "publicKeyFilename": 4,  # 直接指向密钥管理文件
-        "paid": 7,  # 用于标识赎金是否已经支付
-        "startupBanner": 4,  # 这种横幅通常用于标识特定的恶意软件家族或工具集
-        "configuration.PublicKey": 9,  # 确保攻击者的加密操作有效且不可逆
-        "configuration.PrivateKey": 9,  # 确保攻击者的加密操作有效且不可逆
-        "PowerShell": 5,  # 直接使用PowerShell更改系统设置
-        ".ruscary": 7,  # 文件加密时使用的后缀名
-        "key.key": 6,  # 删除它是为了阻止用户解密文件
-        "Don't simulate volume shadow copy deletion": 7,
-        "Don't simulate document encryption": 7,
-        "Don't drop pseudo ransomware note": 7,
-        "Run Ransomware Simulator": 3,  # 执行主要的模拟功能
-        "vssadmin delete shadows": 8,  # 恶意删除卷影副本会影响系统的恢复能力
-        "Copying executable as pseudo WINWORD.EXE": 8,  # 日志记录伪装
-        "Staging execution via WINWORD.EXE: %s": 8,  # 伪装成 WINWORD.EXE 执行恶意命令
-        "Dropping ransomware note to %s...": 8,  # 日志记录正在写入勒索通知的行为
+        "Private Key": 7,  # 用于加密文件的私钥
+        "Public Address": 7,  # 比特币公共地址，用于接收赎金
+        "EncryptDir": 9,  # 直接相关于加密文件目录
+        "cDecryptDir": 9,  # 直接相关于解密文件目录
+        "RANSOMWARE_URL": 7,  # 勒索软件C&C服务器的URL
+        "RANSOMWARE_PORT": 7,  # 勒索软件通信端口
+        "privateKeyFilename": 5,  # 私钥文件名，存储加密密钥
+        "publicKeyFilename": 5,  # 公钥文件名，分发给受害者以验证支付
+        "paid": 8,  # 用于确认赎金支付的状态
+        "startupBanner": 6,  # 启动时显示的勒索通知
+        "-X 'Prince-Ransomware/configuration.PublicKey=%s'": 9,  # 用于配置攻击者的公钥
+        "-X 'Prince-Decryptor/configuration.PrivateKey=%s'": 9,  # 用于配置攻击者的私钥
+        "PowerShell": 6,  # 使用PowerShell执行系统级操作
+        ".ruscary": 8,  # 文件后缀，标记加密过的文件
+        "key.key": 7,  # 加密密钥文件名
+        "shadow copy deletion": 8,  # 指示删除影子副本
+        "document encryption": 8,  # 指示加密文档
+        "ransomware": 8,  # 勒索通知
+        "Run Ransomware": 4,  # 运行勒索软件模拟器
+        "vssadmin delete shadows": 9,  # 删除系统恢复点，常见于勒索软件操作
+        "Copying executable": 8,  # 伪装执行文件，提高潜在的欺骗性
+        "Staging execution": 8,  # 使用伪装的Office程序执行恶意操作
+        "Dropping ransomware": 8  # 生成勒索通知，提醒用户支付赎金
     }
 }
 
@@ -644,7 +646,3 @@ kernel_patterns = {
         "undocumented API": 7,  # 未公开的API调用，可能涉及隐秘的系统功能利用
     }
 }
-
-
-
-
