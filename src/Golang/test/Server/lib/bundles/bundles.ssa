@@ -1,0 +1,114 @@
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+0:                                                                entry P:0 S:2
+	t0 = *init$guard                                                   bool
+	if t0 goto 2 else 1
+1:                                                           init.start P:1 S:1
+	*init$guard = true:bool
+	t1 = embed.init()                                                    ()
+	t2 = fmt.init()                                                      ()
+	t3 = os.init()                                                       ()
+	jump 2
+2:                                                            init.done P:2 S:0
+	return
+
+# Name: command-line-arguments.WriteCert
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\Server\lib\bundles\bundles.go:16:6
+func WriteCert():
+0:                                                                entry P:0 S:2
+	t0 = os.Create("server-cert.pem":string)              (*os.File, error)
+	t1 = extract t0 #0                                             *os.File
+	t2 = extract t0 #1                                                error
+	t3 = t2 != nil:error                                               bool
+	if t3 goto 1 else 2
+1:                                                              if.then P:1 S:0
+	t4 = new [1]any (varargs)                                       *[1]any
+	t5 = &t4[0:int]                                                    *any
+	t6 = change interface any <- error (t2)                             any
+	*t5 = t6
+	t7 = slice t4[:]                                                  []any
+	t8 = fmt.Println(t7...)                              (n int, err error)
+	return
+2:                                                              if.done P:1 S:2
+	t9 = *server_cert                                                []byte
+	t10 = (*os.File).Write(t1, t9)                       (n int, err error)
+	t11 = extract t10 #0                                                int
+	t12 = extract t10 #1                                              error
+	t13 = t12 != nil:error                                             bool
+	if t13 goto 3 else 4
+3:                                                              if.then P:1 S:0
+	t14 = new [1]any (varargs)                                      *[1]any
+	t15 = &t14[0:int]                                                  *any
+	t16 = change interface any <- error (t12)                           any
+	*t15 = t16
+	t17 = slice t14[:]                                                []any
+	t18 = fmt.Println(t17...)                            (n int, err error)
+	t19 = (*os.File).Close(t1)                                        error
+	return
+4:                                                              if.done P:1 S:2
+	t20 = (*os.File).Close(t1)                                        error
+	t21 = t20 != nil:error                                             bool
+	if t21 goto 5 else 6
+5:                                                              if.then P:1 S:0
+	t22 = new [1]any (varargs)                                      *[1]any
+	t23 = &t22[0:int]                                                  *any
+	t24 = change interface any <- error (t20)                           any
+	*t23 = t24
+	t25 = slice t22[:]                                                []any
+	t26 = fmt.Println(t25...)                            (n int, err error)
+	return
+6:                                                              if.done P:1 S:0
+	return
+
+# Name: command-line-arguments.WriteCertKey
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\Server\lib\bundles\bundles.go:37:6
+func WriteCertKey():
+0:                                                                entry P:0 S:2
+	t0 = os.Create("server-key.pem":string)               (*os.File, error)
+	t1 = extract t0 #0                                             *os.File
+	t2 = extract t0 #1                                                error
+	t3 = t2 != nil:error                                               bool
+	if t3 goto 1 else 2
+1:                                                              if.then P:1 S:0
+	t4 = new [1]any (varargs)                                       *[1]any
+	t5 = &t4[0:int]                                                    *any
+	t6 = change interface any <- error (t2)                             any
+	*t5 = t6
+	t7 = slice t4[:]                                                  []any
+	t8 = fmt.Println(t7...)                              (n int, err error)
+	return
+2:                                                              if.done P:1 S:2
+	t9 = *server_key                                                 []byte
+	t10 = (*os.File).Write(t1, t9)                       (n int, err error)
+	t11 = extract t10 #0                                                int
+	t12 = extract t10 #1                                              error
+	t13 = t12 != nil:error                                             bool
+	if t13 goto 3 else 4
+3:                                                              if.then P:1 S:0
+	t14 = new [1]any (varargs)                                      *[1]any
+	t15 = &t14[0:int]                                                  *any
+	t16 = change interface any <- error (t12)                           any
+	*t15 = t16
+	t17 = slice t14[:]                                                []any
+	t18 = fmt.Println(t17...)                            (n int, err error)
+	t19 = (*os.File).Close(t1)                                        error
+	return
+4:                                                              if.done P:1 S:2
+	t20 = (*os.File).Close(t1)                                        error
+	t21 = t20 != nil:error                                             bool
+	if t21 goto 5 else 6
+5:                                                              if.then P:1 S:0
+	t22 = new [1]any (varargs)                                      *[1]any
+	t23 = &t22[0:int]                                                  *any
+	t24 = change interface any <- error (t20)                           any
+	*t23 = t24
+	t25 = slice t22[:]                                                []any
+	t26 = fmt.Println(t25...)                            (n int, err error)
+	return
+6:                                                              if.done P:1 S:0
+	return
+

