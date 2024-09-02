@@ -12,6 +12,8 @@ require (
 	github.com/gobuffalo/packd v0.3.0 // indirect
 	github.com/joho/godotenv v1.3.0 // indirect
 	github.com/rogpeppe/go-internal v1.3.0 // indirect
+	github.com/stretchr/testify v1.7.0 // indirect
 	golang.org/x/mod v0.20.0 // indirect
 	golang.org/x/sync v0.8.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

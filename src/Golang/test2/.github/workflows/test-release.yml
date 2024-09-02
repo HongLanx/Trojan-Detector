@@ -1,0 +1,11 @@
+name: test, scan and release
+
+on: [push]
+
+jobs:
+  go-test-scan:
+    uses: jreisinger/github-actions/.github/workflows/go-test-scan.yml@main
+  go-release:
+    needs:
+      - go-test-scan
+    uses: jreisinger/github-actions/.github/workflows/go-release.yml@main

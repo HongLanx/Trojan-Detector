@@ -1,0 +1,279 @@
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+0:                                                                entry P:0 S:2
+	t0 = *init$guard                                                   bool
+	if t0 goto 2 else 1
+1:                                                           init.start P:1 S:1
+	*init$guard = true:bool
+	t1 = bufio.init()                                                    ()
+	t2 = flag.init()                                                     ()
+	t3 = fmt.init()                                                      ()
+	t4 = log.init()                                                      ()
+	t5 = net.init()                                                      ()
+	t6 = os.init()                                                       ()
+	t7 = sync.init()                                                     ()
+	t8 = github.com/jreisinger/checkip/check.init()                      ()
+	t9 = github.com/jreisinger/checkip/cli.init()                        ()
+	t10 = flag.Bool("j":string, false:bool, "detailed output i...":string) *bool
+	*j = t10
+	t11 = flag.Int("p":string, 5:int, "check `n` IP addr...":string)   *int
+	*p = t11
+	t12 = init#1()                                                       ()
+	jump 2
+2:                                                            init.done P:2 S:0
+	return
+
+# Name: command-line-arguments.init#1
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test2\checkip.go:17:6
+func init#1():
+0:                                                                entry P:0 S:0
+	t0 = log.SetFlags(0:int)                                             ()
+	t1 = *os.Args                                                  []string
+	t2 = &t1[0:int]                                                 *string
+	t3 = *t2                                                         string
+	t4 = t3 + ": ":string                                            string
+	t5 = log.SetPrefix(t4)                                               ()
+	return
+
+# Name: command-line-arguments.main$1
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test2\checkip.go:39:5
+# Parent: main
+# Free variables:
+#   0:	ipaddrsCh *chan net.IP
+#   1:	wg *sync.WaitGroup
+func main$1():
+0:                                                                entry P:0 S:0
+	t0 = flag.Args()                                               []string
+	t1 = *ipaddrsCh                                             chan net.IP
+	t2 = getIpAddrs(t0, t1)                                              ()
+	t3 = (*sync.WaitGroup).Done(wg)                                      ()
+	return
+
+# Name: command-line-arguments.main$2
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test2\checkip.go:46:6
+# Parent: main
+# Free variables:
+#   0:	ipaddrsCh *chan net.IP
+#   1:	resultsCh *chan IpAndResults
+#   2:	wg *sync.WaitGroup
+# Locals:
+#   0:	t21 IpAndResults
+func main$2():
+0:                                                                entry P:0 S:1
+	t0 = *ipaddrsCh                                             chan net.IP
+	jump 1
+1:                                                       rangechan.loop P:2 S:2
+	t1 = <-t0,ok                                        (k net.IP, ok bool)
+	t2 = extract t1 #1                                                 bool
+	if t2 goto 2 else 3
+2:                                                       rangechan.body P:1 S:1
+	t3 = extract t1 #0                                               net.IP
+	t4 = *github.com/jreisinger/checkip/check.Funcs []github.com/jreisinger/checkip/check.Func
+	t5 = github.com/jreisinger/checkip/cli.Run(t4, t3) (github.com/jreisinger/checkip/cli.Checks, []error)
+	t6 = extract t5 #0             github.com/jreisinger/checkip/cli.Checks
+	t7 = extract t5 #1                                              []error
+	t8 = len(t7)                                                        int
+	jump 4
+3:                                                       rangechan.done P:1 S:0
+	t9 = (*sync.WaitGroup).Done(wg)                                      ()
+	return
+4:                                                      rangeindex.loop P:2 S:2
+	t10 = phi [2: -1:int, 5: t11] #rangeindex                           int
+	t11 = t10 + 1:int                                                   int
+	t12 = t11 < t8                                                     bool
+	if t12 goto 5 else 6
+5:                                                      rangeindex.body P:1 S:1
+	t13 = &t7[t11]                                                   *error
+	t14 = *t13                                                        error
+	t15 = new [1]any (varargs)                                      *[1]any
+	t16 = &t15[0:int]                                                  *any
+	t17 = change interface any <- error (t14)                           any
+	*t16 = t17
+	t18 = slice t15[:]                                                []any
+	t19 = log.Print(t18...)                                              ()
+	jump 4
+6:                                                      rangeindex.done P:1 S:1
+	t20 = *resultsCh                                      chan IpAndResults
+	t21 = local IpAndResults (complit)                        *IpAndResults
+	t22 = &t21.IP [#0]                                              *net.IP
+	t23 = &t21.Results [#1]       *github.com/jreisinger/checkip/cli.Checks
+	*t22 = t3
+	*t23 = t6
+	t24 = *t21                                                 IpAndResults
+	send t20 <- t24
+	jump 1
+
+# Name: command-line-arguments.main$3
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test2\checkip.go:58:5
+# Parent: main
+# Free variables:
+#   0:	wg *sync.WaitGroup
+#   1:	resultsCh *chan IpAndResults
+func main$3():
+0:                                                                entry P:0 S:0
+	t0 = (*sync.WaitGroup).Wait(wg)                                      ()
+	t1 = *resultsCh                                       chan IpAndResults
+	t2 = close(t1)                                                       ()
+	return
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test2\checkip.go:30:6
+# Locals:
+#   0:	t20 IpAndResults
+func main():
+0:                                                                entry P:0 S:1
+	t0 = flag.Parse()                                                    ()
+	t1 = new chan net.IP (ipaddrsCh)                           *chan net.IP
+	t2 = make chan net.IP 0:int                                 chan net.IP
+	*t1 = t2
+	t3 = new chan IpAndResults (resultsCh)               *chan IpAndResults
+	t4 = make chan IpAndResults 0:int                     chan IpAndResults
+	*t3 = t4
+	t5 = new sync.WaitGroup (wg)                            *sync.WaitGroup
+	t6 = (*sync.WaitGroup).Add(t5, 1:int)                                ()
+	t7 = make closure main$1 [t1, t5]                                func()
+	go t7()
+	jump 1
+1:                                                             for.loop P:2 S:2
+	t8 = phi [0: 0:int, 2: t14] #i                                      int
+	t9 = *p                                                            *int
+	t10 = *t9                                                           int
+	t11 = t8 < t10                                                     bool
+	if t11 goto 2 else 3
+2:                                                             for.body P:1 S:1
+	t12 = (*sync.WaitGroup).Add(t5, 1:int)                               ()
+	t13 = make closure main$2 [t1, t3, t5]                           func()
+	go t13()
+	t14 = t8 + 1:int                                                    int
+	jump 1
+3:                                                             for.done P:1 S:1
+	t15 = make closure main$3 [t5, t3]                               func()
+	go t15()
+	t16 = *t3                                             chan IpAndResults
+	jump 4
+4:                                                       rangechan.loop P:3 S:2
+	t17 = <-t16,ok                                (k IpAndResults, ok bool)
+	t18 = extract t17 #1                                               bool
+	if t18 goto 5 else 6
+5:                                                       rangechan.body P:1 S:2
+	t19 = extract t17 #0                                       IpAndResults
+	t20 = local IpAndResults (c)                              *IpAndResults
+	*t20 = t19
+	t21 = *j                                                          *bool
+	t22 = *t21                                                         bool
+	if t22 goto 7 else 8
+6:                                                       rangechan.done P:1 S:0
+	return
+7:                                                              if.then P:1 S:1
+	t23 = &t20.Results [#1]       *github.com/jreisinger/checkip/cli.Checks
+	t24 = *t23                     github.com/jreisinger/checkip/cli.Checks
+	t25 = &t20.IP [#0]                                              *net.IP
+	t26 = *t25                                                       net.IP
+	t27 = (github.com/jreisinger/checkip/cli.Checks).PrintJSON(t24, t26) ()
+	jump 4
+8:                                                              if.else P:1 S:1
+	t28 = &t20.IP [#0]                                              *net.IP
+	t29 = *t28                                                       net.IP
+	t30 = (net.IP).String(t29)                                       string
+	t31 = new [1]any (varargs)                                      *[1]any
+	t32 = &t31[0:int]                                                  *any
+	t33 = make any <- string (t30)                                      any
+	*t32 = t33
+	t34 = slice t31[:]                                                []any
+	t35 = fmt.Printf("--- %s ---\n":string, t34...)      (n int, err error)
+	t36 = &t20.Results [#1]       *github.com/jreisinger/checkip/cli.Checks
+	t37 = *t36                     github.com/jreisinger/checkip/cli.Checks
+	t38 = (github.com/jreisinger/checkip/cli.Checks).SortByName(t37)     ()
+	t39 = &t20.Results [#1]       *github.com/jreisinger/checkip/cli.Checks
+	t40 = *t39                     github.com/jreisinger/checkip/cli.Checks
+	t41 = (github.com/jreisinger/checkip/cli.Checks).PrintSummary(t40)   ()
+	t42 = &t20.Results [#1]       *github.com/jreisinger/checkip/cli.Checks
+	t43 = *t42                     github.com/jreisinger/checkip/cli.Checks
+	t44 = (github.com/jreisinger/checkip/cli.Checks).PrintMalicious(t43) ()
+	jump 4
+
+# Name: command-line-arguments.getIpAddrs
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test2\checkip.go:77:6
+# Recover: 1
+func getIpAddrs(args []string, ipaddrsCh chan net.IP):
+0:                                                                entry P:0 S:2
+	defer close(ipaddrsCh)
+	t0 = len(args)                                                      int
+	t1 = t0 == 0:int                                                   bool
+	if t1 goto 2 else 4
+1:                                                              recover P:0 S:0
+	return
+2:                                                              if.then P:1 S:1
+	t2 = *os.Stdin                                                 *os.File
+	t3 = make io.Reader <- *os.File (t2)                          io.Reader
+	t4 = bufio.NewScanner(t3)                                *bufio.Scanner
+	jump 7
+3:                                                              if.done P:3 S:0
+	rundefers
+	return
+4:                                                              if.else P:1 S:1
+	t5 = len(args)                                                      int
+	jump 11
+5:                                                             for.body P:1 S:2
+	t6 = (*bufio.Scanner).Text(t4)                                   string
+	t7 = net.ParseIP(t6)                                             net.IP
+	t8 = t7 == nil:net.IP                                              bool
+	if t8 goto 8 else 9
+6:                                                             for.done P:1 S:2
+	t9 = (*bufio.Scanner).Err(t4)                                     error
+	t10 = t9 != nil:error                                              bool
+	if t10 goto 10 else 3
+7:                                                             for.loop P:3 S:2
+	t11 = (*bufio.Scanner).Scan(t4)                                    bool
+	if t11 goto 5 else 6
+8:                                                              if.then P:1 S:1
+	t12 = (*bufio.Scanner).Text(t4)                                  string
+	t13 = new [1]any (varargs)                                      *[1]any
+	t14 = &t13[0:int]                                                  *any
+	t15 = make any <- string (t12)                                      any
+	*t14 = t15
+	t16 = slice t13[:]                                                []any
+	t17 = log.Printf("wrong IP address: %s":string, t16...)              ()
+	jump 7
+9:                                                              if.done P:1 S:1
+	send ipaddrsCh <- t7
+	jump 7
+10:                                                             if.then P:1 S:1
+	t18 = new [1]any (varargs)                                      *[1]any
+	t19 = &t18[0:int]                                                  *any
+	t20 = change interface any <- error (t9)                            any
+	*t19 = t20
+	t21 = slice t18[:]                                                []any
+	t22 = log.Print(t21...)                                              ()
+	jump 3
+11:                                                     rangeindex.loop P:3 S:2
+	t23 = phi [4: -1:int, 13: t24, 14: t24] #rangeindex                 int
+	t24 = t23 + 1:int                                                   int
+	t25 = t24 < t5                                                     bool
+	if t25 goto 12 else 3
+12:                                                     rangeindex.body P:1 S:2
+	t26 = &args[t24]                                                *string
+	t27 = *t26                                                       string
+	t28 = net.ParseIP(t27)                                           net.IP
+	t29 = t28 == nil:net.IP                                            bool
+	if t29 goto 13 else 14
+13:                                                             if.then P:1 S:1
+	t30 = new [1]any (varargs)                                      *[1]any
+	t31 = &t30[0:int]                                                  *any
+	t32 = make any <- string (t27)                                      any
+	*t31 = t32
+	t33 = slice t30[:]                                                []any
+	t34 = log.Printf("wrong IP address: %s":string, t33...)              ()
+	jump 11
+14:                                                             if.done P:1 S:1
+	send ipaddrsCh <- t28
+	jump 11
+
