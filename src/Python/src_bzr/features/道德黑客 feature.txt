@@ -1,0 +1,30 @@
+ethicalHacking_patterns = {
+    "imports": {
+        "scapy.all": 9,  # Scapy是一个强大的网络包生成和嗅探库，常用于网络攻击和渗透测试
+        "dpkt": 8,  # 用于处理网络数据包，常用于数据包分析和网络攻击
+        "pynput": 8,  # 用于捕捉键盘输入，常用于键盘记录器（keylogger）工具
+    },
+    "function_calls": {
+        "scapy.all.ARP": 9,  # 创建ARP包，用于ARP欺骗攻击
+        "scapy.all.send": 8,  # 发送网络包，常用于各种网络攻击
+        "scapy.all.sniff": 9,  # 嗅探网络流量，常用于网络嗅探和攻击
+        "dpkt.ethernet.Ethernet": 8,  # 用于解析以太网帧，常用于数据包分析工具
+        "dpkt.ip.IP": 8,  # 用于解析IP数据包，常用于数据包分析和攻击
+        "dpkt.tcp.TCP": 8,  # 用于解析TCP数据包，常用于数据包分析和攻击
+        "pynput.keyboard.Listener": 8,  # 监听键盘输入，常用于键盘记录器
+        "retrieveBanner": 7,  # 获取服务的Banner信息，可能用于漏洞扫描或服务识别
+        "checkVulnerabilities": 8,  # 检查Banner中的漏洞信息，常见于漏洞扫描工具
+        "returnBanner": 7,  # 获取服务的Banner信息，类似于前述的retrieveBanner函数，常用于服务识别
+    },
+    "strings": {
+        "ARP spoofing": 9,  # ARP欺骗攻击，常见的网络攻击方式
+        "Packet sniffing": 8,  # 数据包嗅探，常用于网络流量分析和攻击
+        "SYN flood": 9,  # SYN洪水攻击，常见的拒绝服务攻击手段
+        "Spoofed IP": 8,  # 伪造的IP地址，常见于网络攻击
+        "Keylogger": 9,  # 键盘记录器，常见的恶意软件或间谍软件功能
+        "Reverse shell": 9,  # 反向Shell，常见的远程访问和控制工具
+        "Server has vulnerability": 8,  # 检测到服务器存在漏洞，常见于漏洞扫描工具
+        "Scanning": 7,  # 扫描操作，可能用于端口扫描或漏洞扫描
+        "Enter Target IP to Scan": 7,  # 目标IP输入提示，常见于扫描工具
+    }
+}
