@@ -213,6 +213,7 @@ def parse_code(code):
 
     return {"calls": calls, "strings": strings}
 
+# 示例代码
 
 # info = parse_code(code)
 # print("Function Calls:", info["calls"])
