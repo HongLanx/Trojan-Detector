@@ -51,13 +51,13 @@ def generate_ssa(go_file, go_mod_file=None):
         if missing_imports or missing_packages:
             print("发现有模块缺失，正在下载...")
         for package in missing_packages:
-            print(f"Installing missing package: {package}")
+            print(f"安装缺失依赖包: {package}")
             install_stdout, install_stderr = run_command(['go', 'get', package], module_dir)
             print(install_stdout)
             print(install_stderr)
 
         for package in missing_imports:
-            print(f"Attempting to download missing package: {package}")
+            print(f"尝试下载缺失依赖模块: {package}")
             install_stdout, install_stderr = run_command(['go', 'mod', 'download', package], module_dir)
             print(install_stdout)
             print(install_stderr)
@@ -121,4 +121,4 @@ def get_ssa_from_folder():
                         shutil.move(file_path, os.path.join(ssa_dest_folder, file_name))
                         print(f"Moved non-empty SSA file: {file_path} to {ssa_dest_folder}")
                     else:
-                        os.remove(file_path) # 删除内容为空的SSA文件（即由于无法安装库等原因，无法）
+                        os.remove(file_path)  # 删除内容为空的SSA文件（即由于无法安装库等原因，无法正常生成）

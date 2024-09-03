@@ -61,6 +61,7 @@ def process_ssa_code_from_file(file_path):
 # 示例用法：传入文件路径
 file_path = r"test_encrypted.ssa"
 result = process_ssa_code_from_file(file_path)
+
 file_info={
         "calls": [],
         "strings": []
