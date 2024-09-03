@@ -1,5 +1,5 @@
 import re
-
+import ssa_info
 
 def process_ssa_code_from_file(file_path):
     # 读取文件内容
@@ -42,7 +42,7 @@ def process_ssa_code_from_file(file_path):
         elif current_block is not None and line.strip():
             # 处理代码块中的行，提取直到遇到连续两个及以上空格为止的字符串
             # 并且只保留包含等号的行
-            if '=' in line:  # 如果要保留ifelse等选择语句，删除该条件即可
+            # if '=' in line:  # 如果要保留ifelse等选择语句，删除该条件即可
                 trimmed_line = re.split(r'\s{2,}', line.strip())[0]
                 # 将处理后的结果加入当前代码块，并添加换行符
                 current_block += trimmed_line + "\n"
@@ -59,13 +59,23 @@ def process_ssa_code_from_file(file_path):
 
 
 # 示例用法：传入文件路径
-file_path = r"test.ssa"
+file_path = r"test_encrypted.ssa"
 result = process_ssa_code_from_file(file_path)
-
+file_info={
+        "calls": [],
+        "strings": []
+}
 # 打印结果
 for func in result:
     print("Function:", func["name"])
-    print("Processed Blocks:")
-    for block in func["blocks"]:
-        print(block)
-    print()
+    for i in range(len(func["blocks"])):
+        block=func["blocks"][i]
+        info=ssa_info.parse_code(block)
+        print(f"block {i}:")
+        print("Function Calls:", info["calls"])
+        print("Strings:", info["strings"])
+        file_info["calls"].extend(info["calls"])
+        file_info["strings"].extend(info["strings"])
+
+print(file_info["calls"])
+print(file_info["strings"])
