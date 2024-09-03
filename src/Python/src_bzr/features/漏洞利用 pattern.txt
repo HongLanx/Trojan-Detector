@@ -2,39 +2,17 @@ exploit_patterns = {
     "imports": {
         "shodan": 8,                     # 用于与Shodan API交互，通常在网络扫描或漏洞利用工具中使用
         "scapy.all": 9,                  # 用于网络数据包构建和发送，通常在网络攻击工具中使用
-        "contextlib": 5,                 # 虽然在正常代码中也可能使用，但在与标准输出流控制相关的漏洞利用中常见
-        "socket": 8,                     # 用于创建网络连接，常见于漏洞利用工具中
-        "subprocess": 6,                 # 用于执行系统命令，常见于漏洞利用工具和攻击脚本中
-        "sys": 7,                        # 虽然常见于一般代码中，但在漏洞利用工具中用于处理命令行参数
-        "web": 7,                        # 用于简化web服务器的实现，在特定漏洞利用工具中常见
-        "threading": 6,                  # 用于多线程操作，在某些复杂的漏洞利用工具中可能使用
-        "time": 7,                       # 用于计时或延迟，在各种工具和脚本中都有出现
-        "requests": 8,                   # 用于发送HTTP请求，常见于漏洞利用和攻击脚本中
         "SimpleHTTPServer": 8,           # 简单HTTP服务器模块，用于构建恶意服务器
-        "SocketServer": 8,               # 套接字服务器模块，用于处理网络连接，常见于恶意网络工具
         "urllib2": 8,                    # 用于发送HTTP请求，常见于漏洞利用和攻击脚本中
-        "argparse": 7,                   # 用于解析命令行参数，常见于漏洞利用工具中
-        "os": 7,                         # 用于操作系统相关操作，常见于漏洞利用工具中
     },
     "functions": {
         "shodan.Shodan": 8,                         # 用于访问Shodan API，通常在漏洞利用工具中使用
         "scapy.all.send": 9,                        # 用于发送构造的网络数据包，通常在网络攻击和漏洞利用中使用
-        "IP": 9,                                    # 构造IP数据包，通常与网络攻击工具相关
-        "UDP": 9,                                   # 构造UDP数据包，通常与网络攻击工具相关
         "Raw": 9,                                   # 构造原始负载数据，通常用于网络攻击
-        "socket.socket": 8,                         # 创建网络套接字，常见于漏洞利用工具中
-        "subprocess.Popen": 7,                      # 执行系统命令，常见于执行外部命令的攻击脚本中
-        "threading.Thread": 6,                      # 创建新线程，可能用于并发操作的漏洞利用
         "SimpleHTTPServer.SimpleHTTPRequestHandler": 8,  # 创建简单的HTTP请求处理程序，恶意服务器中常见
         "urllib2.urlopen": 8,                       # 发送HTTP请求，可能用于恶意数据的获取或命令执行
         "SocketServer.TCPServer": 8,                # 创建TCP服务器，恶意网络服务中常见
         "handler.serve_forever": 8,                 # 启动HTTP服务器，恶意服务器中常见
-        "requests.get": 8,                          # 用于发送HTTP GET请求，可能用于探测或攻击
-        "requests.post": 8,                         # 用于发送HTTP POST请求，可能用于注入或攻击
-        "time.sleep": 6,                            # 暂停执行，通常在恶意脚本中用于协调攻击步骤
-        "argparse.ArgumentParser": 7,               # 用于命令行参数解析，常见于复杂漏洞利用工具中
-        "os.system": 8,                             # 执行系统命令，常见于恶意脚本中的命令执行
-        "os.getpid": 6,                             # 获取当前进程ID，用于生成临时文件名等操作
         "urllib.urlencode": 8,                      # 编码URL参数，常见于发送HTTP请求的恶意脚本中
         "urllib2.Request": 8,                       # 创建HTTP请求对象，常见于发送HTTP请求的恶意脚本中
     },
@@ -43,8 +21,6 @@ exploit_patterns = {
         "bots.txt": 7,                              # 存储从Shodan获取的目标IP列表的文件名，通常在漏洞利用工具中出现
         "forged UDP packets": 9,                    # 伪造的UDP数据包，通常与DDoS攻击或网络攻击工具相关
         "XXE PoC exploit": 8,                       # 与XXE漏洞利用相关的描述，常见于漏洞利用工具中
-        "ColdFusion": 7,                            # ColdFusion应用的目标描述，常见于针对该应用的漏洞利用工具
-        "c:/windows/win.ini": 7,                    # 指向特定文件的路径，在漏洞利用中用于提取敏感信息
         "exec(\"whoami\")": 8,                      # 常见于漏洞利用中的命令执行
         "<?php\n\tsystem($_GET[\"cmd\"]);": 9,      # PHP Webshell代码，用于远程命令执行的常见模式
         "/tmp/wgethack": 8,                         # 指定的恶意文件路径，可能用于检测恶意操作
@@ -54,8 +30,6 @@ exploit_patterns = {
         "malicious": 9,                             # 在恶意脚本中常见的标识词
         "Exploit": 9,                               # 通常用于描述恶意行为或漏洞利用的标识
         "reverse shell": 8,                         # 用于远程控制目标主机的技术，常见于漏洞利用中
-        "cmd.exe": 8,                               # Windows命令行解释器，常用于Windows系统的漏洞利用
-        "/bin/bash": 8,                             # Unix/Linux系统下的命令行解释器，常用于恶意脚本
         "PHPMailer": 8,                             # 电子邮件库名称，常见于相关的漏洞利用
         "SwiftMailer": 8,                           # 电子邮件库名称，常见于相关的漏洞利用
         "Zend Framework": 8,                        # PHP框架名称，常见于相关的漏洞利用
@@ -64,6 +38,5 @@ exploit_patterns = {
         "CVE-2016-10074": 8,                        # 具体的CVE编号，指向SwiftMailer的漏洞利用
         "CVE-2016-10034": 8,                        # 具体的CVE编号，指向Zend Framework的漏洞利用
         "Reverse Code Execution": 9,                # 表示远程代码执行的术语，常用于描述攻击目的
-        "PwnScriptum": 8,                           # 自定义的漏洞利用脚本名称
     }
 }
