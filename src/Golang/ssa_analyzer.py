@@ -7,7 +7,7 @@ from collections import Counter
 
 def process_ssa_code_from_file(file_path):
     # 读取文件内容
-    with open(file_path, 'r',encoding='utf-8') as file:
+    with open(file_path, 'r', encoding='utf-8') as file:
         ssa_code = file.read()
 
     # 将 SSA 代码按行分割
@@ -109,26 +109,29 @@ def generate_JSON(folder_path):
     project_info = summarize_info(process_folder(folder_path))
     result_file_path = os.path.join(folder_path, "SSAResult.json")
 
-    with open(result_file_path, 'w',encoding='utf-8') as json_file:
+    with open(result_file_path, 'w', encoding='utf-8') as json_file:
         json.dump(project_info, json_file, indent=4)
     print(json.dumps(project_info, indent=4))
 
+
 # # 对单个文件进行处理示例
-#
-# file_info={
-#         "calls": [],
-#         "strings": []
+# file_info = {
+#     "calls": [],
+#     "strings": []
 # }
+# result = process_ssa_code_from_file("test.ssa")
+#
 # # 打印结果
 # for func in result:
 #     # print("Function:", func["name"])
 #     for i in range(len(func["blocks"])):
-#         block=func["blocks"][i]
-#         info=ssa_info.parse_code(block)
+#         block = func["blocks"][i]
+#         info = ssa_info.parse_code(block)
 #         print(f"block {i}:")
 #         print("Function Calls:", info["calls"])
 #         print("Strings:", info["strings"])
 #         file_info["calls"].extend(info["calls"])
 #         file_info["strings"].extend(info["strings"])
-# print(file_info["calls"])
-# print(file_info["strings"])
+# # print(file_info["calls"])
+# # print(file_info["strings"])
+# print(json.dumps(file_info, indent=4))
