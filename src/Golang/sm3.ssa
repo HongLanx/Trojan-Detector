@@ -1,0 +1,667 @@
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+0:                                                                entry P:0 S:2
+	t0 = *init$guard                                                   bool
+	if t0 goto 2 else 1
+1:                                                           init.start P:1 S:1
+	*init$guard = true:bool
+	t1 = encoding/binary.init()                                          ()
+	t2 = hash.init()                                                     ()
+	t3 = init#1()                                                        ()
+	jump 2
+2:                                                            init.done P:2 S:0
+	return
+
+# Name: command-line-arguments.init#1
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:8:6
+func init#1():
+0:                                                                entry P:0 S:0
+	return
+
+# Name: command-line-arguments.New
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:26:6
+func New() hash.Hash:
+0:                                                                entry P:0 S:0
+	t0 = new SM3 (new)                                                 *SM3
+	t1 = (*SM3).Reset(t0)                                                ()
+	t2 = make hash.Hash <- *SM3 (t0)                              hash.Hash
+	return t2
+
+# Name: (*command-line-arguments.SM3).Reset
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:34:17
+func (sm3 *SM3) Reset():
+0:                                                                entry P:0 S:1
+	t0 = &sm3.digest [#0]                                        *[8]uint32
+	t1 = &t0[0:int]                                                 *uint32
+	*t1 = 1937774191:uint32
+	t2 = &sm3.digest [#0]                                        *[8]uint32
+	t3 = &t2[1:int]                                                 *uint32
+	*t3 = 1226093241:uint32
+	t4 = &sm3.digest [#0]                                        *[8]uint32
+	t5 = &t4[2:int]                                                 *uint32
+	*t5 = 388252375:uint32
+	t6 = &sm3.digest [#0]                                        *[8]uint32
+	t7 = &t6[3:int]                                                 *uint32
+	*t7 = 3666478592:uint32
+	t8 = &sm3.digest [#0]                                        *[8]uint32
+	t9 = &t8[4:int]                                                 *uint32
+	*t9 = 2842636476:uint32
+	t10 = &sm3.digest [#0]                                       *[8]uint32
+	t11 = &t10[5:int]                                               *uint32
+	*t11 = 372324522:uint32
+	t12 = &sm3.digest [#0]                                       *[8]uint32
+	t13 = &t12[6:int]                                               *uint32
+	*t13 = 3817729613:uint32
+	t14 = &sm3.digest [#0]                                       *[8]uint32
+	t15 = &t14[7:int]                                               *uint32
+	*t15 = 2969243214:uint32
+	jump 1
+1:                                                             for.loop P:2 S:2
+	t16 = phi [0: 0:int, 2: t20] #i                                     int
+	t17 = t16 < 16:int                                                 bool
+	if t17 goto 2 else 3
+2:                                                             for.body P:1 S:1
+	t18 = &sm3.T [#1]                                           *[64]uint32
+	t19 = &t18[t16]                                                 *uint32
+	*t19 = 2043430169:uint32
+	t20 = t16 + 1:int                                                   int
+	jump 1
+3:                                                             for.done P:1 S:1
+	jump 4
+4:                                                             for.loop P:2 S:2
+	t21 = phi [3: 16:int, 5: t25] #i                                    int
+	t22 = t21 < 64:int                                                 bool
+	if t22 goto 5 else 6
+5:                                                             for.body P:1 S:1
+	t23 = &sm3.T [#1]                                           *[64]uint32
+	t24 = &t23[t21]                                                 *uint32
+	*t24 = 2055708042:uint32
+	t25 = t21 + 1:int                                                   int
+	jump 4
+6:                                                             for.done P:1 S:0
+	t26 = &sm3.length [#2]                                          *uint64
+	*t26 = 0:uint64
+	t27 = new [0]byte (slicelit)                                   *[0]byte
+	t28 = slice t27[:]                                               []byte
+	t29 = &sm3.unhandleMsg [#3]                                     *[]byte
+	*t29 = t28
+	return
+
+# Name: (*command-line-arguments.SM3).BlockSize
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:63:17
+func (sm3 *SM3) BlockSize() int:
+0:                                                                entry P:0 S:0
+	return 64:int
+
+# Name: (*command-line-arguments.SM3).Size
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:70:17
+func (sm3 *SM3) Size() int:
+0:                                                                entry P:0 S:0
+	return 32:int
+
+# Name: (*command-line-arguments.SM3).ff0
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:74:17
+func (sm3 *SM3) ff0(x uint32, y uint32, z uint32) uint32:
+0:                                                                entry P:0 S:0
+	t0 = x ^ y                                                       uint32
+	t1 = t0 ^ z                                                      uint32
+	return t1
+
+# Name: (*command-line-arguments.SM3).ff1
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:78:17
+func (sm3 *SM3) ff1(x uint32, y uint32, z uint32) uint32:
+0:                                                                entry P:0 S:0
+	t0 = x & y                                                       uint32
+	t1 = x & z                                                       uint32
+	t2 = t0 | t1                                                     uint32
+	t3 = y & z                                                       uint32
+	t4 = t2 | t3                                                     uint32
+	return t4
+
+# Name: (*command-line-arguments.SM3).gg0
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:82:17
+func (sm3 *SM3) gg0(x uint32, y uint32, z uint32) uint32:
+0:                                                                entry P:0 S:0
+	t0 = x ^ y                                                       uint32
+	t1 = t0 ^ z                                                      uint32
+	return t1
+
+# Name: (*command-line-arguments.SM3).gg1
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:86:17
+func (sm3 *SM3) gg1(x uint32, y uint32, z uint32) uint32:
+0:                                                                entry P:0 S:0
+	t0 = x & y                                                       uint32
+	t1 = ^x                                                          uint32
+	t2 = t1 & z                                                      uint32
+	t3 = t0 | t2                                                     uint32
+	return t3
+
+# Name: (*command-line-arguments.SM3).p0
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:90:17
+func (sm3 *SM3) p0(x uint32) uint32:
+0:                                                                entry P:0 S:0
+	t0 = (*SM3).leftRotate(sm3, x, 9:uint32)                         uint32
+	t1 = x ^ t0                                                      uint32
+	t2 = (*SM3).leftRotate(sm3, x, 17:uint32)                        uint32
+	t3 = t1 ^ t2                                                     uint32
+	return t3
+
+# Name: (*command-line-arguments.SM3).p1
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:94:17
+func (sm3 *SM3) p1(x uint32) uint32:
+0:                                                                entry P:0 S:0
+	t0 = (*SM3).leftRotate(sm3, x, 15:uint32)                        uint32
+	t1 = x ^ t0                                                      uint32
+	t2 = (*SM3).leftRotate(sm3, x, 23:uint32)                        uint32
+	t3 = t1 ^ t2                                                     uint32
+	return t3
+
+# Name: (*command-line-arguments.SM3).messageExtend
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:98:17
+# Locals:
+#   0:	t0 [68]uint32
+#   1:	t1 [64]uint32
+func (sm3 *SM3) messageExtend(data []byte) (W [68]uint32, W1 [64]uint32):
+0:                                                                entry P:0 S:1
+	t0 = local [68]uint32 (W)                                   *[68]uint32
+	t1 = local [64]uint32 (W1)                                  *[64]uint32
+	jump 1
+1:                                                             for.loop P:2 S:2
+	t2 = phi [0: 0:int, 2: t11] #i                                      int
+	t3 = t2 < 16:int                                                   bool
+	if t3 goto 2 else 3
+2:                                                             for.body P:1 S:1
+	t4 = *encoding/binary.BigEndian               encoding/binary.bigEndian
+	t5 = 4:int * t2                                                     int
+	t6 = t2 + 1:int                                                     int
+	t7 = 4:int * t6                                                     int
+	t8 = slice data[t5:t7]                                           []byte
+	t9 = (encoding/binary.bigEndian).Uint32(t4, t8)                  uint32
+	t10 = &t0[t2]                                                   *uint32
+	*t10 = t9
+	t11 = t2 + 1:int                                                    int
+	jump 1
+3:                                                             for.done P:1 S:1
+	jump 4
+4:                                                             for.loop P:2 S:2
+	t12 = phi [3: 16:int, 5: t37] #i                                    int
+	t13 = t12 < 68:int                                                 bool
+	if t13 goto 5 else 6
+5:                                                             for.body P:1 S:1
+	t14 = t12 - 16:int                                                  int
+	t15 = &t0[t14]                                                  *uint32
+	t16 = *t15                                                       uint32
+	t17 = t12 - 9:int                                                   int
+	t18 = &t0[t17]                                                  *uint32
+	t19 = *t18                                                       uint32
+	t20 = t16 ^ t19                                                  uint32
+	t21 = t12 - 3:int                                                   int
+	t22 = &t0[t21]                                                  *uint32
+	t23 = *t22                                                       uint32
+	t24 = (*SM3).leftRotate(sm3, t23, 15:uint32)                     uint32
+	t25 = t20 ^ t24                                                  uint32
+	t26 = (*SM3).p1(sm3, t25)                                        uint32
+	t27 = t12 - 13:int                                                  int
+	t28 = &t0[t27]                                                  *uint32
+	t29 = *t28                                                       uint32
+	t30 = (*SM3).leftRotate(sm3, t29, 7:uint32)                      uint32
+	t31 = t26 ^ t30                                                  uint32
+	t32 = t12 - 6:int                                                   int
+	t33 = &t0[t32]                                                  *uint32
+	t34 = *t33                                                       uint32
+	t35 = t31 ^ t34                                                  uint32
+	t36 = &t0[t12]                                                  *uint32
+	*t36 = t35
+	t37 = t12 + 1:int                                                   int
+	jump 4
+6:                                                             for.done P:1 S:1
+	jump 7
+7:                                                             for.loop P:2 S:2
+	t38 = phi [6: 0:int, 8: t47] #i                                     int
+	t39 = t38 < 64:int                                                 bool
+	if t39 goto 8 else 9
+8:                                                             for.body P:1 S:1
+	t40 = &t0[t38]                                                  *uint32
+	t41 = *t40                                                       uint32
+	t42 = t38 + 4:int                                                   int
+	t43 = &t0[t42]                                                  *uint32
+	t44 = *t43                                                       uint32
+	t45 = t41 ^ t44                                                  uint32
+	t46 = &t1[t38]                                                  *uint32
+	*t46 = t45
+	t47 = t38 + 1:int                                                   int
+	jump 7
+9:                                                             for.done P:1 S:0
+	t48 = *t0                                                    [68]uint32
+	t49 = *t1                                                    [64]uint32
+	*t0 = t48
+	*t1 = t49
+	t50 = *t0                                                    [68]uint32
+	t51 = *t1                                                    [64]uint32
+	return t50, t51
+
+# Name: (*command-line-arguments.SM3).leftRotate
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:113:17
+func (sm3 *SM3) leftRotate(x uint32, i uint32) uint32:
+0:                                                                entry P:0 S:0
+	t0 = i % 32:uint32                                               uint32
+	t1 = x << t0                                                     uint32
+	t2 = 32:uint32 - t0                                              uint32
+	t3 = x >> t2                                                     uint32
+	t4 = t1 | t3                                                     uint32
+	return t4
+
+# Name: (*command-line-arguments.SM3).cf
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:119:17
+# Locals:
+#   0:	t0 [68]uint32
+#   1:	t1 [64]uint32
+func (sm3 *SM3) cf(W [68]uint32, W1 [64]uint32):
+0:                                                                entry P:0 S:1
+	t0 = local [68]uint32 (W)                                   *[68]uint32
+	*t0 = W
+	t1 = local [64]uint32 (W1)                                  *[64]uint32
+	*t1 = W1
+	t2 = &sm3.digest [#0]                                        *[8]uint32
+	t3 = &t2[0:int]                                                 *uint32
+	t4 = *t3                                                         uint32
+	t5 = &sm3.digest [#0]                                        *[8]uint32
+	t6 = &t5[1:int]                                                 *uint32
+	t7 = *t6                                                         uint32
+	t8 = &sm3.digest [#0]                                        *[8]uint32
+	t9 = &t8[2:int]                                                 *uint32
+	t10 = *t9                                                        uint32
+	t11 = &sm3.digest [#0]                                       *[8]uint32
+	t12 = &t11[3:int]                                               *uint32
+	t13 = *t12                                                       uint32
+	t14 = &sm3.digest [#0]                                       *[8]uint32
+	t15 = &t14[4:int]                                               *uint32
+	t16 = *t15                                                       uint32
+	t17 = &sm3.digest [#0]                                       *[8]uint32
+	t18 = &t17[5:int]                                               *uint32
+	t19 = *t18                                                       uint32
+	t20 = &sm3.digest [#0]                                       *[8]uint32
+	t21 = &t20[6:int]                                               *uint32
+	t22 = *t21                                                       uint32
+	t23 = &sm3.digest [#0]                                       *[8]uint32
+	t24 = &t23[7:int]                                               *uint32
+	t25 = *t24                                                       uint32
+	jump 1
+1:                                                             for.loop P:2 S:2
+	t26 = phi [0: t4, 2: t52] #A                                     uint32
+	t27 = phi [0: t7, 2: t26] #B                                     uint32
+	t28 = phi [0: t10, 2: t59] #C                                    uint32
+	t29 = phi [0: t13, 2: t28] #D                                    uint32
+	t30 = phi [0: t16, 2: t61] #E                                    uint32
+	t31 = phi [0: t19, 2: t30] #F                                    uint32
+	t32 = phi [0: t22, 2: t60] #G                                    uint32
+	t33 = phi [0: t25, 2: t32] #H                                    uint32
+	t34 = phi [0: 0:int, 2: t62] #i                                     int
+	t35 = t34 < 16:int                                                 bool
+	if t35 goto 2 else 3
+2:                                                             for.body P:1 S:1
+	t36 = (*SM3).leftRotate(sm3, t26, 12:uint32)                     uint32
+	t37 = t36 + t30                                                  uint32
+	t38 = &sm3.T [#1]                                           *[64]uint32
+	t39 = &t38[t34]                                                 *uint32
+	t40 = *t39                                                       uint32
+	t41 = convert uint32 <- int (t34)                                uint32
+	t42 = (*SM3).leftRotate(sm3, t40, t41)                           uint32
+	t43 = t37 + t42                                                  uint32
+	t44 = (*SM3).leftRotate(sm3, t43, 7:uint32)                      uint32
+	t45 = (*SM3).leftRotate(sm3, t26, 12:uint32)                     uint32
+	t46 = t44 ^ t45                                                  uint32
+	t47 = (*SM3).ff0(sm3, t26, t27, t28)                             uint32
+	t48 = t47 + t29                                                  uint32
+	t49 = t48 + t46                                                  uint32
+	t50 = &t1[t34]                                                  *uint32
+	t51 = *t50                                                       uint32
+	t52 = t49 + t51                                                  uint32
+	t53 = (*SM3).gg0(sm3, t30, t31, t32)                             uint32
+	t54 = t53 + t33                                                  uint32
+	t55 = t54 + t44                                                  uint32
+	t56 = &t0[t34]                                                  *uint32
+	t57 = *t56                                                       uint32
+	t58 = t55 + t57                                                  uint32
+	t59 = (*SM3).leftRotate(sm3, t27, 9:uint32)                      uint32
+	t60 = (*SM3).leftRotate(sm3, t31, 19:uint32)                     uint32
+	t61 = (*SM3).p0(sm3, t58)                                        uint32
+	t62 = t34 + 1:int                                                   int
+	jump 1
+3:                                                             for.done P:1 S:1
+	jump 4
+4:                                                             for.loop P:2 S:2
+	t63 = phi [3: t26, 5: t89] #A                                    uint32
+	t64 = phi [3: t27, 5: t63] #B                                    uint32
+	t65 = phi [3: t28, 5: t96] #C                                    uint32
+	t66 = phi [3: t29, 5: t65] #D                                    uint32
+	t67 = phi [3: t30, 5: t98] #E                                    uint32
+	t68 = phi [3: t31, 5: t67] #F                                    uint32
+	t69 = phi [3: t32, 5: t97] #G                                    uint32
+	t70 = phi [3: t33, 5: t69] #H                                    uint32
+	t71 = phi [3: 16:int, 5: t99] #i                                    int
+	t72 = t71 < 64:int                                                 bool
+	if t72 goto 5 else 6
+5:                                                             for.body P:1 S:1
+	t73 = (*SM3).leftRotate(sm3, t63, 12:uint32)                     uint32
+	t74 = t73 + t67                                                  uint32
+	t75 = &sm3.T [#1]                                           *[64]uint32
+	t76 = &t75[t71]                                                 *uint32
+	t77 = *t76                                                       uint32
+	t78 = convert uint32 <- int (t71)                                uint32
+	t79 = (*SM3).leftRotate(sm3, t77, t78)                           uint32
+	t80 = t74 + t79                                                  uint32
+	t81 = (*SM3).leftRotate(sm3, t80, 7:uint32)                      uint32
+	t82 = (*SM3).leftRotate(sm3, t63, 12:uint32)                     uint32
+	t83 = t81 ^ t82                                                  uint32
+	t84 = (*SM3).ff1(sm3, t63, t64, t65)                             uint32
+	t85 = t84 + t66                                                  uint32
+	t86 = t85 + t83                                                  uint32
+	t87 = &t1[t71]                                                  *uint32
+	t88 = *t87                                                       uint32
+	t89 = t86 + t88                                                  uint32
+	t90 = (*SM3).gg1(sm3, t67, t68, t69)                             uint32
+	t91 = t90 + t70                                                  uint32
+	t92 = t91 + t81                                                  uint32
+	t93 = &t0[t71]                                                  *uint32
+	t94 = *t93                                                       uint32
+	t95 = t92 + t94                                                  uint32
+	t96 = (*SM3).leftRotate(sm3, t64, 9:uint32)                      uint32
+	t97 = (*SM3).leftRotate(sm3, t68, 19:uint32)                     uint32
+	t98 = (*SM3).p0(sm3, t95)                                        uint32
+	t99 = t71 + 1:int                                                   int
+	jump 4
+6:                                                             for.done P:1 S:0
+	t100 = &sm3.digest [#0]                                      *[8]uint32
+	t101 = &t100[0:int]                                             *uint32
+	t102 = *t101                                                     uint32
+	t103 = t102 ^ t63                                                uint32
+	t104 = &t100[0:int]                                             *uint32
+	*t104 = t103
+	t105 = &sm3.digest [#0]                                      *[8]uint32
+	t106 = &t105[1:int]                                             *uint32
+	t107 = *t106                                                     uint32
+	t108 = t107 ^ t64                                                uint32
+	t109 = &t105[1:int]                                             *uint32
+	*t109 = t108
+	t110 = &sm3.digest [#0]                                      *[8]uint32
+	t111 = &t110[2:int]                                             *uint32
+	t112 = *t111                                                     uint32
+	t113 = t112 ^ t65                                                uint32
+	t114 = &t110[2:int]                                             *uint32
+	*t114 = t113
+	t115 = &sm3.digest [#0]                                      *[8]uint32
+	t116 = &t115[3:int]                                             *uint32
+	t117 = *t116                                                     uint32
+	t118 = t117 ^ t66                                                uint32
+	t119 = &t115[3:int]                                             *uint32
+	*t119 = t118
+	t120 = &sm3.digest [#0]                                      *[8]uint32
+	t121 = &t120[4:int]                                             *uint32
+	t122 = *t121                                                     uint32
+	t123 = t122 ^ t67                                                uint32
+	t124 = &t120[4:int]                                             *uint32
+	*t124 = t123
+	t125 = &sm3.digest [#0]                                      *[8]uint32
+	t126 = &t125[5:int]                                             *uint32
+	t127 = *t126                                                     uint32
+	t128 = t127 ^ t68                                                uint32
+	t129 = &t125[5:int]                                             *uint32
+	*t129 = t128
+	t130 = &sm3.digest [#0]                                      *[8]uint32
+	t131 = &t130[6:int]                                             *uint32
+	t132 = *t131                                                     uint32
+	t133 = t132 ^ t69                                                uint32
+	t134 = &t130[6:int]                                             *uint32
+	*t134 = t133
+	t135 = &sm3.digest [#0]                                      *[8]uint32
+	t136 = &t135[7:int]                                             *uint32
+	t137 = *t136                                                     uint32
+	t138 = t137 ^ t70                                                uint32
+	t139 = &t135[7:int]                                             *uint32
+	*t139 = t138
+	return
+
+# Name: (*command-line-arguments.SM3).update
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:171:17
+func (sm3 *SM3) update(msg []byte, nblocks int):
+0:                                                                entry P:0 S:1
+	jump 1
+1:                                                             for.loop P:2 S:2
+	t0 = phi [0: 0:int, 2: t11] #i                                      int
+	t1 = t0 < nblocks                                                  bool
+	if t1 goto 2 else 3
+2:                                                             for.body P:1 S:1
+	t2 = (*SM3).BlockSize(sm3)                                          int
+	t3 = t0 * t2                                                        int
+	t4 = (*SM3).BlockSize(sm3)                                          int
+	t5 = t3 + t4                                                        int
+	t6 = slice msg[t3:t5]                                            []byte
+	t7 = (*SM3).messageExtend(sm3, t6)        (W [68]uint32, W1 [64]uint32)
+	t8 = extract t7 #0                                           [68]uint32
+	t9 = extract t7 #1                                           [64]uint32
+	t10 = (*SM3).cf(sm3, t8, t9)                                         ()
+	t11 = t0 + 1:int                                                    int
+	jump 1
+3:                                                             for.done P:1 S:0
+	return
+
+# Name: (*command-line-arguments.SM3).Write
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:183:17
+func (sm3 *SM3) Write(p []byte) (int, error):
+0:                                                                entry P:0 S:0
+	t0 = len(p)                                                         int
+	t1 = len(p)                                                         int
+	t2 = t1 * 8:int                                                     int
+	t3 = convert uint64 <- int (t2)                                  uint64
+	t4 = &sm3.length [#2]                                           *uint64
+	t5 = *t4                                                         uint64
+	t6 = t5 + t3                                                     uint64
+	t7 = &sm3.length [#2]                                           *uint64
+	*t7 = t6
+	t8 = &sm3.unhandleMsg [#3]                                      *[]byte
+	t9 = *t8                                                         []byte
+	t10 = append(t9, p...)                                           []byte
+	t11 = len(t10)                                                      int
+	t12 = (*SM3).BlockSize(sm3)                                         int
+	t13 = t11 / t12                                                     int
+	t14 = (*SM3).update(sm3, t10, t13)                                   ()
+	t15 = (*SM3).BlockSize(sm3)                                         int
+	t16 = t13 * t15                                                     int
+	t17 = slice t10[t16:]                                            []byte
+	t18 = &sm3.unhandleMsg [#3]                                     *[]byte
+	*t18 = t17
+	return t0, nil:error
+
+# Name: (*command-line-arguments.SM3).pad
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:198:17
+func (sm3 *SM3) pad() []byte:
+0:                                                                entry P:0 S:1
+	t0 = &sm3.unhandleMsg [#3]                                      *[]byte
+	t1 = *t0                                                         []byte
+	t2 = new [1]byte (varargs)                                     *[1]byte
+	t3 = &t2[0:int]                                                   *byte
+	*t3 = 128:byte
+	t4 = slice t2[:]                                                 []byte
+	t5 = append(t1, t4...)                                           []byte
+	jump 3
+1:                                                             for.body P:1 S:1
+	t6 = new [1]byte (varargs)                                     *[1]byte
+	t7 = &t6[0:int]                                                   *byte
+	*t7 = 0:byte
+	t8 = slice t6[:]                                                 []byte
+	t9 = append(t85, t8...)                                          []byte
+	jump 3
+2:                                                             for.done P:1 S:2
+	t10 = &sm3.length [#2]                                          *uint64
+	t11 = *t10                                                       uint64
+	t12 = t11 >> 56:uint                                             uint64
+	t13 = t12 & 255:uint64                                           uint64
+	t14 = convert uint8 <- uint64 (t13)                               uint8
+	t15 = new [1]byte (varargs)                                    *[1]byte
+	t16 = &t15[0:int]                                                 *byte
+	*t16 = t14
+	t17 = slice t15[:]                                               []byte
+	t18 = append(t85, t17...)                                        []byte
+	t19 = &sm3.length [#2]                                          *uint64
+	t20 = *t19                                                       uint64
+	t21 = t20 >> 48:uint                                             uint64
+	t22 = t21 & 255:uint64                                           uint64
+	t23 = convert uint8 <- uint64 (t22)                               uint8
+	t24 = new [1]byte (varargs)                                    *[1]byte
+	t25 = &t24[0:int]                                                 *byte
+	*t25 = t23
+	t26 = slice t24[:]                                               []byte
+	t27 = append(t18, t26...)                                        []byte
+	t28 = &sm3.length [#2]                                          *uint64
+	t29 = *t28                                                       uint64
+	t30 = t29 >> 40:uint                                             uint64
+	t31 = t30 & 255:uint64                                           uint64
+	t32 = convert uint8 <- uint64 (t31)                               uint8
+	t33 = new [1]byte (varargs)                                    *[1]byte
+	t34 = &t33[0:int]                                                 *byte
+	*t34 = t32
+	t35 = slice t33[:]                                               []byte
+	t36 = append(t27, t35...)                                        []byte
+	t37 = &sm3.length [#2]                                          *uint64
+	t38 = *t37                                                       uint64
+	t39 = t38 >> 32:uint                                             uint64
+	t40 = t39 & 255:uint64                                           uint64
+	t41 = convert uint8 <- uint64 (t40)                               uint8
+	t42 = new [1]byte (varargs)                                    *[1]byte
+	t43 = &t42[0:int]                                                 *byte
+	*t43 = t41
+	t44 = slice t42[:]                                               []byte
+	t45 = append(t36, t44...)                                        []byte
+	t46 = &sm3.length [#2]                                          *uint64
+	t47 = *t46                                                       uint64
+	t48 = t47 >> 24:uint                                             uint64
+	t49 = t48 & 255:uint64                                           uint64
+	t50 = convert uint8 <- uint64 (t49)                               uint8
+	t51 = new [1]byte (varargs)                                    *[1]byte
+	t52 = &t51[0:int]                                                 *byte
+	*t52 = t50
+	t53 = slice t51[:]                                               []byte
+	t54 = append(t45, t53...)                                        []byte
+	t55 = &sm3.length [#2]                                          *uint64
+	t56 = *t55                                                       uint64
+	t57 = t56 >> 16:uint                                             uint64
+	t58 = t57 & 255:uint64                                           uint64
+	t59 = convert uint8 <- uint64 (t58)                               uint8
+	t60 = new [1]byte (varargs)                                    *[1]byte
+	t61 = &t60[0:int]                                                 *byte
+	*t61 = t59
+	t62 = slice t60[:]                                               []byte
+	t63 = append(t54, t62...)                                        []byte
+	t64 = &sm3.length [#2]                                          *uint64
+	t65 = *t64                                                       uint64
+	t66 = t65 >> 8:uint                                              uint64
+	t67 = t66 & 255:uint64                                           uint64
+	t68 = convert uint8 <- uint64 (t67)                               uint8
+	t69 = new [1]byte (varargs)                                    *[1]byte
+	t70 = &t69[0:int]                                                 *byte
+	*t70 = t68
+	t71 = slice t69[:]                                               []byte
+	t72 = append(t63, t71...)                                        []byte
+	t73 = &sm3.length [#2]                                          *uint64
+	t74 = *t73                                                       uint64
+	t75 = t74 >> 0:uint                                              uint64
+	t76 = t75 & 255:uint64                                           uint64
+	t77 = convert uint8 <- uint64 (t76)                               uint8
+	t78 = new [1]byte (varargs)                                    *[1]byte
+	t79 = &t78[0:int]                                                 *byte
+	*t79 = t77
+	t80 = slice t78[:]                                               []byte
+	t81 = append(t72, t80...)                                        []byte
+	t82 = len(t81)                                                      int
+	t83 = t82 % 64:int                                                  int
+	t84 = t83 != 0:int                                                 bool
+	if t84 goto 4 else 5
+3:                                                             for.loop P:2 S:2
+	t85 = phi [0: t5, 1: t9] #msg                                    []byte
+	t86 = len(t85)                                                      int
+	t87 = t86 % 64:int                                                  int
+	t88 = t87 != 56:int                                                bool
+	if t88 goto 1 else 2
+4:                                                              if.then P:1 S:0
+	t89 = make interface{} <- string ("SM3 pad: Error":string)  interface{}
+	panic t89
+5:                                                              if.done P:1 S:0
+	return t81
+
+# Name: (*command-line-arguments.SM3).Sum
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:232:17
+func (sm3 *SM3) Sum(in []byte) []byte:
+0:                                                                entry P:0 S:0
+	t0 = new SM3 (cpsm3)                                               *SM3
+	t1 = *sm3                                                           SM3
+	*t0 = t1
+	t2 = new [32]byte (hash)                                      *[32]byte
+	t3 = (*SM3).checkSum(t0)                                       [32]byte
+	*t2 = t3
+	t4 = slice t2[:]                                                 []byte
+	t5 = append(in, t4...)                                           []byte
+	return t5
+
+# Name: (*command-line-arguments.SM3).checkSum
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:238:17
+func (sm3 *SM3) checkSum() [32]byte:
+0:                                                                entry P:0 S:1
+	t0 = (*SM3).pad(sm3)                                             []byte
+	t1 = len(t0)                                                        int
+	t2 = (*SM3).BlockSize(sm3)                                          int
+	t3 = t1 / t2                                                        int
+	t4 = (*SM3).update(sm3, t0, t3)                                      ()
+	t5 = new [32]byte (out)                                       *[32]byte
+	jump 1
+1:                                                             for.loop P:2 S:2
+	t6 = phi [0: 0:int, 2: t15] #i                                      int
+	t7 = t6 < 8:int                                                    bool
+	if t7 goto 2 else 3
+2:                                                             for.body P:1 S:1
+	t8 = *encoding/binary.BigEndian               encoding/binary.bigEndian
+	t9 = t6 * 4:int                                                     int
+	t10 = slice t5[t9:]                                              []byte
+	t11 = &sm3.digest [#0]                                       *[8]uint32
+	t12 = &t11[t6]                                                  *uint32
+	t13 = *t12                                                       uint32
+	t14 = (encoding/binary.bigEndian).PutUint32(t8, t10, t13)            ()
+	t15 = t6 + 1:int                                                    int
+	jump 1
+3:                                                             for.done P:1 S:0
+	t16 = *t5                                                      [32]byte
+	return t16
+
+# Name: command-line-arguments.Sum
+# Package: command-line-arguments
+# Location: E:\Trojan Detector\Trojan-Detector\src\Golang\test\加密器\SM3加密器\sm3.go:252:6
+func Sum(in []byte) [32]byte:
+0:                                                                entry P:0 S:0
+	t0 = new SM3 (sm3)                                                 *SM3
+	t1 = (*SM3).Reset(t0)                                                ()
+	t2 = slice in[:]                                                 []byte
+	t3 = (*SM3).Write(t0, t2)                                  (int, error)
+	t4 = (*SM3).checkSum(t0)                                       [32]byte
+	return t4
+

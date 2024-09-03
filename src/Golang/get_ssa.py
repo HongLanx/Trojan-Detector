@@ -4,18 +4,22 @@ import re
 import os
 import tkinter as tk
 from tkinter import filedialog
+import ssa_analyzer
 
 SSA_path = os.path.join(os.getcwd(), "GolangTool/SSAGenerator.exe")
 
 
 def run_command(command, working_directory=os.getcwd()):
     """在指定的工作目录中运行命令并返回输出和错误。"""
+    result=None
     # 保存当前目录
     current_dir = os.getcwd()
     # 更改到指定的工作目录
     os.chdir(working_directory)
     try:
-        result = subprocess.run(command, capture_output=True, text=True)
+        result = subprocess.run(command, capture_output=True, text=True,encoding='utf-8')
+    except UnicodeDecodeError:
+        print("解码失败")
     finally:
         # 切换回原始工作目录
         os.chdir(current_dir)
@@ -45,19 +49,19 @@ def generate_ssa(go_file, go_mod_file=None):
     print("Running initial SSA Generator...")
     stdout, stderr = run_command([SSA_path, '-build=F', go_file], module_dir)
 
-    if "no required module provides package" or "missing go.sum entry" in stderr:
+    if stderr and ("no required module provides package" or "missing go.sum entry" in stderr):
         missing_packages = re.findall(r"no required module provides package (.+?);", stderr)
         missing_imports = re.findall(r'go mod download ([\w\.\-\/@]+)', stderr)
         if missing_imports or missing_packages:
             print("发现有模块缺失，正在下载...")
         for package in missing_packages:
-            print(f"Installing missing package: {package}")
+            print(f"安装缺失依赖包: {package}")
             install_stdout, install_stderr = run_command(['go', 'get', package], module_dir)
             print(install_stdout)
             print(install_stderr)
 
         for package in missing_imports:
-            print(f"Attempting to download missing package: {package}")
+            print(f"尝试下载缺失依赖模块: {package}")
             install_stdout, install_stderr = run_command(['go', 'mod', 'download', package], module_dir)
             print(install_stdout)
             print(install_stderr)
@@ -69,7 +73,7 @@ def generate_ssa(go_file, go_mod_file=None):
         stdout, stderr = run_command([SSA_path, '-build=F', go_file], module_dir)
         print("SSA Generation Complete")
 
-    if "could not import" in stderr or "invalid package name" in stderr:
+    if stderr and ("could not import" in stderr or "invalid package name" in stderr):
         print("There are still errors with the packages or invalid package names.")
     else:
         print("All dependencies resolved and SSA generated successfully.")
@@ -78,13 +82,14 @@ def generate_ssa(go_file, go_mod_file=None):
     print(stderr)
 
 
-def choose_go_project_and_generate_ssa():
+def choose_go_project_and_generate_ssa(folder_selected=None):
     # 初始化Tk界面
     root = tk.Tk()
     root.withdraw()  # 隐藏主窗口
+    if not folder_selected:
+        folder_selected = filedialog.askdirectory(title="Select A Go Project Folder",
+                                                  initialdir=os.getcwd())  # 初始目录设为当前工作目录
 
-    folder_selected = filedialog.askdirectory(title="Select A Go Project Folder",
-                                              initialdir=os.getcwd())  # 初始目录设为当前工作目录
     print("请选择项目go.mod文件")
     # 弹出文件选择对话框，让用户选择一个go.mod文件
     go_mod_file = filedialog.askopenfilename(
@@ -101,3 +106,24 @@ def choose_go_project_and_generate_ssa():
         print(f"已处理完项目: {folder_selected}")
     else:
         print("未选择文件夹")
+
+    return folder_selected
+
+
+# 选择项目文件夹，生成ssa文件，再将所有ssa文件取出，移动到所选项目根目录下的./SSAFiles文件夹
+def get_ssa_from_folder(folder_to_be_processd=None):
+    folder = choose_go_project_and_generate_ssa(folder_to_be_processd)
+    if folder:
+        ssa_dest_folder = os.path.join(folder, "SSAFiles")
+        if not os.path.exists(ssa_dest_folder):
+            os.makedirs(ssa_dest_folder)
+        for root, _, files in os.walk(folder):
+            for file_name in files:
+                if file_name.endswith(".ssa"):
+                    file_path = os.path.join(root, file_name)
+                    if os.path.getsize(file_path) > 0:  # Check if file is not empty
+                        # Move non-empty .ssa files to the specified destination folder
+                        shutil.move(file_path, os.path.join(ssa_dest_folder, file_name))
+                        print(f"Moved non-empty SSA file: {file_path} to {ssa_dest_folder}")
+                    else:
+                        os.remove(file_path)  # 删除内容为空的SSA文件（即由于无法安装库等原因，无法正常生成）
