@@ -101,3 +101,24 @@ def choose_go_project_and_generate_ssa():
         print(f"已处理完项目: {folder_selected}")
     else:
         print("未选择文件夹")
+
+    return folder_selected
+
+
+# 将所有ssa文件取出，移动到所选项目根目录下的./SSAFiles文件夹
+def get_ssa_from_folder():
+    folder = choose_go_project_and_generate_ssa()
+    if folder:
+        ssa_dest_folder = os.path.join(folder, "SSAFiles")
+        if not os.path.exists(ssa_dest_folder):
+            os.makedirs(ssa_dest_folder)
+        for root, _, files in os.walk(folder):
+            for file_name in files:
+                if file_name.endswith(".ssa"):
+                    file_path = os.path.join(root, file_name)
+                    if os.path.getsize(file_path) > 0:  # Check if file is not empty
+                        # Move non-empty .ssa files to the specified destination folder
+                        shutil.move(file_path, os.path.join(ssa_dest_folder, file_name))
+                        print(f"Moved non-empty SSA file: {file_path} to {ssa_dest_folder}")
+                    else:
+                        os.remove(file_path) # 删除内容为空的SSA文件（即由于无法安装库等原因，无法）
