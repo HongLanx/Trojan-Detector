@@ -48,7 +48,7 @@ def process_python_files_in_directory(directory_path):
     """
     处理指定目录中的所有 .py 文件，将它们转化为 JSON 文件并提取关键信息。
     """
-    # 创建存储 .json 文件的文件夹
+    # 创建一个新子文件夹来存储 .json 文件
     json_output_dir = os.path.join(directory_path, 'json_output')
     os.makedirs(json_output_dir, exist_ok=True)
     
@@ -69,13 +69,21 @@ def process_python_files_in_directory(directory_path):
                 key_info = extract_key_info_from_ast(ast_tree)
                 key_info_all_files.append(key_info)
 
+    # 生成 key_info_all_files.json 的路径
+    key_info_output_path = os.path.join(json_output_dir, 'key_info_all_files.json')
+
     # 将所有文件的关键信息保存为一个 JSON 文件
-    with open(os.path.join(directory_path, 'key_info_all_files.json'), 'w', encoding='utf-8') as outfile:
+    with open(key_info_output_path, 'w', encoding='utf-8') as outfile:
         json.dump(key_info_all_files, outfile, indent=4)
 
+    # 将存储路径写入一个文本文件，以便匹配代码读取
+    key_info_path_txt_path = os.path.join(json_output_dir, 'key_info_path.txt')
+    with open(key_info_path_txt_path, 'w', encoding='utf-8') as path_file:
+        path_file.write(key_info_output_path)
+
 if __name__ == "__main__":
-    # 指定要处理的目录路径
-    directory_path = r'C:\Users\86156\Desktop\share\Trojan-Detector\src\Python\src_zys\Trojan'
+    # 从用户输入获取待检测文件夹路径
+    directory_path = input("请输入待检测文件夹的路径: ")
     
     # 处理目录中的所有 Python 文件
     process_python_files_in_directory(directory_path)

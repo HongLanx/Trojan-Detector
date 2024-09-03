@@ -92,8 +92,21 @@ if __name__ == "__main__":
     patterns_file_path = r'C:\Users\86156\Desktop\share\Trojan-Detector\src\Python\process\patterns.py'
     patterns_module = load_patterns_module(patterns_file_path)
 
-    # 从JSON文件加载关键信息
-    key_info_path = r'C:\Users\86156\Desktop\share\Trojan-Detector\src\Python\src_zys\Trojan\key_info_all_files.json'
+    # 让用户输入待检测文件夹的路径
+    parent_directory = input("请输入待检测文件夹的路径: ")
+    directory_path = os.path.join(parent_directory, 'json_output')
+
+    # 构建 key_info_path.txt 文件的路径
+    key_info_path_txt = os.path.join(directory_path, 'key_info_path.txt')
+
+    # 从 key_info_path.txt 中读取 key_info_all_files.json 的路径
+    if not os.path.exists(key_info_path_txt):
+        raise FileNotFoundError(f"Key info path file not found: {key_info_path_txt}")
+
+    with open(key_info_path_txt, 'r', encoding='utf-8') as path_file:
+        key_info_path = path_file.read().strip()
+
+    # 从 JSON 文件加载关键信息
     with open(key_info_path, 'r', encoding='utf-8') as infile:
         key_info_list = json.load(infile)
 
