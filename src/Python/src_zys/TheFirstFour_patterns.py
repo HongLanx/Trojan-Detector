@@ -2,7 +2,10 @@
     phishing - 钓鱼攻击
     crypter - 加密器
     payload - 载荷
+    防御绕过Defense_Bypass_patterns
+    键盘记录器Keyboard_patterns
 '''
+#僵尸网络特征
 botnet_patterns_scores = {
     "imports": {
         "from Crypto import Random": 6,  # 用于生成随机数，通常用于加密通信。
@@ -70,6 +73,7 @@ botnet_patterns_scores = {
     }
 }
 
+#钓鱼软件特征
 PhishingAttack_patterns_scores = {
     "Import": {
         "bs4.BeautifulSoup": 8,  # 通常用于解析HTML，可能用于从钓鱼页面中提取表单或其他信息
@@ -80,11 +84,7 @@ PhishingAttack_patterns_scores = {
         "requests": 6,  # 用于发送HTTP请求，可能被用来发送钓鱼信息或获取恶意内容
         "cryptography": 7,  # 加密模块，可能用于加密敏感信息
         "msal": 8,  # Microsoft身份验证库，可能被用来进行恶意身份验证或获取访问令牌
-        "argparse": 5,  # 解析命令行参数，可能用于接受用户输入来执行钓鱼操作
         "hashlib": 6,  # 用于生成文件的哈希值，可能用于检查或操纵文件的完整性
-        "random": 5,  # 生成随机字符串，可能用于创建伪装文件名或其他随机内容
-        "sys": 5,  # 系统相关的功能，可能用于终止程序或输出消息
-        "time": 5,  # 时间相关功能，可能用于延迟执行或记录时间
         "shutil": 6,  # 文件操作模块，可能用于移动或复制恶意文件
     },
     
@@ -131,26 +131,18 @@ PhishingAttack_patterns_scores = {
     }
 }
 
+#勒索软件特征
 cryption_patterns={
     "Imports": {
         "win32api": 6,  # 用于与Windows API交互，勒索软件中常见，但在合法程序中也常见
-        "win32file": 5,  # 用于文件操作，常见于合法文件操作和恶意软件中
         "Popen": 7,  # 用于执行外部命令，可能用于恶意操作，但在合法程序中也常见
         "Crypto.PublicKey.RSA": 6,  # 用于非对称加密，合法和恶意软件中都可能使用
         "Crypto.Cipher.AES": 7,  # 用于对称加密，合法和恶意软件中都可能使用
         "Crypto.Random": 6,  # 用于生成随机数，合法加密和恶意软件中都常见
-        "os": 4,  # 用于操作系统级别的操作，几乎所有Python项目都会使用
-        "sys": 4,  # 用于与Python解释器交互，几乎所有Python项目都会使用
         "winreg": 7,  # 用于与Windows注册表交互，常见于持久化操作，可能用于恶意持久化
-        "wx": 5,  # 用于创建GUI，合法和恶意软件中都可能使用
-        "json": 4,  # 用于处理JSON格式的配置文件，正常项目中非常常见
-        "webbrowser": 5,  # 用于打开网络浏览器，正常项目和恶意软件中都可能使用
         "threading": 6,  # 用于创建和管理线程，正常项目和恶意软件中都可能使用
-        "pubsub.pub": 4,  # 用于消息发布-订阅系统，在正常项目中使用较多
-        "wx.xrc": 4,  # 用于加载和解析XRC资源文件，主要用于GUI开发，正常项目中较为常见
         "win32event": 7,  # 用于系统同步对象的管理，恶意软件中可能用于确保单实例运行
         "winerror": 6,  # 用于处理Windows错误代码，恶意软件中可能用于错误处理
-        "traceback": 5,  # 用于处理异常信息，调试模式下使用较多，正常项目中较常见
         "hashlib": 6,  # 用于生成哈希值，常见于安全相关操作和恶意软件中
         "base64": 7,  # 用于Base64编码，可能用于混淆代码，在恶意软件中较为常见
         "ctypes": 8,  # 用于与C库交互，恶意软件中可能用于检测虚拟机或沙箱环境
@@ -161,34 +153,21 @@ cryption_patterns={
     "Function_Calls": {
         "win32file.GetDriveType": 6,  # 检查驱动器类型，可能用于识别加密目标，恶意软件中较常见
         "win32api.GetLogicalDriveStrings": 6,  # 获取逻辑驱动器列表，可能用于识别加密目标，恶意软件中较常见
-        "is_optical_drive": 5,  # 自定义函数，结合GetDriveType使用，可能用于避免加密不必要的驱动器
         "AES.new": 7,  # 创建AES加密对象，勒索软件中较常见，但也用于合法加密
         "RSA.generate": 7,  # 生成RSA密钥对，可能用于加密对称密钥，勒索软件中常见
         "RSA.importKey": 7,  # 导入公钥或私钥，勒索软件中常见，但合法加密软件也可能使用
         "self.pad": 6,  # 用于数据填充，满足加密算法要求，常见于加密操作中
         "self.unpad": 6,  # 移除数据块填充，恢复原始数据，常见于解密操作中
-        "time.sleep": 5,  # 延迟程序执行，可能用于避免检测，但在正常项目中也常见
         "winreg.CreateKeyEx": 8,  # 创建注册表键，常用于持久化操作，恶意软件中常见
         "winreg.SetValueEx": 8,  # 设置注册表值，常用于持久化，恶意软件中常见
         "winreg.OpenKeyEx": 7,  # 打开注册表键，可能用于读取或删除注册表信息，恶意软件中常见
         "winreg.DeleteValue": 7,  # 删除注册表值，可能用于清理痕迹，恶意软件中常见
-        "os.remove": 5,  # 删除文件，正常项目和恶意软件中都可能使用
-        "os.path.isfile": 4,  # 检查文件是否存在，正常项目中非常常见
-        "json.load": 4,  # 加载和解析JSON配置文件，正常项目中非常常见
-        "wx.App": 5,  # 初始化GUI应用程序，正常项目和恶意软件中都可能使用
-        "wx.Timer": 5,  # 创建定时器，正常项目和恶意软件中都可能使用
-        "webbrowser.open": 5,  # 打开指定URL，正常项目和恶意软件中都可能使用
-        "pub.subscribe": 4,  # 在GUI中订阅消息主题，正常项目中较为常见
         "Thread.start": 6,  # 启动线程，正常项目和恶意软件中都可能使用
         "Thread.stop": 6,  # 停止线程，正常项目和恶意软件中都可能使用
-        "wx.StaticText.SetFont": 4,  # 设置GUI文本的字体，正常项目中较为常见
-        "wx.StaticText.SetForegroundColour": 4,  # 设置GUI文本的前景色，正常项目中较为常见
-        "wx.TextCtrl.SetValue": 4,  # 设置文本框的显示内容，正常项目中较为常见
         "win32event.CreateMutex": 8,  # 创建系统Mutex对象，恶意软件中常用于确保单一实例运行
         "win32api.GetLastError": 6,  # 获取最后一个系统错误代码，恶意软件中可能用于判断操作结果
         "Popen": 7,  # 执行系统命令，恶意软件中常用于执行危险操作
         "Popen.communicate": 6,  # 与子进程通信并获取输出结果，恶意软件中较常见
-        "traceback.format_tb": 5,  # 获取异常回溯信息，调试模式下常用，正常项目中较常见
         "hashlib.sha256": 6,  # 生成SHA-256哈希值，常见于加密操作和恶意软件中
         "base64.b64encode": 7,  # 编码为Base64格式，恶意软件中可能用于隐藏或混淆代码
         "base64.b64decode": 7,  # 解码Base64格式，恶意软件中可能用于执行隐藏代码
@@ -207,7 +186,6 @@ cryption_patterns={
         "encrypted_files.txt": 7,  # 加密文件列表文件名，勒索软件中可能使用
         "Encryption test": 7,  # 测试加密和解密功能的字符串，勒索软件中常见
         "Incorrect Decryption Key!": 8,  # 错误的解密密钥提示信息，勒索软件中特有
-        "gui_title": 5,  # GUI标题字符串，正常项目中较为常见
         "YOUR FILES HAVE BEEN ENCRYPTED!": 9,  # 勒索提示字符串，勒索软件中特有
         "TIME REMAINING": 8,  # 剩余时间显示字符串，勒索软件中常用于恐吓受害者
         "WALLET ADDRESS:": 8,  # 比特币钱包地址字符串，勒索软件中常见
@@ -221,5 +199,73 @@ cryption_patterns={
         "VMware MAC Address Detected": 8,  # 检测虚拟机MAC地址的提示信息，恶意软件中特有
         "exec(base64.b64decode(": 9,  # 恶意代码模式，使用Base64编码隐藏代码，勒索软件中特有
         "Cracking Speed on RunTime": 7,  # 显示暴力破解速度的提示信息，勒索软件中常见
+    }
+}
+
+# 绕过攻击的特征
+bypass_attack_patterns = {
+    "Imports": {
+        "import curlify": 6,  # 导入'curlify'库，用于生成cURL命令，可能用于绕过攻击
+        "import secrets": 5,  # 使用'secrets'库生成随机数据，可能用于伪装请求
+        "import base64": 6,  # 使用'base64'库编码数据，可能用于隐匿payload
+        "import colorama": 4,  # 使用'colorama'库进行彩色输出，可能用于混淆和伪装输出信息
+        "import tldextract": 5,  # 用于提取域名信息，可能用于特定域名攻击
+        "import validators": 4,  # 用于验证URL的库，可能用于预处理攻击目标
+        "import bottle": 5,  # 导入'bottle'框架，可能用于构建恶意Web服务
+        "import flaresolverr_service": 7,  # 导入自定义服务模块，可能用于绕过反爬虫机制
+        "import pyrogram": 7,  # 使用'pyrogram'库构建Telegram Bot，可能用于恶意Bot操作
+        "import requests": 4,  # 导入'requests'库用于HTTP请求，可能用于发送恶意请求
+        "from curl_cffi import requests as Nreq": 6,  # 使用'curl_cffi'库替代'requests'，可能用于绕过某些安全检测
+        "from lxml import etree": 5,  # 使用'lxml'解析HTML/XML内容，可能用于数据提取和绕过
+        "from cfscrape import create_scraper": 7,  # 使用'cfscrape'绕过Cloudflare的防护
+    },
+
+    "Function_Calls": {
+        "base64.b64encode": 6,  # 使用Base64编码数据，可能用于绕过WAF检测
+        "secrets.token_hex": 5,  # 生成随机的十六进制token，可能用于伪造请求
+        "urljoin": 4,  # 用于构造恶意URL
+        "quote_plus(escape(": 4,  # 对URL中的数据进行编码，可能用于隐匿攻击
+        "os.walk": 3,  # 遍历文件目录，可能用于查找和操作恶意文件
+        "requests.request": 4,  # 直接发起HTTP请求，可能用于执行恶意操作
+        "curlify.to_curl": 5,  # 将请求转换为cURL命令，可能用于重放或分析请求
+        "tldextract.extract": 5,  # 提取域名信息，可能用于针对特定域名的攻击
+        "validators.url": 4,  # 验证URL是否有效，可能用于筛选攻击目标
+        "requests.post": 5,  # 发起POST请求，可能用于数据注入或其他恶意行为
+        "requests.get": 4,  # 发起GET请求，可能用于探测和信息收集
+        "os.environ.get": 3,  # 获取环境变量，可能用于动态修改攻击行为
+        "Bottle.route": 5,  # 用于定义Web服务的路由，可能用于创建恶意接口
+        "Bottle.run": 5,  # 启动Web服务，可能用于运行恶意服务器
+        "pyrogram.Client": 6,  # 初始化并启动Telegram Bot，可能用于控制恶意Bot
+        "remove": 4,  # 删除文件，可能用于清除痕迹
+        "requests.get(url).text": 4,  # 发送HTTP GET请求并获取响应文本，可能用于获取敏感信息
+        "argparse.ArgumentParser": 3,  # 创建命令行参数解析器，可能用于灵活配置攻击行为
+        "makeHttpRequest": 6,  # 可能用于发送HTTP请求，绕过安全防护
+        "replace": 4,  # 替换字符串，可能用于修改恶意URL或头部信息
+        "getStatusCode": 5,  # 获取HTTP状态码，可能用于判断绕过成功与否
+        "analyzeResponse": 5,  # 分析HTTP响应，可能用于判断绕过攻击的有效性
+        "rplHeader": 6,  # 替换HTTP头部信息，可能用于伪造或修改请求头
+        "payload = ''": 3,  # 空payload的使用，可能用于某些特殊攻击场景
+        '"GET", url, data=payload, headers=headersList': 4,  # 使用GET请求发送payload
+        "gen_payload = data_string": 5,  # 生成payload
+        "response = client.post(url, data=gen_payload, headers=headers).json()": 6,  # 使用POST请求发送生成的payload
+    },
+
+    "Strings": {
+        "User-Agent": 5,  # 伪装User-Agent头，可能用于绕过WAF
+        "Referer": 5,  # 伪装Referer头，可能用于绕过安全策略
+        "multipart/form-data": 5,  # 构造multipart请求，可能用于绕过WAF
+        "application/json": 4,  # 伪装Content-Type为JSON，可能用于绕过检测
+        "boundary": 5,  # 在multipart请求中设置自定义boundary，可能用于绕过防护
+        "base64.b64encode(payload.encode('UTF-8'))": 6,  # 使用Base64编码payload，可能用于绕过检测
+        "Replay with cURL:": 6,  # 提供cURL命令重放请求，可能用于攻击重现
+        "X-Original-URL": 7,  # 使用自定义头部伪装URL，可能用于绕过服务器端检查
+        "X-Custom-IP-Authorization": 7,  # 伪装IP头，可能用于绕过IP限制
+        "localhost": 4,  # 使用localhost进行伪装，可能用于内部网络攻击
+        "127.0.0.1": 4,  # 使用回环地址进行伪装，可能用于绕过外部安全措施
+        "HEADLESS=false": 4,  # 禁用无头模式，可能用于模拟真实用户的行为
+        "SSL_CERT_FILE": 4,  # 指定SSL证书文件，可能用于绕过SSL验证
+        "__bypassing...__": 5,  # 显示绕过操作的提示信息，可能用于恶意活动
+        "__generating...__": 5,  # 显示生成操作的提示信息，可能用于伪造请求
+        "__jumping the wall...__": 6,  # 显示绕过防火墙的提示信息
     }
 }
