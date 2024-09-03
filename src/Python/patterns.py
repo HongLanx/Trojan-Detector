@@ -58,7 +58,6 @@ botnet_patterns_scores = {
         "PRIVMSG": 8,  # IRC协议中的私信命令，常用于发送控制命令或报告结果。
         "QUIT": 8,  # IRC协议中的QUIT命令，用于断开与服务器的连接。
         "Nickname is already in use": 7,  # IRC服务器的响应，表明昵称已被占用，可能触发更换昵称的操作。
-        "http://freegeoip.net/json/": 7,  # 用于获取地理位置信息，可能用于针对性攻击或环境识别。
         "cmd.exe": 7,  # Windows命令行解释器，可能用于执行系统命令。
         "C:\\Windows\\system32\\cmd.exe": 7,  # Windows系统路径，可能用于执行恶意命令或脚本。
         "awesome.exe": 8,  # 恶意软件自我更新或替换后的文件名，常用于隐匿其真实用途。
@@ -127,7 +126,6 @@ obfuscation_patterns = {
     "RC4": 8,  # 一种流密码算法，在混淆代码中用于加密数据，恶意代码中较常见
     "obfuscate": 9,  # 明示的“混淆”操作，几乎只出现在混淆工具或恶意代码中
     "decrypt": 8,  # 解密操作，通常与混淆手段有关，可能在恶意代码中用于解密被隐藏的数据
-    #"exec('".format(...)": 9,  # 动态执行代码的格式化字符串，几乎只出现在混淆或恶意代码中
     "reverse": 7,  # 字符串反转操作，用于简单的混淆，正常代码中较少见
     "random.choice": 7,  # 用于生成随机选择，可能在混淆代码中用于生成随机变量名或数据
     }
@@ -253,66 +251,233 @@ ethicalHacking_patterns = {
     }
 }
 
-# 加密器的特征模式
-cryption_patterns={
+# 勒索软件的特征模式
+ransomware_patterns={
     "Imports": {
-        "winreg": 7,  # 用于与Windows注册表交互，加密器中可能用于持久化
-        "win32event": 7,  # 用于系统同步对象的管理，加密器中可能用于确保单实例运行
-        "ctypes": 8,  # 用于与C库交互，加密器中可能用于检测虚拟机或执行系统操作
-        "subprocess": 7,  # 用于执行系统命令，加密器中可能用于操作控制
-        "uuid": 6,  # 用于生成和处理UUID，加密器中可能用于设备识别或检测虚拟机环境
+        "win32api": 6,  # 用于与Windows API交互，勒索软件中常见，但在合法程序中也常见
+        "win32file": 5,  # 用于文件操作，常见于合法文件操作和恶意软件中
+        "Popen": 7,  # 用于执行外部命令，可能用于恶意操作，但在合法程序中也常见
+        "Crypto.PublicKey.RSA": 6,  # 用于非对称加密，合法和恶意软件中都可能使用
+        "Crypto.Cipher.AES": 7,  # 用于对称加密，合法和恶意软件中都可能使用
+        "Crypto.Random": 6,  # 用于生成随机数，合法加密和恶意软件中都常见
+        "winreg": 7,  # 用于与Windows注册表交互，常见于持久化操作，可能用于恶意持久化
+        "win32event": 7,  # 用于系统同步对象的管理，恶意软件中可能用于确保单实例运行
+        "winerror": 6,  # 用于处理Windows错误代码，恶意软件中可能用于错误处理
+        "hashlib": 6,  # 用于生成哈希值，常见于安全相关操作和恶意软件中
+        "base64": 7,  # 用于Base64编码，可能用于混淆代码，在恶意软件中较为常见
+        "ctypes": 8,  # 用于与C库交互，恶意软件中可能用于检测虚拟机或沙箱环境
+        "subprocess": 7,  # 用于执行系统命令，恶意软件中可能用于执行危险操作
+        "uuid": 6,  # 用于生成和处理UUID，恶意软件中可能用于检测虚拟机环境
     },
     "Function_Calls": {
-        "win32file.GetDriveType": 6,  # 检查驱动器类型，可能用于加密器识别加密目标
-        "win32api.GetLogicalDriveStrings": 6,  # 获取逻辑驱动器列表，可能用于加密器识别加密目标
-        "AES.new": 7,  # 创建AES加密对象，加密器中用于文件加密
-        "RSA.generate": 7,  # 生成RSA密钥对，可能用于加密对称密钥，加密器中常见
-        "RSA.importKey": 7,  # 导入公钥或私钥，加密器中常见，用于密钥管理
-        "winreg.CreateKeyEx": 8,  # 创建注册表键，可能用于加密器的持久化操作
-        "winreg.SetValueEx": 8,  # 设置注册表值，可能用于加密器的持久化操作
-        "winreg.OpenKeyEx": 7,  # 打开注册表键，可能用于读取或修改加密器的持久化信息
-        "winreg.DeleteValue": 7,  # 删除注册表值，可能用于清理加密器的痕迹
-        "win32event.CreateMutex": 8,  # 创建系统Mutex对象，加密器中可能用于确保单一实例运行
-        "Popen": 7,  # 执行系统命令，加密器中可能用于控制操作或执行加密命令
-        "Popen.communicate": 6,  # 与子进程通信并获取输出结果，加密器中可能用于执行和监控命令
-        "base64.b64encode": 7,  # 编码为Base64格式，加密器中可能用于混淆加密数据
-        "base64.b64decode": 7,  # 解码Base64格式，加密器中可能用于解码和执行隐藏的加密代码
-        "ctypes.cdll.LoadLibrary": 8,  # 加载DLL，加密器中可能用于执行特定系统操作或检测虚拟机环境
-        "uuid.getnode": 6,  # 获取MAC地址，加密器中可能用于识别设备或检测虚拟机环境
+        "win32file.GetDriveType": 6,  # 检查驱动器类型，可能用于识别加密目标，恶意软件中较常见
+        "win32api.GetLogicalDriveStrings": 6,  # 获取逻辑驱动器列表，可能用于识别加密目标，恶意软件中较常见
+        "is_optical_drive": 5,  # 自定义函数，结合GetDriveType使用，可能用于避免加密不必要的驱动器
+        "AES.new": 7,  # 创建AES加密对象，勒索软件中较常见，但也用于合法加密
+        "RSA.generate": 7,  # 生成RSA密钥对，可能用于加密对称密钥，勒索软件中常见
+        "RSA.importKey": 7,  # 导入公钥或私钥，勒索软件中常见，但合法加密软件也可能使用
+        "self.pad": 6,  # 用于数据填充，满足加密算法要求，常见于加密操作中
+        "self.unpad": 6,  # 移除数据块填充，恢复原始数据，常见于解密操作中
+        "winreg.CreateKeyEx": 8,  # 创建注册表键，常用于持久化操作，恶意软件中常见
+        "winreg.SetValueEx": 8,  # 设置注册表值，常用于持久化，恶意软件中常见
+        "winreg.OpenKeyEx": 7,  # 打开注册表键，可能用于读取或删除注册表信息，恶意软件中常见
+        "winreg.DeleteValue": 7,  # 删除注册表值，可能用于清理痕迹，恶意软件中常见
+        "os.remove": 5,  # 删除文件，正常项目和恶意软件中都可能使用
+        "webbrowser.open": 5,  # 打开指定URL，正常项目和恶意软件中都可能使用
+        "pub.subscribe": 4,  # 在GUI中订阅消息主题，正常项目中较为常见
+        "Thread.start": 6,  # 启动线程，正常项目和恶意软件中都可能使用
+        "Thread.stop": 6,  # 停止线程，正常项目和恶意软件中都可能使用
+        "win32api.GetLastError": 6,  # 获取最后一个系统错误代码，恶意软件中可能用于判断操作结果
+        "Popen": 7,  # 执行系统命令，恶意软件中常用于执行危险操作
+        "Popen.communicate": 6,  # 与子进程通信并获取输出结果，恶意软件中较常见
+        "traceback.format_tb": 5,  # 获取异常回溯信息，调试模式下常用，正常项目中较常见
+        "hashlib.sha256": 6,  # 生成SHA-256哈希值，常见于加密操作和恶意软件中
+        "base64.b64encode": 7,  # 编码为Base64格式，恶意软件中可能用于隐藏或混淆代码
+        "base64.b64decode": 7,  # 解码Base64格式，恶意软件中可能用于执行隐藏代码
+        "ctypes.cdll.LoadLibrary": 8,  # 加载DLL，恶意软件中可能用于检测沙箱或虚拟机环境
+        "re.findall": 5,  # 查找匹配正则表达式的部分，正常项目中较为常见
+        "uuid.getnode": 6,  # 获取MAC地址，恶意软件中可能用于检测虚拟机环境
     },
     "Strings": {
-        "REGISTRY_LOCATION": 8,  # 注册表位置字符串，加密器可能用于存储配置信息或持久化
-        "STARTUP_REGISTRY_LOCATION": 8,  # 注册表启动项位置，加密器中常用于持久化操作
-        "GUI_LABEL_TEXT_FLASHING_ENCRYPTED": 9,  # 显示“文件已加密”的提示，加密器中特有
-        "BTC_BUTTON_URL": 8,  # 比特币相关URL，加密器中可能用于引导用户支付
-        "key.txt": 7,  # 密钥存储文件名，加密器中可能用于存储加密密钥
-        "C3C9BF85E96BC3489996280489C1EE24": 7,  # 密钥字符串，加密器中常见，用于加密管理
-        "vssadmin Delete Shadows /All /Quiet": 9,  # 删除卷影副本命令，加密器中可能用于防止数据恢复
-        "encrypted_files.txt": 7,  # 加密文件列表文件名，加密器中可能用于记录加密文件
-        "Encryption test": 7,  # 测试加密和解密功能的字符串，加密器中常见
-        "Incorrect Decryption Key!": 8,  # 错误的解密密钥提示信息，加密器中特有
-        "YOUR FILES HAVE BEEN ENCRYPTED!": 9,  # 勒索提示字符串，加密器中特有
-        "TIME REMAINING": 8,  # 剩余时间显示字符串，加密器中常用于提示支付截止时间
-        "WALLET ADDRESS:": 8,  # 比特币钱包地址字符串，加密器中常用于提示支付地址
-        "BITCOIN FEE": 8,  # 比特币支付金额字符串，加密器中常用于提示支付金额
-        "1BoatSLRHtKNngkdXEeobR76b53LETtpyT": 7,  # 示例比特币钱包地址，加密器中可能用于支付
-        "AES Decryption Key": 8,  # AES解密密钥字符串，加密器中特有
-        "mutex_rr_windows": 8,  # Mutex名称字符串，加密器中常用于确保单实例运行
-        "The file is corrupt and cannot be opened": 7,  # 错误消息，加密器中可能用于防止多个实例运行
-        "VMware Registry Detected": 8,  # 检测虚拟机注册表项的提示信息，加密器中特有
-        "VMwareService.exe & VMwareTray.exe process are running": 8,  # 检测虚拟机相关进程的提示信息，加密器中特有
-        "VMware MAC Address Detected": 8,  # 检测虚拟机MAC地址的提示信息，加密器中特有
-        "exec(base64.b64decode(": 9,  # 恶意代码模式，使用Base64编码隐藏代码，加密器中特有
-        "Cracking Speed on RunTime": 7,  # 显示暴力破解速度的提示信息，加密器中可能用于恐吓用户
+        "REGISTRY_LOCATION": 8,  # 注册表位置字符串，常用于存储恶意软件配置信息
+        "STARTUP_REGISTRY_LOCATION": 8,  # 注册表启动项位置，常用于持久化操作
+        "GUI_LABEL_TEXT_FLASHING_ENCRYPTED": 9,  # 显示“文件已加密”的提示，勒索软件中特有
+        "BTC_BUTTON_URL": 8,  # 比特币相关URL，勒索软件中常见，用于支付赎金
+        "key.txt": 7,  # 密钥存储文件名，勒索软件中可能使用
+        "C3C9BF85E96BC3489996280489C1EE24": 7,  # 密钥字符串，常见于勒索软件的密钥管理流程
+        "vssadmin Delete Shadows /All /Quiet": 9,  # 删除卷影副本命令，恶意软件中用于防止文件恢复
+        "encrypted_files.txt": 7,  # 加密文件列表文件名，勒索软件中可能使用
+        "Encryption test": 7,  # 测试加密和解密功能的字符串，勒索软件中常见
+        "Incorrect Decryption Key!": 8,  # 错误的解密密钥提示信息，勒索软件中特有
+        "gui_title": 5,  # GUI标题字符串，正常项目中较为常见
+        "YOUR FILES HAVE BEEN ENCRYPTED!": 9,  # 勒索提示字符串，勒索软件中特有
+        "TIME REMAINING": 8,  # 剩余时间显示字符串，勒索软件中常用于恐吓受害者
+        "WALLET ADDRESS:": 8,  # 比特币钱包地址字符串，勒索软件中常见
+        "BITCOIN FEE": 8,  # 比特币支付金额字符串，勒索软件中常见
+        "1BoatSLRHtKNngkdXEeobR76b53LETtpyT": 7,  # 示例比特币钱包地址，勒索软件中常见
+        "AES Decryption Key": 8,  # AES解密密钥字符串，勒索软件中特有
+        "mutex_rr_windows": 8,  # Mutex名称字符串，常用于确保单实例运行
+        "The file is corrupt and cannot be opened": 7,  # 错误消息，常用于防止多个实例运行
+        "VMware Registry Detected": 8,  # 检测虚拟机注册表项的提示信息，恶意软件中特有
+        "VMwareService.exe & VMwareTray.exe process are running": 8,  # 检测虚拟机相关进程的提示信息，恶意软件中特有
+        "VMware MAC Address Detected": 8,  # 检测虚拟机MAC地址的提示信息，恶意软件中特有
+        "exec(base64.b64decode(": 9,  # 恶意代码模式，使用Base64编码隐藏代码，勒索软件中特有
+        "Cracking Speed on RunTime": 7,  # 显示暴力破解速度的提示信息，勒索软件中常见
     }
 }
-# 勒索软件的特征模式ransomware_patterns
 
 
-# 防御绕过的特征模式Defense_Bypass_patterns
+# 绕过攻击的特征模式
+bypass_attack_patterns = {
+    "Imports": {
+        "import curlify": 6,  # 导入'curlify'库，用于生成cURL命令，可能用于绕过攻击
+        "import secrets": 5,  # 使用'secrets'库生成随机数据，可能用于伪装请求
+        "import base64": 6,  # 使用'base64'库编码数据，可能用于隐匿payload
+        "import tldextract": 5,  # 用于提取域名信息，可能用于特定域名攻击
+        "import validators": 4,  # 用于验证URL的库，可能用于预处理攻击目标
+        "import bottle": 5,  # 导入'bottle'框架，可能用于构建恶意Web服务
+        "import flaresolverr_service": 7,  # 导入自定义服务模块，可能用于绕过反爬虫机制
+        "import pyrogram": 7,  # 使用'pyrogram'库构建Telegram Bot，可能用于恶意Bot操作
+        "from curl_cffi import requests as Nreq": 6,  # 使用'curl_cffi'库替代'requests'，可能用于绕过某些安全检测
+        "from lxml import etree": 5,  # 使用'lxml'解析HTML/XML内容，可能用于数据提取和绕过
+        "from cfscrape import create_scraper": 7,  # 使用'cfscrape'绕过Cloudflare的防护
+    },
+
+    "Function_Calls": {
+        "base64.b64encode": 6,  # 使用Base64编码数据，可能用于绕过WAF检测
+        "secrets.token_hex": 5,  # 生成随机的十六进制token，可能用于伪造请求
+        "urljoin": 4,  # 用于构造恶意URL
+        "quote_plus(escape(": 4,  # 对URL中的数据进行编码，可能用于隐匿攻击
+        "os.walk": 3,  # 遍历文件目录，可能用于查找和操作恶意文件
+        "requests.request": 4,  # 直接发起HTTP请求，可能用于执行恶意操作
+        "curlify.to_curl": 5,  # 将请求转换为cURL命令，可能用于重放或分析请求
+        "tldextract.extract": 5,  # 提取域名信息，可能用于针对特定域名的攻击
+        "validators.url": 4,  # 验证URL是否有效，可能用于筛选攻击目标
+        "requests.post": 5,  # 发起POST请求，可能用于数据注入或其他恶意行为
+        "os.environ.get": 3,  # 获取环境变量，可能用于动态修改攻击行为
+        "Bottle.route": 5,  # 用于定义Web服务的路由，可能用于创建恶意接口
+        "Bottle.run": 5,  # 启动Web服务，可能用于运行恶意服务器
+        "pyrogram.Client": 6,  # 初始化并启动Telegram Bot，可能用于控制恶意Bot
+        "remove": 4,  # 删除文件，可能用于清除痕迹
+        "requests.get(url).text": 4,  # 发送HTTP GET请求并获取响应文本，可能用于获取敏感信息
+        "makeHttpRequest": 6,  # 可能用于发送HTTP请求，绕过安全防护
+        "replace": 4,  # 替换字符串，可能用于修改恶意URL或头部信息
+        "getStatusCode": 5,  # 获取HTTP状态码，可能用于判断绕过成功与否
+        "analyzeResponse": 5,  # 分析HTTP响应，可能用于判断绕过攻击的有效性
+        "rplHeader": 6,  # 替换HTTP头部信息，可能用于伪造或修改请求头
+        '"GET", url, data=payload, headers=headersList': 4,  # 使用GET请求发送payload
+        "response = client.post(url, data=gen_payload, headers=headers).json()": 6,  # 使用POST请求发送生成的payload
+    },
+
+    "Strings": {
+        "User-Agent": 5,  # 伪装User-Agent头，可能用于绕过WAF
+        "Referer": 5,  # 伪装Referer头，可能用于绕过安全策略
+        "multipart/form-data": 5,  # 构造multipart请求，可能用于绕过WAF
+        "application/json": 4,  # 伪装Content-Type为JSON，可能用于绕过检测
+        "boundary": 5,  # 在multipart请求中设置自定义boundary，可能用于绕过防护
+        "base64.b64encode(payload.encode('UTF-8'))": 6,  # 使用Base64编码payload，可能用于绕过检测
+        "Replay with cURL:": 6,  # 提供cURL命令重放请求，可能用于攻击重现
+        "X-Original-URL": 7,  # 使用自定义头部伪装URL，可能用于绕过服务器端检查
+        "X-Custom-IP-Authorization": 7,  # 伪装IP头，可能用于绕过IP限制
+        "localhost": 4,  # 使用localhost进行伪装，可能用于内部网络攻击
+        "127.0.0.1": 4,  # 使用回环地址进行伪装，可能用于绕过外部安全措施
+        "HEADLESS=false": 4,  # 禁用无头模式，可能用于模拟真实用户的行为
+        "SSL_CERT_FILE": 4,  # 指定SSL证书文件，可能用于绕过SSL验证
+        "__bypassing...__": 5,  # 显示绕过操作的提示信息，可能用于恶意活动
+        "__generating...__": 5,  # 显示生成操作的提示信息，可能用于伪造请求
+        "__jumping the wall...__": 6,  # 显示绕过防火墙的提示信息
+    }
+}
 
 
 # 键盘记录器的特征模式Keyboard_patterns
+Keyboard_patterns = {
+    "imports": {
+        "pynput": 6,         # 用于监听键盘和鼠标事件，键盘记录器常用
+        "pyscreenshot": 7,   # 用于截屏，恶意软件中常用来获取屏幕内容
+        "sounddevice": 6,    # 用于录音，可能被用于隐秘录音的恶意软件
+        "pyHook": 9,         # 专门用于键盘和鼠标钩子管理，主要在键盘记录器中出现
+        "pythoncom": 8,      # 与 pyHook 配合使用，通常用于键盘记录器
+        "pyautogui": 6,      # 用于自动化控制鼠标键盘和截屏，恶意软件常用来获取屏幕内容
+        "ImageGrab": 7,      # 用于截屏，恶意软件常用来获取屏幕内容
+        "getpass": 6         # 用于获取用户信息，可能用于窃取用户凭证
+    },
+    "functions": {
+        "pyHook.HookManager": 9,        # 管理键盘钩子，键盘记录器的关键函数
+        "pythoncom.PumpMessages": 8,    # 保持键盘钩子工作，键盘记录器常用
+        "win32console.GetConsoleWindow": 7,  # 获取并隐藏控制台窗口
+        "win32gui.ShowWindow": 7,       # 隐藏窗口，恶意软件隐藏自身的常用方式
+        "pyautogui.screenshot": 6,      # 截屏并保存，恶意软件获取屏幕内容
+        "pynput.keyboard.Listener": 6,  # 键盘事件监听，常用于键盘记录器
+        "pynput.mouse.Listener": 6,     # 鼠标事件监听，恶意监控工具中使用
+        "pyscreenshot.grab": 7,         # 截取屏幕，用于恶意软件获取屏幕内容
+        "sd.rec": 6,                    # 录音功能，隐秘录音的恶意软件常用
+        "subprocess.check_output": 6,   # 执行系统命令并获取输出，可能用于执行恶意操作
+        "ImageGrab.grab": 7,            # 截屏功能，常用于恶意软件
+        "getpass.getuser": 6            # 获取当前用户名，可能用于窃取用户信息
+    },
+    "strings": {
+        "KeyLogger Started...": 9,      # 标识键盘记录器启动，恶意软件常用
+        "keyboardData": 8,              # 键盘记录数据的标识，常见于恶意软件
+        "keylogs.txt": 9,               # 键盘记录文件名，恶意软件常用
+        "New data from victim(Base64 encoded)": 9,  # 邮件内容中的恶意标识
+        "Software\\Microsoft\\Windows\\CurrentVersion\\Run": 7,  # 注册表路径，常用于恶意软件设置开机启动项
+        "185.234.216.168": 10,          # 恶意IP地址，用于恶意服务器通信
+        "185.92.220.60": 10,            # 恶意IP地址
+        "82.146.35.40": 10,             # 恶意IP地址
+        "94.102.49.193": 10,            # 恶意IP地址
+        "185.100.87.72": 10,            # 恶意IP地址
+        "malicious-domain.com": 10,     # 恶意域名
+        "badactor.com": 10,             # 恶意域名
+        "examplephishing.com": 10,      # 恶意域名
+        "exploit-server.net": 10,       # 恶意域名
+        "ransomware-site.org": 10,      # 恶意域名
+        "logs-": 7,                     # 多个日志文件命名格式，通常用于窃取数据的恶意软件
+        "C:\\Users\\Public\\Intel\\Logs": 8,  # 恶意软件用于存储窃取数据的路径
+        "AdobePush.exe": 8              # 恶意软件自我复制的文件名
+    }
+}
 
-
-# 后门的特征模式backdoor，exploit - 漏洞利用
+# 漏洞利用的特征模式
+exploit_patterns = {
+    "imports": {
+        "shodan": 8,                     # 用于与Shodan API交互，通常在网络扫描或漏洞利用工具中使用
+        "scapy.all": 9,                  # 用于网络数据包构建和发送，通常在网络攻击工具中使用
+        "SimpleHTTPServer": 8,           # 简单HTTP服务器模块，用于构建恶意服务器
+        "urllib2": 8,                    # 用于发送HTTP请求，常见于漏洞利用和攻击脚本中
+    },
+    "functions": {
+        "shodan.Shodan": 8,                         # 用于访问Shodan API，通常在漏洞利用工具中使用
+        "scapy.all.send": 9,                        # 用于发送构造的网络数据包，通常在网络攻击和漏洞利用中使用
+        "Raw": 9,                                   # 构造原始负载数据，通常用于网络攻击
+        "SimpleHTTPServer.SimpleHTTPRequestHandler": 8,  # 创建简单的HTTP请求处理程序，恶意服务器中常见
+        "urllib2.urlopen": 8,                       # 发送HTTP请求，可能用于恶意数据的获取或命令执行
+        "SocketServer.TCPServer": 8,                # 创建TCP服务器，恶意网络服务中常见
+        "handler.serve_forever": 8,                 # 启动HTTP服务器，恶意服务器中常见
+        "urllib.urlencode": 8,                      # 编码URL参数，常见于发送HTTP请求的恶意脚本中
+        "urllib2.Request": 8,                       # 创建HTTP请求对象，常见于发送HTTP请求的恶意脚本中
+    },
+    "strings": {
+        "Shodan API Key": 7,                        # Shodan API Key相关的字符串，常见于利用Shodan进行漏洞扫描的工具中
+        "bots.txt": 7,                              # 存储从Shodan获取的目标IP列表的文件名，通常在漏洞利用工具中出现
+        "forged UDP packets": 9,                    # 伪造的UDP数据包，通常与DDoS攻击或网络攻击工具相关
+        "XXE PoC exploit": 8,                       # 与XXE漏洞利用相关的描述，常见于漏洞利用工具中
+        "exec(\"whoami\")": 8,                      # 常见于漏洞利用中的命令执行
+        "<?php\n\tsystem($_GET[\"cmd\"]);": 9,      # PHP Webshell代码，用于远程命令执行的常见模式
+        "/tmp/wgethack": 8,                         # 指定的恶意文件路径，可能用于检测恶意操作
+        "WEBSHELL_URL": 8,                          # Webshell的URL，指向恶意脚本
+        "Wget < 1.18 Access List Bypass / Race Condition PoC Exploit": 8,  # 与Wget漏洞利用相关的字符串，指向特定的恶意行为
+        "CVE-2016-7098": 8,                         # 具体的CVE编号，指向已知的漏洞利用
+        "malicious": 9,                             # 在恶意脚本中常见的标识词
+        "Exploit": 9,                               # 通常用于描述恶意行为或漏洞利用的标识
+        "reverse shell": 8,                         # 用于远程控制目标主机的技术，常见于漏洞利用中
+        "PHPMailer": 8,                             # 电子邮件库名称，常见于相关的漏洞利用
+        "SwiftMailer": 8,                           # 电子邮件库名称，常见于相关的漏洞利用
+        "Zend Framework": 8,                        # PHP框架名称，常见于相关的漏洞利用
+        "CVE-2016-10033": 8,                        # 具体的CVE编号，指向PHPMailer的漏洞利用
+        "CVE-2016-10045": 8,                        # 具体的CVE编号，指向PHPMailer的漏洞利用
+        "CVE-2016-10074": 8,                        # 具体的CVE编号，指向SwiftMailer的漏洞利用
+        "CVE-2016-10034": 8,                        # 具体的CVE编号，指向Zend Framework的漏洞利用
+        "Reverse Code Execution": 9,                # 表示远程代码执行的术语，常用于描述攻击目的
+    }
+}
