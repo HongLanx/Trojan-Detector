@@ -42,7 +42,7 @@ def process_ssa_code_from_file(file_path):
         elif current_block is not None and line.strip():
             # 处理代码块中的行，提取直到遇到连续两个及以上空格为止的字符串
             # 并且只保留包含等号的行
-            if '=' in line:   #如果要保留ifelse等选择语句，删除该条件即可
+            if '=' in line:  # 如果要保留ifelse等选择语句，删除该条件即可
                 trimmed_line = re.split(r'\s{2,}', line.strip())[0]
                 # 将处理后的结果加入当前代码块，并添加换行符
                 current_block += trimmed_line + "\n"

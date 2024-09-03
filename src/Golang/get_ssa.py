@@ -47,18 +47,18 @@ def generate_ssa(go_file, go_mod_file=None):
 
     if "no required module provides package" or "missing go.sum entry" in stderr:
         missing_packages = re.findall(r"no required module provides package (.+?);", stderr)
-        missing_imports = re.findall(r"go mod download ([\w\.\-\/@]+)", stderr)
+        missing_imports = re.findall(r'go mod download ([\w\.\-\/@]+)', stderr)
         if missing_imports or missing_packages:
             print("发现有模块缺失，正在下载...")
         for package in missing_packages:
             print(f"Installing missing package: {package}")
-            install_stdout, install_stderr=run_command(['go', 'get', package], module_dir)
+            install_stdout, install_stderr = run_command(['go', 'get', package], module_dir)
             print(install_stdout)
             print(install_stderr)
 
         for package in missing_imports:
             print(f"Attempting to download missing package: {package}")
-            install_stdout, install_stderr=run_command(['go', 'mod', 'download', package], module_dir)
+            install_stdout, install_stderr = run_command(['go', 'mod', 'download', package], module_dir)
             print(install_stdout)
             print(install_stderr)
 
