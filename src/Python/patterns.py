@@ -253,72 +253,60 @@ ethicalHacking_patterns = {
     }
 }
 
-# 勒索软件的特征模式
+# 加密器的特征模式
 cryption_patterns={
     "Imports": {
-        "win32api": 6,  # 用于与Windows API交互，勒索软件中常见，但在合法程序中也常见
-        "Popen": 7,  # 用于执行外部命令，可能用于恶意操作，但在合法程序中也常见
-        "Crypto.PublicKey.RSA": 6,  # 用于非对称加密，合法和恶意软件中都可能使用
-        "Crypto.Cipher.AES": 7,  # 用于对称加密，合法和恶意软件中都可能使用
-        "Crypto.Random": 6,  # 用于生成随机数，合法加密和恶意软件中都常见
-        "winreg": 7,  # 用于与Windows注册表交互，常见于持久化操作，可能用于恶意持久化
-        "threading": 6,  # 用于创建和管理线程，正常项目和恶意软件中都可能使用
-        "win32event": 7,  # 用于系统同步对象的管理，恶意软件中可能用于确保单实例运行
-        "winerror": 6,  # 用于处理Windows错误代码，恶意软件中可能用于错误处理
-        "hashlib": 6,  # 用于生成哈希值，常见于安全相关操作和恶意软件中
-        "base64": 7,  # 用于Base64编码，可能用于混淆代码，在恶意软件中较为常见
-        "ctypes": 8,  # 用于与C库交互，恶意软件中可能用于检测虚拟机或沙箱环境
-        "subprocess": 7,  # 用于执行系统命令，恶意软件中可能用于执行危险操作
-        "uuid": 6,  # 用于生成和处理UUID，恶意软件中可能用于检测虚拟机环境
+        "winreg": 7,  # 用于与Windows注册表交互，加密器中可能用于持久化
+        "win32event": 7,  # 用于系统同步对象的管理，加密器中可能用于确保单实例运行
+        "ctypes": 8,  # 用于与C库交互，加密器中可能用于检测虚拟机或执行系统操作
+        "subprocess": 7,  # 用于执行系统命令，加密器中可能用于操作控制
+        "uuid": 6,  # 用于生成和处理UUID，加密器中可能用于设备识别或检测虚拟机环境
     },
     "Function_Calls": {
-        "win32file.GetDriveType": 6,  # 检查驱动器类型，可能用于识别加密目标，恶意软件中较常见
-        "win32api.GetLogicalDriveStrings": 6,  # 获取逻辑驱动器列表，可能用于识别加密目标，恶意软件中较常见
-        "AES.new": 7,  # 创建AES加密对象，勒索软件中较常见，但也用于合法加密
-        "RSA.generate": 7,  # 生成RSA密钥对，可能用于加密对称密钥，勒索软件中常见
-        "RSA.importKey": 7,  # 导入公钥或私钥，勒索软件中常见，但合法加密软件也可能使用
-        "self.pad": 6,  # 用于数据填充，满足加密算法要求，常见于加密操作中
-        "self.unpad": 6,  # 移除数据块填充，恢复原始数据，常见于解密操作中
-        "winreg.CreateKeyEx": 8,  # 创建注册表键，常用于持久化操作，恶意软件中常见
-        "winreg.SetValueEx": 8,  # 设置注册表值，常用于持久化，恶意软件中常见
-        "winreg.OpenKeyEx": 7,  # 打开注册表键，可能用于读取或删除注册表信息，恶意软件中常见
-        "winreg.DeleteValue": 7,  # 删除注册表值，可能用于清理痕迹，恶意软件中常见
-        "win32event.CreateMutex": 8,  # 创建系统Mutex对象，恶意软件中常用于确保单一实例运行
-        "win32api.GetLastError": 6,  # 获取最后一个系统错误代码，恶意软件中可能用于判断操作结果
-        "Popen": 7,  # 执行系统命令，恶意软件中常用于执行危险操作
-        "Popen.communicate": 6,  # 与子进程通信并获取输出结果，恶意软件中较常见
-        "hashlib.sha256": 6,  # 生成SHA-256哈希值，常见于加密操作和恶意软件中
-        "base64.b64encode": 7,  # 编码为Base64格式，恶意软件中可能用于隐藏或混淆代码
-        "base64.b64decode": 7,  # 解码Base64格式，恶意软件中可能用于执行隐藏代码
-        "ctypes.cdll.LoadLibrary": 8,  # 加载DLL，恶意软件中可能用于检测沙箱或虚拟机环境
-        "uuid.getnode": 6,  # 获取MAC地址，恶意软件中可能用于检测虚拟机环境
+        "win32file.GetDriveType": 6,  # 检查驱动器类型，可能用于加密器识别加密目标
+        "win32api.GetLogicalDriveStrings": 6,  # 获取逻辑驱动器列表，可能用于加密器识别加密目标
+        "AES.new": 7,  # 创建AES加密对象，加密器中用于文件加密
+        "RSA.generate": 7,  # 生成RSA密钥对，可能用于加密对称密钥，加密器中常见
+        "RSA.importKey": 7,  # 导入公钥或私钥，加密器中常见，用于密钥管理
+        "winreg.CreateKeyEx": 8,  # 创建注册表键，可能用于加密器的持久化操作
+        "winreg.SetValueEx": 8,  # 设置注册表值，可能用于加密器的持久化操作
+        "winreg.OpenKeyEx": 7,  # 打开注册表键，可能用于读取或修改加密器的持久化信息
+        "winreg.DeleteValue": 7,  # 删除注册表值，可能用于清理加密器的痕迹
+        "win32event.CreateMutex": 8,  # 创建系统Mutex对象，加密器中可能用于确保单一实例运行
+        "Popen": 7,  # 执行系统命令，加密器中可能用于控制操作或执行加密命令
+        "Popen.communicate": 6,  # 与子进程通信并获取输出结果，加密器中可能用于执行和监控命令
+        "base64.b64encode": 7,  # 编码为Base64格式，加密器中可能用于混淆加密数据
+        "base64.b64decode": 7,  # 解码Base64格式，加密器中可能用于解码和执行隐藏的加密代码
+        "ctypes.cdll.LoadLibrary": 8,  # 加载DLL，加密器中可能用于执行特定系统操作或检测虚拟机环境
+        "uuid.getnode": 6,  # 获取MAC地址，加密器中可能用于识别设备或检测虚拟机环境
     },
     "Strings": {
-        "REGISTRY_LOCATION": 8,  # 注册表位置字符串，常用于存储恶意软件配置信息
-        "STARTUP_REGISTRY_LOCATION": 8,  # 注册表启动项位置，常用于持久化操作
-        "GUI_LABEL_TEXT_FLASHING_ENCRYPTED": 9,  # 显示“文件已加密”的提示，勒索软件中特有
-        "BTC_BUTTON_URL": 8,  # 比特币相关URL，勒索软件中常见，用于支付赎金
-        "key.txt": 7,  # 密钥存储文件名，勒索软件中可能使用
-        "C3C9BF85E96BC3489996280489C1EE24": 7,  # 密钥字符串，常见于勒索软件的密钥管理流程
-        "vssadmin Delete Shadows /All /Quiet": 9,  # 删除卷影副本命令，恶意软件中用于防止文件恢复
-        "encrypted_files.txt": 7,  # 加密文件列表文件名，勒索软件中可能使用
-        "Encryption test": 7,  # 测试加密和解密功能的字符串，勒索软件中常见
-        "Incorrect Decryption Key!": 8,  # 错误的解密密钥提示信息，勒索软件中特有
-        "YOUR FILES HAVE BEEN ENCRYPTED!": 9,  # 勒索提示字符串，勒索软件中特有
-        "TIME REMAINING": 8,  # 剩余时间显示字符串，勒索软件中常用于恐吓受害者
-        "WALLET ADDRESS:": 8,  # 比特币钱包地址字符串，勒索软件中常见
-        "BITCOIN FEE": 8,  # 比特币支付金额字符串，勒索软件中常见
-        "1BoatSLRHtKNngkdXEeobR76b53LETtpyT": 7,  # 示例比特币钱包地址，勒索软件中常见
-        "AES Decryption Key": 8,  # AES解密密钥字符串，勒索软件中特有
-        "mutex_rr_windows": 8,  # Mutex名称字符串，常用于确保单实例运行
-        "The file is corrupt and cannot be opened": 7,  # 错误消息，常用于防止多个实例运行
-        "VMware Registry Detected": 8,  # 检测虚拟机注册表项的提示信息，恶意软件中特有
-        "VMwareService.exe & VMwareTray.exe process are running": 8,  # 检测虚拟机相关进程的提示信息，恶意软件中特有
-        "VMware MAC Address Detected": 8,  # 检测虚拟机MAC地址的提示信息，恶意软件中特有
-        "exec(base64.b64decode(": 9,  # 恶意代码模式，使用Base64编码隐藏代码，勒索软件中特有
-        "Cracking Speed on RunTime": 7,  # 显示暴力破解速度的提示信息，勒索软件中常见
+        "REGISTRY_LOCATION": 8,  # 注册表位置字符串，加密器可能用于存储配置信息或持久化
+        "STARTUP_REGISTRY_LOCATION": 8,  # 注册表启动项位置，加密器中常用于持久化操作
+        "GUI_LABEL_TEXT_FLASHING_ENCRYPTED": 9,  # 显示“文件已加密”的提示，加密器中特有
+        "BTC_BUTTON_URL": 8,  # 比特币相关URL，加密器中可能用于引导用户支付
+        "key.txt": 7,  # 密钥存储文件名，加密器中可能用于存储加密密钥
+        "C3C9BF85E96BC3489996280489C1EE24": 7,  # 密钥字符串，加密器中常见，用于加密管理
+        "vssadmin Delete Shadows /All /Quiet": 9,  # 删除卷影副本命令，加密器中可能用于防止数据恢复
+        "encrypted_files.txt": 7,  # 加密文件列表文件名，加密器中可能用于记录加密文件
+        "Encryption test": 7,  # 测试加密和解密功能的字符串，加密器中常见
+        "Incorrect Decryption Key!": 8,  # 错误的解密密钥提示信息，加密器中特有
+        "YOUR FILES HAVE BEEN ENCRYPTED!": 9,  # 勒索提示字符串，加密器中特有
+        "TIME REMAINING": 8,  # 剩余时间显示字符串，加密器中常用于提示支付截止时间
+        "WALLET ADDRESS:": 8,  # 比特币钱包地址字符串，加密器中常用于提示支付地址
+        "BITCOIN FEE": 8,  # 比特币支付金额字符串，加密器中常用于提示支付金额
+        "1BoatSLRHtKNngkdXEeobR76b53LETtpyT": 7,  # 示例比特币钱包地址，加密器中可能用于支付
+        "AES Decryption Key": 8,  # AES解密密钥字符串，加密器中特有
+        "mutex_rr_windows": 8,  # Mutex名称字符串，加密器中常用于确保单实例运行
+        "The file is corrupt and cannot be opened": 7,  # 错误消息，加密器中可能用于防止多个实例运行
+        "VMware Registry Detected": 8,  # 检测虚拟机注册表项的提示信息，加密器中特有
+        "VMwareService.exe & VMwareTray.exe process are running": 8,  # 检测虚拟机相关进程的提示信息，加密器中特有
+        "VMware MAC Address Detected": 8,  # 检测虚拟机MAC地址的提示信息，加密器中特有
+        "exec(base64.b64decode(": 9,  # 恶意代码模式，使用Base64编码隐藏代码，加密器中特有
+        "Cracking Speed on RunTime": 7,  # 显示暴力破解速度的提示信息，加密器中可能用于恐吓用户
     }
 }
+# 勒索软件的特征模式ransomware_patterns
 
 
 # 防御绕过的特征模式Defense_Bypass_patterns
