@@ -1,0 +1,29 @@
+penetrationTesting_patterns = {
+    "imports": {
+        "mechanize": 7,  # 自动化web浏览器操作，常用于XSS、CSRF、SQL注入等攻击测试，但也可能用于自动化测试和爬虫
+        "paramiko": 6,  # SSH连接库，常用于SSH暴力破解和远程访问攻击，也可能用于合法的远程管理
+        "metasploit.msfrpc": 9,  # Metasploit的RPC客户端，用于与Metasploit框架进行交互，主要用于渗透测试
+        "metasploit.msfconsole": 9,  # Metasploit控制台，常用于执行Metasploit模块，主要用于渗透测试
+        "nmap": 7,  # Nmap扫描器，用于端口扫描和服务发现，虽然用于渗透测试，但也可能用于网络管理
+        "zapv2": 6,  # OWASP ZAP的Python接口，用于Web应用程序安全扫描，可能用于合法的安全测试
+        "w3af_api_client": 6,  # w3af的API客户端，用于Web应用程序安全扫描和渗透测试
+    },
+    "function_calls": {
+        "MsfRpcClient": 9,  # 创建Metasploit RPC客户端，常用于与Metasploit框架交互，渗透测试专用
+        "MsfRpcConsole.execute": 9,  # 在Metasploit控制台执行命令，用于执行漏洞利用模块，渗透测试专用
+        "nmap.PortScanner.scan": 7,  # 使用Nmap进行端口扫描，虽然用于渗透测试，但也可能用于网络管理
+        "ZAPv2.spider.scan": 6,  # OWASP ZAP的蜘蛛扫描，用于Web爬虫和安全测试，可能用于合法的安全测试
+        "ZAPv2.ascan.scan": 6,  # OWASP ZAP的主动扫描，用于发现Web应用程序漏洞，可能用于合法的安全测试
+        "paramiko.SSHClient.connect": 7,  # 尝试SSH连接，常用于暴力破解攻击，也可能用于合法的远程管理
+        "Scan.start": 6,  # 使用w3af API客户端启动扫描，主要用于Web应用程序渗透测试
+    },
+    "strings": {
+        "brute force": 8,  # 暴力破解，渗透测试中常见的攻击方式
+        "SQL Injection": 9,  # SQL注入攻击，常见的攻击向量，渗透测试专用
+        "exploit": 9,  # 利用漏洞，明确表明攻击意图
+        "reverse shell": 9,  # 反向Shell，常见的攻击手段
+        "Password found": 9,  # 密码发现提示，通常在暴力破解工具中出现
+        "RHOSTS": 8,  # 远程主机，通常在Metasploit和其他渗透测试工具中用于指定攻击目标
+        "Connected successfully": 7,  # 连接成功提示，用于暴力破解攻击，也可能用于合法的网络连接测试
+    }
+}
