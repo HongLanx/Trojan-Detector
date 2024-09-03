@@ -1,0 +1,38 @@
+Category: Botnet (Total Severity: 14)
+    -Pattern: QUIT, Severity: 8, Count: 1
+    -Pattern: CONNECT (fuzzy), Severity: 3, Count: 1
+    -Pattern: CONNECT (fuzzy), Severity: 3, Count: 1
+
+Category: Obfuscation (Total Severity: 2)
+    -Pattern: reverse (fuzzy), Severity: 2, Count: 1
+
+Category: Phishing (Total Severity: 9)
+    -Pattern: root (fuzzy), Severity: 2, Count: 1
+    -Pattern: root, Severity: 7, Count: 1
+
+Category: Malware (Total Severity: 63)
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: infect, Severity: 8, Count: 1
+    -Pattern: malware (fuzzy), Severity: 4, Count: 1
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: infect (fuzzy), Severity: 3, Count: 1
+    -Pattern: passwords.txt (fuzzy), Severity: 2, Count: 1
+    -Pattern: passwords.txt (fuzzy), Severity: 2, Count: 1
+    -Pattern: passwords.txt (fuzzy), Severity: 2, Count: 1
+
+Category: Keyboard Logger (Total Severity: 7)
+    -Pattern: Software\Microsoft\Windows\CurrentVersion\Run, Severity: 7, Count: 1
+
+Dominant Malicious Code Type: Malware (Total Severity: 63)

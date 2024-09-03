@@ -1,0 +1,315 @@
+检测结果：
+
+类别: botnet_patterns
+类型: Imports	| 特征: from Crypto import Random               	| 次数: 1	| 总分数: 64
+类型: Imports	| 特征: from Crypto.Cipher import AES           	| 次数: 1	| 总分数: 64
+类型: Imports	| 特征: import bitcoinrpc                       	| 次数: 1	| 总分数: 64
+类型: Imports	| 特征: import wmi                              	| 次数: 1	| 总分数: 64
+类型: Imports	| 特征: import ssl                              	| 次数: 1	| 总分数: 64
+类型: Imports	| 特征: import win32com.shell.shell as shell    	| 次数: 1	| 总分数: 64
+类型: Imports	| 特征: import _thread                          	| 次数: 1	| 总分数: 64
+类型: Imports	| 特征: import signal                           	| 次数: 1	| 总分数: 64
+类型: Imports	| 特征: import platform                         	| 次数: 1	| 总分数: 64
+类型: Imports	| 特征: import urllib.request                   	| 次数: 1	| 总分数: 64
+类型: Function_Calls	| 特征: base64.b64encode                        	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: base64.b64decode                        	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: wmi.WMI                                 	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: bitcoinrpc.connect_to_remote            	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: ssl.wrap_socket                         	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: socksocket.connect                      	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: socksocket.setproxy                     	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: socksocket.__negotiatesocks5            	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: socksocket.__negotiatesocks4            	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: socksocket.__negotiatehttp              	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: signal.signal                           	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: irc.send                                	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: irc.recv                                	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: create_socket                           	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: connect_to                              	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: join_channels                           	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: quit_bot                                	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: parse                                   	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: privmsg                                 	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: pong                                    	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: platform.uname                          	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: requests.get                            	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: urllib.request.urlretrieve              	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: subprocess.Popen                        	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: os.path.isfile                          	| 次数: 21	| 总分数: 4158
+类型: Function_Calls	| 特征: time.sleep                              	| 次数: 21	| 总分数: 4158
+类型: Strings	| 特征: nircmd                                  	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: echo y | del                            	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: rpc_user                                	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: rpc_password                            	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: RUSSIA!@#$RUSSIA!@#$RUSSIA!@#$RUSSIA!@#$	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: f4eqxs3tyrkba7f2.onion                  	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: SOCKS5                                  	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: CONNECT                                 	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: kill bot                                	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: VSE                                     	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: STD                                     	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: irc.freenode.net                        	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: 6667                                    	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: ##evilxyz                               	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: PRIVMSG                                 	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: QUIT                                    	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: Nickname is already in use              	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: cmd.exe                                 	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: C:\Windows\system32\cmd.exe             	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: awesome.exe                             	| 次数: 9	| 总分数: 1440
+类型: Strings	| 特征: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run	| 次数: 9	| 总分数: 1440
+
+类别: malware_patterns
+类型: Imports	| 特征: paramiko                                	| 次数: 2	| 总分数: 54
+类型: Imports	| 特征: scp                                     	| 次数: 2	| 总分数: 54
+类型: Imports	| 特征: PySide2.QtWidgets                       	| 次数: 2	| 总分数: 54
+类型: Imports	| 特征: cached_property                         	| 次数: 2	| 总分数: 54
+类型: Function_Calls	| 特征: exec                                    	| 次数: 7	| 总分数: 336
+类型: Function_Calls	| 特征: eval                                    	| 次数: 7	| 总分数: 336
+类型: Function_Calls	| 特征: paramiko.SSHClient.connect              	| 次数: 7	| 总分数: 336
+类型: Function_Calls	| 特征: scp.SCPClient.put                       	| 次数: 7	| 总分数: 336
+类型: Function_Calls	| 特征: scp.SCPClient.get                       	| 次数: 7	| 总分数: 336
+类型: Function_Calls	| 特征: open('malware.py', 'wb')                	| 次数: 7	| 总分数: 336
+类型: Strings	| 特征: INJECTION SIGNATURE                     	| 次数: 10	| 总分数: 790
+类型: Strings	| 特征: malware                                 	| 次数: 10	| 总分数: 790
+类型: Strings	| 特征: infect                                  	| 次数: 10	| 总分数: 790
+类型: Strings	| 特征: dropper                                 	| 次数: 10	| 总分数: 790
+类型: Strings	| 特征: payload                                 	| 次数: 10	| 总分数: 790
+类型: Strings	| 特征: command and control                     	| 次数: 10	| 总分数: 790
+类型: Strings	| 特征: keylogger                               	| 次数: 10	| 总分数: 790
+类型: Strings	| 特征: ransom                                  	| 次数: 10	| 总分数: 790
+类型: Strings	| 特征: passwords.txt                           	| 次数: 10	| 总分数: 790
+类型: Strings	| 特征: send to server                          	| 次数: 10	| 总分数: 790
+
+类别: phishingAttack_patterns
+类型: Imports	| 特征: bs4.BeautifulSoup                       	| 次数: 4	| 总分数: 288
+类型: Imports	| 特征: urllib2                                 	| 次数: 4	| 总分数: 288
+类型: Imports	| 特征: SimpleHTTPServer                        	| 次数: 4	| 总分数: 288
+类型: Imports	| 特征: SocketServer                            	| 次数: 4	| 总分数: 288
+类型: Imports	| 特征: cgi                                     	| 次数: 4	| 总分数: 288
+类型: Imports	| 特征: requests                                	| 次数: 4	| 总分数: 288
+类型: Imports	| 特征: cryptography                            	| 次数: 4	| 总分数: 288
+类型: Imports	| 特征: msal                                    	| 次数: 4	| 总分数: 288
+类型: Imports	| 特征: hashlib                                 	| 次数: 4	| 总分数: 288
+类型: Imports	| 特征: shutil                                  	| 次数: 4	| 总分数: 288
+类型: Function_Calls	| 特征: opener.open()                           	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: handler.do_POST()                       	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: BeautifulSoup()                         	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: server_version                          	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: Instagram()                             	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: Twitter()                               	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: MailPick()                              	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: RedirectBypass()                        	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: MailerMenu()                            	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: CurrentDir()                            	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: sys.exit()                              	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: exec(base64.b64decode())                	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: PublicClientApplication()               	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: hashFile()                              	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: p_success()                             	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: getTenantID()                           	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: randomword()                            	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: urlretrieve()                           	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: raw_input()                             	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: os.rename()                             	| 次数: 1	| 总分数: 150
+类型: Function_Calls	| 特征: exec_com()                              	| 次数: 1	| 总分数: 150
+类型: Strings	| 特征: User-Agent                              	| 次数: 2	| 总分数: 210
+类型: Strings	| 特征: Weeman                                  	| 次数: 2	| 总分数: 210
+类型: Strings	| 特征: action_url                              	| 次数: 2	| 总分数: 210
+类型: Strings	| 特征: Please install beautifulsoup 4          	| 次数: 2	| 总分数: 210
+类型: Strings	| 特征: clone()                                 	| 次数: 2	| 总分数: 210
+类型: Strings	| 特征: history.log                             	| 次数: 2	| 总分数: 210
+类型: Strings	| 特征: root@phishmailer:~                      	| 次数: 2	| 总分数: 210
+类型: Strings	| 特征: Your Templates Will Be Saved Here       	| 次数: 2	| 总分数: 210
+类型: Strings	| 特征: Phish                                   	| 次数: 2	| 总分数: 210
+类型: Strings	| 特征: Restart PhishMailer? Y/N                	| 次数: 2	| 总分数: 210
+类型: Strings	| 特征: pip install cryptography                	| 次数: 2	| 总分数: 210
+类型: Strings	| 特征: pip install requests                    	| 次数: 2	| 总分数: 210
+类型: Strings	| 特征: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)	| 次数: 2	| 总分数: 210
+类型: Strings	| 特征: __version__                             	| 次数: 2	| 总分数: 210
+类型: Strings	| 特征: root                                    	| 次数: 2	| 总分数: 210
+
+类别: obfuscation_patterns
+类型: Imports	| 特征: distorm3                                	| 次数: 3	| 总分数: 105
+类型: Imports	| 特征: marshal                                 	| 次数: 3	| 总分数: 105
+类型: Imports	| 特征: importlib                               	| 次数: 3	| 总分数: 105
+类型: Imports	| 特征: codecs                                  	| 次数: 3	| 总分数: 105
+类型: Imports	| 特征: secrets                                 	| 次数: 3	| 总分数: 105
+类型: Function_Calls	| 特征: eval                                    	| 次数: 10	| 总分数: 420
+类型: Function_Calls	| 特征: exec                                    	| 次数: 10	| 总分数: 420
+类型: Function_Calls	| 特征: compile                                 	| 次数: 10	| 总分数: 420
+类型: Function_Calls	| 特征: importlib.import_module                 	| 次数: 10	| 总分数: 420
+类型: Function_Calls	| 特征: subprocess.check_output                 	| 次数: 10	| 总分数: 420
+类型: Function_Calls	| 特征: codecs.open                             	| 次数: 10	| 总分数: 420
+类型: Strings	| 特征: AMSI_RESULT_NOT_DETECTED                	| 次数: 3	| 总分数: 333
+类型: Strings	| 特征: scramble                                	| 次数: 3	| 总分数: 333
+类型: Strings	| 特征: unscramble                              	| 次数: 3	| 总分数: 333
+类型: Strings	| 特征: -join(({','.join([str(int(b)) for b in self.content.encode()])})|%{{[char]$_}});	| 次数: 3	| 总分数: 333
+类型: Strings	| 特征: rot13                                   	| 次数: 3	| 总分数: 333
+类型: Strings	| 特征: hexlify                                 	| 次数: 3	| 总分数: 333
+类型: Strings	| 特征: unhexlify                               	| 次数: 3	| 总分数: 333
+类型: Strings	| 特征: xor                                     	| 次数: 3	| 总分数: 333
+类型: Strings	| 特征: RC4                                     	| 次数: 3	| 总分数: 333
+类型: Strings	| 特征: obfuscate                               	| 次数: 3	| 总分数: 333
+类型: Strings	| 特征: decrypt                                 	| 次数: 3	| 总分数: 333
+类型: Strings	| 特征: reverse                                 	| 次数: 3	| 总分数: 333
+类型: Strings	| 特征: random.choice                           	| 次数: 3	| 总分数: 333
+
+类别: bypassAttack_patterns
+类型: Imports	| 特征: import curlify                          	| 次数: 5	| 总分数: 315
+类型: Imports	| 特征: import secrets                          	| 次数: 5	| 总分数: 315
+类型: Imports	| 特征: import base64                           	| 次数: 5	| 总分数: 315
+类型: Imports	| 特征: import tldextract                       	| 次数: 5	| 总分数: 315
+类型: Imports	| 特征: import validators                       	| 次数: 5	| 总分数: 315
+类型: Imports	| 特征: import bottle                           	| 次数: 5	| 总分数: 315
+类型: Imports	| 特征: import flaresolverr_service             	| 次数: 5	| 总分数: 315
+类型: Imports	| 特征: import pyrogram                         	| 次数: 5	| 总分数: 315
+类型: Imports	| 特征: from curl_cffi import requests as Nreq  	| 次数: 5	| 总分数: 315
+类型: Imports	| 特征: from lxml import etree                  	| 次数: 5	| 总分数: 315
+类型: Imports	| 特征: from cfscrape import create_scraper     	| 次数: 5	| 总分数: 315
+类型: Function_Calls	| 特征: base64.b64encode                        	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: secrets.token_hex                       	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: urljoin                                 	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: quote_plus(escape(                      	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: os.walk                                 	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: requests.request                        	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: curlify.to_curl                         	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: tldextract.extract                      	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: validators.url                          	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: requests.post                           	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: os.environ.get                          	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: Bottle.route                            	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: Bottle.run                              	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: pyrogram.Client                         	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: remove                                  	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: requests.get(url).text                  	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: makeHttpRequest                         	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: replace                                 	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: getStatusCode                           	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: analyzeResponse                         	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: rplHeader                               	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: "GET", url, data=payload, headers=headersList	| 次数: 11	| 总分数: 1188
+类型: Function_Calls	| 特征: response = client.post(url, data=gen_payload, headers=headers).json()	| 次数: 11	| 总分数: 1188
+
+类别: ransomware_patterns
+类型: Imports	| 特征: win32api                                	| 次数: 19	| 总分数: 1729
+类型: Imports	| 特征: win32file                               	| 次数: 19	| 总分数: 1729
+类型: Imports	| 特征: Popen                                   	| 次数: 19	| 总分数: 1729
+类型: Imports	| 特征: Crypto.PublicKey.RSA                    	| 次数: 19	| 总分数: 1729
+类型: Imports	| 特征: Crypto.Cipher.AES                       	| 次数: 19	| 总分数: 1729
+类型: Imports	| 特征: Crypto.Random                           	| 次数: 19	| 总分数: 1729
+类型: Imports	| 特征: winreg                                  	| 次数: 19	| 总分数: 1729
+类型: Imports	| 特征: win32event                              	| 次数: 19	| 总分数: 1729
+类型: Imports	| 特征: winerror                                	| 次数: 19	| 总分数: 1729
+类型: Imports	| 特征: hashlib                                 	| 次数: 19	| 总分数: 1729
+类型: Imports	| 特征: base64                                  	| 次数: 19	| 总分数: 1729
+类型: Imports	| 特征: ctypes                                  	| 次数: 19	| 总分数: 1729
+类型: Imports	| 特征: subprocess                              	| 次数: 19	| 总分数: 1729
+类型: Imports	| 特征: uuid                                    	| 次数: 19	| 总分数: 1729
+类型: Function_Calls	| 特征: win32file.GetDriveType                  	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: win32api.GetLogicalDriveStrings         	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: is_optical_drive                        	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: AES.new                                 	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: RSA.generate                            	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: RSA.importKey                           	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: self.pad                                	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: self.unpad                              	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: winreg.CreateKeyEx                      	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: winreg.SetValueEx                       	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: winreg.OpenKeyEx                        	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: winreg.DeleteValue                      	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: os.remove                               	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: webbrowser.open                         	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: pub.subscribe                           	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: Thread.start                            	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: Thread.stop                             	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: win32api.GetLastError                   	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: Popen                                   	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: Popen.communicate                       	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: traceback.format_tb                     	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: hashlib.sha256                          	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: base64.b64encode                        	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: base64.b64decode                        	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: ctypes.cdll.LoadLibrary                 	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: re.findall                              	| 次数: 9	| 总分数: 1521
+类型: Function_Calls	| 特征: uuid.getnode                            	| 次数: 9	| 总分数: 1521
+
+类别: keyboard_patterns
+类型: Imports	| 特征: pynput                                  	| 次数: 6	| 总分数: 330
+类型: Imports	| 特征: pyscreenshot                            	| 次数: 6	| 总分数: 330
+类型: Imports	| 特征: sounddevice                             	| 次数: 6	| 总分数: 330
+类型: Imports	| 特征: pyHook                                  	| 次数: 6	| 总分数: 330
+类型: Imports	| 特征: pythoncom                               	| 次数: 6	| 总分数: 330
+类型: Imports	| 特征: pyautogui                               	| 次数: 6	| 总分数: 330
+类型: Imports	| 特征: ImageGrab                               	| 次数: 6	| 总分数: 330
+类型: Imports	| 特征: getpass                                 	| 次数: 6	| 总分数: 330
+类型: Function_Calls	| 特征: pyHook.HookManager                      	| 次数: 6	| 总分数: 486
+类型: Function_Calls	| 特征: pythoncom.PumpMessages                  	| 次数: 6	| 总分数: 486
+类型: Function_Calls	| 特征: win32console.GetConsoleWindow           	| 次数: 6	| 总分数: 486
+类型: Function_Calls	| 特征: win32gui.ShowWindow                     	| 次数: 6	| 总分数: 486
+类型: Function_Calls	| 特征: pyautogui.screenshot                    	| 次数: 6	| 总分数: 486
+类型: Function_Calls	| 特征: pynput.keyboard.Listener                	| 次数: 6	| 总分数: 486
+类型: Function_Calls	| 特征: pynput.mouse.Listener                   	| 次数: 6	| 总分数: 486
+类型: Function_Calls	| 特征: pyscreenshot.grab                       	| 次数: 6	| 总分数: 486
+类型: Function_Calls	| 特征: sd.rec                                  	| 次数: 6	| 总分数: 486
+类型: Function_Calls	| 特征: subprocess.check_output                 	| 次数: 6	| 总分数: 486
+类型: Function_Calls	| 特征: ImageGrab.grab                          	| 次数: 6	| 总分数: 486
+类型: Function_Calls	| 特征: getpass.getuser                         	| 次数: 6	| 总分数: 486
+类型: Strings	| 特征: KeyLogger Started...                    	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: keyboardData                            	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: keylogs.txt                             	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: New data from victim(Base64 encoded)    	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: Software\Microsoft\Windows\CurrentVersion\Run	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: 185.234.216.168                         	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: 185.92.220.60                           	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: 82.146.35.40                            	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: 94.102.49.193                           	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: 185.100.87.72                           	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: malicious-domain.com                    	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: badactor.com                            	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: examplephishing.com                     	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: exploit-server.net                      	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: ransomware-site.org                     	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: logs-                                   	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: C:\Users\Public\Intel\Logs              	| 次数: 2	| 总分数: 330
+类型: Strings	| 特征: AdobePush.exe                           	| 次数: 2	| 总分数: 330
+
+类别: exploit_patterns
+类型: Strings	| 特征: Shodan API Key                          	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: bots.txt                                	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: forged UDP packets                      	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: XXE PoC exploit                         	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: exec("whoami")                          	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: <?php
+	system($_GET["cmd"]);            	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: /tmp/wgethack                           	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: WEBSHELL_URL                            	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: Wget < 1.18 Access List Bypass / Race Condition PoC Exploit	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: CVE-2016-7098                           	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: malicious                               	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: Exploit                                 	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: reverse shell                           	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: PHPMailer                               	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: SwiftMailer                             	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: Zend Framework                          	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: CVE-2016-10033                          	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: CVE-2016-10045                          	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: CVE-2016-10074                          	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: CVE-2016-10034                          	| 次数: 4	| 总分数: 684
+类型: Strings	| 特征: Reverse Code Execution                  	| 次数: 4	| 总分数: 684
+
+类别: penetrationTesting_patterns
+类型: Imports	| 特征: mechanize                               	| 次数: 2	| 总分数: 100
+类型: Imports	| 特征: paramiko                                	| 次数: 2	| 总分数: 100
+类型: Imports	| 特征: metasploit.msfrpc                       	| 次数: 2	| 总分数: 100
+类型: Imports	| 特征: metasploit.msfconsole                   	| 次数: 2	| 总分数: 100
+类型: Imports	| 特征: nmap                                    	| 次数: 2	| 总分数: 100
+类型: Imports	| 特征: zapv2                                   	| 次数: 2	| 总分数: 100
+类型: Imports	| 特征: w3af_api_client                         	| 次数: 2	| 总分数: 100
+类型: Strings	| 特征: brute force                             	| 次数: 1	| 总分数: 59
+类型: Strings	| 特征: SQL Injection                           	| 次数: 1	| 总分数: 59
+类型: Strings	| 特征: exploit                                 	| 次数: 1	| 总分数: 59
+类型: Strings	| 特征: reverse shell                           	| 次数: 1	| 总分数: 59
+类型: Strings	| 特征: Password found                          	| 次数: 1	| 总分数: 59
+类型: Strings	| 特征: RHOSTS                                  	| 次数: 1	| 总分数: 59
+类型: Strings	| 特征: Connected successfully                  	| 次数: 1	| 总分数: 59

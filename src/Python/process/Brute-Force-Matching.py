@@ -7,7 +7,7 @@ import patterns  # 导入 patterns.py 模块
 current_folder = os.path.dirname(os.path.abspath(__file__))
 
 # 待检测文件夹地址
-folder_path = r"D:\AAAshuju\feast-master"
+folder_path = r"C:\Users\86156\Desktop\share\Trojan-Detector\src\Python\src_zys\Trojan"
 
 # 定义一个函数用于加载所有模式
 def load_patterns():
