@@ -193,8 +193,6 @@ malware_patterns = {
         "trojan": 9 # 恶意软件的标识 
     },
     "Function_Calls": {
-        "exec": 9,  # 动态执行代码，恶意代码常用
-        "eval": 9,  # 动态执行表达式，恶意行为标志
         "paramiko.SSHClient.connect": 8,  # 恶意传播中的SSH连接
         "scp.SCPClient.put": 7,  # 用于恶意文件上传
         "scp.SCPClient.get": 7,  # 用于恶意文件或数据下载
