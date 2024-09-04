@@ -1,5 +1,6 @@
 import os
 import ast_get_report
+import machine_learning_get_report
 import ssa_get_report
 import ssa_getter
 import ast_analyzer
@@ -19,4 +20,7 @@ from ssa_analyzer import generate_json
 # ast_get_report.output_ast_matching_report()
 
 #测试用例 输出SSA模式匹配报告
-ssa_get_report.output_ssa_matching_report()
+# ssa_get_report.output_ssa_matching_report()
+
+#测试用例 输出代码向量化-随机森林模型检测报告
+machine_learning_get_report.output_machine_learning_matching_report()
