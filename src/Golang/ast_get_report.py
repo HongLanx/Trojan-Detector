@@ -83,8 +83,8 @@ def get_score_and_report(json_data, pattern, pattern_name=""):
 
 
 # 输出最终报告
-def output_ast_matching_report():
-    analyse_project_info, analyse_project_folder = ast_analyzer.get_info_from_project()
+def output_ast_matching_report(folder=None):
+    analyse_project_info, analyse_project_folder = ast_analyzer.get_info_from_project(folder)
     enc_report = get_score_and_report(analyse_project_info, ast_patterns.encryption_patterns, "加密器")
     bot_report = get_score_and_report(analyse_project_info, ast_patterns.botnet_patterns, "僵尸网络")
     phish_report = get_score_and_report(analyse_project_info, ast_patterns.phishing_patterns, "钓鱼网络")

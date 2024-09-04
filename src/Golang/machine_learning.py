@@ -1,18 +1,12 @@
-import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
-import ssa_patterns_fin
+import numpy as np
+from ssa_patterns_fin import encryption_patterns
+from ssa_patterns_fin import penetration_patterns
 
-# 构建数据集
-data = {
-    "feature": list(ssa_patterns_fin.penetration_patterns["calls"].keys()) + list(ssa_patterns_fin.penetration_patterns["strings"].keys()),
-    "count": list(ssa_patterns_fin.penetration_patterns["calls"].values()) + list(ssa_patterns_fin.penetration_patterns["strings"].values())
-}
-
-# 预测新的文件特征
-new_data = {
-    "feature": [
+# 示例文件特征
+file_features = {
+    "calls": [
         "net/http.init",
         "github.com/gobuffalo/packr.init",
         "io.init",
@@ -52,7 +46,9 @@ new_data = {
         "Body",
         "Body",
         "io.Copy",
-        "println",
+        "println"
+    ],
+    "strings": [
         "\\\\Desktop\\\\e.exe",
         "\\\\Desktop\\\\o.exe",
         "\\\\Desktop\\\\s.exe",
@@ -69,35 +65,47 @@ new_data = {
     ]
 }
 
-df = pd.DataFrame(data)
+# 合并调用和字符串特征，去重
+all_features = list(set(list(penetration_patterns['calls'].keys()) + list(penetration_patterns['strings'].keys())))
 
-# 生成标签，这里我们简单地假设所有的特征都属于恶意特征（1代表恶意，0代表正常）
-df['label'] = 1
+# 生成输入数据和标签
+X_train = []
+y_train = []
+for feature_set, feature_scores in penetration_patterns.items():
+    for feature, score in feature_scores.items():
+        vector = [1 if feature == fn else 0 for fn in all_features]
+        X_train.append(vector)
+        y_train.append(1 if score > 5 else 0)  # 恶意度大于5认为是恶意的
 
-# 分割数据集为训练集和测试集
-X_train, X_test, y_train, y_test = train_test_split(df['feature'], df['label'], test_size=0.3, random_state=42)
+# 示例文件特征向量化
+X_test = []
+test_vector = [0] * len(all_features)
+for feature_set, features in file_features.items():
+    for feature in features:
+        if feature in all_features:
+            test_vector[all_features.index(feature)] = 1
+X_test.append(test_vector)
 
-# 创建全特征列表
-all_features = pd.concat([df['feature'], pd.Series(new_data['feature'])]).unique()
-all_features_df = pd.get_dummies(pd.Series(all_features))
+# 转换为numpy数组
+X_train = np.array(X_train)
+y_train = np.array(y_train)
+X_test = np.array(X_test)
 
-# 使用全特征列表重新编码我们的训练集和测试集
-X_train_encoded = pd.get_dummies(X_train).reindex(columns=all_features_df.columns, fill_value=0)
-X_test_encoded = pd.get_dummies(X_test).reindex(columns=all_features_df.columns, fill_value=0)
+# 假设 all_features 和训练/测试数据已正确设置
+model = RandomForestClassifier(n_estimators=200)
+model.fit(X_train, y_train)
 
-# 创建随机森林模型
-model = RandomForestClassifier(n_estimators=100, random_state=42)
+# 输出特征重要性
+feature_importances = model.feature_importances_
+important_features = sorted(zip(all_features, feature_importances), key=lambda x: x[1], reverse=True)
+print("特征重要性：")
+for feature, importance in important_features:
+    print(f"{feature}: {importance:.4f}")
 
-# 训练模型
-model.fit(X_train_encoded, y_train)
+# 对测试数据进行预测
+predictions = model.predict(X_test)
+prediction_probabilities = model.predict_proba(X_test)
 
-new_df = pd.DataFrame(new_data)
-new_df_encoded = pd.get_dummies(new_df['feature']).reindex(columns=all_features_df.columns, fill_value=0)
-
-# 进行预测
-predictions = model.predict(new_df_encoded)
-print("预测结果：", predictions)
-print(len(predictions))
-
-# 打印分类报告
-print(classification_report(y_test, model.predict(X_test_encoded)))
+# 输出预测结果和概率
+print("预测结果：", "恶意" if predictions[0] == 1 else "非恶意")
+print("预测概率：", prediction_probabilities[0][1])  # 输出被预测为恶意的概率
