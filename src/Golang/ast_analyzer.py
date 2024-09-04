@@ -5,12 +5,12 @@ import subprocess
 import tkinter as tk
 from tkinter import filedialog
 
-import json_analyzer
+from src.Golang import json_analyzer
 
 
 # 输入一个go文件，在其目录输出一个go自带ast库生成的ast文本文件
 def get_go_ast(file_path):
-    result = subprocess.run(['GolangTool/AstGenerator.exe', file_path], capture_output=True, text=True,encoding='utf-8')
+    result = subprocess.run(['src/Golang/GolangTool/AstGenerator.exe', file_path], capture_output=True, text=True,encoding='utf-8')
 
 def process_ast_text(input_text):
     # 使用正则表达式去除每行开头的数字、点和多余的空格

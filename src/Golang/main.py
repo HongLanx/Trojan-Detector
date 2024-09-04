@@ -1,6 +1,6 @@
 import os
 import ast_get_report
-import machine_learning_get_report
+from src.Golang import machine_learning_get_report
 import ssa_get_report
 import ssa_getter
 import ast_analyzer

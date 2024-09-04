@@ -1,26 +1,26 @@
 import json
 
-import ssa_analyzer
-import ssa_patterns_fin
-from machine_learning import predict_with_model
+from src.Golang import ssa_analyzer
+from src.Golang import ssa_patterns_fin
+from src.Golang.machine_learning import predict_with_model
 
 
 def output_machine_learning_matching_report(folder=None):
     analyse_project_info, analyse_project_folder = ssa_analyzer.project_to_ssa_json(folder)
     analyse_project_info = json.loads(analyse_project_info)
-    enc_report = predict_with_model("model/encryption_model.pkl", analyse_project_info,
+    enc_report = predict_with_model("src/Golang/model/encryption_model.pkl", analyse_project_info,
                                     ssa_patterns_fin.encryption_patterns)
-    bot_report = predict_with_model("model/botnet_model.pkl", analyse_project_info, ssa_patterns_fin.botnet_patterns)
-    phish_report = predict_with_model("model/phishing_model.pkl", analyse_project_info,
+    bot_report = predict_with_model("src/Golang/model/botnet_model.pkl", analyse_project_info, ssa_patterns_fin.botnet_patterns)
+    phish_report = predict_with_model("src/Golang/model/phishing_model.pkl", analyse_project_info,
                                       ssa_patterns_fin.phishing_patterns)
-    obfuscate_report = predict_with_model("model/obfuscation_model.pkl", analyse_project_info,
+    obfuscate_report = predict_with_model("src/Golang/model/obfuscation_model.pkl", analyse_project_info,
                                           ssa_patterns_fin.obfuscation_patterns)
-    penetrate_report = predict_with_model("model/penetration_model.pkl", analyse_project_info,
+    penetrate_report = predict_with_model("src/Golang/model/penetration_model.pkl", analyse_project_info,
                                           ssa_patterns_fin.penetration_patterns)
-    kernel_report = predict_with_model("model/kernel_model.pkl", analyse_project_info, ssa_patterns_fin.kernel_patterns)
-    bypass_report = predict_with_model("model/bypass_model.pkl", analyse_project_info,
+    kernel_report = predict_with_model("src/Golang/model/kernel_model.pkl", analyse_project_info, ssa_patterns_fin.kernel_patterns)
+    bypass_report = predict_with_model("src/Golang/model/bypass_model.pkl", analyse_project_info,
                                        ssa_patterns_fin.Defense_Bypass_patterns)
-    ransom_report = predict_with_model("model/ransome_model.pkl", analyse_project_info,
+    ransom_report = predict_with_model("src/Golang/model/ransome_model.pkl", analyse_project_info,
                                        ssa_patterns_fin.ransomware_patterns)
 
     # 将所有报告放入一个列表

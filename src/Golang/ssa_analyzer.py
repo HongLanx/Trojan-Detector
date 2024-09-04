@@ -1,9 +1,9 @@
 import json
 import re
-import ssa_info
+from src.Golang import ssa_info
 import os
 from collections import Counter
-import ssa_getter
+from src.Golang import ssa_getter
 import tkinter as tk
 from tkinter import filedialog
 

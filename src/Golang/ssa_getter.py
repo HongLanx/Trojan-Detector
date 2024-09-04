@@ -4,9 +4,9 @@ import re
 import os
 import tkinter as tk
 from tkinter import filedialog
-import ssa_analyzer
+from src.Golang import ssa_analyzer
 
-SSA_path = os.path.join(os.getcwd(), "GolangTool/SSAGenerator.exe")
+SSA_path = os.path.join(os.getcwd(), "src/Golang/GolangTool/SSAGenerator.exe")
 
 
 def run_command(command, working_directory=os.getcwd()):

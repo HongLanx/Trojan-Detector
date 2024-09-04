@@ -1,8 +1,8 @@
 import json
 import re
 
-import ast_analyzer
-import ast_patterns
+from src.Golang import ast_analyzer
+from src.Golang import ast_patterns
 
 
 # 参数：提取后的项目信息（JSON格式），病毒木马模式类型
