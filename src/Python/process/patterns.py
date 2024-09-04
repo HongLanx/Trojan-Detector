@@ -1,16 +1,17 @@
 #僵尸网络特征
 botnet_patterns = {
     "Imports": {
-        "from Crypto import Random": 6,  # 用于生成随机数，通常用于加密通信。
-        "from Crypto.Cipher import AES": 7,  # AES加密模块，常用于加密数据以隐藏恶意行为。
-        "import bitcoinrpc": 8,  # 与比特币RPC通信相关的库，可能用于管理或交易比特币，这在僵尸网络中较为典型。
-        "import wmi": 7,  # 用于与Windows Management Instrumentation（WMI）进行交互，可用于监视和控制Windows系统的进程等。
-        "import ssl": 6,  # 用于SSL/TLS加密，确保网络通信的安全性，这是僵尸网络中用于保护通信的技术。
-        "import win32com.shell.shell as shell": 8,  # 用于提升权限和执行特权命令，这是恶意软件常用的技术。
-        "import _thread": 6,  # 用于创建新线程以并发执行任务，常见于恶意软件用于并发处理。
-        "import signal": 6,  # 信号处理库，用于捕捉和处理系统信号，常见于恶意软件的持久化机制。
-        "import platform": 5,  # 用于获取操作系统信息，常见于恶意软件中用于系统环境识别。
-        "import urllib.request": 5  # 用于处理URL请求，可能用于下载或上传恶意文件。
+        "Random": 4,  # 用于生成随机数，通常用于加密通信。
+        "AES": 5,  # AES加密模块，常用于加密数据以隐藏恶意行为。
+        "bitcoinrpc": 8,  # 与比特币RPC通信相关的库，可能用于管理或交易比特币，这在僵尸网络中较为典型。
+        "wmi": 7,  # 用于与Windows Management Instrumentation（WMI）进行交互，可用于监视和控制Windows系统的进程等。
+        "ssl": 6,  # 用于SSL/TLS加密，确保网络通信的安全性，这是僵尸网络中用于保护通信的技术。
+        "win32com.shell.shell": 8,  # 用于提升权限和执行特权命令，这是恶意软件常用的技术。
+        "_thread": 6,  # 用于创建新线程以并发执行任务，常见于恶意软件用于并发处理。
+        "signal": 6,  # 信号处理库，用于捕捉和处理系统信号，常见于恶意软件的持久化机制。
+        "platform": 5,  # 用于获取操作系统信息，常见于恶意软件中用于系统环境识别。
+        "urllib.request": 5,  # 用于处理URL请求，可能用于下载或上传恶意文件。
+        "Crypto": 3  #加密相关
     },
     "Function_Calls": {
         "base64.b64encode": 7,  # 使用Base64编码，通常用于隐藏加密后的数据。
@@ -115,19 +116,19 @@ obfuscation_patterns = {
         "codecs.open": 5  # 以特定编码打开文件，可能在混淆中处理非标准编码数据
     },
     "Strings": {
-    "AMSI_RESULT_NOT_DETECTED": 10,  # 绕过AMSI的标志字符串，恶意代码常见
-    "scramble": 9,  # 混淆字符串的标志，恶意混淆代码中常见
-    "unscramble": 9,  # 解混淆字符串的标志，恶意混淆代码中常见
-    "-join(({','.join([str(int(b)) for b in self.content.encode()])})|%{{[char]$_}});": 10,  # 隐藏或加密命令的PowerShell代码片段
-    "rot13": 9,  # 一种简单的字母替换加密，在混淆代码中较常见，用于简单的文字混淆
-    "hexlify": 8,  # 将数据编码为十六进制表示，在混淆代码中用于隐藏字符串内容
-    "unhexlify": 8,  # 将十六进制数据解码回原始数据，通常与hexlify配合使用，用于解混淆
-    "xor": 9,  # 用于XOR操作，通常用于混淆数据或简单加密，恶意代码中常见
-    "RC4": 8,  # 一种流密码算法，在混淆代码中用于加密数据，恶意代码中较常见
-    "obfuscate": 9,  # 明示的“混淆”操作，几乎只出现在混淆工具或恶意代码中
-    "decrypt": 8,  # 解密操作，通常与混淆手段有关，可能在恶意代码中用于解密被隐藏的数据
-    "reverse": 7,  # 字符串反转操作，用于简单的混淆，正常代码中较少见
-    "random.choice": 7,  # 用于生成随机选择，可能在混淆代码中用于生成随机变量名或数据
+        "AMSI_RESULT_NOT_DETECTED": 10,  # 绕过AMSI的标志字符串，恶意代码常见
+        "scramble": 9,  # 混淆字符串的标志，恶意混淆代码中常见
+        "unscramble": 9,  # 解混淆字符串的标志，恶意混淆代码中常见
+        "-join(({','.join([str(int(b)) for b in self.content.encode()])})|%{{[char]$_}});": 10,  # 隐藏或加密命令的PowerShell代码片段
+        "rot13": 9,  # 一种简单的字母替换加密，在混淆代码中较常见，用于简单的文字混淆
+        "hexlify": 8,  # 将数据编码为十六进制表示，在混淆代码中用于隐藏字符串内容
+        "unhexlify": 8,  # 将十六进制数据解码回原始数据，通常与hexlify配合使用，用于解混淆
+        "xor": 9,  # 用于XOR操作，通常用于混淆数据或简单加密，恶意代码中常见
+        "RC4": 8,  # 一种流密码算法，在混淆代码中用于加密数据，恶意代码中较常见
+        "obfuscate": 9,  # 明示的“混淆”操作，几乎只出现在混淆工具或恶意代码中
+        "decrypt": 8,  # 解密操作，通常与混淆手段有关，可能在恶意代码中用于解密被隐藏的数据
+        "reverse": 7,  # 字符串反转操作，用于简单的混淆，正常代码中较少见
+        "random.choice": 7,  # 用于生成随机选择，可能在混淆代码中用于生成随机变量名或数据
     }
 }
 
@@ -332,17 +333,17 @@ ransomware_patterns={
 # 绕过攻击的特征模式
 bypassAttack_patterns = {
     "Imports": {
-        "import curlify": 6,  # 导入'curlify'库，用于生成cURL命令，可能用于绕过攻击
-        "import secrets": 5,  # 使用'secrets'库生成随机数据，可能用于伪装请求
-        "import base64": 6,  # 使用'base64'库编码数据，可能用于隐匿payload
-        "import tldextract": 5,  # 用于提取域名信息，可能用于特定域名攻击
-        "import validators": 4,  # 用于验证URL的库，可能用于预处理攻击目标
-        "import bottle": 5,  # 导入'bottle'框架，可能用于构建恶意Web服务
-        "import flaresolverr_service": 7,  # 导入自定义服务模块，可能用于绕过反爬虫机制
-        "import pyrogram": 7,  # 使用'pyrogram'库构建Telegram Bot，可能用于恶意Bot操作
-        "from curl_cffi import requests as Nreq": 6,  # 使用'curl_cffi'库替代'requests'，可能用于绕过某些安全检测
-        "from lxml import etree": 5,  # 使用'lxml'解析HTML/XML内容，可能用于数据提取和绕过
-        "from cfscrape import create_scraper": 7,  # 使用'cfscrape'绕过Cloudflare的防护
+        "curlify": 6,  # 导入'curlify'库，用于生成cURL命令，可能用于绕过攻击
+        "secrets": 5,  # 使用'secrets'库生成随机数据，可能用于伪装请求
+        "base64": 6,  # 使用'base64'库编码数据，可能用于隐匿payload
+        "tldextract": 5,  # 用于提取域名信息，可能用于特定域名攻击
+        "validators": 4,  # 用于验证URL的库，可能用于预处理攻击目标
+        "bottle": 5,  # 导入'bottle'框架，可能用于构建恶意Web服务
+        "flaresolverr_service": 7,  # 导入自定义服务模块，可能用于绕过反爬虫机制
+        "pyrogram": 7,  # 使用'pyrogram'库构建Telegram Bot，可能用于恶意Bot操作
+        "curl_cffi": 6,  # 使用'curl_cffi'库替代'requests'，可能用于绕过某些安全检测
+        "lxml": 5,  # 使用'lxml'解析HTML/XML内容，可能用于数据提取和绕过
+        "cfscrape": 7,  # 使用'cfscrape'绕过Cloudflare的防护
     },
     "Function_Calls": {
         "base64.b64encode": 6,  # 使用Base64编码数据，可能用于绕过WAF检测
