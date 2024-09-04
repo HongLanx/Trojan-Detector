@@ -1,6 +1,7 @@
 import json
 import importlib.util
 import os
+from collections import defaultdict
 
 def load_patterns_module(patterns_file_path):
     spec = importlib.util.spec_from_file_location("patterns", patterns_file_path)
@@ -8,77 +9,48 @@ def load_patterns_module(patterns_file_path):
     spec.loader.exec_module(patterns)
     return patterns
 
-def calculate_and_format_score(key_info_list, patterns, category_name):
+def calculate_and_format_score(key_info, patterns, category_name):
     score = 0
-    matched_imports = set()
-    matched_function_calls = {}
-    matched_strings = set()
+    matched_patterns = defaultdict(lambda: {"count": 0, "type": None, "severity": 0})
+    
+    # 完全匹配的得分计算
+    for imp in key_info['Imports']:
+        if imp in patterns.get('Imports', {}):
+            severity = patterns['Imports'][imp]
+            score += severity
+            matched_patterns[imp]["count"] += 1
+            matched_patterns[imp]["type"] = "Imports"
+            matched_patterns[imp]["severity"] = severity
+
+    for call in key_info['Function_Calls']:
+        if call in patterns.get('Function_Calls', {}):
+            severity = patterns['Function_Calls'][call]
+            score += severity
+            matched_patterns[call]["count"] += 1
+            matched_patterns[call]["type"] = "Function_Calls"
+            matched_patterns[call]["severity"] = severity
+
+    for string in key_info['Strings']:
+        if string in patterns.get('Strings', {}):
+            severity = patterns['Strings'][string]
+            score += severity
+            matched_patterns[string]["count"] += 1
+            matched_patterns[string]["type"] = "Strings"
+            matched_patterns[string]["severity"] = severity
+
+    # 格式化输出
     pattern_details = []
+    for pattern, details in matched_patterns.items():
+        # 类型、模式、分数、次数的最大长度，用于对齐
+        type_len = max(len(details["type"]), 12)
+        pattern_len = max(len(pattern), 20)
+        severity_len = 8
+        count_len = 6
 
-    # 遍历每个文件的关键信息
-    for key_info in key_info_list:
-        # 完全匹配的得分计算
-        for imp in key_info['Imports']:
-            if imp in patterns.get('Imports', {}) and imp not in matched_imports:
-                severity = patterns['Imports'][imp]
-                score += severity
-                matched_imports.add(imp)
-                pattern_details.append(f"    -Pattern: {imp}, Severity: {severity}, Count: 1")
-
-        for call in key_info['Function_Calls']:
-            if call in patterns.get('Function_Calls', {}):
-                severity = patterns['Function_Calls'][call]
-                if call not in matched_function_calls:
-                    score += severity
-                    matched_function_calls[call] = 1
-                else:
-                    matched_function_calls[call] += 1
-                    score += 1
-                pattern_details.append(f"    -Pattern: {call}, Severity: {severity}, Count: {matched_function_calls[call]}")
-
-        for string in key_info['Strings']:
-            if string in patterns.get('Strings', {}) and string not in matched_strings:
-                severity = patterns['Strings'][string]
-                score += severity
-                matched_strings.add(string)
-                pattern_details.append(f"    -Pattern: {string}, Severity: {severity}, Count: 1")
-
-        # 模糊匹配的得分计算
-        for imp in key_info['Imports']:
-            if imp not in matched_imports:
-                for pattern in patterns.get('Imports', {}):
-                    if pattern in imp:
-                        original_severity = patterns['Imports'].get(pattern, 0)
-                        severity = max(0, original_severity - 5)
-                        if severity > 0:
-                            score += severity
-                            matched_imports.add(imp)
-                            pattern_details.append(f"    -Pattern: {pattern} (fuzzy), Severity: {severity}, Count: 1")
-                        break
-
-        for call in key_info['Function_Calls']:
-            if call not in matched_function_calls:
-                for pattern in patterns.get('Function_Calls', {}):
-                    if pattern in call:
-                        original_severity = patterns['Function_Calls'].get(pattern, 0)
-                        severity = max(0, original_severity - 5)
-                        if severity > 0:
-                            matched_function_calls[call] = 1
-                            score += severity
-                            pattern_details.append(f"    -Pattern: {pattern} (fuzzy), Severity: {severity}, Count: 1")
-                        break
-
-        for string in key_info['Strings']:
-            if string not in matched_strings:
-                for pattern in patterns.get('Strings', {}):
-                    if pattern in string:
-                        original_severity = patterns['Strings'].get(pattern, 0)
-                        severity = max(0, original_severity - 5)
-                        if severity > 0:
-                            matched_strings.add(string)
-                            score += severity
-                            pattern_details.append(f"    -Pattern: {pattern} (fuzzy), Severity: {severity}, Count: 1")
-                        break
+        # 对齐表项
+        pattern_details.append(
+            f"    Type: {details['type']:<{type_len}} | Pattern: {pattern:<{pattern_len}} | Severity: {details['severity']:<{severity_len}} | Count: {details['count']:<{count_len}}"
+        )
 
     # 输出结果
     if pattern_details:
@@ -94,21 +66,18 @@ if __name__ == "__main__":
 
     # 让用户输入待检测文件夹的路径
     parent_directory = input("请输入待检测文件夹的路径: ")
-    directory_path = os.path.join(parent_directory, 'json_output')
+    json_output_dir = os.path.join(parent_directory, 'json_output')
 
-    # 构建 key_info_path.txt 文件的路径
-    key_info_path_txt = os.path.join(directory_path, 'key_info_path.txt')
+    # 从 json_output 子文件夹中的 key_info_all_files.json 文件加载关键信息
+    key_info_path = os.path.join(json_output_dir, 'key_info_all_files.json')
 
-    # 从 key_info_path.txt 中读取 key_info_all_files.json 的路径
-    if not os.path.exists(key_info_path_txt):
-        raise FileNotFoundError(f"Key info path file not found: {key_info_path_txt}")
-
-    with open(key_info_path_txt, 'r', encoding='utf-8') as path_file:
-        key_info_path = path_file.read().strip()
+    # 检查 key_info_all_files.json 是否存在
+    if not os.path.exists(key_info_path):
+        raise FileNotFoundError(f"Key info JSON file not found: {key_info_path}")
 
     # 从 JSON 文件加载关键信息
     with open(key_info_path, 'r', encoding='utf-8') as infile:
-        key_info_list = json.load(infile)
+        key_info = json.load(infile)
 
     # 获取patterns.py中的所有模式库
     patterns_categories = {
@@ -131,7 +100,7 @@ if __name__ == "__main__":
 
     # 逐个匹配每个模式库并输出结果
     for category_name, patterns in patterns_categories.items():
-        score, result = calculate_and_format_score(key_info_list, patterns, category_name)
+        score, result = calculate_and_format_score(key_info, patterns, category_name)
         if result:
             all_results.append(result)
         if score > max_score:

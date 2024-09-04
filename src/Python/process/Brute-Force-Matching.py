@@ -1,73 +1,117 @@
+import json
+import importlib.util
 import os
-import re
 from collections import defaultdict
-import patterns  # 导入 patterns.py 模块
 
-# 获取当前脚本所在的文件夹路径
-current_folder = os.path.dirname(os.path.abspath(__file__))
+def load_patterns_module(patterns_file_path):
+    spec = importlib.util.spec_from_file_location("patterns", patterns_file_path)
+    patterns = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(patterns)
+    return patterns
 
-# 待检测文件夹地址
-folder_path = r"C:\Users\86156\Desktop\share\Trojan-Detector\src\Python\src_zys\Trojan"
+def calculate_and_format_score(key_info, patterns, category_name):
+    score = 0
+    matched_patterns = defaultdict(lambda: {"count": 0, "type": None, "severity": 0})
+    
+    # 完全匹配的得分计算
+    for imp in key_info['Imports']:
+        if imp in patterns.get('Imports', {}):
+            severity = patterns['Imports'][imp]
+            score += severity
+            matched_patterns[imp]["count"] += 1
+            matched_patterns[imp]["type"] = "Imports"
+            matched_patterns[imp]["severity"] = severity
 
-# 定义一个函数用于加载所有模式
-def load_patterns():
-    all_patterns = defaultdict(lambda: defaultdict(dict))
-    for category_name, category_patterns in patterns.__dict__.items():
-        if isinstance(category_patterns, dict):
-            for pattern_type, pattern_dict in category_patterns.items():
-                if isinstance(pattern_dict, dict):
-                    for pattern, score in pattern_dict.items():
-                        all_patterns[category_name][pattern_type][pattern] = score
-    return all_patterns
+    for call in key_info['Function_Calls']:
+        if call in patterns.get('Function_Calls', {}):
+            severity = patterns['Function_Calls'][call]
+            score += severity
+            matched_patterns[call]["count"] += 1
+            matched_patterns[call]["type"] = "Function_Calls"
+            matched_patterns[call]["severity"] = severity
 
-# 定义一个函数用于检测Python文件中的特征
-def detect_trojans_in_file(file_path, patterns):
-    matches = defaultdict(lambda: defaultdict(int))
-    with open(file_path, 'r', encoding='utf-8') as file:
-        file_content = file.read()
-        for category, pattern_types in patterns.items():
-            for pattern_type, pattern_dict in pattern_types.items():
-                for pattern, score in pattern_dict.items():
-                    if re.search(re.escape(pattern), file_content):
-                        matches[category][pattern_type] += 1
-    return matches
+    for string in key_info['Strings']:
+        if string in patterns.get('Strings', {}):
+            severity = patterns['Strings'][string]
+            score += severity
+            matched_patterns[string]["count"] += 1
+            matched_patterns[string]["type"] = "Strings"
+            matched_patterns[string]["severity"] = severity
 
-# 主程序
-def main():
-    # 加载所有模式
-    all_patterns = load_patterns()
+    # 生成匹配结果
+    pattern_details = []
+    for pattern, details in matched_patterns.items():
+        pattern_details.append(
+            f"    -Pattern: {pattern} | Type: {details['type']} | Severity: {details['severity']} | Count: {details['count']}"
+        )
 
-    # 初始化结果统计
-    detection_results = defaultdict(lambda: defaultdict(lambda: {"count": 0, "score": 0}))
-
-    # 遍历文件夹中的所有Python文件
-    for root, dirs, files in os.walk(folder_path):
-        for file_name in files:
-            if file_name.endswith('.py'):
-                file_path = os.path.join(root, file_name)
-                file_matches = detect_trojans_in_file(file_path, all_patterns)
-                # 汇总检测结果
-                for category, pattern_types in file_matches.items():
-                    for pattern_type, count in pattern_types.items():
-                        detection_results[category][pattern_type]["count"] += count
-                        detection_results[category][pattern_type]["score"] += sum(
-                            all_patterns[category][pattern_type][pattern] * count
-                            for pattern in all_patterns[category][pattern_type]
-                        )
-
-    # 将结果写入当前脚本所在目录下的result.txt文件
-    output_file_path = os.path.join(current_folder, "result.txt")
-    with open(output_file_path, "w", encoding="utf-8") as result_file:
-        result_file.write("检测结果：\n")
-        for category, pattern_types in detection_results.items():
-            result_file.write(f"\n类别: {category}\n")
-            for pattern_type in ["Imports", "Function_Calls", "Strings"]:
-                if pattern_type in pattern_types:
-                    for pattern, data in all_patterns[category][pattern_type].items():
-                        if pattern_types[pattern_type]["count"] > 0:
-                            result_file.write(
-                                f"类型: {pattern_type}\t| 特征: {pattern:<40}\t| 次数: {pattern_types[pattern_type]['count']}\t| 总分数: {pattern_types[pattern_type]['score']}\n"
-                            )
+    # 输出结果
+    if pattern_details:
+        formatted_result = f"Category: {category_name} (Total Severity: {score})\n" + "\n".join(pattern_details)
+        return score, formatted_result
+    else:
+        return score, None  # 无匹配项则返回None
 
 if __name__ == "__main__":
-    main()
+    # 指定patterns.py的路径
+    patterns_file_path = r'C:\Users\86156\Desktop\share\Trojan-Detector\src\Python\process\patterns.py'
+    patterns_module = load_patterns_module(patterns_file_path)
+
+    # 让用户输入待检测文件夹的路径
+    parent_directory = input("请输入待检测文件夹的路径: ")
+    json_output_dir = os.path.join(parent_directory, 'json_output')
+
+    # 从 json_output 子文件夹中的 key_info_all_files.json 文件加载关键信息
+    key_info_path = os.path.join(json_output_dir, 'key_info_all_files.json')
+
+    # 检查 key_info_all_files.json 是否存在
+    if not os.path.exists(key_info_path):
+        raise FileNotFoundError(f"Key info JSON file not found: {key_info_path}")
+
+    # 从 JSON 文件加载关键信息
+    with open(key_info_path, 'r', encoding='utf-8') as infile:
+        key_info = json.load(infile)
+
+    # 获取patterns.py中的所有模式库
+    patterns_categories = {
+        "Botnet": patterns_module.botnet_patterns,
+        "Penetration Testing": patterns_module.penetrationTesting_patterns,
+        "Obfuscation": patterns_module.obfuscation_patterns,
+        "Phishing": patterns_module.phishingAttack_patterns,
+        "Malware": patterns_module.malware_patterns,
+        "Ethical Hacking": patterns_module.ethicalHacking_patterns,
+        "Ransomware": patterns_module.ransomware_patterns,
+        "Bypass Attack": patterns_module.bypassAttack_patterns,
+        "Keyboard Logger": patterns_module.keyboard_patterns,
+        "Exploit": patterns_module.exploit_patterns
+    }
+
+    # 初始化最大分数和相应的模式库类别
+    max_score = 0
+    dominant_category = None
+    all_results = []
+
+    # 逐个匹配每个模式库并输出结果
+    for category_name, patterns in patterns_categories.items():
+        score, result = calculate_and_format_score(key_info, patterns, category_name)
+        if result:
+            all_results.append(result)
+        if score > max_score:
+            max_score = score
+            dominant_category = category_name
+
+    # 添加 Dominant Malicious Code Type 信息
+    if dominant_category:
+        all_results.append(f"Dominant Malicious Code Type: {dominant_category} (Total Severity: {max_score})")
+
+    # 获取当前脚本所在的目录
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # 确定输出文件的路径，放在当前代码所在的文件夹
+    output_file_path = os.path.join(script_dir, 'detection_results.txt')
+
+    # 输出结果到 txt 文件
+    with open(output_file_path, 'w') as outfile:
+        outfile.write("\n\n".join(all_results))
+
+    print(f"Results have been written to {output_file_path}")

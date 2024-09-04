@@ -195,7 +195,8 @@ malware_patterns = {
         "paramiko": 9,  # SSH连接库，常用于蠕虫和远程控制工具
         "scp": 8,  # SCP文件传输库，常见于恶意软件传播
         "PySide2.QtWidgets": 6,  # GUI库，可能用于恶意弹窗或假冒界面
-        "cached_property": 4  # 用于缓存恶意数据，较少在正常代码中使用
+        "cached_property": 4,  # 用于缓存恶意数据，较少在正常代码中使用
+        "trojan": 9 # 恶意软件的标识 
     },
     "Function_Calls": {
         "exec": 9,  # 动态执行代码，恶意代码常用
@@ -215,7 +216,8 @@ malware_patterns = {
         "keylogger": 8,  # 键盘记录器行为
         "ransom": 8,  # 勒索软件相关标志
         "passwords.txt": 7,  # 密码窃取行为的文件名
-        "send to server": 8  # 数据发送到攻击者服务器的行为
+        "send to server": 8,  # 数据发送到攻击者服务器的行为
+        "trojan": 9 # 恶意软件的标识 
     }
 }
 

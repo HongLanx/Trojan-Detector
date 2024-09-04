@@ -1,38 +1,43 @@
-Category: Botnet (Total Severity: 14)
-    -Pattern: QUIT, Severity: 8, Count: 1
-    -Pattern: CONNECT (fuzzy), Severity: 3, Count: 1
-    -Pattern: CONNECT (fuzzy), Severity: 3, Count: 1
+Category: Penetration Testing (Total Severity: 13)
+    Type: Imports      | Pattern: nmap                 | Severity: 7        | Count: 1     
+    Type: Imports      | Pattern: paramiko             | Severity: 6        | Count: 1     
 
-Category: Obfuscation (Total Severity: 2)
-    -Pattern: reverse (fuzzy), Severity: 2, Count: 1
+Category: Obfuscation (Total Severity: 63)
+    Type: Imports      | Pattern: importlib            | Severity: 6        | Count: 1     
+    Type: Function_Calls | Pattern: exec                 | Severity: 8        | Count: 2     
+    Type: Function_Calls | Pattern: compile              | Severity: 7        | Count: 2     
+    Type: Function_Calls | Pattern: eval                 | Severity: 9        | Count: 3     
 
-Category: Phishing (Total Severity: 9)
-    -Pattern: root (fuzzy), Severity: 2, Count: 1
-    -Pattern: root, Severity: 7, Count: 1
+Category: Phishing (Total Severity: 38)
+    Type: Imports      | Pattern: shutil               | Severity: 6        | Count: 1     
+    Type: Imports      | Pattern: requests             | Severity: 6        | Count: 3     
+    Type: Strings      | Pattern: root                 | Severity: 7        | Count: 2     
 
-Category: Malware (Total Severity: 63)
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: infect, Severity: 8, Count: 1
-    -Pattern: malware (fuzzy), Severity: 4, Count: 1
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: infect (fuzzy), Severity: 3, Count: 1
-    -Pattern: passwords.txt (fuzzy), Severity: 2, Count: 1
-    -Pattern: passwords.txt (fuzzy), Severity: 2, Count: 1
-    -Pattern: passwords.txt (fuzzy), Severity: 2, Count: 1
+Category: Malware (Total Severity: 71)
+    Type: Imports      | Pattern: trojan               | Severity: 9        | Count: 1     
+    Type: Imports      | Pattern: paramiko             | Severity: 9        | Count: 1     
+    Type: Function_Calls | Pattern: exec                 | Severity: 9        | Count: 2     
+    Type: Function_Calls | Pattern: eval                 | Severity: 9        | Count: 3     
+    Type: Strings      | Pattern: infect               | Severity: 8        | Count: 1     
 
-Category: Keyboard Logger (Total Severity: 7)
-    -Pattern: Software\Microsoft\Windows\CurrentVersion\Run, Severity: 7, Count: 1
+Category: Ransomware (Total Severity: 116)
+    Type: Imports      | Pattern: base64               | Severity: 7        | Count: 5     
+    Type: Imports      | Pattern: subprocess           | Severity: 7        | Count: 4     
+    Type: Imports      | Pattern: winreg               | Severity: 7        | Count: 1     
+    Type: Imports      | Pattern: win32api             | Severity: 6        | Count: 3     
+    Type: Imports      | Pattern: ctypes               | Severity: 8        | Count: 1     
+    Type: Imports      | Pattern: win32event           | Severity: 7        | Count: 1     
+    Type: Imports      | Pattern: winerror             | Severity: 6        | Count: 1     
+    Type: Function_Calls | Pattern: Popen                | Severity: 7        | Count: 1     
 
-Dominant Malicious Code Type: Malware (Total Severity: 63)
+Category: Bypass Attack (Total Severity: 32)
+    Type: Function_Calls | Pattern: remove               | Severity: 4        | Count: 6     
+    Type: Function_Calls | Pattern: replace              | Severity: 4        | Count: 2     
+
+Category: Keyboard Logger (Total Severity: 46)
+    Type: Imports      | Pattern: pythoncom            | Severity: 8        | Count: 2     
+    Type: Imports      | Pattern: ImageGrab            | Severity: 7        | Count: 1     
+    Type: Imports      | Pattern: pyHook               | Severity: 9        | Count: 1     
+    Type: Strings      | Pattern: Software\Microsoft\Windows\CurrentVersion\Run | Severity: 7        | Count: 2     
+
+Dominant Malicious Code Type: Ransomware (Total Severity: 116)
