@@ -20,7 +20,9 @@ def extract_key_info_from_ast(ast_tree):
             elif isinstance(node.func, ast.Attribute):
                 Function_Calls.append(node.func.attr)
         elif isinstance(node, ast.Str):
-            Strings.append(node.s)
+            # 仅提取长度不超过 100 个字符且不包含换行符的字符串
+            if len(node.s) <= 100 and '\n' not in node.s:
+                Strings.append(node.s)
 
     return {
         "Imports": Imports,

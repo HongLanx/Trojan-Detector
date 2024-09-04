@@ -12,36 +12,78 @@ def load_patterns_module(patterns_file_path):
 def calculate_and_format_score(key_info, patterns, category_name):
     score = 0
     matched_patterns = defaultdict(lambda: {"count": 0, "type": None, "severity": 0})
-    
+
     # 完全匹配的得分计算
     for imp in key_info['Imports']:
-        if imp in patterns.get('Imports', {}):
-            severity = patterns['Imports'][imp]
-            score += severity
-            matched_patterns[imp]["count"] += 1
-            matched_patterns[imp]["type"] = "Imports"
-            matched_patterns[imp]["severity"] = severity
+        for pattern in patterns.get('Imports', {}):
+            if imp == pattern:  # 完全匹配
+                severity = patterns['Imports'][pattern]
+                score += severity
+                matched_patterns[pattern]["count"] += 1
+                matched_patterns[pattern]["type"] = "Imports"
+                matched_patterns[pattern]["severity"] = severity
 
     for call in key_info['Function_Calls']:
-        if call in patterns.get('Function_Calls', {}):
-            severity = patterns['Function_Calls'][call]
-            score += severity
-            matched_patterns[call]["count"] += 1
-            matched_patterns[call]["type"] = "Function_Calls"
-            matched_patterns[call]["severity"] = severity
+        for pattern in patterns.get('Function_Calls', {}):
+            if call == pattern:  # 完全匹配
+                severity = patterns['Function_Calls'][pattern]
+                score += severity
+                matched_patterns[pattern]["count"] += 1
+                matched_patterns[pattern]["type"] = "Function_Calls"
+                matched_patterns[pattern]["severity"] = severity
 
     for string in key_info['Strings']:
-        if string in patterns.get('Strings', {}):
-            severity = patterns['Strings'][string]
-            score += severity
-            matched_patterns[string]["count"] += 1
-            matched_patterns[string]["type"] = "Strings"
-            matched_patterns[string]["severity"] = severity
+        for pattern in patterns.get('Strings', {}):
+            if string == pattern:  # 完全匹配
+                severity = patterns['Strings'][pattern]
+                score += severity
+                matched_patterns[pattern]["count"] += 1
+                matched_patterns[pattern]["type"] = "Strings"
+                matched_patterns[pattern]["severity"] = severity
+
+    # 模糊匹配的得分计算
+    for imp in key_info['Imports']:
+        if imp not in matched_patterns:
+            for pattern in patterns.get('Imports', {}):
+                if pattern in imp:  # 模糊匹配
+                    original_severity = patterns['Imports'][pattern]
+                    severity = max(0, original_severity - 5)
+                    if severity > 0:
+                        score += severity
+                        matched_patterns[pattern]["count"] += 1
+                        matched_patterns[pattern]["type"] = "Imports"
+                        matched_patterns[pattern]["severity"] = severity
+                    break
+
+    for call in key_info['Function_Calls']:
+        if call not in matched_patterns:
+            for pattern in patterns.get('Function_Calls', {}):
+                if pattern in call:  # 模糊匹配
+                    original_severity = patterns['Function_Calls'][pattern]
+                    severity = max(0, original_severity - 5)
+                    if severity > 0:
+                        score += severity
+                        matched_patterns[pattern]["count"] += 1
+                        matched_patterns[pattern]["type"] = "Function_Calls"
+                        matched_patterns[pattern]["severity"] = severity
+                    break
+
+    for string in key_info['Strings']:
+        if string not in matched_patterns:
+            for pattern in patterns.get('Strings', {}):
+                if pattern in string:  # 模糊匹配
+                    original_severity = patterns['Strings'][pattern]
+                    severity = max(0, original_severity - 5)
+                    if severity > 0:
+                        score += severity
+                        matched_patterns[pattern]["count"] += 1
+                        matched_patterns[pattern]["type"] = "Strings"
+                        matched_patterns[pattern]["severity"] = severity
+                    break
 
     # 格式化输出
     pattern_details = []
     for pattern, details in matched_patterns.items():
-        # 类型、模式、分数、次数的最大长度，用于对齐
         type_len = max(len(details["type"]), 12)
         pattern_len = max(len(pattern), 20)
         severity_len = 8
