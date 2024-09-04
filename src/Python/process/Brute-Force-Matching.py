@@ -6,8 +6,11 @@ import patterns  # 导入 patterns.py 模块
 # 获取当前脚本所在的文件夹路径
 current_folder = os.path.dirname(os.path.abspath(__file__))
 
-# 待检测文件夹地址
-folder_path = r"D:\AAAshuju\PycharmProjects\Detector\Trojan-Detector\src\Python\src_zys\Trojan"
+# 从用户输入中获取待检测文件夹地址
+folder_path = input("请输入待检测的Python文件夹路径：")
+
+# 提取文件夹名称作为输出文件的文件名
+folder_name = os.path.basename(os.path.normpath(folder_path))
 
 # 定义一个函数用于加载所有模式
 def load_patterns():
@@ -30,27 +33,26 @@ def detect_trojans_in_file(file_path, patterns, matched_patterns):
             for pattern_type, pattern_dict in pattern_types.items():
                 for pattern, score in pattern_dict.items():
                     if pattern_type == "Imports":
-                        # Imports: 只计一次
+                        # Imports: 只在一个文件中计一次，但多个文件累计
                         if re.search(r'\b' + re.escape(pattern) + r'\b', file_content) and pattern not in matched_patterns[category][pattern_type]:
                             matches[category][(pattern_type, pattern)]["exact"] = 1
                             matched_patterns[category][pattern_type].add(pattern)
                     elif pattern_type == "Function_Calls":
                         # Function_Calls: 第一次完全匹配后加分，后续每次匹配只加 1 分
                         match_count = len(re.findall(r'\b' + re.escape(pattern) + r'\b', file_content))
-                        if match_count > 0 and pattern not in matched_patterns[category][pattern_type]:
-                            matches[category][(pattern_type, pattern)]["exact"] = 1
-                            matches[category][(pattern_type, pattern)]["fuzzy"] = match_count - 1
-                            matched_patterns[category][pattern_type].add(pattern)
+                        if match_count > 0:
+                            if pattern not in matched_patterns[category][pattern_type]:
+                                matches[category][(pattern_type, pattern)]["exact"] = 1
+                                matches[category][(pattern_type, pattern)]["fuzzy"] = match_count - 1
+                                matched_patterns[category][pattern_type].add(pattern)
+                            else:
+                                matches[category][(pattern_type, pattern)]["fuzzy"] += match_count
                     elif pattern_type == "Strings":
                         # Strings: 精确匹配和模糊匹配，模糊匹配加分比精确匹配低 5 分
-                        if re.search(r'\b' + re.escape(pattern) + r'\b', file_content) and pattern not in matched_patterns[category][pattern_type]:
-                            exact_matches = len(re.findall(r'\b' + re.escape(pattern) + r'\b', file_content))
-                            matches[category][(pattern_type, pattern)]["exact"] = exact_matches
-                            matched_patterns[category][pattern_type].add(pattern)
-                        elif re.search(re.escape(pattern), file_content) and pattern not in matched_patterns[category][pattern_type]:
-                            fuzzy_matches = len(re.findall(re.escape(pattern), file_content))
-                            matches[category][(pattern_type, pattern)]["fuzzy"] = fuzzy_matches
-                            matched_patterns[category][pattern_type].add(pattern)
+                        exact_matches = len(re.findall(r'\b' + re.escape(pattern) + r'\b', file_content))
+                        fuzzy_matches = len(re.findall(re.escape(pattern), file_content)) - exact_matches
+                        matches[category][(pattern_type, pattern)]["exact"] += exact_matches
+                        matches[category][(pattern_type, pattern)]["fuzzy"] += fuzzy_matches
     return matches
 
 # 主程序
@@ -75,15 +77,20 @@ def main():
                         score = all_patterns[category][pattern_type][pattern]
                         # 计算不同类型的得分规则
                         if pattern_type == "Imports":
+                            # Imports: 只在一个文件中计一次，但多个文件累计
                             if match_counts["exact"] > 0:
                                 detection_results[category][(pattern_type, pattern)]["count"] += 1
                                 detection_results[category][(pattern_type, pattern)]["score"] += score
                                 category_total_scores[category] += score
                         elif pattern_type == "Function_Calls":
                             if match_counts["exact"] > 0:
-                                detection_results[category][(pattern_type, pattern)]["count"] += match_counts["exact"] + match_counts["fuzzy"]
-                                detection_results[category][(pattern_type, pattern)]["score"] += score + match_counts["fuzzy"]
-                                category_total_scores[category] += score + match_counts["fuzzy"]
+                                detection_results[category][(pattern_type, pattern)]["count"] += match_counts["exact"]
+                                detection_results[category][(pattern_type, pattern)]["score"] += score
+                                category_total_scores[category] += score
+                            if match_counts["fuzzy"] > 0:
+                                detection_results[category][(pattern_type, pattern)]["count"] += match_counts["fuzzy"]
+                                detection_results[category][(pattern_type, pattern)]["score"] += match_counts["fuzzy"]  # 每次多匹配加1分
+                                category_total_scores[category] += match_counts["fuzzy"]
                         elif pattern_type == "Strings":
                             if match_counts["exact"] > 0:
                                 detection_results[category][(pattern_type, pattern)]["count"] += match_counts["exact"]
@@ -98,8 +105,11 @@ def main():
     max_category = max(category_total_scores, key=category_total_scores.get)
     max_score = category_total_scores[max_category]
 
-    # 将结果写入当前脚本所在目录下的result.txt文件
-    output_file_path = os.path.join(current_folder, "result.txt")
+    # 动态生成输出文件名，包含待检测文件夹名称
+    output_file_name = f"{folder_name}_results.txt"
+    output_file_path = os.path.join(current_folder, output_file_name)
+
+    # 将结果写入输出文件
     with open(output_file_path, "w", encoding="utf-8") as result_file:
         result_file.write("检测结果：\n")
         for category, patterns in detection_results.items():
