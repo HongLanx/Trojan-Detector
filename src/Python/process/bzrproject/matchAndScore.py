@@ -153,11 +153,12 @@ if __name__ == "__main__":
     if dominant_category:
         all_results.append(f"Dominant Malicious Code Type: {dominant_category} (Total Severity: {max_score})")
 
-    # 获取当前脚本所在的目录
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+    # 提取待检测文件夹的名称
+    folder_name = os.path.basename(os.path.normpath(parent_directory))
 
-    # 确定输出文件的路径，放在当前代码所在的文件夹
-    output_file_path = os.path.join(script_dir, 'detection_results.txt')
+    # 确定输出文件的路径，文件名为"待检测文件夹名称_detection_results.txt"
+    output_file_name = f"{folder_name}_detection_results.txt"
+    output_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), output_file_name)
 
     # 输出结果到 txt 文件
     with open(output_file_path, 'w') as outfile:
