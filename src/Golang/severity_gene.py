@@ -1,7 +1,7 @@
 import json
 import random
 
-import inter_patterns_raw
+import ssa_patterns_raw
 
 
 def adjust_values(data):
@@ -32,7 +32,7 @@ def adjust_values(data):
 
 
 # 调用函数调整value
-adjusted_encryption_patterns = adjust_values(inter_patterns_raw.botnet_patterns)
+adjusted_encryption_patterns = adjust_values(ssa_patterns_raw.botnet_patterns)
 
 
 json_output = json.dumps(adjusted_encryption_patterns, indent=4)

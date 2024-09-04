@@ -3,6 +3,9 @@ import re
 import ssa_info
 import os
 from collections import Counter
+import ssa_getter
+import tkinter as tk
+from tkinter import filedialog
 
 
 def process_ssa_code_from_file(file_path):
@@ -105,13 +108,29 @@ def summarize_info(project_info):
 
 
 # 示例用法：传入文件夹路径，在文件夹下生成SSA关键信息的JSON文件
-def generate_JSON(folder_path):
+def generate_json(folder_path):
     project_info = summarize_info(process_folder(folder_path))
     result_file_path = os.path.join(folder_path, "SSAResult.json")
 
     with open(result_file_path, 'w', encoding='utf-8') as json_file:
         json.dump(project_info, json_file, indent=4)
-    print(json.dumps(project_info, indent=4))
+    return json.dumps(project_info, indent=4)
+
+
+# 参数为：文件夹（也可以不输入参数，会跳出窗口让你选择文件夹），将文件夹内的所有go文件转换为SSA，再解析提取关键信息得到json_data
+def project_to_ssa_json(folder_selected=None):
+    json_data = None
+    if not folder_selected:
+        root = tk.Tk()
+        root.withdraw()  # Hide the main tkinter window
+        folder_selected = r'' + filedialog.askdirectory()
+    if folder_selected:
+        ssa_getter.get_ssa_from_folder(folder_selected)
+        json_data = generate_json(folder_selected)
+        print(f"已处理完项目: {folder_selected}")
+    else:
+        print("未选择文件夹")
+    return json_data,folder_selected
 
 
 # # 对单个文件进行处理示例
@@ -135,3 +154,5 @@ def generate_JSON(folder_path):
 # # print(file_info["calls"])
 # # print(file_info["strings"])
 # print(json.dumps(file_info, indent=4))
+
+generate_json('try')

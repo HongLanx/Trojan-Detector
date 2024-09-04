@@ -120,12 +120,13 @@ def get_key_info_from_project_folder(directory):
     return json.dumps(project_info, indent=4)
 
 
-# 选择Go项目文件夹 进行处理
-def ast_select_project_folder():
+# 选择Go项目文件夹 进行处理，得到
+def get_info_from_project(folder_selected=None):
     json_data = None
-    root = tk.Tk()
-    root.withdraw()  # Hide the main tkinter window
-    folder_selected = r''+filedialog.askdirectory()
+    if not folder_selected:
+        root = tk.Tk()
+        root.withdraw()  # Hide the main tkinter window
+        folder_selected = r''+filedialog.askdirectory()
     if folder_selected:
         json_data = get_key_info_from_project_folder(folder_selected)
         print(f"已处理完项目: {folder_selected}")
@@ -134,4 +135,5 @@ def ast_select_project_folder():
     return json_data, folder_selected
 
 
-get_go_ast("test.go")
+# 测试用例，指定go文件，生成原生ast文件
+# get_go_ast("test.go")

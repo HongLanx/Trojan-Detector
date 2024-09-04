@@ -2,12 +2,12 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
-import inter_patterns_raw
+import ssa_patterns_fin
 
 # 构建数据集
 data = {
-    "feature": list(inter_patterns.penetration_patterns["calls"].keys()) + list(inter_patterns.penetration_patterns["strings"].keys()),
-    "count": list(inter_patterns.penetration_patterns["calls"].values()) + list(inter_patterns.penetration_patterns["strings"].values())
+    "feature": list(ssa_patterns_fin.penetration_patterns["calls"].keys()) + list(ssa_patterns_fin.penetration_patterns["strings"].keys()),
+    "count": list(ssa_patterns_fin.penetration_patterns["calls"].values()) + list(ssa_patterns_fin.penetration_patterns["strings"].values())
 }
 
 # 预测新的文件特征

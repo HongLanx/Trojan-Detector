@@ -11,13 +11,13 @@ SSA_path = os.path.join(os.getcwd(), "GolangTool/SSAGenerator.exe")
 
 def run_command(command, working_directory=os.getcwd()):
     """在指定的工作目录中运行命令并返回输出和错误。"""
-    result=None
+    result = None
     # 保存当前目录
     current_dir = os.getcwd()
     # 更改到指定的工作目录
     os.chdir(working_directory)
     try:
-        result = subprocess.run(command, capture_output=True, text=True,encoding='utf-8')
+        result = subprocess.run(command, capture_output=True, text=True, encoding='utf-8')
     except UnicodeDecodeError:
         print("解码失败")
     finally:
@@ -127,3 +127,5 @@ def get_ssa_from_folder(folder_to_be_processd=None):
                         print(f"Moved non-empty SSA file: {file_path} to {ssa_dest_folder}")
                     else:
                         os.remove(file_path)  # 删除内容为空的SSA文件（即由于无法安装库等原因，无法正常生成）
+
+    return folder

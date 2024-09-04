@@ -2,7 +2,7 @@ import json
 import re
 
 import ast_analyzer
-import patterns
+import ast_patterns
 
 
 # 参数：提取后的项目信息（JSON格式），病毒木马模式类型
@@ -84,16 +84,16 @@ def get_score_and_report(json_data, pattern, pattern_name=""):
 
 # 输出最终报告
 def output_ast_matching_report():
-    analyse_project_info, analyse_project_folder = ast_analyzer.ast_select_project_folder()
-    enc_report = get_score_and_report(analyse_project_info, patterns.encryption_patterns, "加密器")
-    bot_report = get_score_and_report(analyse_project_info, patterns.botnet_patterns, "僵尸网络")
-    phish_report = get_score_and_report(analyse_project_info, patterns.phishing_patterns, "钓鱼网络")
-    obfuscate_report = get_score_and_report(analyse_project_info, patterns.obfuscation_patterns, "代码混淆")
-    penetrate_report = get_score_and_report(analyse_project_info, patterns.penetration_patterns, "渗透测试")
-    kernel_report = get_score_and_report(analyse_project_info, patterns.kernel_patterns, "内核攻击")
-    bypass_report = get_score_and_report(analyse_project_info, patterns.Defense_Bypass_patterns, "防御绕过")
-    keylogger_report = get_score_and_report(analyse_project_info, patterns.Keyboard_patterns, "键盘监视")
-    ransom_report = get_score_and_report(analyse_project_info, patterns.ransomware_patterns, "勒索软件")
+    analyse_project_info, analyse_project_folder = ast_analyzer.get_info_from_project()
+    enc_report = get_score_and_report(analyse_project_info, ast_patterns.encryption_patterns, "加密器")
+    bot_report = get_score_and_report(analyse_project_info, ast_patterns.botnet_patterns, "僵尸网络")
+    phish_report = get_score_and_report(analyse_project_info, ast_patterns.phishing_patterns, "钓鱼网络")
+    obfuscate_report = get_score_and_report(analyse_project_info, ast_patterns.obfuscation_patterns, "代码混淆")
+    penetrate_report = get_score_and_report(analyse_project_info, ast_patterns.penetration_patterns, "渗透测试")
+    kernel_report = get_score_and_report(analyse_project_info, ast_patterns.kernel_patterns, "内核攻击")
+    bypass_report = get_score_and_report(analyse_project_info, ast_patterns.Defense_Bypass_patterns, "防御绕过")
+    keylogger_report = get_score_and_report(analyse_project_info, ast_patterns.Keyboard_patterns, "键盘监视")
+    ransom_report = get_score_and_report(analyse_project_info, ast_patterns.ransomware_patterns, "勒索软件")
 
     # 将所有报告放入一个列表
     reports = [
