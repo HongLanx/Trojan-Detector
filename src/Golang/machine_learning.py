@@ -3,7 +3,7 @@ import pickle
 
 from sklearn.ensemble import RandomForestClassifier
 
-import ssa_patterns_fin
+from src.Golang import ssa_patterns_fin
 
 
 # 训练并将模型保存到本地指定路径

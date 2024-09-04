@@ -68,7 +68,8 @@ def extract_full_function_name(func_node):
     elif "Name" in func_node:
         return func_node["Name"]
     elif "Elt:" in func_node:
-        return func_node["Elt:"]["Name"]
+        if "Name" in func_node["Elt:"]:
+            return func_node["Elt:"]["Name"]
 
     return "Unknown"
 

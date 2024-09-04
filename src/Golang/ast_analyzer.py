@@ -5,12 +5,12 @@ import subprocess
 import tkinter as tk
 from tkinter import filedialog
 
-import json_analyzer
+from src.Golang import json_analyzer
 
 
 # 输入一个go文件，在其目录输出一个go自带ast库生成的ast文本文件
 def get_go_ast(file_path):
-    result = subprocess.run(['GolangTool/AstGenerator.exe', file_path], capture_output=True, text=True)
+    result = subprocess.run(['src/Golang/GolangTool/AstGenerator.exe', file_path], capture_output=True, text=True,encoding='utf-8')
 
 def process_ast_text(input_text):
     # 使用正则表达式去除每行开头的数字、点和多余的空格
@@ -67,18 +67,19 @@ def convert_ast_to_json(file_path):
     file_path_base = '.'.join(file_path.split('.')[:-1])
     with open(file_path, 'r', encoding='utf-8') as file:
         content = file.readlines()
-
-    print(f"正在将{file_path_base}.go的AST树转换为JSON...")
-    # 处理文本
-    processed_text = process_ast_text(content)
-    lines = processed_text.split('\n')
-
-    ast_dict = parse_to_json(lines)
-
-    # 将解析结果写入JSON文件
     json_output_path = f'{file_path_base}.json'
-    with open(json_output_path, 'w', encoding='utf-8') as f:
-        json.dump(ast_dict, f, indent=4, ensure_ascii=False)
+
+    if not os.path.exists(json_output_path):
+        print(f"正在将{file_path_base}.go的AST树转换为JSON...")
+        # 处理文本
+        processed_text = process_ast_text(content)
+        lines = processed_text.split('\n')
+
+        ast_dict = parse_to_json(lines)
+
+        # 将解析结果写入JSON文件
+        with open(json_output_path, 'w', encoding='utf-8') as f:
+            json.dump(ast_dict, f, indent=4, ensure_ascii=False)
 
     # 再解析JSON文件，提取Import，函数调用等关键信息
     info = json_analyzer.extract_key_info(json_output_path)

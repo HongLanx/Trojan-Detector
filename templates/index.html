@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Source Code Backdoor Detection</title>
+    <!-- 引入 Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            position: relative;
+        }
+
+        /* 背景视频设置 */
+        #background-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            background-size: cover;
+            filter: brightness(50%);
+        }
+
+        .overlay {
+            position: relative;
+            background: rgba(255, 255, 255, 0.5); /* 设置为半透明白色 */
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 450px;
+            max-width: 90%;
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-weight: 700;
+            position: relative;
+        }
+
+        h1:before {
+            content: '\f023'; /* 锁图标 */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: -40px;
+            font-size: 30px;
+            color: #3498db;
+        }
+
+        h1:after {
+            content: '\f3ed'; /* 盾牌图标 */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            right: -40px;
+            font-size: 30px;
+            color: #3498db;
+        }
+
+        .file-upload {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .file-upload label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            color: #34495e;
+        }
+
+        #fileInput {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #fafafa;
+            font-size: 16px;
+        }
+
+        #detectButton {
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 10px;
+        }
+
+        #detectButton:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        #report {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        #report h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        #reportContent {
+            background-color: #f7f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .dropdown-container label {
+            display: block;
+            font-size: 14px;
+            color: #34495e;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .dropdown-button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-button:hover {
+            background-color: #2980b9;
+        }
+
+        .dropdown-button .button-text {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .dropdown-button i {
+            margin-left: 10px;
+            font-size: 14px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            border-radius: 6px;
+            z-index: 1;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-container.show .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<!--    &lt;!&ndash; 背景视频 &ndash;&gt;-->
+<!--    <video autoplay loop muted id="background-video">-->
+<!--        <source src="" type="video/mp4">-->
+<!--        Your browser does not support the video tag.-->
+<!--    </video>-->
+
+    <div class="overlay">
+        <h1>Source Code Backdoor Detection Tool</h1>
+
+        <!-- 文件上传 -->
+        <div class="file-upload">
+            <label for="folderPathInput">Enter Source Code Folder Path:</label>
+            <input type="text" id="folderPathInput" placeholder="Enter folder path here">
+        </div>
+
+        <!-- 检测按钮 -->
+        <button id="detectButton">Start Detection</button>
+
+        <!-- 语言选择下拉菜单 -->
+        <div class="dropdown-container">
+            <label for="languageButton">Select Programming Language:</label>
+            <button class="dropdown-button" id="languageButton">
+                <span class="button-text">Select Language</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#" onclick="selectLanguage('Java')">Java</a>
+                <a href="#" onclick="selectLanguage('Python')">Python</a>
+                <a href="#" onclick="selectLanguage('Go')">Go</a>
+            </div>
+        </div>
+
+        <!-- 检测方法选择下拉菜单 -->
+        <div class="dropdown-container">
+            <label for="methodButton">Select Detection Method:</label>
+            <button class="dropdown-button" id="methodButton">
+                <span class="button-text">Select Detection Method</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#" onclick="selectMethod('Pattern Matching')">Pattern Matching</a>
+                <a href="#" onclick="selectMethod('Intermediate Language Transformation')">Intermediate Language Transformation</a>
+                <a href="#" onclick="selectMethod('Vector Transformation')">Vector Transformation</a>
+                <!-- 你可以在这里添加更多的检测方法 -->
+            </div>
+        </div>
+
+        <!-- 检测报告 -->
+        <div id="report">
+            <h2>Detection Report</h2>
+            <div id="reportContent">
+                {{ report|safe }}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 显示/隐藏下拉菜单（语言选择）
+        document.querySelector('#languageButton').addEventListener('click', function() {
+            document.querySelector('#languageButton').parentElement.classList.toggle('show');
+        });
+
+        // 选择语言时的处理函数
+        function selectLanguage(language) {
+            document.querySelector('#languageButton .button-text').innerText = language;
+            document.querySelector('#languageButton').parentElement.classList.remove('show');
+        }
+
+        // 显示/隐藏下拉菜单（检测方法选择）
+        document.querySelector('#methodButton').addEventListener('click', function() {
+            document.querySelector('#methodButton').parentElement.classList.toggle('show');
+        });
+
+        // 选择检测方法时的处理函数
+        function selectMethod(method) {
+            document.querySelector('#methodButton .button-text').innerText = method;
+            document.querySelector('#methodButton').parentElement.classList.remove('show');
+        }
+
+        // 点击其他地方关闭下拉菜单
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropdown-button') && !event.target.matches('.button-text') && !event.target.matches('.fa-chevron-down')) {
+                var dropdowns = document.getElementsByClassName("dropdown-container");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+
+        // 检测按钮点击事件处理
+        document.getElementById('detectButton').addEventListener('click', function(e) {
+        e.preventDefault();
+
+        var folderPath = document.getElementById('folderPathInput').value;
+        var language = document.getElementById('languageButton').querySelector('.button-text').innerText;
+        var method = document.getElementById('methodButton').querySelector('.button-text').innerText;
+
+        fetch('/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `folderPath=${encodeURIComponent(folderPath)}&language=${language}&method=${method}`
+        }).then(response => response.text())
+          .then(html => document.body.innerHTML = html)
+          .catch(error => console.error('Error:', error));
+    });
+    </script>
+</body>
+</html>

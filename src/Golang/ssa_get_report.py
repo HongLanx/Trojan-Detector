@@ -1,8 +1,8 @@
 import json
 import re
 
-import ssa_analyzer
-import ssa_patterns_fin
+from src.Golang import ssa_analyzer
+from src.Golang import ssa_patterns_fin
 
 
 # 参数：提取后的项目信息（JSON格式），病毒木马模式类型
