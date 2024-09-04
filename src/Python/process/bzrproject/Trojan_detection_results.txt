@@ -16,13 +16,12 @@ Category: Phishing (Total Severity: 40)
     Type: Imports      | Pattern: requests             | Severity: 6        | Count: 3     
     Type: Strings      | Pattern: root                 | Severity: 2        | Count: 3     
 
-Category: Malware (Total Severity: 175)
-    Type: Strings      | Pattern: trojan               | Severity: 4        | Count: 20    
+Category: Malware (Total Severity: 97)
+    Type: Strings      | Pattern: trojan               | Severity: 4        | Count: 6     
     Type: Imports      | Pattern: paramiko             | Severity: 9        | Count: 1     
     Type: Function_Calls | Pattern: exec                 | Severity: 9        | Count: 2     
     Type: Function_Calls | Pattern: eval                 | Severity: 9        | Count: 3     
-    Type: Strings      | Pattern: infect               | Severity: 3        | Count: 7     
-    Type: Strings      | Pattern: malware              | Severity: 4        | Count: 1     
+    Type: Strings      | Pattern: infect               | Severity: 8        | Count: 1     
     Type: Strings      | Pattern: passwords.txt        | Severity: 2        | Count: 3     
 
 Category: Ransomware (Total Severity: 116)
@@ -45,4 +44,4 @@ Category: Keyboard Logger (Total Severity: 46)
     Type: Imports      | Pattern: pyHook               | Severity: 9        | Count: 1     
     Type: Strings      | Pattern: Software\Microsoft\Windows\CurrentVersion\Run | Severity: 7        | Count: 2     
 
-Dominant Malicious Code Type: Malware (Total Severity: 175)
+Dominant Malicious Code Type: Ransomware (Total Severity: 116)
