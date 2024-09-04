@@ -179,7 +179,6 @@ phishingAttack_patterns = {
         "pip install requests": 6,  # 自动安装网络请求模块
         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)": 6,  # 常见的伪装User-Agent字符串
         "__version__": 6,  # 程序版本信息，可能用于显示或伪装工具版本
-        "root": 7,  # 提示需要root权限，可能用于执行高权限操作
     }
 }
 
@@ -260,7 +259,6 @@ ransomware_patterns={
         "hashlib": 6,  # 用于生成哈希值，常见于安全相关操作和恶意软件中
         "base64": 7,  # 用于Base64编码，可能用于混淆代码，在恶意软件中较为常见
         "ctypes": 8,  # 用于与C库交互，恶意软件中可能用于检测虚拟机或沙箱环境
-        "subprocess": 7,  # 用于执行系统命令，恶意软件中可能用于执行危险操作
         "uuid": 6,  # 用于生成和处理UUID，恶意软件中可能用于检测虚拟机环境
     },
     "Function_Calls": {
@@ -402,7 +400,6 @@ keyboard_patterns = {
         "pynput.mouse.Listener": 6,     # 鼠标事件监听，恶意监控工具中使用
         "pyscreenshot.grab": 7,         # 截取屏幕，用于恶意软件获取屏幕内容
         "sd.rec": 6,                    # 录音功能，隐秘录音的恶意软件常用
-        "subprocess.check_output": 6,   # 执行系统命令并获取输出，可能用于执行恶意操作
         "ImageGrab.grab": 7,            # 截屏功能，常用于恶意软件
         "getpass.getuser": 6            # 获取当前用户名，可能用于窃取用户信息
     },
