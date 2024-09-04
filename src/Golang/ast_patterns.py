@@ -553,8 +553,7 @@ kernel_patterns = {
         "packet_leak_path": 7,  # 名称暗示可能用于泄漏数据
         "sendInvalidWebSocketMessage": 6,  # 构造一个格式不正确的WebSocket消息
         "queryEnum": 7,  # 尝试发现并利用网站的Prototype Pollution漏洞
-        "filepath.Clean": 8,  # 测试或利用路径遍历漏洞
-        "filepath.Join": 7,  # 构建的路径可能会绕过预期的目录结构，从而访问敏感文件
+        "filepath.Clean": 2,  # 测试或利用路径遍历漏洞
         "syslog": 2,  # 日志记录功能，可能用于记录攻击详情
         "modprobe": 8,  # 加载和卸载内核模块，可能用于加载恶意模块
         "exec.Command": 9,  # 执行外部命令，可用于执行恶意脚本或程序

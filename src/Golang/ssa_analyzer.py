@@ -75,6 +75,7 @@ def process_folder(folder_path):
     # 遍历文件夹中所有文件
     for file in files:
         if file.endswith('.ssa'):
+            print(f"正在处理文件{SSA_path}/{file}")
             file_path = os.path.join(SSA_path, file)
             result = process_ssa_code_from_file(file_path)
 
@@ -125,12 +126,15 @@ def project_to_ssa_json(folder_selected=None):
         root.withdraw()  # Hide the main tkinter window
         folder_selected = r'' + filedialog.askdirectory()
     if folder_selected:
+        # 如果已经生成了SSA解析结果，直接返回结果即可
+        if os.path.exists(os.path.join(folder_selected, "SSAResult.json")):
+            return generate_json(folder_selected), folder_selected
         ssa_getter.get_ssa_from_folder(folder_selected)
         json_data = generate_json(folder_selected)
         print(f"已处理完项目: {folder_selected}")
     else:
         print("未选择文件夹")
-    return json_data,folder_selected
+    return json_data, folder_selected
 
 
 # # 对单个文件进行处理示例
@@ -155,4 +159,4 @@ def project_to_ssa_json(folder_selected=None):
 # # print(file_info["strings"])
 # print(json.dumps(file_info, indent=4))
 
-generate_json('try')
+# generate_json('try')
