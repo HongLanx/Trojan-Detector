@@ -11,74 +11,82 @@ def load_patterns_module(patterns_file_path):
 
 def calculate_and_format_score(key_info, patterns, category_name):
     score = 0
-    matched_patterns = defaultdict(lambda: {"count": 0, "type": None, "severity": 0})
+    matched_patterns = defaultdict(lambda: {"count": 0, "type": None, "severity": 0, "scored": False})
 
     # 完全匹配的得分计算
-    for imp in key_info['Imports']:
-        for pattern in patterns.get('Imports', {}):
+    for imp in key_info['Imports']:  # 累计所有匹配次数
+        for pattern, severity in patterns.get('Imports', {}).items():
             if imp == pattern:  # 完全匹配
-                severity = patterns['Imports'][pattern]
-                score += severity
-                matched_patterns[pattern]["count"] += 1
+                if not matched_patterns[pattern]["scored"]:  # 确保只计一次分
+                    score += severity
+                    matched_patterns[pattern]["scored"] = True
+                matched_patterns[pattern]["count"] += 1  # 每次匹配都记录次数
                 matched_patterns[pattern]["type"] = "Imports"
                 matched_patterns[pattern]["severity"] = severity
 
-    for call in key_info['Function_Calls']:
-        for pattern in patterns.get('Function_Calls', {}):
+    for string in key_info['Strings']:  # 累计所有匹配次数
+        for pattern, severity in patterns.get('Strings', {}).items():
+            if string == pattern:  # 完全匹配
+                if not matched_patterns[pattern]["scored"]:  # 确保只计一次分
+                    score += severity
+                    matched_patterns[pattern]["scored"] = True
+                matched_patterns[pattern]["count"] += 1  # 每次匹配都记录次数
+                matched_patterns[pattern]["type"] = "Strings"
+                matched_patterns[pattern]["severity"] = severity
+
+    for call in key_info['Function_Calls']:  # 累计所有匹配次数
+        for pattern, severity in patterns.get('Function_Calls', {}).items():
             if call == pattern:  # 完全匹配
-                severity = patterns['Function_Calls'][pattern]
-                score += severity
+                if not matched_patterns[pattern]["scored"]:  # 第一次匹配
+                    score += severity
+                    matched_patterns[pattern]["scored"] = True
+                else:  # 后续每次匹配加 1
+                    score += 1
                 matched_patterns[pattern]["count"] += 1
                 matched_patterns[pattern]["type"] = "Function_Calls"
                 matched_patterns[pattern]["severity"] = severity
 
-    for string in key_info['Strings']:
-        for pattern in patterns.get('Strings', {}):
-            if string == pattern:  # 完全匹配
-                severity = patterns['Strings'][pattern]
-                score += severity
-                matched_patterns[pattern]["count"] += 1
-                matched_patterns[pattern]["type"] = "Strings"
-                matched_patterns[pattern]["severity"] = severity
-
     # 模糊匹配的得分计算
-    for imp in key_info['Imports']:
-        if imp not in matched_patterns:
-            for pattern in patterns.get('Imports', {}):
+    for imp in key_info['Imports']:  # 累计所有匹配次数
+        if imp not in matched_patterns:  # 如果没有完全匹配过
+            for pattern, severity in patterns.get('Imports', {}).items():
                 if pattern in imp:  # 模糊匹配
-                    original_severity = patterns['Imports'][pattern]
-                    severity = max(0, original_severity - 5)
-                    if severity > 0:
-                        score += severity
-                        matched_patterns[pattern]["count"] += 1
-                        matched_patterns[pattern]["type"] = "Imports"
-                        matched_patterns[pattern]["severity"] = severity
+                    if not matched_patterns[pattern]["scored"]:  # 只加一次分
+                        adjusted_severity = max(0, severity - 5)
+                        if adjusted_severity > 0:
+                            score += adjusted_severity
+                        matched_patterns[pattern]["scored"] = True
+                    matched_patterns[pattern]["count"] += 1  # 每次匹配都记录次数
+                    matched_patterns[pattern]["type"] = "Imports"
+                    matched_patterns[pattern]["severity"] = severity
                     break
 
-    for call in key_info['Function_Calls']:
-        if call not in matched_patterns:
-            for pattern in patterns.get('Function_Calls', {}):
-                if pattern in call:  # 模糊匹配
-                    original_severity = patterns['Function_Calls'][pattern]
-                    severity = max(0, original_severity - 5)
-                    if severity > 0:
-                        score += severity
-                        matched_patterns[pattern]["count"] += 1
-                        matched_patterns[pattern]["type"] = "Function_Calls"
-                        matched_patterns[pattern]["severity"] = severity
-                    break
-
-    for string in key_info['Strings']:
-        if string not in matched_patterns:
-            for pattern in patterns.get('Strings', {}):
+    for string in key_info['Strings']:  # 累计所有匹配次数
+        if string not in matched_patterns:  # 如果没有完全匹配过
+            for pattern, severity in patterns.get('Strings', {}).items():
                 if pattern in string:  # 模糊匹配
-                    original_severity = patterns['Strings'][pattern]
-                    severity = max(0, original_severity - 5)
-                    if severity > 0:
-                        score += severity
-                        matched_patterns[pattern]["count"] += 1
-                        matched_patterns[pattern]["type"] = "Strings"
-                        matched_patterns[pattern]["severity"] = severity
+                    if not matched_patterns[pattern]["scored"]:  # 只加一次分
+                        adjusted_severity = max(0, severity - 5)
+                        if adjusted_severity > 0:
+                            score += adjusted_severity
+                        matched_patterns[pattern]["scored"] = True
+                    matched_patterns[pattern]["count"] += 1  # 每次匹配都记录次数
+                    matched_patterns[pattern]["type"] = "Strings"
+                    matched_patterns[pattern]["severity"] = severity
+                    break
+
+    for call in key_info['Function_Calls']:  # 累计所有匹配次数
+        if call not in matched_patterns:  # 如果没有完全匹配过
+            for pattern, severity in patterns.get('Function_Calls', {}).items():
+                if pattern in call:  # 模糊匹配
+                    if not matched_patterns[pattern]["scored"]:  # 只加一次分
+                        adjusted_severity = max(0, severity - 5)
+                        if adjusted_severity > 0:
+                            score += adjusted_severity
+                        matched_patterns[pattern]["scored"] = True
+                    matched_patterns[pattern]["count"] += 1  # 每次匹配都记录次数
+                    matched_patterns[pattern]["type"] = "Function_Calls"
+                    matched_patterns[pattern]["severity"] = severity
                     break
 
     # 格式化输出
@@ -157,11 +165,11 @@ if __name__ == "__main__":
     folder_name = os.path.basename(os.path.normpath(parent_directory))
 
     # 确定输出文件的路径，文件名为"待检测文件夹名称_detection_results.txt"
-    output_file_name = f"{folder_name}_detection_results.txt"
+    output_file_name = f"{folder_name}_AST_results.txt"
     output_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), output_file_name)
 
-    # 输出结果到 txt 文件
-    with open(output_file_path, 'w') as outfile:
+    # 输出结果到 txt 文件，显式指定编码为 utf-8
+    with open(output_file_path, 'w', encoding='utf-8') as outfile:
         outfile.write("\n\n".join(all_results))
 
     print(f"Results have been written to {output_file_path}")
