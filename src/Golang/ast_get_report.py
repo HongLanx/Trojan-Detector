@@ -109,7 +109,7 @@ def output_ast_matching_report():
     for report in reports:
         if report["severity"] != 0:
             final_report += report["report_text"] + "\n\n"
-    report_path = analyse_project_folder + "/TrojanDetectorReport.txt"
+    report_path = analyse_project_folder + "/AST模式匹配检测报告.txt"
     with open(report_path, "w", encoding='utf-8') as f:
         f.write(final_report)
 

@@ -1,5 +1,5 @@
 import os
-import get_score
+import ast_get_report
 import get_ssa
 import ast_analyzer
 import patterns
@@ -29,4 +29,4 @@ from ssa_analyzer import generate_JSON
 #         generate_JSON(os.path.join(folder_selected,directory,direct))
 
 #测试用例 输出ast模式匹配报告
-get_score.output_ast_matching_report()
+ast_get_report.output_ast_matching_report()

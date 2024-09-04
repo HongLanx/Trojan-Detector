@@ -8,6 +8,10 @@ from tkinter import filedialog
 import json_analyzer
 
 
+# 输入一个go文件，在其目录输出一个go自带ast库生成的ast文本文件
+def get_go_ast(file_path):
+    result = subprocess.run(['GolangTool/AstGenerator.exe', file_path], capture_output=True, text=True)
+
 def process_ast_text(input_text):
     # 使用正则表达式去除每行开头的数字、点和多余的空格
     cleaned_lines = []
@@ -81,9 +85,6 @@ def convert_ast_to_json(file_path):
     return info
 
 
-# 输入一个go文件，在其目录输出一个go自带ast库生成的ast文本文件
-def get_go_ast(file_path):
-    result = subprocess.run(['GolangTool/AstGenerator.exe', file_path], capture_output=True, text=True)
 
 
 # 输入一个go文件，在其目录直接输出一个ast转换而来的JSON文件
@@ -131,3 +132,6 @@ def ast_select_project_folder():
     else:
         print("未选择文件夹")
     return json_data, folder_selected
+
+
+get_go_ast("test.go")
