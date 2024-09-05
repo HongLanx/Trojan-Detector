@@ -75,9 +75,18 @@ def process_python_files_in_directory(directory_path):
     with open(key_info_output_path, 'w', encoding='utf-8') as outfile:
         json.dump(combined_info, outfile, indent=4)
 
-if __name__ == "__main__":
-    # 从用户输入获取待检测文件夹路径
-    directory_path = input("请输入待检测文件夹的路径: ")
+    return key_info_output_path  # 返回生成的 JSON 文件路径
+
+# 定义一个主函数用于外部调用
+def turnToJson(directory_path):
+    """
+    检测指定文件夹中的所有 Python 文件，并提取 AST 树的关键信息。
+    """
+    if not os.path.isdir(directory_path):
+        raise ValueError(f"指定的路径无效: {directory_path}")
     
-    # 处理目录中的所有 Python 文件
-    process_python_files_in_directory(directory_path)
+    print(f"开始处理文件夹: {directory_path}")
+    result_json_path = process_python_files_in_directory(directory_path)
+    print(f"关键信息提取完成，结果已保存到: {result_json_path}")
+
+    return result_json_path  # 返回结果文件的路径
