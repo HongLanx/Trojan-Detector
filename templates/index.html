@@ -212,14 +212,23 @@
         .dropdown-container.show .dropdown-content {
             display: block;
         }
+
+        #folderPathInput {
+        width: 100%;             /* 设置宽度为100% */
+        min-height: 40px;         /* 设置最小高度 */
+        resize: none;             /* 禁止用户手动调整大小 */
+        overflow-y: hidden;       /* 隐藏多余的竖向滚动条 */
+        word-wrap: break-word;    /* 自动换行 */
+        }
+
     </style>
 </head>
 <body>
-<!--    &lt;!&ndash; 背景视频 &ndash;&gt;-->
-<!--    <video autoplay loop muted id="background-video">-->
-<!--        <source src="" type="video/mp4">-->
-<!--        Your browser does not support the video tag.-->
-<!--    </video>-->
+    <!-- 背景视频 -->
+    <video autoplay loop muted id="background-video">
+        <source src="{{ url_for('static', filename='video/bg.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
     <div class="overlay">
         <h1>源代码后门检测工具</h1>
@@ -227,7 +236,7 @@
         <!-- 文件上传 -->
         <div class="file-upload">
             <label for="folderPathInput">输入源代码文件夹路径:</label>
-            <input type="text" id="folderPathInput" placeholder="请输入文件夹路径">
+            <textarea id="folderPathInput" placeholder="请输入文件夹路径" rows="1"></textarea>
         </div>
 
         <!-- 检测按钮 -->
@@ -272,6 +281,14 @@
     </div>
 
     <script>
+        const folderPathInput = document.getElementById("folderPathInput");
+
+        // 自动调整 textarea 的高度以适应内容
+        folderPathInput.addEventListener("input", function() {
+            this.style.height = "auto";  // 先重置高度，防止高度计算不准确
+            this.style.height = (this.scrollHeight) + "px";  // 设置为内容的高度
+        });
+
         // 显示/隐藏下拉菜单（语言选择）
         document.querySelector('#languageButton').addEventListener('click', function() {
             document.querySelector('#languageButton').parentElement.classList.toggle('show');
