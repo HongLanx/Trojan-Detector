@@ -7,6 +7,7 @@ from main import detect_trojan  # 确保main.py与app.py在同一目录下
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     # 每次请求时清空报告内容
@@ -37,11 +38,13 @@ def index():
 
     return render_template('index.html', report=session.get('report'))
 
+
 @app.route('/clear', methods=['GET'])
 def clear():
     # 清空session中的报告内容
     session.pop('report', None)
     return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)

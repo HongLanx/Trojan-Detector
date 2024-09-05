@@ -4,7 +4,8 @@ import numpy as np
 import joblib
 import importlib.util
 
-
+patterns_file_path = 'src/Python/patterns.py'  # 替换为正确的路径
+model_dir = 'src/Python/model'
 # 动态导入特征模式库文件
 def load_patterns_from_file(file_path):
     spec = importlib.util.spec_from_file_location("patterns", file_path)
@@ -60,7 +61,7 @@ def generate_integrated_report(directory, patterns_file_path, model_dir):
     # 整合的报告数据结构
     report = {}
 
-    # 先遍历每个特征模式库，并加载对应的模型
+    # 遍历每个特征模式库，并加载对应的模型
     for pattern_name, pattern in patterns.items():
         model_file = os.path.join(model_dir, f'{pattern_name}_model.pkl')
         if not os.path.exists(model_file):
@@ -89,7 +90,6 @@ def generate_integrated_report(directory, patterns_file_path, model_dir):
 
                     # 如果只有一个类的概率（可能是单类分类器的结果）
                     if len(probabilities) == 1:
-                        # 假设为单类分类，则概率为1类（我们手动创建二元概率）
                         prediction_proba = [1 - probabilities[0], probabilities[0]]
                     else:
                         prediction_proba = probabilities
@@ -98,8 +98,9 @@ def generate_integrated_report(directory, patterns_file_path, model_dir):
                     report[pattern_name]["predictions"].append(prediction)
                     report[pattern_name]["probabilities"].append(prediction_proba)
 
-    # 生成最终报告
-    with open("integrated_report.txt", "w", encoding="utf-8") as report_file:
+    # 生成最终报告，将其保存到指定目录下
+    report_file_path = os.path.join(directory, "integrated_report.txt")
+    with open(report_file_path, "w", encoding="utf-8") as report_file:
         for pattern_name, data in report.items():
             positive_count = sum(1 for pred in data["predictions"] if pred == 1)
 
@@ -114,12 +115,9 @@ def generate_integrated_report(directory, patterns_file_path, model_dir):
             report_file.write(f"预测结果: {'符合该模式特征' if positive_count > 0 else '不符合该模式特征'}\n")
             report_file.write(f"预测概率: {average_probability:.4f}\n\n")
 
-    print("整合报告已生成并保存在 integrated_report.txt 文件中.")
+    print(f"整合报告已生成并保存在 {report_file_path}.")
 
 
-# 示例执行
-directory_to_predict = 'C:/Users/XXX19/Desktop/directory_to_scan'  # 指定需要生成报告的目录路径
-patterns_file_path = 'D:/STUDY/Junior/JuniorUp/Project_hobbyhorse_2/patterns.py'  # 替换为你的patterns.py文件路径
-model_dir = os.path.join(os.getcwd(), 'model')  # 指定存储模型的目录路径
-
-generate_integrated_report(directory_to_predict, patterns_file_path, model_dir)
+# 封装成前端接口函数，供前端调用
+def output_machine_learning_matching_report(folder_path, patterns_file_path=patterns_file_path, model_dir=model_dir):
+    generate_integrated_report(folder_path, patterns_file_path, model_dir)

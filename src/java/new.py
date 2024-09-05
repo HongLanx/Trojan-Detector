@@ -76,22 +76,22 @@ def java_file_to_ast_json(java_file_path, output_dir="ast_output"):
         with open(java_file_path, 'r', encoding='utf-8') as file:
             java_code = file.read()
 
+        java_file_dir=os.path.dirname(java_file_path)
         # 解析Java代码生成AST
         tree = parse(java_code)
         ast_dict = node_to_dict(tree)
 
         # 生成JSON文件名
         json_file_name = os.path.basename(java_file_path).replace('.java', '_ast.json')
-        json_file_path = os.path.join(output_dir, json_file_name)
+        if not os.path.exists(os.path.join(java_file_dir,output_dir)):
+            os.makedirs(os.path.join(java_file_dir,output_dir))
+        json_file_path = os.path.join(java_file_dir, output_dir, json_file_name)
 
         # 标准化路径以确保跨平台兼容
         json_file_path = os.path.normpath(json_file_path)
 
         # 打印生成的文件路径
         print(f"Generated JSON file path: {json_file_path}")
-
-        # 如果目标目录不存在，则创建它
-        os.makedirs(os.path.dirname(json_file_path), exist_ok=True)
 
         # 将AST写入JSON文件
         with open(json_file_path, 'w', encoding='utf-8') as json_file:

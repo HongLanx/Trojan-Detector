@@ -20,7 +20,9 @@ from src.Golang import json_analyzer
 
 # 输入一个go文件，在其目录输出一个go自带ast库生成的ast文本文件
 def get_go_ast(file_path):
-    result = subprocess.run(['src/Golang/GolangTool/AstGenerator.exe', file_path], capture_output=True, text=True,encoding='utf-8')
+    result = subprocess.run(['src/Golang/GolangTool/AstGenerator.exe', file_path], capture_output=True, text=True,
+                            encoding='utf-8')
+
 
 def process_ast_text(input_text):
     # 使用正则表达式去除每行开头的数字、点和多余的空格
@@ -96,8 +98,6 @@ def convert_ast_to_json(file_path):
     return info
 
 
-
-
 # 输入一个go文件，在其目录直接输出一个ast转换而来的JSON文件
 def get_json_from_go_ast(file_path):
     get_go_ast(file_path)
@@ -137,14 +137,13 @@ def get_info_from_project(folder_selected=None):
     if not folder_selected:
         root = tk.Tk()
         root.withdraw()  # 隐藏Tkinter主窗口
-        folder_selected = r''+filedialog.askdirectory()
+        folder_selected = r'' + filedialog.askdirectory()
     if folder_selected:
         json_data = get_key_info_from_project_folder(folder_selected)
         print(f"已处理完项目: {folder_selected}")
     else:
         print("未选择文件夹")
     return json_data, folder_selected
-
 
 # 测试用例，指定go文件，生成原生ast文件
 # get_go_ast("test.go")

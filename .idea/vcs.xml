@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/Python/Project_bandit" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/Python/bandit" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/Python/search_that" vcs="Git" />
   </component>
 </project>
