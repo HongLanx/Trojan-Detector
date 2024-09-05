@@ -1,0 +1,400 @@
+{
+    "node_type": "CompilationUnit",
+    "package": {
+        "node_type": "PackageDeclaration",
+        "modifiers": null,
+        "annotations": null,
+        "documentation": "/**\n * Licensed to the Apache Software Foundation (ASF) under one\n * or more contributor license agreements.  See the NOTICE file\n * distributed with this work for additional information\n * regarding copyright ownership.  The ASF licenses this file\n * to you under the Apache License, Version 2.0 (the\n * \"License\"); you may not use this file except in compliance\n * with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */",
+        "name": "org.apache.hadoop.tools.dynamometer.workloadgenerator"
+    },
+    "imports": [
+        {
+            "node_type": "Import",
+            "path": "java.util.List",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.conf.Configuration",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.io.NullWritable",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.InputFormat",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.Job",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.Mapper",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.lib.output.NullOutputFormat",
+            "static": false,
+            "wildcard": false
+        }
+    ],
+    "types": [
+        {
+            "node_type": "ClassDeclaration",
+            "modifiers": [
+                "abstract",
+                "public"
+            ],
+            "annotations": [],
+            "documentation": "/**\n * Represents the base class for a generic workload-generating mapper. By\n * default, it will expect to use {@link VirtualInputFormat} as its\n * {@link InputFormat}. Subclasses requiring a reducer or expecting a different\n * {@link InputFormat} should override the {@link #configureJob(Job)} method.\n */",
+            "name": "WorkloadMapper",
+            "body": [
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": "/**\n   * Get the description of the behavior of this mapper.\n   * @return description string.\n   */",
+                    "modifiers": [
+                        "abstract",
+                        "public"
+                    ],
+                    "annotations": [],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "name": "getDescription",
+                    "parameters": [],
+                    "throws": null,
+                    "body": null
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": "/**\n   * Get a list of the description of each configuration that this mapper\n   * accepts.\n   * @return list of the description of each configuration.\n   */",
+                    "modifiers": [
+                        "abstract",
+                        "public"
+                    ],
+                    "annotations": [],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "ReferenceType",
+                        "name": "List",
+                        "dimensions": [],
+                        "arguments": [
+                            {
+                                "node_type": "TypeArgument",
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "String",
+                                    "dimensions": [],
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "pattern_type": null
+                            }
+                        ],
+                        "sub_type": null
+                    },
+                    "name": "getConfigDescriptions",
+                    "parameters": [],
+                    "throws": null,
+                    "body": null
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": "/**\n   * Verify that the provided configuration contains all configurations required\n   * by this mapper.\n   * @param conf configuration.\n   * @return whether or not all configurations required are provided.\n   */",
+                    "modifiers": [
+                        "abstract",
+                        "public"
+                    ],
+                    "annotations": [],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "BasicType",
+                        "name": "boolean",
+                        "dimensions": []
+                    },
+                    "name": "verifyConfigurations",
+                    "parameters": [
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Configuration",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "conf",
+                            "varargs": false
+                        }
+                    ],
+                    "throws": null,
+                    "body": null
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": "/**\n   * Setup input and output formats and optional reducer.\n   */",
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "configureJob",
+                    "parameters": [
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Job",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "job",
+                            "varargs": false
+                        }
+                    ],
+                    "throws": null,
+                    "body": [
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "job",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "ClassReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "VirtualInputFormat",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        }
+                                    }
+                                ],
+                                "member": "setInputFormatClass"
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "job",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "0"
+                                    }
+                                ],
+                                "member": "setNumReduceTasks"
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "job",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "ClassReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "NullWritable",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        }
+                                    }
+                                ],
+                                "member": "setOutputKeyClass"
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "job",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "ClassReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "NullWritable",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        }
+                                    }
+                                ],
+                                "member": "setOutputValueClass"
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "job",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "ClassReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "NullOutputFormat",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        }
+                                    }
+                                ],
+                                "member": "setOutputFormatClass"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "type_parameters": [
+                {
+                    "node_type": "TypeParameter",
+                    "name": "KEYIN",
+                    "extends": null
+                },
+                {
+                    "node_type": "TypeParameter",
+                    "name": "VALUEIN",
+                    "extends": null
+                },
+                {
+                    "node_type": "TypeParameter",
+                    "name": "KEYOUT",
+                    "extends": null
+                },
+                {
+                    "node_type": "TypeParameter",
+                    "name": "VALUEOUT",
+                    "extends": null
+                }
+            ],
+            "extends": {
+                "node_type": "ReferenceType",
+                "name": "Mapper",
+                "dimensions": [],
+                "arguments": [
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "KEYIN",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    },
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "VALUEIN",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    },
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "KEYOUT",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    },
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "VALUEOUT",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    }
+                ],
+                "sub_type": null
+            },
+            "implements": null
+        }
+    ]
+}

@@ -1,0 +1,1169 @@
+{
+    "node_type": "CompilationUnit",
+    "package": {
+        "node_type": "PackageDeclaration",
+        "modifiers": null,
+        "annotations": null,
+        "documentation": "/**\n * Licensed to the Apache Software Foundation (ASF) under one\n * or more contributor license agreements.  See the NOTICE file\n * distributed with this work for additional information\n * regarding copyright ownership.  The ASF licenses this file\n * to you under the Apache License, Version 2.0 (the\n * \"License\"); you may not use this file except in compliance\n * with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */",
+        "name": "org.apache.hadoop.tools.dynamometer"
+    },
+    "imports": [
+        {
+            "node_type": "Import",
+            "path": "java.util.regex.Pattern",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.classification.InterfaceAudience",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.classification.InterfaceStability",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.fs.PathFilter",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.yarn.api.records.LocalResourceType",
+            "static": true,
+            "wildcard": true
+        }
+    ],
+    "types": [
+        {
+            "node_type": "ClassDeclaration",
+            "modifiers": [
+                "public",
+                "final"
+            ],
+            "annotations": [
+                {
+                    "node_type": "Annotation",
+                    "name": "InterfaceAudience.Private",
+                    "element": null
+                },
+                {
+                    "node_type": "Annotation",
+                    "name": "InterfaceStability.Unstable",
+                    "element": null
+                }
+            ],
+            "documentation": "/**\n * Constants used in both Client and Application Master.\n */",
+            "name": "DynoConstants",
+            "body": [
+                {
+                    "node_type": "ConstructorDeclaration",
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "documentation": null,
+                    "type_parameters": null,
+                    "name": "DynoConstants",
+                    "parameters": [],
+                    "throws": null,
+                    "body": []
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "DYNAMOMETER_STORAGE_DIR",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\".dynamometer\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "DynoResource",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "CONF_ZIP",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "ClassCreator",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "DynoResource",
+                                    "dimensions": null,
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "constructor_type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"CONF_ZIP\""
+                                    },
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "ARCHIVE"
+                                    },
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"conf\""
+                                    }
+                                ],
+                                "body": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "DynoResource",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "HADOOP_BINARY",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "ClassCreator",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "DynoResource",
+                                    "dimensions": null,
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "constructor_type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"HADOOP_BINARY\""
+                                    },
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "ARCHIVE"
+                                    },
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"hadoopBinary\""
+                                    }
+                                ],
+                                "body": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "DynoResource",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "START_SCRIPT",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "ClassCreator",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "DynoResource",
+                                    "dimensions": null,
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "constructor_type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"START_SCRIPT\""
+                                    },
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "FILE"
+                                    },
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"start-component.sh\""
+                                    }
+                                ],
+                                "body": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "DynoResource",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "FS_IMAGE",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "ClassCreator",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "DynoResource",
+                                    "dimensions": null,
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "constructor_type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"FS_IMAGE\""
+                                    },
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "FILE"
+                                    },
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "null"
+                                    }
+                                ],
+                                "body": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "DynoResource",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "FS_IMAGE_MD5",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "ClassCreator",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "DynoResource",
+                                    "dimensions": null,
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "constructor_type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"FS_IMAGE_MD5\""
+                                    },
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "FILE"
+                                    },
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "null"
+                                    }
+                                ],
+                                "body": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "DynoResource",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "VERSION",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "ClassCreator",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "DynoResource",
+                                    "dimensions": null,
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "constructor_type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"VERSION\""
+                                    },
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "FILE"
+                                    },
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"VERSION\""
+                                    }
+                                ],
+                                "body": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "DynoResource",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "DYNO_DEPENDENCIES",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "ClassCreator",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "DynoResource",
+                                    "dimensions": null,
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "constructor_type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"DYNO_DEPS\""
+                                    },
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "ARCHIVE"
+                                    },
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"dependencies\""
+                                    }
+                                ],
+                                "body": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "BLOCK_LIST_PATH_ENV",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"BLOCK_ZIP_PATH\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "Pattern",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "BLOCK_LIST_FILE_PATTERN",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "Pattern",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"dn[0-9]+-a-[0-9]+-r-[0-9]+\""
+                                    }
+                                ],
+                                "member": "compile"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "BLOCK_LIST_RESOURCE_PATH_PREFIX",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"blocks/block\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "PathFilter",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "BLOCK_LIST_FILE_FILTER",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "LambdaExpression",
+                                "parameters": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "path"
+                                    }
+                                ],
+                                "body": {
+                                    "node_type": "MethodInvocation",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "DynoConstants.BLOCK_LIST_FILE_PATTERN",
+                                    "selectors": [
+                                        {
+                                            "node_type": "MethodInvocation",
+                                            "prefix_operators": null,
+                                            "postfix_operators": null,
+                                            "qualifier": null,
+                                            "selectors": null,
+                                            "type_arguments": null,
+                                            "arguments": [],
+                                            "member": "find"
+                                        }
+                                    ],
+                                    "type_arguments": null,
+                                    "arguments": [
+                                        {
+                                            "node_type": "MethodInvocation",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "path",
+                                            "selectors": [],
+                                            "type_arguments": null,
+                                            "arguments": [],
+                                            "member": "getName"
+                                        }
+                                    ],
+                                    "member": "matcher"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "REMOTE_STORAGE_PATH_ENV",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"REMOTE_STORAGE_PATH\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "REMOTE_NN_RPC_ADDR_ENV",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"REMOTE_NN_RPC_ADDR\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "JOB_ACL_VIEW_ENV",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"JOB_ACL_VIEW\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "NN_INFO_FILE_NAME",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"nn_info.prop\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "NN_ADDITIONAL_ARGS_ENV",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"NN_ADDITIONAL_ARGS\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "DN_ADDITIONAL_ARGS_ENV",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"DN_ADDITIONAL_ARGS\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "NN_NAME_DIR_ENV",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"NN_NAME_DIR\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "NN_EDITS_DIR_ENV",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"NN_EDITS_DIR\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "NN_FILE_METRIC_PERIOD_ENV",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"NN_FILE_METRIC_PERIOD\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "NN_RPC_PORT",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"NN_RPC_PORT\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "NN_HOSTNAME",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"NN_HOSTNAME\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "NN_SERVICERPC_PORT",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"NN_SERVICERPC_PORT\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "NN_HTTP_PORT",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"NN_HTTP_PORT\""
+                            }
+                        }
+                    ]
+                }
+            ],
+            "type_parameters": null,
+            "extends": null,
+            "implements": null
+        }
+    ]
+}

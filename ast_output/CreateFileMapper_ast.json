@@ -1,0 +1,2148 @@
+{
+    "node_type": "CompilationUnit",
+    "package": {
+        "node_type": "PackageDeclaration",
+        "modifiers": null,
+        "annotations": null,
+        "documentation": "/**\n * Licensed to the Apache Software Foundation (ASF) under one\n * or more contributor license agreements.  See the NOTICE file\n * distributed with this work for additional information\n * regarding copyright ownership.  The ASF licenses this file\n * to you under the Apache License, Version 2.0 (the\n * \"License\"); you may not use this file except in compliance\n * with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */",
+        "name": "org.apache.hadoop.tools.dynamometer.workloadgenerator"
+    },
+    "imports": [
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.util.Lists",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "java.io.IOException",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "java.io.OutputStream",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "java.net.URI",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "java.util.List",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "java.util.concurrent.TimeUnit",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.conf.Configuration",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.fs.FileSystem",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.fs.Path",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.io.NullWritable",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.Mapper",
+            "static": false,
+            "wildcard": false
+        }
+    ],
+    "types": [
+        {
+            "node_type": "ClassDeclaration",
+            "modifiers": [
+                "public"
+            ],
+            "annotations": [],
+            "documentation": "/**\n * CreateFileMapper continuously creates 1 byte files for the specified duration\n * to increase the number of file objects on the NN.\n * <p>\n * Configuration options available:\n * <ul>\n *   <li>{@value NUM_MAPPERS_KEY} (required): Number of mappers to launch.</li>\n *   <li>{@value DURATION_MIN_KEY} (required): Number of minutes to induce\n *       workload for.</li>\n *   <li>{@value SHOULD_DELETE_KEY} (default: {@value SHOULD_DELETE_DEFAULT}):\n *       If true, delete the files after creating them. This can be useful for\n *       generating constant load without increasing the number of file\n *       objects.</li>\n *   <li>{@value FILE_PARENT_PATH_KEY} (default:\n *       {@value FILE_PARENT_PATH_DEFAULT}): The root directory in which to\n *       create files.</li>\n * </ul>\n */",
+            "name": "CreateFileMapper",
+            "body": [
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "NUM_MAPPERS_KEY",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"createfile.num-mappers\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "DURATION_MIN_KEY",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"createfile.duration-min\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "FILE_PARENT_PATH_KEY",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"createfile.file-parent-path\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "FILE_PARENT_PATH_DEFAULT",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"/tmp/createFileMapper\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "SHOULD_DELETE_KEY",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"createfile.should-delete\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "public",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "BasicType",
+                        "name": "boolean",
+                        "dimensions": []
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "SHOULD_DELETE_DEFAULT",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "false"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "EnumDeclaration",
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [],
+                    "documentation": "/** Custom {@link org.apache.hadoop.mapreduce.Counter} definitions. */",
+                    "name": "CREATEFILECOUNTERS",
+                    "body": {
+                        "node_type": "EnumBody",
+                        "constants": [
+                            {
+                                "node_type": "EnumConstantDeclaration",
+                                "modifiers": null,
+                                "annotations": [],
+                                "documentation": null,
+                                "name": "NUMFILESCREATED",
+                                "arguments": null,
+                                "body": null
+                            }
+                        ],
+                        "declarations": []
+                    },
+                    "implements": null
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "BasicType",
+                        "name": "long",
+                        "dimensions": []
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "startTimestampMs",
+                            "dimensions": [],
+                            "initializer": null
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "FileSystem",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "fs",
+                            "dimensions": [],
+                            "initializer": null
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "Configuration",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "conf",
+                            "dimensions": [],
+                            "initializer": null
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "BasicType",
+                        "name": "int",
+                        "dimensions": []
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "taskID",
+                            "dimensions": [],
+                            "initializer": null
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "fileParentPath",
+                            "dimensions": [],
+                            "initializer": null
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "BasicType",
+                        "name": "boolean",
+                        "dimensions": []
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "shouldDelete",
+                            "dimensions": [],
+                            "initializer": null
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "BasicType",
+                        "name": "long",
+                        "dimensions": []
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "endTimeStampMs",
+                            "dimensions": [],
+                            "initializer": null
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "name": "getDescription",
+                    "parameters": [],
+                    "throws": null,
+                    "body": [
+                        {
+                            "node_type": "ReturnStatement",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "\"This mapper creates 1-byte files for the specified duration.\""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "ReferenceType",
+                        "name": "List",
+                        "dimensions": [],
+                        "arguments": [
+                            {
+                                "node_type": "TypeArgument",
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "String",
+                                    "dimensions": [],
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "pattern_type": null
+                            }
+                        ],
+                        "sub_type": null
+                    },
+                    "name": "getConfigDescriptions",
+                    "parameters": [],
+                    "throws": null,
+                    "body": [
+                        {
+                            "node_type": "ReturnStatement",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "Lists",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "BinaryOperation",
+                                        "operator": "+",
+                                        "operandl": {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "NUM_MAPPERS_KEY"
+                                        },
+                                        "operandr": {
+                                            "node_type": "Literal",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": null,
+                                            "selectors": [],
+                                            "value": "\" (required): Number of mappers to launch.\""
+                                        }
+                                    },
+                                    {
+                                        "node_type": "BinaryOperation",
+                                        "operator": "+",
+                                        "operandl": {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "DURATION_MIN_KEY"
+                                        },
+                                        "operandr": {
+                                            "node_type": "Literal",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": null,
+                                            "selectors": [],
+                                            "value": "\" (required): Number of minutes to induce workload for.\""
+                                        }
+                                    },
+                                    {
+                                        "node_type": "BinaryOperation",
+                                        "operator": "+",
+                                        "operandl": {
+                                            "node_type": "BinaryOperation",
+                                            "operator": "+",
+                                            "operandl": {
+                                                "node_type": "BinaryOperation",
+                                                "operator": "+",
+                                                "operandl": {
+                                                    "node_type": "BinaryOperation",
+                                                    "operator": "+",
+                                                    "operandl": {
+                                                        "node_type": "BinaryOperation",
+                                                        "operator": "+",
+                                                        "operandl": {
+                                                            "node_type": "MemberReference",
+                                                            "prefix_operators": [],
+                                                            "postfix_operators": [],
+                                                            "qualifier": "",
+                                                            "selectors": [],
+                                                            "member": "SHOULD_DELETE_KEY"
+                                                        },
+                                                        "operandr": {
+                                                            "node_type": "Literal",
+                                                            "prefix_operators": [],
+                                                            "postfix_operators": [],
+                                                            "qualifier": null,
+                                                            "selectors": [],
+                                                            "value": "\" (default: \""
+                                                        }
+                                                    },
+                                                    "operandr": {
+                                                        "node_type": "MemberReference",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": "",
+                                                        "selectors": [],
+                                                        "member": "SHOULD_DELETE_DEFAULT"
+                                                    }
+                                                },
+                                                "operandr": {
+                                                    "node_type": "Literal",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": null,
+                                                    "selectors": [],
+                                                    "value": "\"): If true, delete the files after creating \""
+                                                }
+                                            },
+                                            "operandr": {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"them. This can be useful for generating constant load without \""
+                                            }
+                                        },
+                                        "operandr": {
+                                            "node_type": "Literal",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": null,
+                                            "selectors": [],
+                                            "value": "\"increasing the number of file objects.\""
+                                        }
+                                    },
+                                    {
+                                        "node_type": "BinaryOperation",
+                                        "operator": "+",
+                                        "operandl": {
+                                            "node_type": "BinaryOperation",
+                                            "operator": "+",
+                                            "operandl": {
+                                                "node_type": "BinaryOperation",
+                                                "operator": "+",
+                                                "operandl": {
+                                                    "node_type": "MemberReference",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": "",
+                                                    "selectors": [],
+                                                    "member": "FILE_PARENT_PATH_KEY"
+                                                },
+                                                "operandr": {
+                                                    "node_type": "Literal",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": null,
+                                                    "selectors": [],
+                                                    "value": "\" (default: \""
+                                                }
+                                            },
+                                            "operandr": {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "FILE_PARENT_PATH_DEFAULT"
+                                            }
+                                        },
+                                        "operandr": {
+                                            "node_type": "Literal",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": null,
+                                            "selectors": [],
+                                            "value": "\"): The root directory in which to create files.\""
+                                        }
+                                    }
+                                ],
+                                "member": "newArrayList"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "BasicType",
+                        "name": "boolean",
+                        "dimensions": []
+                    },
+                    "name": "verifyConfigurations",
+                    "parameters": [
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Configuration",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "confToVerify",
+                            "varargs": false
+                        }
+                    ],
+                    "throws": null,
+                    "body": [
+                        {
+                            "node_type": "ReturnStatement",
+                            "label": null,
+                            "expression": {
+                                "node_type": "BinaryOperation",
+                                "operator": "&&",
+                                "operandl": {
+                                    "node_type": "BinaryOperation",
+                                    "operator": "!=",
+                                    "operandl": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "confToVerify",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "NUM_MAPPERS_KEY"
+                                            }
+                                        ],
+                                        "member": "get"
+                                    },
+                                    "operandr": {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "null"
+                                    }
+                                },
+                                "operandr": {
+                                    "node_type": "BinaryOperation",
+                                    "operator": "!=",
+                                    "operandl": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "confToVerify",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "DURATION_MIN_KEY"
+                                            }
+                                        ],
+                                        "member": "get"
+                                    },
+                                    "operandr": {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "null"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "map",
+                    "parameters": [
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "NullWritable",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "key",
+                            "varargs": false
+                        },
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "NullWritable",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "value",
+                            "varargs": false
+                        },
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Mapper",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "Context",
+                                    "dimensions": null,
+                                    "arguments": null,
+                                    "sub_type": null
+                                }
+                            },
+                            "name": "mapperContext",
+                            "varargs": false
+                        }
+                    ],
+                    "throws": [
+                        "IOException",
+                        "InterruptedException"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "taskID"
+                                },
+                                "value": {
+                                    "node_type": "MethodInvocation",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "mapperContext",
+                                    "selectors": [
+                                        {
+                                            "node_type": "MethodInvocation",
+                                            "prefix_operators": null,
+                                            "postfix_operators": null,
+                                            "qualifier": null,
+                                            "selectors": null,
+                                            "type_arguments": null,
+                                            "arguments": [],
+                                            "member": "getTaskID"
+                                        },
+                                        {
+                                            "node_type": "MethodInvocation",
+                                            "prefix_operators": null,
+                                            "postfix_operators": null,
+                                            "qualifier": null,
+                                            "selectors": null,
+                                            "type_arguments": null,
+                                            "arguments": [],
+                                            "member": "getId"
+                                        }
+                                    ],
+                                    "type_arguments": null,
+                                    "arguments": [],
+                                    "member": "getTaskAttemptID"
+                                },
+                                "type": "="
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "conf"
+                                },
+                                "value": {
+                                    "node_type": "MethodInvocation",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "mapperContext",
+                                    "selectors": [],
+                                    "type_arguments": null,
+                                    "arguments": [],
+                                    "member": "getConfiguration"
+                                },
+                                "type": "="
+                            }
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "String",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "namenodeURI",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "conf",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "WorkloadDriver",
+                                                "selectors": [],
+                                                "member": "NN_URI"
+                                            }
+                                        ],
+                                        "member": "get"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "startTimestampMs"
+                                },
+                                "value": {
+                                    "node_type": "MethodInvocation",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "conf",
+                                    "selectors": [],
+                                    "type_arguments": null,
+                                    "arguments": [
+                                        {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "WorkloadDriver",
+                                            "selectors": [],
+                                            "member": "START_TIMESTAMP_MS"
+                                        },
+                                        {
+                                            "node_type": "Literal",
+                                            "prefix_operators": [
+                                                "-"
+                                            ],
+                                            "postfix_operators": [],
+                                            "qualifier": null,
+                                            "selectors": [],
+                                            "value": "1"
+                                        }
+                                    ],
+                                    "member": "getLong"
+                                },
+                                "type": "="
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "fileParentPath"
+                                },
+                                "value": {
+                                    "node_type": "MethodInvocation",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "conf",
+                                    "selectors": [],
+                                    "type_arguments": null,
+                                    "arguments": [
+                                        {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "FILE_PARENT_PATH_KEY"
+                                        },
+                                        {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "FILE_PARENT_PATH_DEFAULT"
+                                        }
+                                    ],
+                                    "member": "get"
+                                },
+                                "type": "="
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "shouldDelete"
+                                },
+                                "value": {
+                                    "node_type": "MethodInvocation",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "conf",
+                                    "selectors": [],
+                                    "type_arguments": null,
+                                    "arguments": [
+                                        {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "SHOULD_DELETE_KEY"
+                                        },
+                                        {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "SHOULD_DELETE_DEFAULT"
+                                        }
+                                    ],
+                                    "member": "getBoolean"
+                                },
+                                "type": "="
+                            }
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "BasicType",
+                                "name": "int",
+                                "dimensions": []
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "durationMin",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "conf",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "DURATION_MIN_KEY"
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [
+                                                    "-"
+                                                ],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "1"
+                                            }
+                                        ],
+                                        "member": "getInt"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "IfStatement",
+                            "label": null,
+                            "condition": {
+                                "node_type": "BinaryOperation",
+                                "operator": "<",
+                                "operandl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "durationMin"
+                                },
+                                "operandr": {
+                                    "node_type": "Literal",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": null,
+                                    "selectors": [],
+                                    "value": "0"
+                                }
+                            },
+                            "then_statement": {
+                                "node_type": "BlockStatement",
+                                "label": null,
+                                "statements": [
+                                    {
+                                        "node_type": "ThrowStatement",
+                                        "label": null,
+                                        "expression": {
+                                            "node_type": "ClassCreator",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": null,
+                                            "selectors": [],
+                                            "type": {
+                                                "node_type": "ReferenceType",
+                                                "name": "IOException",
+                                                "dimensions": null,
+                                                "arguments": null,
+                                                "sub_type": null
+                                            },
+                                            "constructor_type_arguments": null,
+                                            "arguments": [
+                                                {
+                                                    "node_type": "BinaryOperation",
+                                                    "operator": "+",
+                                                    "operandl": {
+                                                        "node_type": "Literal",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": null,
+                                                        "selectors": [],
+                                                        "value": "\"Duration must be positive; got: \""
+                                                    },
+                                                    "operandr": {
+                                                        "node_type": "MemberReference",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": "",
+                                                        "selectors": [],
+                                                        "member": "durationMin"
+                                                    }
+                                                }
+                                            ],
+                                            "body": null
+                                        }
+                                    }
+                                ]
+                            },
+                            "else_statement": null
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "endTimeStampMs"
+                                },
+                                "value": {
+                                    "node_type": "BinaryOperation",
+                                    "operator": "+",
+                                    "operandl": {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "startTimestampMs"
+                                    },
+                                    "operandr": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "TimeUnit.MILLISECONDS",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "durationMin"
+                                            },
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "TimeUnit",
+                                                "selectors": [],
+                                                "member": "MINUTES"
+                                            }
+                                        ],
+                                        "member": "convert"
+                                    }
+                                },
+                                "type": "="
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "fs"
+                                },
+                                "value": {
+                                    "node_type": "MethodInvocation",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "FileSystem",
+                                    "selectors": [],
+                                    "type_arguments": null,
+                                    "arguments": [
+                                        {
+                                            "node_type": "MethodInvocation",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "URI",
+                                            "selectors": [],
+                                            "type_arguments": null,
+                                            "arguments": [
+                                                {
+                                                    "node_type": "MemberReference",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": "",
+                                                    "selectors": [],
+                                                    "member": "namenodeURI"
+                                                }
+                                            ],
+                                            "member": "create"
+                                        },
+                                        {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "conf"
+                                        }
+                                    ],
+                                    "member": "get"
+                                },
+                                "type": "="
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "System.out",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "BinaryOperation",
+                                        "operator": "+",
+                                        "operandl": {
+                                            "node_type": "Literal",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": null,
+                                            "selectors": [],
+                                            "value": "\"Start timestamp: \""
+                                        },
+                                        "operandr": {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "startTimestampMs"
+                                        }
+                                    }
+                                ],
+                                "member": "println"
+                            }
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "BasicType",
+                                "name": "long",
+                                "dimensions": []
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "currentEpoch",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "System",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [],
+                                        "member": "currentTimeMillis"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "BasicType",
+                                "name": "long",
+                                "dimensions": []
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "delay",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "BinaryOperation",
+                                        "operator": "-",
+                                        "operandl": {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "startTimestampMs"
+                                        },
+                                        "operandr": {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "currentEpoch"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "IfStatement",
+                            "label": null,
+                            "condition": {
+                                "node_type": "BinaryOperation",
+                                "operator": ">",
+                                "operandl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "delay"
+                                },
+                                "operandr": {
+                                    "node_type": "Literal",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": null,
+                                    "selectors": [],
+                                    "value": "0"
+                                }
+                            },
+                            "then_statement": {
+                                "node_type": "BlockStatement",
+                                "label": null,
+                                "statements": [
+                                    {
+                                        "node_type": "StatementExpression",
+                                        "label": null,
+                                        "expression": {
+                                            "node_type": "MethodInvocation",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "System.out",
+                                            "selectors": [],
+                                            "type_arguments": null,
+                                            "arguments": [
+                                                {
+                                                    "node_type": "BinaryOperation",
+                                                    "operator": "+",
+                                                    "operandl": {
+                                                        "node_type": "BinaryOperation",
+                                                        "operator": "+",
+                                                        "operandl": {
+                                                            "node_type": "Literal",
+                                                            "prefix_operators": [],
+                                                            "postfix_operators": [],
+                                                            "qualifier": null,
+                                                            "selectors": [],
+                                                            "value": "\"Sleeping for \""
+                                                        },
+                                                        "operandr": {
+                                                            "node_type": "MemberReference",
+                                                            "prefix_operators": [],
+                                                            "postfix_operators": [],
+                                                            "qualifier": "",
+                                                            "selectors": [],
+                                                            "member": "delay"
+                                                        }
+                                                    },
+                                                    "operandr": {
+                                                        "node_type": "Literal",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": null,
+                                                        "selectors": [],
+                                                        "value": "\" ms\""
+                                                    }
+                                                }
+                                            ],
+                                            "member": "println"
+                                        }
+                                    },
+                                    {
+                                        "node_type": "StatementExpression",
+                                        "label": null,
+                                        "expression": {
+                                            "node_type": "MethodInvocation",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "Thread",
+                                            "selectors": [],
+                                            "type_arguments": null,
+                                            "arguments": [
+                                                {
+                                                    "node_type": "MemberReference",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": "",
+                                                    "selectors": [],
+                                                    "member": "delay"
+                                                }
+                                            ],
+                                            "member": "sleep"
+                                        }
+                                    }
+                                ]
+                            },
+                            "else_statement": null
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "String",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "mapperSpecifcPathPrefix",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "BinaryOperation",
+                                        "operator": "+",
+                                        "operandl": {
+                                            "node_type": "BinaryOperation",
+                                            "operator": "+",
+                                            "operandl": {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "fileParentPath"
+                                            },
+                                            "operandr": {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"/mapper\""
+                                            }
+                                        },
+                                        "operandr": {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "taskID"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "System.out",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "BinaryOperation",
+                                        "operator": "+",
+                                        "operandl": {
+                                            "node_type": "Literal",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": null,
+                                            "selectors": [],
+                                            "value": "\"Mapper path prefix: \""
+                                        },
+                                        "operandr": {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "mapperSpecifcPathPrefix"
+                                        }
+                                    }
+                                ],
+                                "member": "println"
+                            }
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "BasicType",
+                                "name": "long",
+                                "dimensions": []
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "numFilesCreated",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "0"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Path",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "path",
+                                    "dimensions": [],
+                                    "initializer": null
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [
+                                "final"
+                            ],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "BasicType",
+                                "name": "byte",
+                                "dimensions": [
+                                    null
+                                ]
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "content",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ArrayInitializer",
+                                        "initializers": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "0x0"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "WhileStatement",
+                            "label": null,
+                            "condition": {
+                                "node_type": "BinaryOperation",
+                                "operator": "<",
+                                "operandl": {
+                                    "node_type": "MethodInvocation",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "System",
+                                    "selectors": [],
+                                    "type_arguments": null,
+                                    "arguments": [],
+                                    "member": "currentTimeMillis"
+                                },
+                                "operandr": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "endTimeStampMs"
+                                }
+                            },
+                            "body": {
+                                "node_type": "BlockStatement",
+                                "label": null,
+                                "statements": [
+                                    {
+                                        "node_type": "StatementExpression",
+                                        "label": null,
+                                        "expression": {
+                                            "node_type": "Assignment",
+                                            "expressionl": {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "path"
+                                            },
+                                            "value": {
+                                                "node_type": "ClassCreator",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "type": {
+                                                    "node_type": "ReferenceType",
+                                                    "name": "Path",
+                                                    "dimensions": null,
+                                                    "arguments": null,
+                                                    "sub_type": null
+                                                },
+                                                "constructor_type_arguments": null,
+                                                "arguments": [
+                                                    {
+                                                        "node_type": "BinaryOperation",
+                                                        "operator": "+",
+                                                        "operandl": {
+                                                            "node_type": "BinaryOperation",
+                                                            "operator": "+",
+                                                            "operandl": {
+                                                                "node_type": "MemberReference",
+                                                                "prefix_operators": [],
+                                                                "postfix_operators": [],
+                                                                "qualifier": "",
+                                                                "selectors": [],
+                                                                "member": "mapperSpecifcPathPrefix"
+                                                            },
+                                                            "operandr": {
+                                                                "node_type": "Literal",
+                                                                "prefix_operators": [],
+                                                                "postfix_operators": [],
+                                                                "qualifier": null,
+                                                                "selectors": [],
+                                                                "value": "\"/file\""
+                                                            }
+                                                        },
+                                                        "operandr": {
+                                                            "node_type": "MemberReference",
+                                                            "prefix_operators": [],
+                                                            "postfix_operators": [],
+                                                            "qualifier": "",
+                                                            "selectors": [],
+                                                            "member": "numFilesCreated"
+                                                        }
+                                                    }
+                                                ],
+                                                "body": null
+                                            },
+                                            "type": "="
+                                        }
+                                    },
+                                    {
+                                        "node_type": "LocalVariableDeclaration",
+                                        "modifiers": [],
+                                        "annotations": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "OutputStream",
+                                            "dimensions": [],
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "declarators": [
+                                            {
+                                                "node_type": "VariableDeclarator",
+                                                "name": "out",
+                                                "dimensions": [],
+                                                "initializer": {
+                                                    "node_type": "MethodInvocation",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": "fs",
+                                                    "selectors": [],
+                                                    "type_arguments": null,
+                                                    "arguments": [
+                                                        {
+                                                            "node_type": "MemberReference",
+                                                            "prefix_operators": [],
+                                                            "postfix_operators": [],
+                                                            "qualifier": "",
+                                                            "selectors": [],
+                                                            "member": "path"
+                                                        }
+                                                    ],
+                                                    "member": "create"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "node_type": "StatementExpression",
+                                        "label": null,
+                                        "expression": {
+                                            "node_type": "MethodInvocation",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "out",
+                                            "selectors": [],
+                                            "type_arguments": null,
+                                            "arguments": [
+                                                {
+                                                    "node_type": "MemberReference",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": "",
+                                                    "selectors": [],
+                                                    "member": "content"
+                                                }
+                                            ],
+                                            "member": "write"
+                                        }
+                                    },
+                                    {
+                                        "node_type": "StatementExpression",
+                                        "label": null,
+                                        "expression": {
+                                            "node_type": "MethodInvocation",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "out",
+                                            "selectors": [],
+                                            "type_arguments": null,
+                                            "arguments": [],
+                                            "member": "close"
+                                        }
+                                    },
+                                    {
+                                        "node_type": "StatementExpression",
+                                        "label": null,
+                                        "expression": {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [
+                                                "++"
+                                            ],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "numFilesCreated"
+                                        }
+                                    },
+                                    {
+                                        "node_type": "StatementExpression",
+                                        "label": null,
+                                        "expression": {
+                                            "node_type": "MethodInvocation",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "mapperContext",
+                                            "selectors": [
+                                                {
+                                                    "node_type": "MethodInvocation",
+                                                    "prefix_operators": null,
+                                                    "postfix_operators": null,
+                                                    "qualifier": null,
+                                                    "selectors": null,
+                                                    "type_arguments": null,
+                                                    "arguments": [
+                                                        {
+                                                            "node_type": "Literal",
+                                                            "prefix_operators": [],
+                                                            "postfix_operators": [],
+                                                            "qualifier": null,
+                                                            "selectors": [],
+                                                            "value": "1L"
+                                                        }
+                                                    ],
+                                                    "member": "increment"
+                                                }
+                                            ],
+                                            "type_arguments": null,
+                                            "arguments": [
+                                                {
+                                                    "node_type": "MemberReference",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": "CREATEFILECOUNTERS",
+                                                    "selectors": [],
+                                                    "member": "NUMFILESCREATED"
+                                                }
+                                            ],
+                                            "member": "getCounter"
+                                        }
+                                    },
+                                    {
+                                        "node_type": "IfStatement",
+                                        "label": null,
+                                        "condition": {
+                                            "node_type": "BinaryOperation",
+                                            "operator": "==",
+                                            "operandl": {
+                                                "node_type": "BinaryOperation",
+                                                "operator": "%",
+                                                "operandl": {
+                                                    "node_type": "MemberReference",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": "",
+                                                    "selectors": [],
+                                                    "member": "numFilesCreated"
+                                                },
+                                                "operandr": {
+                                                    "node_type": "Literal",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": null,
+                                                    "selectors": [],
+                                                    "value": "1000"
+                                                }
+                                            },
+                                            "operandr": {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "0"
+                                            }
+                                        },
+                                        "then_statement": {
+                                            "node_type": "BlockStatement",
+                                            "label": null,
+                                            "statements": [
+                                                {
+                                                    "node_type": "StatementExpression",
+                                                    "label": null,
+                                                    "expression": {
+                                                        "node_type": "MethodInvocation",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": "mapperContext",
+                                                        "selectors": [],
+                                                        "type_arguments": null,
+                                                        "arguments": [],
+                                                        "member": "progress"
+                                                    }
+                                                },
+                                                {
+                                                    "node_type": "StatementExpression",
+                                                    "label": null,
+                                                    "expression": {
+                                                        "node_type": "MethodInvocation",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": "System.out",
+                                                        "selectors": [],
+                                                        "type_arguments": null,
+                                                        "arguments": [
+                                                            {
+                                                                "node_type": "BinaryOperation",
+                                                                "operator": "+",
+                                                                "operandl": {
+                                                                    "node_type": "Literal",
+                                                                    "prefix_operators": [],
+                                                                    "postfix_operators": [],
+                                                                    "qualifier": null,
+                                                                    "selectors": [],
+                                                                    "value": "\"Number of files created: \""
+                                                                },
+                                                                "operandr": {
+                                                                    "node_type": "MemberReference",
+                                                                    "prefix_operators": [],
+                                                                    "postfix_operators": [],
+                                                                    "qualifier": "",
+                                                                    "selectors": [],
+                                                                    "member": "numFilesCreated"
+                                                                }
+                                                            }
+                                                        ],
+                                                        "member": "println"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "else_statement": null
+                                    },
+                                    {
+                                        "node_type": "IfStatement",
+                                        "label": null,
+                                        "condition": {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "shouldDelete"
+                                        },
+                                        "then_statement": {
+                                            "node_type": "BlockStatement",
+                                            "label": null,
+                                            "statements": [
+                                                {
+                                                    "node_type": "StatementExpression",
+                                                    "label": null,
+                                                    "expression": {
+                                                        "node_type": "MethodInvocation",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": "fs",
+                                                        "selectors": [],
+                                                        "type_arguments": null,
+                                                        "arguments": [
+                                                            {
+                                                                "node_type": "MemberReference",
+                                                                "prefix_operators": [],
+                                                                "postfix_operators": [],
+                                                                "qualifier": "",
+                                                                "selectors": [],
+                                                                "member": "path"
+                                                            },
+                                                            {
+                                                                "node_type": "Literal",
+                                                                "prefix_operators": [],
+                                                                "postfix_operators": [],
+                                                                "qualifier": null,
+                                                                "selectors": [],
+                                                                "value": "true"
+                                                            }
+                                                        ],
+                                                        "member": "delete"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "else_statement": null
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ],
+            "type_parameters": null,
+            "extends": {
+                "node_type": "ReferenceType",
+                "name": "WorkloadMapper",
+                "dimensions": [],
+                "arguments": [
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "NullWritable",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    },
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "NullWritable",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    },
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "NullWritable",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    },
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "NullWritable",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    }
+                ],
+                "sub_type": null
+            },
+            "implements": null
+        }
+    ]
+}

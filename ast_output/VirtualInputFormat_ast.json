@@ -1,0 +1,602 @@
+{
+    "node_type": "CompilationUnit",
+    "package": {
+        "node_type": "PackageDeclaration",
+        "modifiers": null,
+        "annotations": null,
+        "documentation": "/**\n * Licensed to the Apache Software Foundation (ASF) under one\n * or more contributor license agreements.  See the NOTICE file\n * distributed with this work for additional information\n * regarding copyright ownership.  The ASF licenses this file\n * to you under the Apache License, Version 2.0 (the\n * \"License\"); you may not use this file except in compliance\n * with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */",
+        "name": "org.apache.hadoop.tools.dynamometer.workloadgenerator"
+    },
+    "imports": [
+        {
+            "node_type": "Import",
+            "path": "java.io.IOException",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "java.util.ArrayList",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "java.util.List",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.conf.Configuration",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.InputSplit",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.JobContext",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.RecordReader",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.TaskAttemptContext",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.lib.input.FileInputFormat",
+            "static": false,
+            "wildcard": false
+        }
+    ],
+    "types": [
+        {
+            "node_type": "ClassDeclaration",
+            "modifiers": [
+                "public"
+            ],
+            "annotations": [],
+            "documentation": "/**\n * An input format which does not read any input, but rather starts a\n * configurable number of mappers and runs them for a configurable duration.\n */",
+            "name": "VirtualInputFormat",
+            "body": [
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "ReferenceType",
+                        "name": "List",
+                        "dimensions": [],
+                        "arguments": [
+                            {
+                                "node_type": "TypeArgument",
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "InputSplit",
+                                    "dimensions": [],
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "pattern_type": null
+                            }
+                        ],
+                        "sub_type": null
+                    },
+                    "name": "getSplits",
+                    "parameters": [
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "JobContext",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "job",
+                            "varargs": false
+                        }
+                    ],
+                    "throws": [
+                        "IOException"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Configuration",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "conf",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "job",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [],
+                                        "member": "getConfiguration"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "BasicType",
+                                "name": "int",
+                                "dimensions": []
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "numMappers",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "conf",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "CreateFileMapper",
+                                                "selectors": [],
+                                                "member": "NUM_MAPPERS_KEY"
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [
+                                                    "-"
+                                                ],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "1"
+                                            }
+                                        ],
+                                        "member": "getInt"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "IfStatement",
+                            "label": null,
+                            "condition": {
+                                "node_type": "BinaryOperation",
+                                "operator": "==",
+                                "operandl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "numMappers"
+                                },
+                                "operandr": {
+                                    "node_type": "Literal",
+                                    "prefix_operators": [
+                                        "-"
+                                    ],
+                                    "postfix_operators": [],
+                                    "qualifier": null,
+                                    "selectors": [],
+                                    "value": "1"
+                                }
+                            },
+                            "then_statement": {
+                                "node_type": "BlockStatement",
+                                "label": null,
+                                "statements": [
+                                    {
+                                        "node_type": "ThrowStatement",
+                                        "label": null,
+                                        "expression": {
+                                            "node_type": "ClassCreator",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": null,
+                                            "selectors": [],
+                                            "type": {
+                                                "node_type": "ReferenceType",
+                                                "name": "IOException",
+                                                "dimensions": null,
+                                                "arguments": null,
+                                                "sub_type": null
+                                            },
+                                            "constructor_type_arguments": null,
+                                            "arguments": [
+                                                {
+                                                    "node_type": "Literal",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": null,
+                                                    "selectors": [],
+                                                    "value": "\"Number of mappers should be provided as input\""
+                                                }
+                                            ],
+                                            "body": null
+                                        }
+                                    }
+                                ]
+                            },
+                            "else_statement": null
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "List",
+                                "dimensions": [],
+                                "arguments": [
+                                    {
+                                        "node_type": "TypeArgument",
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "InputSplit",
+                                            "dimensions": [],
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "pattern_type": null
+                                    }
+                                ],
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "splits",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "ArrayList",
+                                            "dimensions": null,
+                                            "arguments": [
+                                                {
+                                                    "node_type": "TypeArgument",
+                                                    "type": {
+                                                        "node_type": "ReferenceType",
+                                                        "name": "InputSplit",
+                                                        "dimensions": [],
+                                                        "arguments": null,
+                                                        "sub_type": null
+                                                    },
+                                                    "pattern_type": null
+                                                }
+                                            ],
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "numMappers"
+                                            }
+                                        ],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "ForStatement",
+                            "label": null,
+                            "control": {
+                                "node_type": "ForControl",
+                                "init": {
+                                    "node_type": "VariableDeclaration",
+                                    "modifiers": [],
+                                    "annotations": [],
+                                    "type": {
+                                        "node_type": "BasicType",
+                                        "name": "int",
+                                        "dimensions": []
+                                    },
+                                    "declarators": [
+                                        {
+                                            "node_type": "VariableDeclarator",
+                                            "name": "i",
+                                            "dimensions": null,
+                                            "initializer": {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "0"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "condition": {
+                                    "node_type": "BinaryOperation",
+                                    "operator": "<",
+                                    "operandl": {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "i"
+                                    },
+                                    "operandr": {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "numMappers"
+                                    }
+                                },
+                                "update": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [
+                                            "++"
+                                        ],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "i"
+                                    }
+                                ]
+                            },
+                            "body": {
+                                "node_type": "BlockStatement",
+                                "label": null,
+                                "statements": [
+                                    {
+                                        "node_type": "StatementExpression",
+                                        "label": null,
+                                        "expression": {
+                                            "node_type": "MethodInvocation",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "splits",
+                                            "selectors": [],
+                                            "type_arguments": null,
+                                            "arguments": [
+                                                {
+                                                    "node_type": "ClassCreator",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": null,
+                                                    "selectors": [],
+                                                    "type": {
+                                                        "node_type": "ReferenceType",
+                                                        "name": "VirtualInputSplit",
+                                                        "dimensions": null,
+                                                        "arguments": null,
+                                                        "sub_type": null
+                                                    },
+                                                    "constructor_type_arguments": null,
+                                                    "arguments": [],
+                                                    "body": null
+                                                }
+                                            ],
+                                            "member": "add"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "node_type": "ReturnStatement",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MemberReference",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "",
+                                "selectors": [],
+                                "member": "splits"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "ReferenceType",
+                        "name": "RecordReader",
+                        "dimensions": [],
+                        "arguments": [
+                            {
+                                "node_type": "TypeArgument",
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "K",
+                                    "dimensions": [],
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "pattern_type": null
+                            },
+                            {
+                                "node_type": "TypeArgument",
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "V",
+                                    "dimensions": [],
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "pattern_type": null
+                            }
+                        ],
+                        "sub_type": null
+                    },
+                    "name": "createRecordReader",
+                    "parameters": [
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "InputSplit",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "split",
+                            "varargs": false
+                        },
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "TaskAttemptContext",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "context",
+                            "varargs": false
+                        }
+                    ],
+                    "throws": [
+                        "IOException",
+                        "InterruptedException"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "ReturnStatement",
+                            "label": null,
+                            "expression": {
+                                "node_type": "ClassCreator",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "VirtualRecordReader",
+                                    "dimensions": null,
+                                    "arguments": [],
+                                    "sub_type": null
+                                },
+                                "constructor_type_arguments": null,
+                                "arguments": [],
+                                "body": null
+                            }
+                        }
+                    ]
+                }
+            ],
+            "type_parameters": [
+                {
+                    "node_type": "TypeParameter",
+                    "name": "K",
+                    "extends": null
+                },
+                {
+                    "node_type": "TypeParameter",
+                    "name": "V",
+                    "extends": null
+                }
+            ],
+            "extends": {
+                "node_type": "ReferenceType",
+                "name": "FileInputFormat",
+                "dimensions": [],
+                "arguments": [
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "K",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    },
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "V",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    }
+                ],
+                "sub_type": null
+            },
+            "implements": null
+        }
+    ]
+}

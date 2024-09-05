@@ -1,0 +1,243 @@
+{
+    "node_type": "CompilationUnit",
+    "package": {
+        "node_type": "PackageDeclaration",
+        "modifiers": null,
+        "annotations": null,
+        "documentation": "/**\n * Licensed to the Apache Software Foundation (ASF) under one\n * or more contributor license agreements.  See the NOTICE file\n * distributed with this work for additional information\n * regarding copyright ownership.  The ASF licenses this file\n * to you under the Apache License, Version 2.0 (the\n * \"License\"); you may not use this file except in compliance\n * with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */",
+        "name": "org.apache.hadoop.tools.dynamometer.workloadgenerator"
+    },
+    "imports": [
+        {
+            "node_type": "Import",
+            "path": "java.io.DataInput",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "java.io.DataOutput",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "java.io.IOException",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.io.Writable",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.InputSplit",
+            "static": false,
+            "wildcard": false
+        }
+    ],
+    "types": [
+        {
+            "node_type": "ClassDeclaration",
+            "modifiers": [
+                "public"
+            ],
+            "annotations": [],
+            "documentation": "/**\n * A fake input split.\n */",
+            "name": "VirtualInputSplit",
+            "body": [
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "write",
+                    "parameters": [
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "DataOutput",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "out",
+                            "varargs": false
+                        }
+                    ],
+                    "throws": [
+                        "IOException"
+                    ],
+                    "body": []
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "readFields",
+                    "parameters": [
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "DataInput",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "in",
+                            "varargs": false
+                        }
+                    ],
+                    "throws": [
+                        "IOException"
+                    ],
+                    "body": []
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "BasicType",
+                        "name": "long",
+                        "dimensions": []
+                    },
+                    "name": "getLength",
+                    "parameters": [],
+                    "throws": [
+                        "IOException",
+                        "InterruptedException"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "ReturnStatement",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "0"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "ReferenceType",
+                        "name": "String",
+                        "dimensions": [
+                            null
+                        ],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "name": "getLocations",
+                    "parameters": [],
+                    "throws": [
+                        "IOException",
+                        "InterruptedException"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "ReturnStatement",
+                            "label": null,
+                            "expression": {
+                                "node_type": "ArrayCreator",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "String",
+                                    "dimensions": null,
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "dimensions": [
+                                    null
+                                ],
+                                "initializer": {
+                                    "node_type": "ArrayInitializer",
+                                    "initializers": []
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "type_parameters": null,
+            "extends": {
+                "node_type": "ReferenceType",
+                "name": "InputSplit",
+                "dimensions": [],
+                "arguments": null,
+                "sub_type": null
+            },
+            "implements": [
+                {
+                    "node_type": "ReferenceType",
+                    "name": "Writable",
+                    "dimensions": [],
+                    "arguments": null,
+                    "sub_type": null
+                }
+            ]
+        }
+    ]
+}

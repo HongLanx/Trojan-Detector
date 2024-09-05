@@ -1,0 +1,36 @@
+{
+    "node_type": "CompilationUnit",
+    "package": {
+        "node_type": "PackageDeclaration",
+        "modifiers": null,
+        "annotations": [
+            {
+                "node_type": "Annotation",
+                "name": "InterfaceAudience.Private",
+                "element": null
+            },
+            {
+                "node_type": "Annotation",
+                "name": "InterfaceStability.Unstable",
+                "element": null
+            }
+        ],
+        "documentation": "/**\n * This contains the tooling necessary to use audit logs as a way to generate\n * a realistic workload against a Dynamometer-simulated NameNode.\n */",
+        "name": "org.apache.hadoop.tools.dynamometer.workloadgenerator.audit"
+    },
+    "imports": [
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.classification.InterfaceAudience",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.classification.InterfaceStability",
+            "static": false,
+            "wildcard": false
+        }
+    ],
+    "types": []
+}

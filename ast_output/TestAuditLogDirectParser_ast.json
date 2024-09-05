@@ -1,0 +1,3075 @@
+{
+    "node_type": "CompilationUnit",
+    "package": {
+        "node_type": "PackageDeclaration",
+        "modifiers": null,
+        "annotations": null,
+        "documentation": "/**\n * Licensed to the Apache Software Foundation (ASF) under one\n * or more contributor license agreements.  See the NOTICE file\n * distributed with this work for additional information\n * regarding copyright ownership.  The ASF licenses this file\n * to you under the Apache License, Version 2.0 (the\n * \"License\"); you may not use this file except in compliance\n * with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */",
+        "name": "org.apache.hadoop.tools.dynamometer.workloadgenerator.audit"
+    },
+    "imports": [
+        {
+            "node_type": "Import",
+            "path": "java.util.function.Function",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.conf.Configuration",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.io.Text",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.junit.Before",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.junit.Test",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.junit.Assert.assertEquals",
+            "static": true,
+            "wildcard": false
+        }
+    ],
+    "types": [
+        {
+            "node_type": "ClassDeclaration",
+            "modifiers": [
+                "public"
+            ],
+            "annotations": [],
+            "documentation": "/** Tests for {@link AuditLogDirectParser}. */",
+            "name": "TestAuditLogDirectParser",
+            "body": [
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "private",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "BasicType",
+                        "name": "long",
+                        "dimensions": []
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "START_TIMESTAMP",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "10000"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "AuditLogDirectParser",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "parser",
+                            "dimensions": [],
+                            "initializer": null
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Before",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "setup",
+                    "parameters": [],
+                    "throws": [
+                        "Exception"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "parser"
+                                },
+                                "value": {
+                                    "node_type": "ClassCreator",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": null,
+                                    "selectors": [],
+                                    "type": {
+                                        "node_type": "ReferenceType",
+                                        "name": "AuditLogDirectParser",
+                                        "dimensions": null,
+                                        "arguments": null,
+                                        "sub_type": null
+                                    },
+                                    "constructor_type_arguments": null,
+                                    "arguments": [],
+                                    "body": null
+                                },
+                                "type": "="
+                            }
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Configuration",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "conf",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "Configuration",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "conf",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "AuditLogDirectParser",
+                                        "selectors": [],
+                                        "member": "AUDIT_START_TIMESTAMP_KEY"
+                                    },
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "START_TIMESTAMP"
+                                    }
+                                ],
+                                "member": "setLong"
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "parser",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "conf"
+                                    }
+                                ],
+                                "member": "initialize"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "ReferenceType",
+                        "name": "Text",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "name": "getAuditString",
+                    "parameters": [
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "String",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "timestamp",
+                            "varargs": false
+                        },
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "String",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "ugi",
+                            "varargs": false
+                        },
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "String",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "cmd",
+                            "varargs": false
+                        },
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "String",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "src",
+                            "varargs": false
+                        },
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "String",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "dst",
+                            "varargs": false
+                        }
+                    ],
+                    "throws": null,
+                    "body": [
+                        {
+                            "node_type": "ReturnStatement",
+                            "label": null,
+                            "expression": {
+                                "node_type": "ClassCreator",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "Text",
+                                    "dimensions": null,
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "constructor_type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "String",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "BinaryOperation",
+                                                "operator": "+",
+                                                "operandl": {
+                                                    "node_type": "BinaryOperation",
+                                                    "operator": "+",
+                                                    "operandl": {
+                                                        "node_type": "Literal",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": null,
+                                                        "selectors": [],
+                                                        "value": "\"%s INFO FSNamesystem.audit: \""
+                                                    },
+                                                    "operandr": {
+                                                        "node_type": "Literal",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": null,
+                                                        "selectors": [],
+                                                        "value": "\"allowed=true\\tugi=%s\\tip=0.0.0.0\\tcmd=%s\\tsrc=%s\\t\""
+                                                    }
+                                                },
+                                                "operandr": {
+                                                    "node_type": "Literal",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": null,
+                                                    "selectors": [],
+                                                    "value": "\"dst=%s\\tperm=null\\tproto=rpc\""
+                                                }
+                                            },
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "timestamp"
+                                            },
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "ugi"
+                                            },
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "cmd"
+                                            },
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "src"
+                                            },
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "dst"
+                                            }
+                                        ],
+                                        "member": "format"
+                                    }
+                                ],
+                                "body": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Test",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "testSimpleInput",
+                    "parameters": [],
+                    "throws": [
+                        "Exception"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Text",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "in",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"1970-01-01 00:00:11,000\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"fakeUser\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"listStatus\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"sourcePath\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"null\""
+                                            }
+                                        ],
+                                        "member": "getAuditString"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "AuditReplayCommand",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "expected",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "AuditReplayCommand",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "1000"
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"fakeUser\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"listStatus\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"sourcePath\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"null\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"0.0.0.0\""
+                                            }
+                                        ],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "expected"
+                                    },
+                                    {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "parser",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "in"
+                                            },
+                                            {
+                                                "node_type": "MethodInvocation",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "Function",
+                                                "selectors": [],
+                                                "type_arguments": null,
+                                                "arguments": [],
+                                                "member": "identity"
+                                            }
+                                        ],
+                                        "member": "parse"
+                                    }
+                                ],
+                                "member": "assertEquals"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Test",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "testInputWithEquals",
+                    "parameters": [],
+                    "throws": [
+                        "Exception"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Text",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "in",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"1970-01-01 00:00:11,000\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"fakeUser\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"listStatus\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"day=1970\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"null\""
+                                            }
+                                        ],
+                                        "member": "getAuditString"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "AuditReplayCommand",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "expected",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "AuditReplayCommand",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "1000"
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"fakeUser\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"listStatus\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"day=1970\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"null\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"0.0.0.0\""
+                                            }
+                                        ],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "expected"
+                                    },
+                                    {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "parser",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "in"
+                                            },
+                                            {
+                                                "node_type": "MethodInvocation",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "Function",
+                                                "selectors": [],
+                                                "type_arguments": null,
+                                                "arguments": [],
+                                                "member": "identity"
+                                            }
+                                        ],
+                                        "member": "parse"
+                                    }
+                                ],
+                                "member": "assertEquals"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Test",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "testInputWithRenameOptions",
+                    "parameters": [],
+                    "throws": [
+                        "Exception"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Text",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "in",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"1970-01-01 00:00:11,000\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"fakeUser\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"rename (options=[TO_TRASH])\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"sourcePath\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"destPath\""
+                                            }
+                                        ],
+                                        "member": "getAuditString"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "AuditReplayCommand",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "expected",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "AuditReplayCommand",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "1000"
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"fakeUser\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"rename (options=[TO_TRASH])\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"sourcePath\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"destPath\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"0.0.0.0\""
+                                            }
+                                        ],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "expected"
+                                    },
+                                    {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "parser",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "in"
+                                            },
+                                            {
+                                                "node_type": "MethodInvocation",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "Function",
+                                                "selectors": [],
+                                                "type_arguments": null,
+                                                "arguments": [],
+                                                "member": "identity"
+                                            }
+                                        ],
+                                        "member": "parse"
+                                    }
+                                ],
+                                "member": "assertEquals"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Test",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "testInputWithTokenAuth",
+                    "parameters": [],
+                    "throws": [
+                        "Exception"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Text",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "in",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"1970-01-01 00:00:11,000\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"fakeUser (auth:TOKEN)\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"create\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"sourcePath\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"null\""
+                                            }
+                                        ],
+                                        "member": "getAuditString"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "AuditReplayCommand",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "expected",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "AuditReplayCommand",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "1000"
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"fakeUser\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"create\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"sourcePath\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"null\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"0.0.0.0\""
+                                            }
+                                        ],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "expected"
+                                    },
+                                    {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "parser",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "in"
+                                            },
+                                            {
+                                                "node_type": "MethodInvocation",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "Function",
+                                                "selectors": [],
+                                                "type_arguments": null,
+                                                "arguments": [],
+                                                "member": "identity"
+                                            }
+                                        ],
+                                        "member": "parse"
+                                    }
+                                ],
+                                "member": "assertEquals"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Test",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "testInputWithProxyUser",
+                    "parameters": [],
+                    "throws": [
+                        "Exception"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Text",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "in",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"1970-01-01 00:00:11,000\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"proxyUser (auth:TOKEN) via fakeUser\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"create\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"sourcePath\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"null\""
+                                            }
+                                        ],
+                                        "member": "getAuditString"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "AuditReplayCommand",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "expected",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "AuditReplayCommand",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "1000"
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"proxyUser\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"create\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"sourcePath\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"null\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"0.0.0.0\""
+                                            }
+                                        ],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "expected"
+                                    },
+                                    {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "parser",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "in"
+                                            },
+                                            {
+                                                "node_type": "MethodInvocation",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "Function",
+                                                "selectors": [],
+                                                "type_arguments": null,
+                                                "arguments": [],
+                                                "member": "identity"
+                                            }
+                                        ],
+                                        "member": "parse"
+                                    }
+                                ],
+                                "member": "assertEquals"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Test",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "testParseDefaultDateFormat",
+                    "parameters": [],
+                    "throws": [
+                        "Exception"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Text",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "in",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"1970-01-01 13:00:00,000\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            }
+                                        ],
+                                        "member": "getAuditString"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "AuditReplayCommand",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "expected",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "AuditReplayCommand",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "BinaryOperation",
+                                                "operator": "-",
+                                                "operandl": {
+                                                    "node_type": "BinaryOperation",
+                                                    "operator": "*",
+                                                    "operandl": {
+                                                        "node_type": "BinaryOperation",
+                                                        "operator": "*",
+                                                        "operandl": {
+                                                            "node_type": "BinaryOperation",
+                                                            "operator": "*",
+                                                            "operandl": {
+                                                                "node_type": "Literal",
+                                                                "prefix_operators": [],
+                                                                "postfix_operators": [],
+                                                                "qualifier": null,
+                                                                "selectors": [],
+                                                                "value": "13"
+                                                            },
+                                                            "operandr": {
+                                                                "node_type": "Literal",
+                                                                "prefix_operators": [],
+                                                                "postfix_operators": [],
+                                                                "qualifier": null,
+                                                                "selectors": [],
+                                                                "value": "60"
+                                                            }
+                                                        },
+                                                        "operandr": {
+                                                            "node_type": "Literal",
+                                                            "prefix_operators": [],
+                                                            "postfix_operators": [],
+                                                            "qualifier": null,
+                                                            "selectors": [],
+                                                            "value": "60"
+                                                        }
+                                                    },
+                                                    "operandr": {
+                                                        "node_type": "Literal",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": null,
+                                                        "selectors": [],
+                                                        "value": "1000"
+                                                    }
+                                                },
+                                                "operandr": {
+                                                    "node_type": "MemberReference",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": "",
+                                                    "selectors": [],
+                                                    "member": "START_TIMESTAMP"
+                                                }
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"0.0.0.0\""
+                                            }
+                                        ],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "expected"
+                                    },
+                                    {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "parser",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "in"
+                                            },
+                                            {
+                                                "node_type": "MethodInvocation",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "Function",
+                                                "selectors": [],
+                                                "type_arguments": null,
+                                                "arguments": [],
+                                                "member": "identity"
+                                            }
+                                        ],
+                                        "member": "parse"
+                                    }
+                                ],
+                                "member": "assertEquals"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Test",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "testParseCustomDateFormat",
+                    "parameters": [],
+                    "throws": [
+                        "Exception"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "parser"
+                                },
+                                "value": {
+                                    "node_type": "ClassCreator",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": null,
+                                    "selectors": [],
+                                    "type": {
+                                        "node_type": "ReferenceType",
+                                        "name": "AuditLogDirectParser",
+                                        "dimensions": null,
+                                        "arguments": null,
+                                        "sub_type": null
+                                    },
+                                    "constructor_type_arguments": null,
+                                    "arguments": [],
+                                    "body": null
+                                },
+                                "type": "="
+                            }
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Configuration",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "conf",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "Configuration",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "conf",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "AuditLogDirectParser",
+                                        "selectors": [],
+                                        "member": "AUDIT_START_TIMESTAMP_KEY"
+                                    },
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "0"
+                                    }
+                                ],
+                                "member": "setLong"
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "conf",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "AuditLogDirectParser",
+                                        "selectors": [],
+                                        "member": "AUDIT_LOG_DATE_FORMAT_KEY"
+                                    },
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"yyyy-MM-dd hh:mm:ss,SSS a\""
+                                    }
+                                ],
+                                "member": "set"
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "parser",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "conf"
+                                    }
+                                ],
+                                "member": "initialize"
+                            }
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Text",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "in",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"1970-01-01 01:00:00,000 PM\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            }
+                                        ],
+                                        "member": "getAuditString"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "AuditReplayCommand",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "expected",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "AuditReplayCommand",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "BinaryOperation",
+                                                "operator": "*",
+                                                "operandl": {
+                                                    "node_type": "BinaryOperation",
+                                                    "operator": "*",
+                                                    "operandl": {
+                                                        "node_type": "BinaryOperation",
+                                                        "operator": "*",
+                                                        "operandl": {
+                                                            "node_type": "Literal",
+                                                            "prefix_operators": [],
+                                                            "postfix_operators": [],
+                                                            "qualifier": null,
+                                                            "selectors": [],
+                                                            "value": "13"
+                                                        },
+                                                        "operandr": {
+                                                            "node_type": "Literal",
+                                                            "prefix_operators": [],
+                                                            "postfix_operators": [],
+                                                            "qualifier": null,
+                                                            "selectors": [],
+                                                            "value": "60"
+                                                        }
+                                                    },
+                                                    "operandr": {
+                                                        "node_type": "Literal",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": null,
+                                                        "selectors": [],
+                                                        "value": "60"
+                                                    }
+                                                },
+                                                "operandr": {
+                                                    "node_type": "Literal",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": null,
+                                                    "selectors": [],
+                                                    "value": "1000"
+                                                }
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"0.0.0.0\""
+                                            }
+                                        ],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "expected"
+                                    },
+                                    {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "parser",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "in"
+                                            },
+                                            {
+                                                "node_type": "MethodInvocation",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "Function",
+                                                "selectors": [],
+                                                "type_arguments": null,
+                                                "arguments": [],
+                                                "member": "identity"
+                                            }
+                                        ],
+                                        "member": "parse"
+                                    }
+                                ],
+                                "member": "assertEquals"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Test",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "testParseCustomTimeZone",
+                    "parameters": [],
+                    "throws": [
+                        "Exception"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "parser"
+                                },
+                                "value": {
+                                    "node_type": "ClassCreator",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": null,
+                                    "selectors": [],
+                                    "type": {
+                                        "node_type": "ReferenceType",
+                                        "name": "AuditLogDirectParser",
+                                        "dimensions": null,
+                                        "arguments": null,
+                                        "sub_type": null
+                                    },
+                                    "constructor_type_arguments": null,
+                                    "arguments": [],
+                                    "body": null
+                                },
+                                "type": "="
+                            }
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Configuration",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "conf",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "Configuration",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "conf",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "AuditLogDirectParser",
+                                        "selectors": [],
+                                        "member": "AUDIT_START_TIMESTAMP_KEY"
+                                    },
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "0"
+                                    }
+                                ],
+                                "member": "setLong"
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "conf",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "AuditLogDirectParser",
+                                        "selectors": [],
+                                        "member": "AUDIT_LOG_DATE_TIME_ZONE_KEY"
+                                    },
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"Etc/GMT-1\""
+                                    }
+                                ],
+                                "member": "set"
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "parser",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "conf"
+                                    }
+                                ],
+                                "member": "initialize"
+                            }
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Text",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "in",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"1970-01-01 01:00:00,000\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            }
+                                        ],
+                                        "member": "getAuditString"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "AuditReplayCommand",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "expected",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "AuditReplayCommand",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "0"
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"ignored\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"0.0.0.0\""
+                                            }
+                                        ],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "expected"
+                                    },
+                                    {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "parser",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "in"
+                                            },
+                                            {
+                                                "node_type": "MethodInvocation",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "Function",
+                                                "selectors": [],
+                                                "type_arguments": null,
+                                                "arguments": [],
+                                                "member": "identity"
+                                            }
+                                        ],
+                                        "member": "parse"
+                                    }
+                                ],
+                                "member": "assertEquals"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Test",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "testParseCustomAuditLineFormat",
+                    "parameters": [],
+                    "throws": [
+                        "Exception"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Text",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "auditLine",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "Text",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "BinaryOperation",
+                                                "operator": "+",
+                                                "operandl": {
+                                                    "node_type": "BinaryOperation",
+                                                    "operator": "+",
+                                                    "operandl": {
+                                                        "node_type": "Literal",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": null,
+                                                        "selectors": [],
+                                                        "value": "\"CUSTOM FORMAT (1970-01-01 00:00:00,000) \""
+                                                    },
+                                                    "operandr": {
+                                                        "node_type": "Literal",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": null,
+                                                        "selectors": [],
+                                                        "value": "\"allowed=true\\tugi=fakeUser\\tip=0.0.0.0\\tcmd=fakeCommand\\tsrc=src\\t\""
+                                                    }
+                                                },
+                                                "operandr": {
+                                                    "node_type": "Literal",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": null,
+                                                    "selectors": [],
+                                                    "value": "\"dst=null\\tperm=null\\tproto=rpc\""
+                                                }
+                                            }
+                                        ],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "parser"
+                                },
+                                "value": {
+                                    "node_type": "ClassCreator",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": null,
+                                    "selectors": [],
+                                    "type": {
+                                        "node_type": "ReferenceType",
+                                        "name": "AuditLogDirectParser",
+                                        "dimensions": null,
+                                        "arguments": null,
+                                        "sub_type": null
+                                    },
+                                    "constructor_type_arguments": null,
+                                    "arguments": [],
+                                    "body": null
+                                },
+                                "type": "="
+                            }
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Configuration",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "conf",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "Configuration",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "conf",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "AuditLogDirectParser",
+                                        "selectors": [],
+                                        "member": "AUDIT_START_TIMESTAMP_KEY"
+                                    },
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "0"
+                                    }
+                                ],
+                                "member": "setLong"
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "conf",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "AuditLogDirectParser",
+                                        "selectors": [],
+                                        "member": "AUDIT_LOG_PARSE_REGEX_KEY"
+                                    },
+                                    {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "\"CUSTOM FORMAT \\\\((?<timestamp>.+?)\\\\) (?<message>.+)\""
+                                    }
+                                ],
+                                "member": "set"
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "parser",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "conf"
+                                    }
+                                ],
+                                "member": "initialize"
+                            }
+                        },
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "AuditReplayCommand",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "expected",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "ClassCreator",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "AuditReplayCommand",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "constructor_type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "0"
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"fakeUser\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"fakeCommand\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"src\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"null\""
+                                            },
+                                            {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "\"0.0.0.0\""
+                                            }
+                                        ],
+                                        "body": null
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "expected"
+                                    },
+                                    {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "parser",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MemberReference",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "",
+                                                "selectors": [],
+                                                "member": "auditLine"
+                                            },
+                                            {
+                                                "node_type": "MethodInvocation",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "Function",
+                                                "selectors": [],
+                                                "type_arguments": null,
+                                                "arguments": [],
+                                                "member": "identity"
+                                            }
+                                        ],
+                                        "member": "parse"
+                                    }
+                                ],
+                                "member": "assertEquals"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "type_parameters": null,
+            "extends": null,
+            "implements": null
+        }
+    ]
+}

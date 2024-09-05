@@ -1,0 +1,771 @@
+{
+    "node_type": "CompilationUnit",
+    "package": {
+        "node_type": "PackageDeclaration",
+        "modifiers": null,
+        "annotations": null,
+        "documentation": "/**\n * Licensed to the Apache Software Foundation (ASF) under one\n * or more contributor license agreements.  See the NOTICE file\n * distributed with this work for additional information\n * regarding copyright ownership.  The ASF licenses this file\n * to you under the Apache License, Version 2.0 (the\n * \"License\"); you may not use this file except in compliance\n * with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */",
+        "name": "org.apache.hadoop.tools.dynamometer.workloadgenerator"
+    },
+    "imports": [
+        {
+            "node_type": "Import",
+            "path": "java.io.IOException",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.conf.Configuration",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.io.NullWritable",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.InputSplit",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.RecordReader",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.TaskAttemptContext",
+            "static": false,
+            "wildcard": false
+        }
+    ],
+    "types": [
+        {
+            "node_type": "ClassDeclaration",
+            "modifiers": [
+                "public"
+            ],
+            "annotations": [
+                {
+                    "node_type": "Annotation",
+                    "name": "SuppressWarnings",
+                    "element": {
+                        "node_type": "Literal",
+                        "prefix_operators": [],
+                        "postfix_operators": [],
+                        "qualifier": null,
+                        "selectors": [],
+                        "value": "\"unchecked\""
+                    }
+                }
+            ],
+            "documentation": "/**\n * A simple fake record reader which simply runs for some time duration.\n */",
+            "name": "VirtualRecordReader",
+            "body": [
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "BasicType",
+                        "name": "int",
+                        "dimensions": []
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "durationMs",
+                            "dimensions": [],
+                            "initializer": null
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "BasicType",
+                        "name": "long",
+                        "dimensions": []
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "startTimestampInMs",
+                            "dimensions": [],
+                            "initializer": null
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "BasicType",
+                        "name": "long",
+                        "dimensions": []
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "endTimestampInMs",
+                            "dimensions": [],
+                            "initializer": null
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "BasicType",
+                        "name": "int",
+                        "dimensions": []
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "numRows",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "1"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "initialize",
+                    "parameters": [
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "InputSplit",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "split",
+                            "varargs": false
+                        },
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "TaskAttemptContext",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "context",
+                            "varargs": false
+                        }
+                    ],
+                    "throws": [
+                        "IOException",
+                        "InterruptedException"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Configuration",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "conf",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "context",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [],
+                                        "member": "getConfiguration"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "durationMs"
+                                },
+                                "value": {
+                                    "node_type": "BinaryOperation",
+                                    "operator": "*",
+                                    "operandl": {
+                                        "node_type": "BinaryOperation",
+                                        "operator": "*",
+                                        "operandl": {
+                                            "node_type": "MethodInvocation",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "conf",
+                                            "selectors": [],
+                                            "type_arguments": null,
+                                            "arguments": [
+                                                {
+                                                    "node_type": "MemberReference",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": "CreateFileMapper",
+                                                    "selectors": [],
+                                                    "member": "DURATION_MIN_KEY"
+                                                },
+                                                {
+                                                    "node_type": "Literal",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": null,
+                                                    "selectors": [],
+                                                    "value": "0"
+                                                }
+                                            ],
+                                            "member": "getInt"
+                                        },
+                                        "operandr": {
+                                            "node_type": "Literal",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": null,
+                                            "selectors": [],
+                                            "value": "60"
+                                        }
+                                    },
+                                    "operandr": {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "1000"
+                                    }
+                                },
+                                "type": "="
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "startTimestampInMs"
+                                },
+                                "value": {
+                                    "node_type": "MethodInvocation",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "conf",
+                                    "selectors": [],
+                                    "type_arguments": null,
+                                    "arguments": [
+                                        {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "WorkloadDriver",
+                                            "selectors": [],
+                                            "member": "START_TIMESTAMP_MS"
+                                        },
+                                        {
+                                            "node_type": "Literal",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": null,
+                                            "selectors": [],
+                                            "value": "0"
+                                        }
+                                    ],
+                                    "member": "getInt"
+                                },
+                                "type": "="
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "endTimestampInMs"
+                                },
+                                "value": {
+                                    "node_type": "BinaryOperation",
+                                    "operator": "+",
+                                    "operandl": {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "startTimestampInMs"
+                                    },
+                                    "operandr": {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "durationMs"
+                                    }
+                                },
+                                "type": "="
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "BasicType",
+                        "name": "boolean",
+                        "dimensions": []
+                    },
+                    "name": "nextKeyValue",
+                    "parameters": [],
+                    "throws": [
+                        "IOException",
+                        "InterruptedException"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "IfStatement",
+                            "label": null,
+                            "condition": {
+                                "node_type": "BinaryOperation",
+                                "operator": ">",
+                                "operandl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "numRows"
+                                },
+                                "operandr": {
+                                    "node_type": "Literal",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": null,
+                                    "selectors": [],
+                                    "value": "0"
+                                }
+                            },
+                            "then_statement": {
+                                "node_type": "BlockStatement",
+                                "label": null,
+                                "statements": [
+                                    {
+                                        "node_type": "StatementExpression",
+                                        "label": null,
+                                        "expression": {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [
+                                                "--"
+                                            ],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "numRows"
+                                        }
+                                    },
+                                    {
+                                        "node_type": "ReturnStatement",
+                                        "label": null,
+                                        "expression": {
+                                            "node_type": "Literal",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": null,
+                                            "selectors": [],
+                                            "value": "true"
+                                        }
+                                    }
+                                ]
+                            },
+                            "else_statement": {
+                                "node_type": "BlockStatement",
+                                "label": null,
+                                "statements": [
+                                    {
+                                        "node_type": "ReturnStatement",
+                                        "label": null,
+                                        "expression": {
+                                            "node_type": "Literal",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": null,
+                                            "selectors": [],
+                                            "value": "false"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "ReferenceType",
+                        "name": "K",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "name": "getCurrentKey",
+                    "parameters": [],
+                    "throws": [
+                        "IOException",
+                        "InterruptedException"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "ReturnStatement",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Cast",
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "K",
+                                    "dimensions": [],
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "expression": {
+                                    "node_type": "MethodInvocation",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "NullWritable",
+                                    "selectors": [],
+                                    "type_arguments": null,
+                                    "arguments": [],
+                                    "member": "get"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "ReferenceType",
+                        "name": "V",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "name": "getCurrentValue",
+                    "parameters": [],
+                    "throws": [
+                        "IOException",
+                        "InterruptedException"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "ReturnStatement",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Cast",
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "V",
+                                    "dimensions": [],
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "expression": {
+                                    "node_type": "MethodInvocation",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "NullWritable",
+                                    "selectors": [],
+                                    "type_arguments": null,
+                                    "arguments": [],
+                                    "member": "get"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "BasicType",
+                        "name": "float",
+                        "dimensions": []
+                    },
+                    "name": "getProgress",
+                    "parameters": [],
+                    "throws": [
+                        "IOException",
+                        "InterruptedException"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "BasicType",
+                                "name": "long",
+                                "dimensions": []
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "remainingMs",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "BinaryOperation",
+                                        "operator": "-",
+                                        "operandl": {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "endTimestampInMs"
+                                        },
+                                        "operandr": {
+                                            "node_type": "MethodInvocation",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "System",
+                                            "selectors": [],
+                                            "type_arguments": null,
+                                            "arguments": [],
+                                            "member": "currentTimeMillis"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "ReturnStatement",
+                            "label": null,
+                            "expression": {
+                                "node_type": "BinaryOperation",
+                                "operator": "/",
+                                "operandl": {
+                                    "node_type": "BinaryOperation",
+                                    "operator": "*",
+                                    "operandl": {
+                                        "node_type": "MemberReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "member": "remainingMs"
+                                    },
+                                    "operandr": {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "100.0f"
+                                    }
+                                },
+                                "operandr": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "durationMs"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "close",
+                    "parameters": [],
+                    "throws": [
+                        "IOException"
+                    ],
+                    "body": []
+                }
+            ],
+            "type_parameters": [
+                {
+                    "node_type": "TypeParameter",
+                    "name": "K",
+                    "extends": null
+                },
+                {
+                    "node_type": "TypeParameter",
+                    "name": "V",
+                    "extends": null
+                }
+            ],
+            "extends": {
+                "node_type": "ReferenceType",
+                "name": "RecordReader",
+                "dimensions": [],
+                "arguments": [
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "K",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    },
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "V",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    }
+                ],
+                "sub_type": null
+            },
+            "implements": null
+        }
+    ]
+}

@@ -1,0 +1,863 @@
+{
+    "node_type": "CompilationUnit",
+    "package": {
+        "node_type": "PackageDeclaration",
+        "modifiers": null,
+        "annotations": null,
+        "documentation": "/**\n * Licensed to the Apache Software Foundation (ASF) under one\n * or more contributor license agreements.  See the NOTICE file\n * distributed with this work for additional information\n * regarding copyright ownership.  The ASF licenses this file\n * to you under the Apache License, Version 2.0 (the\n * \"License\"); you may not use this file except in compliance\n * with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */",
+        "name": "org.apache.hadoop.tools.dynamometer.blockgenerator"
+    },
+    "imports": [
+        {
+            "node_type": "Import",
+            "path": "java.io.IOException",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "java.util.List",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.conf.Configuration",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.io.IntWritable",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.io.LongWritable",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.io.Text",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.mapreduce.Mapper",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.slf4j.Logger",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.slf4j.LoggerFactory",
+            "static": false,
+            "wildcard": false
+        }
+    ],
+    "types": [
+        {
+            "node_type": "ClassDeclaration",
+            "modifiers": [
+                "public"
+            ],
+            "annotations": [],
+            "documentation": "/**\n * This Mapper class generates a list of {@link BlockInfo}'s from a given\n * fsimage.\n *\n * Input: fsimage in XML format. It should be generated using\n * {@code org.apache.hadoop.hdfs.tools.offlineImageViewer.OfflineImageViewer}.\n *\n * Output: list of all {@link BlockInfo}'s\n */",
+            "name": "XMLParserMapper",
+            "body": [
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "private",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "Logger",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "LOG",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "MethodInvocation",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "LoggerFactory",
+                                "selectors": [],
+                                "type_arguments": null,
+                                "arguments": [
+                                    {
+                                        "node_type": "ClassReference",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "",
+                                        "selectors": [],
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "XMLParserMapper",
+                                            "dimensions": null,
+                                            "arguments": null,
+                                            "sub_type": null
+                                        }
+                                    }
+                                ],
+                                "member": "getLogger"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "setup",
+                    "parameters": [
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Mapper",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "Context",
+                                    "dimensions": null,
+                                    "arguments": null,
+                                    "sub_type": null
+                                }
+                            },
+                            "name": "context",
+                            "varargs": false
+                        }
+                    ],
+                    "throws": null,
+                    "body": [
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Configuration",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "conf",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "context",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [],
+                                        "member": "getConfiguration"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "numDataNodes"
+                                },
+                                "value": {
+                                    "node_type": "MethodInvocation",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "conf",
+                                    "selectors": [],
+                                    "type_arguments": null,
+                                    "arguments": [
+                                        {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [],
+                                            "qualifier": "GenerateBlockImagesDriver",
+                                            "selectors": [],
+                                            "member": "NUM_DATANODES_KEY"
+                                        },
+                                        {
+                                            "node_type": "Literal",
+                                            "prefix_operators": [
+                                                "-"
+                                            ],
+                                            "postfix_operators": [],
+                                            "qualifier": null,
+                                            "selectors": [],
+                                            "value": "1"
+                                        }
+                                    ],
+                                    "member": "getInt"
+                                },
+                                "type": "="
+                            }
+                        },
+                        {
+                            "node_type": "StatementExpression",
+                            "label": null,
+                            "expression": {
+                                "node_type": "Assignment",
+                                "expressionl": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "parser"
+                                },
+                                "value": {
+                                    "node_type": "ClassCreator",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": null,
+                                    "selectors": [],
+                                    "type": {
+                                        "node_type": "ReferenceType",
+                                        "name": "XMLParser",
+                                        "dimensions": null,
+                                        "arguments": null,
+                                        "sub_type": null
+                                    },
+                                    "constructor_type_arguments": null,
+                                    "arguments": [],
+                                    "body": null
+                                },
+                                "type": "="
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "BasicType",
+                        "name": "int",
+                        "dimensions": []
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "blockIndex",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "Literal",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "value": "0"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "BasicType",
+                        "name": "int",
+                        "dimensions": []
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "numDataNodes",
+                            "dimensions": [],
+                            "initializer": null
+                        }
+                    ]
+                },
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "private"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "XMLParser",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "parser",
+                            "dimensions": [],
+                            "initializer": null
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": "/**\n   * Read the input XML file line by line, and generate list of blocks. The\n   * actual parsing logic is handled by {@link XMLParser}. This mapper just\n   * delegates to that class and then writes the blocks to the corresponding\n   * index to be processed by reducers.\n   */",
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": null,
+                    "name": "map",
+                    "parameters": [
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "LongWritable",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "lineNum",
+                            "varargs": false
+                        },
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Text",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "line",
+                            "varargs": false
+                        },
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "Mapper",
+                                "dimensions": [],
+                                "arguments": [
+                                    {
+                                        "node_type": "TypeArgument",
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "LongWritable",
+                                            "dimensions": [],
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "pattern_type": null
+                                    },
+                                    {
+                                        "node_type": "TypeArgument",
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "Text",
+                                            "dimensions": [],
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "pattern_type": null
+                                    },
+                                    {
+                                        "node_type": "TypeArgument",
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "IntWritable",
+                                            "dimensions": [],
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "pattern_type": null
+                                    },
+                                    {
+                                        "node_type": "TypeArgument",
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "BlockInfo",
+                                            "dimensions": [],
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "pattern_type": null
+                                    }
+                                ],
+                                "sub_type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "Context",
+                                    "dimensions": null,
+                                    "arguments": null,
+                                    "sub_type": null
+                                }
+                            },
+                            "name": "context",
+                            "varargs": false
+                        }
+                    ],
+                    "throws": [
+                        "IOException",
+                        "InterruptedException"
+                    ],
+                    "body": [
+                        {
+                            "node_type": "LocalVariableDeclaration",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "List",
+                                "dimensions": [],
+                                "arguments": [
+                                    {
+                                        "node_type": "TypeArgument",
+                                        "type": {
+                                            "node_type": "ReferenceType",
+                                            "name": "BlockInfo",
+                                            "dimensions": [],
+                                            "arguments": null,
+                                            "sub_type": null
+                                        },
+                                        "pattern_type": null
+                                    }
+                                ],
+                                "sub_type": null
+                            },
+                            "declarators": [
+                                {
+                                    "node_type": "VariableDeclarator",
+                                    "name": "blockInfos",
+                                    "dimensions": [],
+                                    "initializer": {
+                                        "node_type": "MethodInvocation",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": "parser",
+                                        "selectors": [],
+                                        "type_arguments": null,
+                                        "arguments": [
+                                            {
+                                                "node_type": "MethodInvocation",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": "line",
+                                                "selectors": [],
+                                                "type_arguments": null,
+                                                "arguments": [],
+                                                "member": "toString"
+                                            }
+                                        ],
+                                        "member": "parseLine"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "ForStatement",
+                            "label": null,
+                            "control": {
+                                "node_type": "EnhancedForControl",
+                                "var": {
+                                    "node_type": "VariableDeclaration",
+                                    "modifiers": [],
+                                    "annotations": [],
+                                    "type": {
+                                        "node_type": "ReferenceType",
+                                        "name": "BlockInfo",
+                                        "dimensions": [],
+                                        "arguments": null,
+                                        "sub_type": null
+                                    },
+                                    "declarators": [
+                                        {
+                                            "node_type": "VariableDeclarator",
+                                            "name": "blockInfo",
+                                            "dimensions": null,
+                                            "initializer": null
+                                        }
+                                    ]
+                                },
+                                "iterable": {
+                                    "node_type": "MemberReference",
+                                    "prefix_operators": [],
+                                    "postfix_operators": [],
+                                    "qualifier": "",
+                                    "selectors": [],
+                                    "member": "blockInfos"
+                                }
+                            },
+                            "body": {
+                                "node_type": "BlockStatement",
+                                "label": null,
+                                "statements": [
+                                    {
+                                        "node_type": "ForStatement",
+                                        "label": null,
+                                        "control": {
+                                            "node_type": "ForControl",
+                                            "init": {
+                                                "node_type": "VariableDeclaration",
+                                                "modifiers": [],
+                                                "annotations": [],
+                                                "type": {
+                                                    "node_type": "BasicType",
+                                                    "name": "short",
+                                                    "dimensions": []
+                                                },
+                                                "declarators": [
+                                                    {
+                                                        "node_type": "VariableDeclarator",
+                                                        "name": "i",
+                                                        "dimensions": null,
+                                                        "initializer": {
+                                                            "node_type": "Literal",
+                                                            "prefix_operators": [],
+                                                            "postfix_operators": [],
+                                                            "qualifier": null,
+                                                            "selectors": [],
+                                                            "value": "0"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "condition": {
+                                                "node_type": "BinaryOperation",
+                                                "operator": "<",
+                                                "operandl": {
+                                                    "node_type": "MemberReference",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": "",
+                                                    "selectors": [],
+                                                    "member": "i"
+                                                },
+                                                "operandr": {
+                                                    "node_type": "MethodInvocation",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": "blockInfo",
+                                                    "selectors": [],
+                                                    "type_arguments": null,
+                                                    "arguments": [],
+                                                    "member": "getReplication"
+                                                }
+                                            },
+                                            "update": [
+                                                {
+                                                    "node_type": "MemberReference",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [
+                                                        "++"
+                                                    ],
+                                                    "qualifier": "",
+                                                    "selectors": [],
+                                                    "member": "i"
+                                                }
+                                            ]
+                                        },
+                                        "body": {
+                                            "node_type": "BlockStatement",
+                                            "label": null,
+                                            "statements": [
+                                                {
+                                                    "node_type": "StatementExpression",
+                                                    "label": null,
+                                                    "expression": {
+                                                        "node_type": "MethodInvocation",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": "context",
+                                                        "selectors": [],
+                                                        "type_arguments": null,
+                                                        "arguments": [
+                                                            {
+                                                                "node_type": "ClassCreator",
+                                                                "prefix_operators": [],
+                                                                "postfix_operators": [],
+                                                                "qualifier": null,
+                                                                "selectors": [],
+                                                                "type": {
+                                                                    "node_type": "ReferenceType",
+                                                                    "name": "IntWritable",
+                                                                    "dimensions": null,
+                                                                    "arguments": null,
+                                                                    "sub_type": null
+                                                                },
+                                                                "constructor_type_arguments": null,
+                                                                "arguments": [
+                                                                    {
+                                                                        "node_type": "BinaryOperation",
+                                                                        "operator": "%",
+                                                                        "operandl": {
+                                                                            "node_type": "BinaryOperation",
+                                                                            "operator": "+",
+                                                                            "operandl": {
+                                                                                "node_type": "MemberReference",
+                                                                                "prefix_operators": [],
+                                                                                "postfix_operators": [],
+                                                                                "qualifier": "",
+                                                                                "selectors": [],
+                                                                                "member": "blockIndex"
+                                                                            },
+                                                                            "operandr": {
+                                                                                "node_type": "MemberReference",
+                                                                                "prefix_operators": [],
+                                                                                "postfix_operators": [],
+                                                                                "qualifier": "",
+                                                                                "selectors": [],
+                                                                                "member": "i"
+                                                                            }
+                                                                        },
+                                                                        "operandr": {
+                                                                            "node_type": "MemberReference",
+                                                                            "prefix_operators": [],
+                                                                            "postfix_operators": [],
+                                                                            "qualifier": "",
+                                                                            "selectors": [],
+                                                                            "member": "numDataNodes"
+                                                                        }
+                                                                    }
+                                                                ],
+                                                                "body": null
+                                                            },
+                                                            {
+                                                                "node_type": "MemberReference",
+                                                                "prefix_operators": [],
+                                                                "postfix_operators": [],
+                                                                "qualifier": "",
+                                                                "selectors": [],
+                                                                "member": "blockInfo"
+                                                            }
+                                                        ],
+                                                        "member": "write"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "node_type": "StatementExpression",
+                                        "label": null,
+                                        "expression": {
+                                            "node_type": "MemberReference",
+                                            "prefix_operators": [],
+                                            "postfix_operators": [
+                                                "++"
+                                            ],
+                                            "qualifier": "",
+                                            "selectors": [],
+                                            "member": "blockIndex"
+                                        }
+                                    },
+                                    {
+                                        "node_type": "IfStatement",
+                                        "label": null,
+                                        "condition": {
+                                            "node_type": "BinaryOperation",
+                                            "operator": "==",
+                                            "operandl": {
+                                                "node_type": "BinaryOperation",
+                                                "operator": "%",
+                                                "operandl": {
+                                                    "node_type": "MemberReference",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": "",
+                                                    "selectors": [],
+                                                    "member": "blockIndex"
+                                                },
+                                                "operandr": {
+                                                    "node_type": "Literal",
+                                                    "prefix_operators": [],
+                                                    "postfix_operators": [],
+                                                    "qualifier": null,
+                                                    "selectors": [],
+                                                    "value": "1000000"
+                                                }
+                                            },
+                                            "operandr": {
+                                                "node_type": "Literal",
+                                                "prefix_operators": [],
+                                                "postfix_operators": [],
+                                                "qualifier": null,
+                                                "selectors": [],
+                                                "value": "0"
+                                            }
+                                        },
+                                        "then_statement": {
+                                            "node_type": "BlockStatement",
+                                            "label": null,
+                                            "statements": [
+                                                {
+                                                    "node_type": "StatementExpression",
+                                                    "label": null,
+                                                    "expression": {
+                                                        "node_type": "MethodInvocation",
+                                                        "prefix_operators": [],
+                                                        "postfix_operators": [],
+                                                        "qualifier": "LOG",
+                                                        "selectors": [],
+                                                        "type_arguments": null,
+                                                        "arguments": [
+                                                            {
+                                                                "node_type": "BinaryOperation",
+                                                                "operator": "+",
+                                                                "operandl": {
+                                                                    "node_type": "BinaryOperation",
+                                                                    "operator": "+",
+                                                                    "operandl": {
+                                                                        "node_type": "Literal",
+                                                                        "prefix_operators": [],
+                                                                        "postfix_operators": [],
+                                                                        "qualifier": null,
+                                                                        "selectors": [],
+                                                                        "value": "\"Processed \""
+                                                                    },
+                                                                    "operandr": {
+                                                                        "node_type": "MemberReference",
+                                                                        "prefix_operators": [],
+                                                                        "postfix_operators": [],
+                                                                        "qualifier": "",
+                                                                        "selectors": [],
+                                                                        "member": "blockIndex"
+                                                                    }
+                                                                },
+                                                                "operandr": {
+                                                                    "node_type": "Literal",
+                                                                    "prefix_operators": [],
+                                                                    "postfix_operators": [],
+                                                                    "qualifier": null,
+                                                                    "selectors": [],
+                                                                    "value": "\" blocks\""
+                                                                }
+                                                            }
+                                                        ],
+                                                        "member": "info"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "else_statement": null
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ],
+            "type_parameters": null,
+            "extends": {
+                "node_type": "ReferenceType",
+                "name": "Mapper",
+                "dimensions": [],
+                "arguments": [
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "LongWritable",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    },
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "Text",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    },
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "IntWritable",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    },
+                    {
+                        "node_type": "TypeArgument",
+                        "type": {
+                            "node_type": "ReferenceType",
+                            "name": "BlockInfo",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        },
+                        "pattern_type": null
+                    }
+                ],
+                "sub_type": null
+            },
+            "implements": null
+        }
+    ]
+}

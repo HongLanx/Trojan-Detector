@@ -1,0 +1,291 @@
+{
+    "node_type": "CompilationUnit",
+    "package": {
+        "node_type": "PackageDeclaration",
+        "modifiers": null,
+        "annotations": null,
+        "documentation": "/**\n * Licensed to the Apache Software Foundation (ASF) under one\n * or more contributor license agreements.  See the NOTICE file\n * distributed with this work for additional information\n * regarding copyright ownership.  The ASF licenses this file\n * to you under the Apache License, Version 2.0 (the\n * \"License\"); you may not use this file except in compliance\n * with the License.  You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */",
+        "name": "org.apache.hadoop.tools.dynamometer"
+    },
+    "imports": [
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.hdfs.protocol.DatanodeInfo",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.hdfs.server.blockmanagement.BlockPlacementPolicyDefault",
+            "static": false,
+            "wildcard": false
+        },
+        {
+            "node_type": "Import",
+            "path": "org.apache.hadoop.hdfs.server.blockmanagement.BlockPlacementStatus",
+            "static": false,
+            "wildcard": false
+        }
+    ],
+    "types": [
+        {
+            "node_type": "ClassDeclaration",
+            "modifiers": [
+                "public"
+            ],
+            "annotations": [],
+            "documentation": "/**\n * A BlockPlacementPolicy which always considered itself satisfied. This avoids\n * the issue that the Dynamometer NameNode will complain about blocks being\n * under-replicated because they're not being put on distinct racks.\n */",
+            "name": "BlockPlacementPolicyAlwaysSatisfied",
+            "body": [
+                {
+                    "node_type": "FieldDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "static",
+                        "private",
+                        "final"
+                    ],
+                    "annotations": [],
+                    "type": {
+                        "node_type": "ReferenceType",
+                        "name": "BlockPlacementStatusSatisfied",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "declarators": [
+                        {
+                            "node_type": "VariableDeclarator",
+                            "name": "SATISFIED",
+                            "dimensions": [],
+                            "initializer": {
+                                "node_type": "ClassCreator",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": null,
+                                "selectors": [],
+                                "type": {
+                                    "node_type": "ReferenceType",
+                                    "name": "BlockPlacementStatusSatisfied",
+                                    "dimensions": null,
+                                    "arguments": null,
+                                    "sub_type": null
+                                },
+                                "constructor_type_arguments": null,
+                                "arguments": [],
+                                "body": null
+                            }
+                        }
+                    ]
+                },
+                {
+                    "node_type": "ClassDeclaration",
+                    "modifiers": [
+                        "static",
+                        "private"
+                    ],
+                    "annotations": [],
+                    "documentation": null,
+                    "name": "BlockPlacementStatusSatisfied",
+                    "body": [
+                        {
+                            "node_type": "MethodDeclaration",
+                            "documentation": null,
+                            "modifiers": [
+                                "public"
+                            ],
+                            "annotations": [
+                                {
+                                    "node_type": "Annotation",
+                                    "name": "Override",
+                                    "element": null
+                                }
+                            ],
+                            "type_parameters": null,
+                            "return_type": {
+                                "node_type": "BasicType",
+                                "name": "boolean",
+                                "dimensions": []
+                            },
+                            "name": "isPlacementPolicySatisfied",
+                            "parameters": [],
+                            "throws": null,
+                            "body": [
+                                {
+                                    "node_type": "ReturnStatement",
+                                    "label": null,
+                                    "expression": {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "true"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "MethodDeclaration",
+                            "documentation": null,
+                            "modifiers": [
+                                "public"
+                            ],
+                            "annotations": [],
+                            "type_parameters": null,
+                            "return_type": {
+                                "node_type": "ReferenceType",
+                                "name": "String",
+                                "dimensions": [],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "getErrorDescription",
+                            "parameters": [],
+                            "throws": null,
+                            "body": [
+                                {
+                                    "node_type": "ReturnStatement",
+                                    "label": null,
+                                    "expression": {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "null"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "node_type": "MethodDeclaration",
+                            "documentation": null,
+                            "modifiers": [
+                                "public"
+                            ],
+                            "annotations": [
+                                {
+                                    "node_type": "Annotation",
+                                    "name": "Override",
+                                    "element": null
+                                }
+                            ],
+                            "type_parameters": null,
+                            "return_type": {
+                                "node_type": "BasicType",
+                                "name": "int",
+                                "dimensions": []
+                            },
+                            "name": "getAdditionalReplicasRequired",
+                            "parameters": [],
+                            "throws": null,
+                            "body": [
+                                {
+                                    "node_type": "ReturnStatement",
+                                    "label": null,
+                                    "expression": {
+                                        "node_type": "Literal",
+                                        "prefix_operators": [],
+                                        "postfix_operators": [],
+                                        "qualifier": null,
+                                        "selectors": [],
+                                        "value": "0"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "type_parameters": null,
+                    "extends": null,
+                    "implements": [
+                        {
+                            "node_type": "ReferenceType",
+                            "name": "BlockPlacementStatus",
+                            "dimensions": [],
+                            "arguments": null,
+                            "sub_type": null
+                        }
+                    ]
+                },
+                {
+                    "node_type": "MethodDeclaration",
+                    "documentation": null,
+                    "modifiers": [
+                        "public"
+                    ],
+                    "annotations": [
+                        {
+                            "node_type": "Annotation",
+                            "name": "Override",
+                            "element": null
+                        }
+                    ],
+                    "type_parameters": null,
+                    "return_type": {
+                        "node_type": "ReferenceType",
+                        "name": "BlockPlacementStatus",
+                        "dimensions": [],
+                        "arguments": null,
+                        "sub_type": null
+                    },
+                    "name": "verifyBlockPlacement",
+                    "parameters": [
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "ReferenceType",
+                                "name": "DatanodeInfo",
+                                "dimensions": [
+                                    null
+                                ],
+                                "arguments": null,
+                                "sub_type": null
+                            },
+                            "name": "locs",
+                            "varargs": false
+                        },
+                        {
+                            "node_type": "FormalParameter",
+                            "modifiers": [],
+                            "annotations": [],
+                            "type": {
+                                "node_type": "BasicType",
+                                "name": "int",
+                                "dimensions": []
+                            },
+                            "name": "numberOfReplicas",
+                            "varargs": false
+                        }
+                    ],
+                    "throws": null,
+                    "body": [
+                        {
+                            "node_type": "ReturnStatement",
+                            "label": null,
+                            "expression": {
+                                "node_type": "MemberReference",
+                                "prefix_operators": [],
+                                "postfix_operators": [],
+                                "qualifier": "",
+                                "selectors": [],
+                                "member": "SATISFIED"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "type_parameters": null,
+            "extends": {
+                "node_type": "ReferenceType",
+                "name": "BlockPlacementPolicyDefault",
+                "dimensions": [],
+                "arguments": null,
+                "sub_type": null
+            },
+            "implements": null
+        }
+    ]
+}
