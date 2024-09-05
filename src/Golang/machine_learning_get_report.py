@@ -5,8 +5,8 @@ from src.Golang import ssa_patterns_fin
 from src.Golang.machine_learning import predict_with_model
 
 
-def output_machine_learning_matching_report(folder=None):
-    analyse_project_info, analyse_project_folder = ssa_analyzer.project_to_ssa_json(folder)
+def output_machine_learning_matching_report(folder=None,is_html=False):
+    analyse_project_info, analyse_project_folder = ssa_analyzer.project_to_ssa_json(folder,is_html)
     analyse_project_info = json.loads(analyse_project_info)
     enc_report = predict_with_model("src/Golang/model/encryption_model.pkl", analyse_project_info,
                                     ssa_patterns_fin.encryption_patterns)

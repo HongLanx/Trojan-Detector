@@ -222,22 +222,22 @@
 <!--    </video>-->
 
     <div class="overlay">
-        <h1>Source Code Backdoor Detection Tool</h1>
+        <h1>源代码后门检测工具</h1>
 
         <!-- 文件上传 -->
         <div class="file-upload">
-            <label for="folderPathInput">Enter Source Code Folder Path:</label>
-            <input type="text" id="folderPathInput" placeholder="Enter folder path here">
+            <label for="folderPathInput">输入源代码文件夹路径:</label>
+            <input type="text" id="folderPathInput" placeholder="请输入文件夹路径">
         </div>
 
         <!-- 检测按钮 -->
-        <button id="detectButton">Start Detection</button>
+        <button id="detectButton">开始检测</button>
 
         <!-- 语言选择下拉菜单 -->
         <div class="dropdown-container">
-            <label for="languageButton">Select Programming Language:</label>
+            <label for="languageButton">选择编程语言:</label>
             <button class="dropdown-button" id="languageButton">
-                <span class="button-text">Select Language</span>
+                <span class="button-text">选择编程语言</span>
                 <i class="fas fa-chevron-down"></i>
             </button>
             <div class="dropdown-content">
@@ -249,22 +249,22 @@
 
         <!-- 检测方法选择下拉菜单 -->
         <div class="dropdown-container">
-            <label for="methodButton">Select Detection Method:</label>
+            <label for="methodButton">选择检测方法:</label>
             <button class="dropdown-button" id="methodButton">
-                <span class="button-text">Select Detection Method</span>
+                <span class="button-text">选择检测方法</span>
                 <i class="fas fa-chevron-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="#" onclick="selectMethod('Pattern Matching')">Pattern Matching</a>
-                <a href="#" onclick="selectMethod('Intermediate Language Transformation')">Intermediate Language Transformation</a>
-                <a href="#" onclick="selectMethod('Vector Transformation')">Vector Transformation</a>
+                <a href="#" onclick="selectMethod('AST模式匹配')">AST模式匹配</a>
+                <a href="#" onclick="selectMethod('中间代码转换')">中间代码转换</a>
+                <a href="#" onclick="selectMethod('代码向量化/机器学习')">代码向量化/机器学习</a>
                 <!-- 你可以在这里添加更多的检测方法 -->
             </div>
         </div>
 
         <!-- 检测报告 -->
         <div id="report">
-            <h2>Detection Report</h2>
+            <h2>检测报告</h2>
             <div id="reportContent">
                 {{ report|safe }}
             </div>

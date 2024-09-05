@@ -23,7 +23,7 @@ def index():
         sys.stdout = captured_output
 
         # 调用main.py中的函数
-        detect_trojan(folder_path, language, method)
+        detect_trojan(folder_path, language, method, True)
 
         # 恢复stdout
         sys.stdout = sys.__stdout__

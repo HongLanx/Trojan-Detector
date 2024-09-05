@@ -34,9 +34,10 @@ def generate_ssa(go_file, go_mod_file=None):
     if not go_mod_file:
         print("No go.mod file selected. Creating a new go.mod file.")
         go_mod_file = os.path.join(module_dir, "go.mod")
-        with open(go_mod_file, 'w') as mod_file:
-            mod_file.write(f"module TrojanDetector")  # 创建基本的go.mod文件
-        run_command(['go', 'mod', 'init', os.path.basename(module_dir)], module_dir)
+        if not go_mod_file:
+            with open(go_mod_file, 'w') as mod_file:
+                mod_file.write(f"module TrojanDetector")  # 创建基本的go.mod文件
+            run_command(['go', 'mod', 'init', os.path.basename(module_dir)], module_dir)
 
     go_mod_dir = os.path.dirname(go_mod_file)
     if go_mod_dir != module_dir:
@@ -82,21 +83,27 @@ def generate_ssa(go_file, go_mod_file=None):
     print(stderr)
 
 
-def choose_go_project_and_generate_ssa(folder_selected=None):
-    # 初始化Tk界面
-    root = tk.Tk()
-    root.withdraw()  # 隐藏主窗口
-    if not folder_selected:
-        folder_selected = filedialog.askdirectory(title="Select A Go Project Folder",
-                                                  initialdir=os.getcwd())  # 初始目录设为当前工作目录
+def choose_go_project_and_generate_ssa(folder_selected=None, is_html=False):
+    if not is_html:
+        # 初始化Tk界面
+        root = tk.Tk()
+        root.withdraw()  # 隐藏主窗口
+        if not folder_selected:
+            folder_selected = filedialog.askdirectory(title="Select A Go Project Folder",
+                                                      initialdir=os.getcwd())  # 初始目录设为当前工作目录
 
-    print("请选择项目go.mod文件")
-    # 弹出文件选择对话框，让用户选择一个go.mod文件
-    go_mod_file = filedialog.askopenfilename(
-        title="Select a go.mod file",
-        filetypes=[("Go Mod files", "go.mod")],  # 只允许选择go.mod文件
-        initialdir=folder_selected  # 假设go.mod通常与go文件在同一目录
-    )
+        print("请选择项目go.mod文件")
+        # 弹出文件选择对话框，让用户选择一个go.mod文件
+        go_mod_file = filedialog.askopenfilename(
+            title="Select a go.mod file",
+            filetypes=[("Go Mod files", "go.mod")],  # 只允许选择go.mod文件
+            initialdir=folder_selected  # 假设go.mod通常与go文件在同一目录
+        )
+    else:
+        if not folder_selected:
+            folder_selected = filedialog.askdirectory(title="Select A Go Project Folder",
+                                                      initialdir=os.getcwd())  # 初始目录设为当前工作目录
+        go_mod_file = None
     if folder_selected:
         for root, _, files in os.walk(folder_selected):
             for file_name in files:
@@ -111,8 +118,8 @@ def choose_go_project_and_generate_ssa(folder_selected=None):
 
 
 # 选择项目文件夹，生成ssa文件，再将所有ssa文件取出，移动到所选项目根目录下的./SSAFiles文件夹
-def get_ssa_from_folder(folder_to_be_processd=None):
-    folder = choose_go_project_and_generate_ssa(folder_to_be_processd)
+def get_ssa_from_folder(folder_to_be_processd=None, is_html=False):
+    folder = choose_go_project_and_generate_ssa(folder_to_be_processd, is_html)
     if folder:
         ssa_dest_folder = os.path.join(folder, "SSAFiles")
         if not os.path.exists(ssa_dest_folder):

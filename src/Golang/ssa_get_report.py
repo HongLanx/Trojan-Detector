@@ -73,8 +73,8 @@ def get_score_and_report(json_data, pattern, pattern_name=""):
 
 
 # 输出最终报告
-def output_ssa_matching_report(folder=None):
-    analyse_project_info, analyse_project_folder = ssa_analyzer.project_to_ssa_json(folder)
+def output_ssa_matching_report(folder=None,is_html=False):
+    analyse_project_info, analyse_project_folder = ssa_analyzer.project_to_ssa_json(folder,is_html)
     enc_report = get_score_and_report(analyse_project_info, ssa_patterns_fin.encryption_patterns, "加密器")
     bot_report = get_score_and_report(analyse_project_info, ssa_patterns_fin.botnet_patterns, "僵尸网络")
     phish_report = get_score_and_report(analyse_project_info, ssa_patterns_fin.phishing_patterns, "钓鱼网络")

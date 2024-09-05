@@ -119,7 +119,7 @@ def generate_json(folder_path):
 
 
 # 参数为：文件夹（也可以不输入参数，会跳出窗口让你选择文件夹），将文件夹内的所有go文件转换为SSA，再解析提取关键信息得到json_data
-def project_to_ssa_json(folder_selected=None):
+def project_to_ssa_json(folder_selected=None,is_html=False):
     json_data = None
     if not folder_selected:
         root = tk.Tk()
@@ -129,7 +129,7 @@ def project_to_ssa_json(folder_selected=None):
         # 如果已经生成了SSA解析结果，直接返回结果即可
         if os.path.exists(os.path.join(folder_selected, "SSAResult.json")):
             return generate_json(folder_selected), folder_selected
-        ssa_getter.get_ssa_from_folder(folder_selected)
+        ssa_getter.get_ssa_from_folder(folder_selected,is_html)
         json_data = generate_json(folder_selected)
         print(f"已处理完项目: {folder_selected}")
     else:
