@@ -1,6 +1,6 @@
 import os
-from BruteForceMatching import BFM  # 假设你将函数存储在 your_module.py 中
-from AST import AST
+from bfm_get_report import BFM  # 假设你将函数存储在 your_module.py 中
+from ast_get_report import AST
 
 def main():
     # 从用户输入获取待检测文件夹路径
@@ -12,10 +12,10 @@ def main():
         return
     
     # 调用检测函数
-    #BFM(folder_path)
+    BFM(folder_path)
     
     # 直接调用 AST 函数进行预处理和检测，不需要处理返回值
-    AST(folder_path)
+    #AST(folder_path)
 
     print("检测完成。")
 

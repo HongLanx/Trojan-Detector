@@ -1,0 +1,75 @@
+检测结果：
+
+类别: malware_patterns
+特征: cached_property                          | 次数: 1     | 总分数: 4    
+特征: trojan                                   | 次数: 1     | 总分数: 9    
+特征: paramiko                                 | 次数: 1     | 总分数: 9    
+特征: trojan                                   | 次数: 78    | 总分数: 402  
+特征: infect                                   | 次数: 92    | 总分数: 296  
+特征: malware                                  | 次数: 7     | 总分数: 58   
+特征: passwords.txt                            | 次数: 3     | 总分数: 21   
+类别总分: 799
+
+类别: botnet_patterns
+特征: base64.b64encode                         | 次数: 3     | 总分数: 9    
+特征: base64.b64decode                         | 次数: 2     | 总分数: 8    
+特征: time.sleep                               | 次数: 14    | 总分数: 19   
+特征: requests.get                             | 次数: 4     | 总分数: 9    
+特征: os.path.isfile                           | 次数: 3     | 总分数: 8    
+特征: subprocess.Popen                         | 次数: 1     | 总分数: 8    
+特征: CONNECT                                  | 次数: 15    | 总分数: 45   
+特征: QUIT                                     | 次数: 1     | 总分数: 8    
+类别总分: 114
+
+类别: ransomware_patterns
+特征: base64                                   | 次数: 1     | 总分数: 7    
+特征: Popen                                    | 次数: 1     | 总分数: 7    
+特征: winreg                                   | 次数: 1     | 总分数: 7    
+特征: win32api                                 | 次数: 1     | 总分数: 6    
+特征: ctypes                                   | 次数: 1     | 总分数: 8    
+特征: win32event                               | 次数: 1     | 总分数: 7    
+特征: winerror                                 | 次数: 1     | 总分数: 6    
+特征: os.remove                                | 次数: 6     | 总分数: 10   
+特征: base64.b64encode                         | 次数: 3     | 总分数: 9    
+特征: base64.b64decode                         | 次数: 2     | 总分数: 8    
+特征: Popen                                    | 次数: 1     | 总分数: 7    
+类别总分: 82
+
+类别: keyboard_patterns
+特征: getpass                                  | 次数: 1     | 总分数: 6    
+特征: pyHook                                   | 次数: 1     | 总分数: 9    
+特征: pythoncom                                | 次数: 1     | 总分数: 8    
+特征: ImageGrab                                | 次数: 1     | 总分数: 7    
+特征: pyHook.HookManager                       | 次数: 2     | 总分数: 10   
+特征: ImageGrab.grab                           | 次数: 1     | 总分数: 7    
+特征: pythoncom.PumpMessages                   | 次数: 1     | 总分数: 8    
+特征: win32console.GetConsoleWindow            | 次数: 1     | 总分数: 7    
+特征: win32gui.ShowWindow                      | 次数: 1     | 总分数: 7    
+特征: Software\Microsoft\Windows\CurrentVersion\Run | 次数: 2     | 总分数: 14   
+类别总分: 83
+
+类别: exploit_patterns
+特征: malicious                                | 次数: 3     | 总分数: 27   
+特征: reverse shell                            | 次数: 1     | 总分数: 8    
+类别总分: 35
+
+类别: bypassAttack_patterns
+特征: base64                                   | 次数: 1     | 总分数: 6    
+特征: base64.b64encode                         | 次数: 3     | 总分数: 8    
+类别总分: 14
+
+类别: phishingAttack_patterns
+特征: requests                                 | 次数: 1     | 总分数: 6    
+类别总分: 6
+
+类别: obfuscation_patterns
+特征: reverse                                  | 次数: 4     | 总分数: 18   
+类别总分: 18
+
+类别: penetrationTesting_patterns
+特征: nmap                                     | 次数: 1     | 总分数: 7    
+特征: paramiko                                 | 次数: 1     | 总分数: 6    
+特征: reverse shell                            | 次数: 1     | 总分数: 9    
+类别总分: 22
+
+检测出的病毒木马类别为: malware_patterns，总得分: 799
