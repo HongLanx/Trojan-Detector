@@ -1,6 +1,6 @@
 import os
-from preprocess import turnToJson  # 从 preprocess.py 中导入函数
-from matchAndScore import get_score  # 从 matchAndScore.py 中导入函数
+from src.Python.process.preprocess import turnToJson  # 从 preprocess.py 中导入函数
+from src.Python.process.matchAndScore import get_score  # 从 matchAndScore.py 中导入函数
 
 def AST(folder_path):
     """

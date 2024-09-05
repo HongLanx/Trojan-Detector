@@ -1,7 +1,7 @@
 import os
 import re
 from collections import defaultdict
-import patterns  # 导入 patterns.py 模块
+from src.Python.process  import patterns# 导入 patterns.py 模块
 
 # 定义一个函数用于加载所有模式
 def load_patterns():
