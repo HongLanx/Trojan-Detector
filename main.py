@@ -2,6 +2,9 @@ import src.Golang.ast_get_report
 import src.Golang.ssa_get_report
 import src.Golang.machine_learning_get_report
 
+import src.Python.process.ast_get_report
+import src.Python.process.bfm_get_report
+
 import src.java.new
 import src.java.vector
 import src.java.typeCode
@@ -21,9 +24,9 @@ def detect_trojan(folder_path=None, language=None, method=None, is_html=False):
 
         elif language == "Python":
             if method == "AST模式匹配":
-                print("待调用")
+                src.Python.process.ast_get_report.AST(folder_path)
             elif method == "中间代码转换":
-                print("待调用")
+                src.Python.process.bfm_get_report.BFM(folder_path)
             elif method == "代码向量化/机器学习":
                 print("待调用")
             else:
@@ -40,3 +43,4 @@ def detect_trojan(folder_path=None, language=None, method=None, is_html=False):
                 print("未选择检测方法！")
         else:
             print("未选择语言！")
+
