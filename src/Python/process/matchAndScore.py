@@ -113,7 +113,7 @@ def calculate_and_format_score(key_info, patterns, category_name):
         return score, None  # 无匹配项则返回 None
 
 
-def detect_malicious_code_in_folder(folder_path):
+def get_score(folder_path):
     """
     检测指定文件夹中的 Python 文件，并根据 patterns.py 中的模式计算匹配分数。
     """
