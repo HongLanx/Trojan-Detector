@@ -1,3 +1,13 @@
+"""
+此脚本主要用于为Go语言项目生成SSA（Static Single Assignment）形式的中间代码，以便进行深入的静态分析。主要功能包括：
+1. 自动检测和安装缺失的Go模块依赖项。
+2. 使用指定的SSA生成工具（SSAGenerator.exe）来生成Go文件的SSA表示。
+3. 提供图形界面选择Go项目文件夹和go.mod文件，以支持SSA生成过程。
+4. 自动处理和重试机制，确保在依赖项解决后重新尝试生成SSA。
+5. 支持批量处理整个Go项目，将生成的SSA文件收集并存放到指定目录。
+
+"""
+
 import shutil
 import subprocess
 import re
@@ -32,7 +42,7 @@ def generate_ssa(go_file, go_mod_file=None):
 
     # 检查用户是否选择了文件，如果没有，则在module_dir下创建一个新的go.mod文件
     if not go_mod_file:
-        print("No go.mod file selected. Creating a new go.mod file.")
+        print("未选择go.mod文件，自动在目录下创建新go.mod文件")
         go_mod_file = os.path.join(module_dir, "go.mod")
         if not go_mod_file:
             with open(go_mod_file, 'w') as mod_file:
@@ -45,9 +55,9 @@ def generate_ssa(go_file, go_mod_file=None):
             shutil.copy(go_mod_file, os.path.join(module_dir, os.path.basename(go_mod_file)))
         go_mod_dir = module_dir
 
-    print(f"Generating SSA for {go_file} using {go_mod_file}")
+    print(f"生成 {go_file} 的SSA中间代码，使用依赖项为 {go_mod_file}")
 
-    print("Running initial SSA Generator...")
+    print("正在第一次尝试生成SSA...")
     stdout, stderr = run_command([SSA_path, '-build=F', go_file], module_dir)
 
     if stderr and ("no required module provides package" or "missing go.sum entry" in stderr):
@@ -67,17 +77,17 @@ def generate_ssa(go_file, go_mod_file=None):
             print(install_stdout)
             print(install_stderr)
 
-        print("Running go mod tidy...")
+        print("运行指令： go mod tidy...")
         run_command(['go', 'mod', 'tidy', '-e'], go_mod_dir)
 
-        print("Re-running SSA Generator after dependency resolution...")
+        print("依赖项已自动安装，正在第二次尝试生成SSA...")
         stdout, stderr = run_command([SSA_path, '-build=F', go_file], module_dir)
-        print("SSA Generation Complete")
+        print("SSA生成完成")
 
     if stderr and ("could not import" in stderr or "invalid package name" in stderr):
-        print("There are still errors with the packages or invalid package names.")
+        print("依赖包仍有错误，或仍然缺失")
     else:
-        print("All dependencies resolved and SSA generated successfully.")
+        print("全部依赖项已安装，SSA已经生成")
 
     print(stdout)
     print(stderr)
@@ -89,19 +99,19 @@ def choose_go_project_and_generate_ssa(folder_selected=None, is_html=False):
         root = tk.Tk()
         root.withdraw()  # 隐藏主窗口
         if not folder_selected:
-            folder_selected = filedialog.askdirectory(title="Select A Go Project Folder",
+            folder_selected = filedialog.askdirectory(title="选择Go项目目录",
                                                       initialdir=os.getcwd())  # 初始目录设为当前工作目录
 
         print("请选择项目go.mod文件")
         # 弹出文件选择对话框，让用户选择一个go.mod文件
         go_mod_file = filedialog.askopenfilename(
-            title="Select a go.mod file",
+            title="选择项目的go.mod依赖项文件",
             filetypes=[("Go Mod files", "go.mod")],  # 只允许选择go.mod文件
             initialdir=folder_selected  # 假设go.mod通常与go文件在同一目录
         )
     else:
         if not folder_selected:
-            folder_selected = filedialog.askdirectory(title="Select A Go Project Folder",
+            folder_selected = filedialog.askdirectory(title="选择Go项目目录",
                                                       initialdir=os.getcwd())  # 初始目录设为当前工作目录
         go_mod_file = None
     if folder_selected:
@@ -131,7 +141,7 @@ def get_ssa_from_folder(folder_to_be_processd=None, is_html=False):
                     if os.path.getsize(file_path) > 0:  # Check if file is not empty
                         # Move non-empty .ssa files to the specified destination folder
                         shutil.move(file_path, os.path.join(ssa_dest_folder, file_name))
-                        print(f"Moved non-empty SSA file: {file_path} to {ssa_dest_folder}")
+                        print(f"移动非空SSA文件: {file_path} 到 {ssa_dest_folder}")
                     else:
                         os.remove(file_path)  # 删除内容为空的SSA文件（即由于无法安装库等原因，无法正常生成）
 

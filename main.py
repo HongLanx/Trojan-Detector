@@ -2,7 +2,7 @@ import src.Golang.ast_get_report
 import src.Golang.ssa_get_report
 import src.Golang.machine_learning_get_report
 
-
+# 前端公共API
 def detect_trojan(folder_path=None, language=None, method=None, is_html=False):
     if folder_path and language and method:
         if language == "Go":

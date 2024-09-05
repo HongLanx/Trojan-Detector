@@ -11,10 +11,10 @@ def adjust_values(data):
         for sub_key, value in values.items():
             if value == 2:
                 # 针对value为2，随机赋值为2或3，出现次数太少
-                new_value = random.randint(5, 6)
-            elif value == 1:
-                # 对于只出现1次的条目，由于出现次数太少，很难说明什么
                 new_value = random.randint(2, 3)
+            elif value == 1:
+                # 对于只出现1次的条目，由于出现次数太少，很难说明什么，随机赋值为0-2
+                new_value = random.randint(0, 2)
             elif value <= 4:
                 # 针对value为3或4，随机赋值为6或7
                 new_value = random.randint(6, 7)

@@ -1,3 +1,13 @@
+"""
+该脚本用于分析Go语言代码的抽象语法树（AST）。主要功能包括：
+1. 使用Go语言自带的AST库通过外部程序（AstGenerator.exe）生成Go文件的AST，并将其输出到文本文件。
+2. 对生成的AST文本进行处理，去除无关字符和格式化，使其便于解析。
+3. 将处理后的AST文本转换为JSON格式，以便进行进一步的分析和操作。
+4. 提供了解析AST并提取关键信息如导入、函数调用等的功能。
+5. 支持批量处理Go项目文件夹内所有Go文件，生成包含所有关键信息的综合JSON报告。
+
+此外，脚本利用Tkinter库提供图形界面来选择文件夹，使用户操作更为便捷。
+"""
 import json
 import re
 import os
@@ -126,7 +136,7 @@ def get_info_from_project(folder_selected=None):
     json_data = None
     if not folder_selected:
         root = tk.Tk()
-        root.withdraw()  # Hide the main tkinter window
+        root.withdraw()  # 隐藏Tkinter主窗口
         folder_selected = r''+filedialog.askdirectory()
     if folder_selected:
         json_data = get_key_info_from_project_folder(folder_selected)
