@@ -119,7 +119,7 @@ def main():
                 for (ptype, pattern), data in patterns.items():
                     if ptype == pattern_type and data["count"] > 0:
                         result_file.write(
-                            f"类型: {pattern_type:<15} | 特征: {pattern:<40} | 次数: {data['count']:<5} | 总分数: {data['score']:<5}\n"
+                            f"特征: {pattern:<40} | 次数: {data['count']:<5} | 总分数: {data['score']:<5}\n"
                         )
             # 输出每个类别的总分
             result_file.write(f"类别总分: {category_total_scores[category]}\n")
