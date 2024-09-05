@@ -28,7 +28,7 @@ def detect_trojan(folder_path=None, language=None, method=None, is_html=False):
             elif method == "中间代码转换":
                 src.Python.process.bfm_get_report.BFM(folder_path)
             elif method == "代码向量化/机器学习":
-                print("待调用")
+                src.Python.Tenth_MLP_report2.output_machine_learning_matching_report(folder_path)
             else:
                 print("未选择检测方法！")
                 
