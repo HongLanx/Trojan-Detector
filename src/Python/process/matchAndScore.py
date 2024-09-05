@@ -3,6 +3,7 @@ import importlib.util
 import os
 from collections import defaultdict
 
+
 def load_patterns_module(patterns_file_path):
     spec = importlib.util.spec_from_file_location("patterns", patterns_file_path)
     patterns = importlib.util.module_from_spec(spec)
@@ -110,8 +111,9 @@ def calculate_and_format_score(key_info, patterns, category_name):
         return score, None  # 无匹配项则返回None
 
 if __name__ == "__main__":
-    # 指定patterns.py的路径
-    patterns_file_path = r'C:\Users\86156\Desktop\share\Trojan-Detector\src\Python\process\patterns.py'
+    # 指定patterns.py的路径为相对路径
+    current_directory = os.path.dirname(os.path.abspath(__file__))  # 获取当前脚本所在的目录
+    patterns_file_path = os.path.join(current_directory, "patterns.py")  # 构造patterns.py的路径
     patterns_module = load_patterns_module(patterns_file_path)
 
     # 让用户输入待检测文件夹的路径
@@ -164,9 +166,9 @@ if __name__ == "__main__":
     # 提取待检测文件夹的名称
     folder_name = os.path.basename(os.path.normpath(parent_directory))
 
-    # 确定输出文件的路径，文件名为"待检测文件夹名称_detection_results.txt"
+    # 确定输出文件的路径为待检测文件夹，文件名为"待检测文件夹名称_AST_results.txt"
     output_file_name = f"{folder_name}_AST_results.txt"
-    output_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), output_file_name)
+    output_file_path = os.path.join(parent_directory, output_file_name)
 
     # 输出结果到 txt 文件，显式指定编码为 utf-8
     with open(output_file_path, 'w', encoding='utf-8') as outfile:
