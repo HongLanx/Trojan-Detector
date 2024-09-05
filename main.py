@@ -14,6 +14,7 @@ def detect_trojan(folder_path=None, language=None, method=None, is_html=False):
                 src.Golang.machine_learning_get_report.output_machine_learning_matching_report(folder_path, is_html)
             else:
                 print("未选择检测方法！")
+
         elif language == "Python":
             if method == "AST模式匹配":
                 print("待调用")
@@ -23,6 +24,7 @@ def detect_trojan(folder_path=None, language=None, method=None, is_html=False):
                 print("待调用")
             else:
                 print("未选择检测方法！")
+                
         elif language == "Java":
             if method == "AST模式匹配":
                 print("待调用")
